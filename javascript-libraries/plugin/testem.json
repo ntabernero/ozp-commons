@@ -1,0 +1,13 @@
+{
+    "framework": "mocha",
+    "src_files": [
+        "target/classes/js/**/chai-amd/**/*.js",
+        "target/classes/js/**/sinon-amd/**/*.js",
+        "target/classes/js/**/lodash-amd/**/*.js",
+        "target/classes/js/**/require/**/*.js",
+        "target/classes/js/**/jquery-amd/**/*.js",
+        "src/main/js/plugin.js",
+        "src/test/js/*.js"
+    ],
+    "launch_in_dev": ["Chrome"]
+}
