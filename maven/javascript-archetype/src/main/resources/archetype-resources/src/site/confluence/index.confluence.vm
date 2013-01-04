@@ -1,0 +1,26 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+1. jQuery
+
+Provides an AMD wrapper around jQuery with the "jquery" module name. 
+While jQuery 1.7 onwards supports AMD if the define.amd.jquery property is true, we do not have a loader in play at the time jQuery is executed. We therefore define the "jquery" module at a point where we have a loader.
+
+The version of this wrapper is consistent with the jQuery version it wraps.
+
+h2. Usage
+
+Include the following dependency in your POM to make jQuery available to your project:
+
+{code}
+<project>
+    <dependencies>
+        <dependency>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>require</artifactId>
+            <version>${symbol_dollar}{projectVersion}</version>
+            <type>js</type>
+        </dependency>
+    </dependencies>
+</project>
+{code}

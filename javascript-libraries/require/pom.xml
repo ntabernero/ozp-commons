@@ -29,7 +29,7 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>org.ozoneplatform.commons.maven-plugins</groupId>
+                <groupId>org.ozoneplatform.commons.maven</groupId>
                 <artifactId>js-import-maven-plugin</artifactId>
             </plugin>
             <plugin>

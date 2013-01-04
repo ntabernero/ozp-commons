@@ -23,6 +23,7 @@
     <modules>
         <module>require</module>
         <module>lodash-amd</module>
+        <module>expect-amd</module>
         <module>sinon-amd</module>
         <module>mocha-amd</module>
         <module>plugin</module>
@@ -48,9 +49,9 @@
                     </executions>
                 </plugin>
                 <plugin>
-                    <groupId>org.ozoneplatform.commons.maven-plugins</groupId>
+                    <groupId>org.ozoneplatform.commons.maven</groupId>
                     <artifactId>js-import-maven-plugin</artifactId>
-                    <version>1.0.1-SNAPSHOT</version>
+                    <version>1.0.0-SNAPSHOT</version>
                     <executions>
                         <execution>
                             <id>process sources</id>
