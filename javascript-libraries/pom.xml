@@ -23,12 +23,9 @@
     <modules>
         <module>require</module>
         <module>lodash-amd</module>
-        <module>chai-amd</module>
         <module>sinon-amd</module>
         <module>mocha-amd</module>
         <module>plugin</module>
-        <module>angular-amd</module>
-        <module>angular-ui-amd</module>
         <module>jquery-amd</module>
         <module>jquery-mobile-amd</module>
         <module>jquery-ui-amd</module>

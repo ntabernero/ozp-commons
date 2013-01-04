@@ -29,7 +29,7 @@
     </scm>
 
     <modules>
-        <module>maven-plugins</module>
+        <module>maven</module>
         <module>javascript-libraries</module>
     </modules>
 
