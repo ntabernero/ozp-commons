@@ -10,7 +10,7 @@
 	</parent>
 
 	<artifactId>jquery-amd</artifactId>
-	<version>1.8.2</version>
+	<version>1.8.3</version>
 
 	<name>jQuery AMD Library</name>
 	<description>jQuery with AMD wrapper</description>

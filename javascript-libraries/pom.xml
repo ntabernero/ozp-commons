@@ -28,9 +28,9 @@
         <module>mocha-amd</module>
         <module>plugin</module>
         <module>jquery-amd</module>
-        <module>jquery-mobile-amd</module>
         <module>jquery-ui-amd</module>
         <module>bootstrap-amd</module>
+        <module>backbone-amd</module>
     </modules>
 
     <build>

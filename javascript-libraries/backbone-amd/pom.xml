@@ -9,19 +9,11 @@
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 
-	<artifactId>jquery-mobile-amd</artifactId>
-	<version>1.1.0-alpha-2</version>
+	<artifactId>backbone-amd</artifactId>
+	<version>0.9.9</version>
 
-	<name>jquery-mobile library</name>
-	<description>Touch-Optimized Web Framework for Smartphones and Tablets</description>
-
-	<licenses>
-		<license>
-			<url>http://jquery.org/license</url>
-			<name>jQuery</name>
-			<distribution>repo</distribution>
-		</license>
-	</licenses>
+	<name>Backbone Library</name>
+	<description>Backbone.js gives structure to web applications by providing models with key-value binding and custom events, collections with a rich API of enumerable functions, views with declarative event handling, and connects it all to your existing API over a RESTful JSON interface.</description>
 
 	<properties>
 		<projectVersion>${project.version}</projectVersion>
@@ -36,10 +28,16 @@
             <version>2.1.1</version>
             <type>js</type>
         </dependency>
-		<dependency>
+        <dependency>
             <groupId>org.ozoneplatform.commons.javascript-libraries</groupId>
 			<artifactId>jquery-amd</artifactId>
-            <version>1.8.2</version>
+            <version>1.8.3</version>
+			<type>js</type>
+		</dependency>
+		<dependency>
+            <groupId>org.ozoneplatform.commons.javascript-libraries</groupId>
+			<artifactId>lodash-amd</artifactId>
+            <version>1.0.0-rc.3</version>
 			<type>js</type>
 		</dependency>
 	</dependencies>
@@ -48,22 +46,6 @@
 		the artifact produced here to work - chicken and egg. -->
 
 	<build>
-		<resources>
-			<resource>
-				<directory>src/main/resources</directory>
-				<excludes>
-					<exclude>**/*.html</exclude>
-				</excludes>
-			</resource>
-			<resource>
-				<directory>src/main/js</directory>
-				<excludes>
-					<exclude>**/*.js</exclude>
-				</excludes>
-				<targetPath>js</targetPath>
-			</resource>
-		</resources>
-
 		<plugins>
 			<plugin>
                 <groupId>org.ozoneplatform.commons.maven</groupId>
@@ -72,33 +54,10 @@
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>webminifier-maven-plugin</artifactId>
-				<configuration>
-					<jsSplitPoints>
-						<property>
-							<name>js/jquery.mobile.js</name>
-							<value>${project.artifactId}-${project.version}</value>
-						</property>
-					</jsSplitPoints>
-				</configuration>
 			</plugin>
 			<plugin>
-				<artifactId>maven-resources-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<artifactId>maven-assembly-plugin</artifactId>
-				<executions>
-					<execution>
-						<phase>package</phase>
-						<goals>
-							<goal>single</goal>
-						</goals>
-						<configuration>
-							<descriptors>
-								<descriptor>assembly.xml</descriptor>
-							</descriptors>
-						</configuration>
-					</execution>
-				</executions>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
 	</build>

@@ -34,7 +34,7 @@
         <dependency>
             <groupId>org.ozoneplatform.commons.javascript-libraries</groupId>
             <artifactId>jquery-amd</artifactId>
-            <version>1.8.2</version>
+            <version>1.8.3</version>
             <type>js</type>
         </dependency>
         <dependency>
