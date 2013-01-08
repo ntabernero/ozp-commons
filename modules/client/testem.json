@@ -1,0 +1,14 @@
+{
+    "framework": "mocha",
+    "src_files": [
+        "target/classes/js/**/expect-amd/**/*.js",
+        "target/classes/js/**/sinon-amd/**/*.js",
+        "target/classes/js/**/lodash-amd/**/*.js",
+        "target/classes/js/**/require/**/*.js",
+        "target/classes/js/**/jquery-amd/**/*.js",
+        "src/main/js/plugin.js",
+        "src/test/js/*.js"
+    ],
+    "launch_in_dev": ["PhantomJS"],
+    "launch_in_ci": ["PhantomJS", "Firefox"]
+}

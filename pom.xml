@@ -31,6 +31,7 @@
     <modules>
         <module>maven</module>
         <module>javascript-libraries</module>
+        <module>modules</module>
     </modules>
 
 </project>
