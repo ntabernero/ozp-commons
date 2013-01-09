@@ -1,11 +1,11 @@
 define([
-    'models/DashboardModel', 
-    'backbone'
+    'models/DashboardModel',
+    'collections/Collection'
 ],
 
-function(DashboardModel, Backbone) {
+function(DashboardModel, Collection) {
 
-    var DashboardsCollection = Backbone.Collection.extend({
+    var DashboardsCollection = Collection.extend({
         
         model: DashboardModel,
 

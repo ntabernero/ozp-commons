@@ -1,10 +1,10 @@
 define([
-    'backbone'
+    'models/Model'
 ],
 
-function(Backbone) {
+function(Model) {
 
-    var DashboardModel = Backbone.Model.extend({
+    var DashboardModel = Model.extend({
 
         idAttribute: "guid",
         urlRoot: '/owf/1.0/dashboards',
@@ -17,7 +17,6 @@ function(Backbone) {
         },
 
         initialize: function() {
-
             if( _.isString(this.get('layoutConfig')) )
                 this.set( 'layoutConfig', JSON.parse(this.get('layoutConfig')), {silent: true} );
         }

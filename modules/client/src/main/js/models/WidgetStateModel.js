@@ -1,15 +1,11 @@
 define([
-        'backbone'
+    'models/Model'
 ],
 
-function(Backbone) {
+function(Model) {
 
-    var WidgetStateModel = Backbone.Model.extend({
-
-        initialize: function() {
-            
-        }
-
+    var WidgetStateModel = Model.extend({
+        
     });
 
     return WidgetStateModel;

@@ -1,10 +1,10 @@
 define([
-        'backbone'
+    'models/Model'
 ],
 
-function(Backbone) {
+function(Model) {
 
-    var UserModel = Backbone.Model.extend({
+    var UserModel = Model.extend({
         
         urlRoot: '/owf/1.0/users',
         

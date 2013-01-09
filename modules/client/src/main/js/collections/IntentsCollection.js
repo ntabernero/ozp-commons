@@ -1,11 +1,11 @@
 define([
     'models/IntentModel',
-    'backbone'
+    'collections/Collection'
 ],
 
-function(IntentModel, Backbone) {
+function(IntentModel, Collection) {
 
-    var IntentsCollection = Backbone.Collection.extend({
+    var IntentsCollection = Collection.extend({
         
         model: IntentModel,
         

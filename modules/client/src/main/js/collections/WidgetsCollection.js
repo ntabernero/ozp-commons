@@ -1,11 +1,11 @@
 define([
     'models/WidgetModel',
-    'backbone'
+    'collections/Collection'
 ],
 
-function(WidgetModel, Backbone) {
+function(WidgetModel, Collection) {
 
-    var WidgetsCollection = Backbone.Collection.extend({
+    var WidgetsCollection = Collection.extend({
         
         model: WidgetModel,
 

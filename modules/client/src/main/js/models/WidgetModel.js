@@ -1,10 +1,10 @@
 define([
-    'backbone'
+    'models/Model'
 ],
 
-function(Backbone) {
+function(Model) {
 
-    var WidgetModel = Backbone.Model.extend({
+    var WidgetModel = Model.extend({
 
         urlRoot: '/owf/1.0/widgets',
 

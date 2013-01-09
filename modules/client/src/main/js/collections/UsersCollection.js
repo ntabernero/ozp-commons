@@ -1,11 +1,11 @@
 define([
     'models/UserModel',
-    'backbone'
+    'collections/Collection'
 ],
 
-function(UserModel, Backbone) {
+function(UserModel, Collection) {
         
-    var UsersCollection = Backbone.Collection.extend({
+    var UsersCollection = Collection.extend({
         
         model: UserModel,
 

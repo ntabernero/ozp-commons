@@ -1,10 +1,10 @@
 define([
-    'backbone'
+    'models/Model'
 ],
 
-function(Backbone) {
+function(Model) {
 
-    var IntentModel = Backbone.Model.extend({
+    var IntentModel = Model.extend({
         urlRoot: '/owf/1.0/intents',
         
         defaults: {

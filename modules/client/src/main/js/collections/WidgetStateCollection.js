@@ -1,11 +1,11 @@
 define([
     'models/WidgetStateModel',
-    'backbone'
+    'collections/Collection'
 ],
 
-function(WidgetStateModel, Backbone) {
+function(WidgetStateModel, Collection) {
 
-    var WidgetStateCollection = Backbone.Collection.extend({
+    var WidgetStateCollection = Collection.extend({
         
         url: '/owf/1.0/widgetstates',
         
