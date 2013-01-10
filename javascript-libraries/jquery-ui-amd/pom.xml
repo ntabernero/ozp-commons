@@ -10,7 +10,7 @@
 	</parent>
 
 	<artifactId>jquery-ui-amd</artifactId>
-	<version>1.9.1</version>
+	<version>1.9.2</version>
 
 	<name>jQuery UI AMD Library</name>
 	<description>jQuery UI with AMD wrapper</description>
@@ -61,6 +61,24 @@
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>build-helper-maven-plugin</artifactId>
 			</plugin>
+			<plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <executions>
+                  <execution>
+                    <id>create-distribution</id>
+                    <phase>package</phase>
+                    <goals>
+                      <goal>single</goal>
+                    </goals>
+                    <configuration>
+                      <descriptors>
+                        <descriptor>assembly/jquery-ui.xml</descriptor>
+                      </descriptors>
+                    </configuration>
+                  </execution>
+                </executions>
+              </plugin>
 		</plugins>
 	</build>
 </project>

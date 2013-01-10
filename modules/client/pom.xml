@@ -68,18 +68,15 @@
 
     <build>
         <plugins>
-            <plugin>
+            <!-- plugin>
                 <groupId>org.ozoneplatform.commons.maven</groupId>
                 <artifactId>js-import-maven-plugin</artifactId>
             </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>webminifier-maven-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>build-helper-maven-plugin</artifactId>
-            </plugin>
+            </plugin-->
+
             <plugin>
                 <groupId>org.ozoneplatform.commons.maven</groupId>
                 <artifactId>jshint-maven-plugin</artifactId>
@@ -107,44 +104,26 @@
                     </excludes>
                 </configuration>
             </plugin>
+            <plugin>
+		        <groupId>org.apache.maven.plugins</groupId>
+		        <artifactId>maven-assembly-plugin</artifactId>
+		        <executions>
+		          <execution>
+		            <id>create-distribution</id>
+		            <phase>package</phase>
+		            <goals>
+		              <goal>single</goal>
+		            </goals>
+		            <configuration>
+		              <descriptors>
+		                <descriptor>assembly/client.xml</descriptor>
+		              </descriptors>
+		            </configuration>
+		          </execution>
+		        </executions>
+		      </plugin>
         </plugins>
     </build>
 
-    <profiles>
-        <profile>
-            <id>testacular</id>
-            <activation>
-                <property>
-                    <name>skipClientTests</name>
-                </property>
-            </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.codehaus.mojo</groupId>
-                        <artifactId>exec-maven-plugin</artifactId>
-                        <version>1.1</version>
-                        <executions>
-                            <execution>
-                                <id>JS Testing</id>
-                                <phase>test</phase>
-                                <goals>
-                                    <goal>exec</goal>
-                                </goals>
-                                <configuration>
-                                    <executable>testacular</executable>
-                                    <arguments>
-                                        <argument>start</argument>
-                                        <argument>--browsers</argument>
-                                        <argument>${browsers}</argument>
-                                    </arguments>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
-
+    
 </project>
