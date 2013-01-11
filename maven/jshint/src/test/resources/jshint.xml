@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+
+<!-- Run this via mvn test -->
+
+<project default="testIncludes" basedir="." xmlns:ca="antlib:net.sourceforge.clearantlib">
+
+	<!-- Use this prop if testing with maven -->
+	<property name="test.resources.dir" value="${basedir}/src/test/resources" />
+
+	<!-- Use this prop if testing in ide (via unit test) -->
+	<!--<property name="test.resources.dir" value="${basedir}" />-->
+	
+	<property name="temp.dir" value="${basedir}/target/temp" />
+	
+	<target name="clean">
+		<delete dir="${temp.dir}" />
+		<mkdir dir="${temp.dir}"/>
+	</target>
+
+	<target name="makeTask" depends="clean">
+
+		<path id="jshint.classpath">
+			<fileset dir="${test.resources.dir}/../../../target"
+				includes="ant-jshint-test-jar-with-dependencies.jar" />
+		</path>
+
+		<taskdef name="jshint" classname="com.philmander.jshint.JsHintAntTask">
+			<classpath refid="jshint.classpath" />
+		</taskdef>
+	</target>
+
+	<target name="testIncludes" depends="makeTask">
+
+		<jshint dir="${test.resources.dir}/js">
+			<include name="**/*.js" />
+		</jshint>
+
+	</target>
+
+	<target name="testOptions" depends="makeTask">
+
+		<jshint dir="${test.resources.dir}/js" options="forin:true,curly:false,evil:true">
+			<include name="test-options.js" />
+		</jshint>
+
+	</target>
+
+	<target name="testOptionsJsonFile" depends="makeTask">
+
+			<jshint dir="${test.resources.dir}/js" optionsFile="${test.resources.dir}/jshint-options.json">
+				<include name="test-options-json-file.js" />
+			</jshint>
+
+		</target>
+	
+	<target name="testOptionsFile" depends="makeTask">
+
+		<jshint dir="${test.resources.dir}/js" optionsFile="${test.resources.dir}/jshint-options.properties">
+			<include name="test-options-file.js" />
+		</jshint>
+
+	</target>
+
+	<target name="testCustomHintFile" depends="makeTask">
+
+		<jshint dir="${test.resources.dir}/js" jshintSrc="${test.resources.dir}/my-jshint.js">
+			<include name="test-optionsfile.js" />
+		</jshint>
+
+	</target>
+	
+	<target name="testGlobals" depends="makeTask">
+
+		<jshint dir="${test.resources.dir}/js" globals="globalOne:true, globalThree: true">
+			<include name="test-globals.js"/>
+		</jshint>
+
+	</target>
+	
+	<target name="testGlobalsFile" depends="makeTask">
+
+		<jshint dir="${test.resources.dir}/js" globalsFile="${test.resources.dir}/jshint-globals.properties">
+			<include name="test-globals-file.js" />
+		</jshint>
+
+	</target>
+
+	<target name="testReportFile" depends="makeTask">
+
+		<jshint dir="${test.resources.dir}/js" fail="false">
+			<report type="plain" destFile="${temp.dir}/jshint-report.txt"/>
+			<report type="xml" destFile="${temp.dir}/jshint-report.xml"/>
+			<report type="jslint-xml" destFile="${temp.dir}/jslint-report.xml"/>
+			<include name="**/*.js" />
+		</jshint>
+
+	</target>
+
+</project>

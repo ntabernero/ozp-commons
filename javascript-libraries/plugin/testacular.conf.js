@@ -31,8 +31,7 @@ exclude = [
 reporters = ['progress', 'junit'];
 
 junitReporter= {
-     outputFile: 'target/surefire-reports/test-results.xml',
-     suite: ''
+     outputFile: 'target/surefire-reports/test-results.xml'
 };
 
 // web server port

@@ -1,4 +1,4 @@
-/*global define, window */
+/*global define, window, requirejs */
 define("plugin", ['require', 'jquery'], function(require, $) {
 
     /*  
