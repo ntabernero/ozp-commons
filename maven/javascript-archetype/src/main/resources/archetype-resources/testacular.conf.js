@@ -10,11 +10,11 @@ basePath = '.';
 files = [
   MOCHA,
   MOCHA_ADAPTER,
-  "target/classes/js/**/expect/**/*.js",
-  "target/classes/js/**/sinon/**/*.js",
-  "target/classes/js/**/require/**/*.js",
-  "target/classes/js/**/lodash/**/*.js",
-  "target/classes/js/**/jquery/**/*.js",
+  "target/js/expect.js",
+  "target/js/sinon.js",
+  "target/js/require.js",
+  "target/js/lodash.js",
+  "target/js/jquery.js",
   "src/main/js/plugin.js",
   "src/test/js/*.js"
 ];

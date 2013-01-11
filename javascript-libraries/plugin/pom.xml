@@ -24,56 +24,11 @@
 
     <packaging>pom</packaging>
 
-    <dependencies>
-        <!-- <dependency>
-            <groupId>org.ozoneplatform.commons.javascript-libraries</groupId>
-            <artifactId>require</artifactId>
-            <version>2.1.1</version>
-            <type>js</type>
-        </dependency>
-        <dependency>
-            <groupId>org.ozoneplatform.commons.javascript-libraries</groupId>
-            <artifactId>jquery</artifactId>
-            <version>1.8.3</version>
-            <type>js</type>
-        </dependency>
-        <dependency>
-            <groupId>org.ozoneplatform.commons.javascript-libraries</groupId>
-            <artifactId>lodash</artifactId>
-            <version>1.0.0-rc.3</version>
-            <type>js</type>
-        </dependency>
-        <dependency>
-            <groupId>org.ozoneplatform.commons.javascript-libraries</groupId>
-            <artifactId>sinon</artifactId>
-            <version>1.5.2</version>
-            <type>js</type>
-        </dependency>
-        <dependency>
-            <groupId>org.ozoneplatform.commons.javascript-libraries</groupId>
-            <artifactId>expect</artifactId>
-            <version>0.2.0</version>
-            <type>js</type>
-        </dependency> -->
-    </dependencies>
-
     <!-- We can't use the plugin extension for this project as it relies upon
          the artifact produced here to work - chicken and egg. -->
 
     <build>
         <plugins>
-            <!-- <plugin>
-                <groupId>org.ozoneplatform.commons.maven</groupId>
-                <artifactId>js-import-maven-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>webminifier-maven-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>build-helper-maven-plugin</artifactId>
-            </plugin> -->
             <plugin>
                 <groupId>org.ozoneplatform.commons.maven</groupId>
                 <artifactId>jshint-maven-plugin</artifactId>
