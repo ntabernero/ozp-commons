@@ -25,7 +25,6 @@
         <module>lodash</module>
         <module>expect</module>
         <module>sinon</module>
-        <module>mocha</module>
         <module>plugin</module>
         <module>jquery</module>
         <module>jquery-ui</module>
@@ -117,7 +116,7 @@
                         </goals>
                         <configuration>
                           <descriptors>
-                            <descriptor>assembly/assembly.xml</descriptor>
+                            <descriptor>src/main/assembly/assembly.xml</descriptor>
                           </descriptors>
                         </configuration>
                       </execution>
