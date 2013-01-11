@@ -8,11 +8,7 @@
     <fileSets>
         <fileSet>
             <outputDirectory>/</outputDirectory>
-            <includes>
-                <include>css/**</include>
-                <include>development-bundle/**</include>
-                <include>js/**</include>
-            </includes>
+            <directory>src/main/webapp</directory>
         </fileSet>
     </fileSets>
 </assembly>
