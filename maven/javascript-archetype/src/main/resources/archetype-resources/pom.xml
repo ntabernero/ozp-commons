@@ -33,25 +33,25 @@
         </dependency>
         <dependency>
             <groupId>org.ozoneplatform.commons.javascript-libraries</groupId>
-            <artifactId>jquery-amd</artifactId>
+            <artifactId>jquery</artifactId>
             <version>1.8.3</version>
             <type>js</type>
         </dependency>
         <dependency>
             <groupId>org.ozoneplatform.commons.javascript-libraries</groupId>
-            <artifactId>lodash-amd</artifactId>
+            <artifactId>lodash</artifactId>
             <version>1.0.0-rc.3</version>
             <type>js</type>
         </dependency>
         <dependency>
             <groupId>org.ozoneplatform.commons.javascript-libraries</groupId>
-            <artifactId>sinon-amd</artifactId>
+            <artifactId>sinon</artifactId>
             <version>1.5.2</version>
             <type>js</type>
         </dependency>
         <dependency>
             <groupId>org.ozoneplatform.commons.javascript-libraries</groupId>
-            <artifactId>expect-amd</artifactId>
+            <artifactId>expect</artifactId>
             <version>0.2.0</version>
             <type>js</type>
         </dependency>

@@ -1,11 +1,11 @@
 {
     "framework": "mocha",
     "src_files": [
-        "target/classes/js/**/expect-amd/**/*.js",
-        "target/classes/js/**/sinon-amd/**/*.js",
-        "target/classes/js/**/lodash-amd/**/*.js",
+        "target/classes/js/**/expect/**/*.js",
+        "target/classes/js/**/sinon/**/*.js",
+        "target/classes/js/**/lodash/**/*.js",
         "target/classes/js/**/require/**/*.js",
-        "target/classes/js/**/jquery-amd/**/*.js",
+        "target/classes/js/**/jquery/**/*.js",
         "src/main/js/plugin.js",
         "src/test/js/*.js"
     ],

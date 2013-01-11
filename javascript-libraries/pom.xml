@@ -22,15 +22,15 @@
 
     <modules>
         <module>require</module>
-        <module>lodash-amd</module>
-        <module>expect-amd</module>
-        <module>sinon-amd</module>
-        <module>mocha-amd</module>
+        <module>lodash</module>
+        <module>expect</module>
+        <module>sinon</module>
+        <module>mocha</module>
         <module>plugin</module>
-        <module>jquery-amd</module>
-        <module>jquery-ui-amd</module>
-        <module>bootstrap-amd</module>
-        <module>backbone-amd</module>
+        <module>jquery</module>
+        <module>jquery-ui</module>
+        <module>bootstrap</module>
+        <module>backbone</module>
     </modules>
 
     <build>
