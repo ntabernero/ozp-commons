@@ -17,11 +17,11 @@ function(Model) {
             "totalDashboards": 0,
             "totalStacks": 0,
             "lastLogin": "",
-            "title": ""
+            "userRealName": ""
         }
 
     });
 
     return UserModel;
 
-});
+}); 

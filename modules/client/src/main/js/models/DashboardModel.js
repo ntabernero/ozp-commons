@@ -18,7 +18,7 @@ function(Model) {
             "isdefault": false,
             "dashboardPosition": 0,
             "removed": false,
-            "groups": null,
+            "groups": [],
             "isGroupDashboard": false,
             "createdDate": null,
             "createdBy": null,
