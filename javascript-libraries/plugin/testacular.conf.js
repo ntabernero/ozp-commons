@@ -13,7 +13,7 @@ files = [
   "target/js/expect.js",
   "target/js/sinon.js",
   "target/js/require.js",
-  "target/js/lodash.js",
+//  "target/js/lodash.js",
   "target/js/jquery.js",
   "src/main/js/plugin.js",
   "src/test/js/*.js"
