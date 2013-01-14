@@ -7,7 +7,7 @@ function(Model) {
     var DashboardModel = Model.extend({
 
         idAttribute: "guid",
-        urlRoot: '/owf/1.0/dashboards',
+        urlRoot: '/groups',
 
         defaults: {
             "guid": null,

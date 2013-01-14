@@ -6,7 +6,7 @@ function(Model) {
 
     var UserModel = Model.extend({
         
-        urlRoot: '/owf/1.0/users',
+        urlRoot: '/users',
         
         defaults: {
             "id": "",

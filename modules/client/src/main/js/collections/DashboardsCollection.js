@@ -9,7 +9,7 @@ function(DashboardModel, Collection) {
         
         model: DashboardModel,
 
-        url: '/owf/1.0/dashboards'
+        url: '/groups/dashboards'
 
     });
     

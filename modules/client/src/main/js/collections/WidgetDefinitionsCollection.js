@@ -9,7 +9,11 @@ function(WidgetDefinitionModel, Collection) {
         
         model: WidgetDefinitionModel,
 
-        url: '/owf/1.0/widgets'
+        url: '/widget-definitions',
+        
+        comparator: function(user) {
+            return contact.get('displayName');
+        }
 
     });
 

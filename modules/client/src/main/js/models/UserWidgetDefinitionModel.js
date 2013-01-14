@@ -6,7 +6,7 @@ function(Model) {
 
     var UserWidgetDefinitionModel = Model.extend({
 
-        urlRoot: '/owf/1.0/widgets',
+        urlRoot: '/user-widget-definitions',
 
         defaults: {
             "userDisplayName": null,

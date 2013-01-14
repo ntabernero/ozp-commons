@@ -9,7 +9,11 @@ function(UserModel, Collection) {
         
         model: UserModel,
 
-        url: '/owf/1.0/users'
+        url: '/users',
+        
+        comparator: function(user) {
+            return contact.get('userRealName');
+        }
 
     });
 

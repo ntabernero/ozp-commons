@@ -5,13 +5,11 @@ define([
 
 function(WidgetStateModel, Backbone) {
 
-    var WidgetStateCollection = Backbone.Collection.extend({
-        
-        url: '/owf/1.0/widgetstates',
+    var WidgetStatesCollection = Backbone.Collection.extend({
         
         model: WidgetStateModel
 
     });
 
-    return WidgetStateCollection;
+    return WidgetStatesCollection;
 });

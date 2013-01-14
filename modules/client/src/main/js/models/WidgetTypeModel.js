@@ -5,7 +5,7 @@ define([
 function(Model) {
 
     var WidgetTypeModel = Model.extend({
-        urlRoot: '/owf/1.0/intents',
+        urlRoot: '/widget-types',
         
         defaults: {
             "name:": ""

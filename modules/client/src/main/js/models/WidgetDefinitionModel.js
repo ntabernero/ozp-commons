@@ -6,7 +6,7 @@ function(Model) {
 
     var WidgetModel = Model.extend({
 
-        urlRoot: '/owf/1.0/widgets',
+        urlRoot: '/widget-definitions',
 
         defaults: {
             "guid": null,
