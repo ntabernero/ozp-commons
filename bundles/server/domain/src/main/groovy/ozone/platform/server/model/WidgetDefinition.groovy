@@ -15,10 +15,29 @@ class WidgetDefinition extends Entity {
     Integer width
     Boolean background = false
     Boolean singleton = false
-    Boolean visibleForLaunch = true //Changed from visible to be more clear
+    Boolean visibleForLaunch = true //Changed from visible for clarity
 
     WidgetType widgetType //Changed from a hasMany to a one-to-one because a widget should never have multiple
 
-    Set<String> tags //Find way to implement tags either like the Grails Taggable plugin or in a new way
-    Set<UserWidgetDefinition> userWidgetDefinition
+    Set<String> tags // TODO Find way to implement tags either like the Grails Taggable plugin or in a new way
+
+    /**
+     * WidgetDefinition has many compulsory properties making construction
+     * a complex operation. Too many arguments in the constructor is a confusing API
+     * Mitigate this complexity with the builder pattern
+     */
+    public static WidgetDefinitionBuilder builder() {
+        return new WidgetDefinitionBuilder()
+    }
+
+    protected WidgetDefinition(displayName, widgetGuid, widgetUrl, imageUrlSmall, imageUrlLarge, width, height, widgetType) {
+        this.displayName = displayName
+        this.widgetGuid = widgetGuid
+        this.widgetUrl = widgetUrl
+        this.imageUrlSmall = imageUrlSmall
+        this.imageUrlLarge = imageUrlLarge
+        this.width = width
+        this.height = height
+        this.widgetType = widgetType
+    }
 }

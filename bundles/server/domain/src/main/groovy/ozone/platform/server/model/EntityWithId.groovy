@@ -1,6 +1,13 @@
 package ozone.platform.server.model
 
-abstract class EntityWithId<T> {
+/**
+ * Base class for persistence entities.
+ * Entities: http://martinfowler.com/bliki/EvansClassification.html
+ *
+ * May be expanded upon to include a common way of doing comparisons by ID
+ * @param < T >
+ */
+abstract class EntityWithId<T extends Comparable> {
 
     T id
 }
