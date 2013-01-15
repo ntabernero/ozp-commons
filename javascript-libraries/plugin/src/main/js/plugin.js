@@ -9,7 +9,7 @@ define("plugin", ['require', 'jquery'], function(require, $) {
             state: ...
         }
     */
-    var plugins = {}
+    var plugins = {};
 
     /**
      * @description installs plugin javascript
