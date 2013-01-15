@@ -5,12 +5,12 @@ define([
 
 function(Backbone, DashboardModel) {
 
-    var UserDashboardModel = DashboardModel.extend({
+    var PersonDashboardModel = DashboardModel.extend({
 
         urlRoot: '/users',
 
         defaults: {
-            "user": null
+            "person": null
         },
         
         sync: function(method, model, options) {
@@ -18,13 +18,13 @@ function(Backbone, DashboardModel) {
             options = _(options).clone();
             // Inject the user into the url.  
             // TODO: How best to handle an empty user field?
-            options.url = model.urlRoot + '/' + model.get('user') + '/dashboards';
+            options.url = model.urlRoot + '/' + model.get('person') + '/dashboards';
             
             return Backbone.sync(method, model, options);
         }
 
     });
     
-    return UserDashboardModel;
+    return PersonDashboardModel;
 
 });

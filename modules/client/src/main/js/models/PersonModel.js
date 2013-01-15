@@ -4,24 +4,24 @@ define([
 
 function(Model) {
 
-    var UserModel = Model.extend({
+    var PersonModel = Model.extend({
         
-        urlRoot: '/users',
+        urlRoot: '/persons',
         
         defaults: {
             "id": "",
-            "username": "",
+            "personname": "",
             "email": "",
             "totalGroups": 0,
             "totalWidgets": 0,
             "totalDashboards": 0,
             "totalStacks": 0,
             "lastLogin": "",
-            "userRealName": ""
+            "personRealName": ""
         }
 
     });
 
-    return UserModel;
+    return PersonModel;
 
 }); 
