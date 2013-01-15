@@ -26,7 +26,8 @@
             <groupId>org.ozoneplatform.commons.javascript-libraries</groupId>
             <artifactId>require</artifactId>
             <version>2.1.1</version>
-            <type>js</type>
+            <type>zip</type>
+            <classifier>js</classifier>
         </dependency>
 	</dependencies>
 
@@ -35,18 +36,10 @@
 
 	<build>
 		<plugins>
-			<plugin>
-                <groupId>org.ozoneplatform.commons.maven</groupId>
-				<artifactId>js-import-maven-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>webminifier-maven-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>build-helper-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+            </plugin>
+        </plugins>
 	</build>
 </project>

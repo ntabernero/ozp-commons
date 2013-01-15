@@ -15,7 +15,7 @@ files = [
   "target/js/require.js",
 //  "target/js/lodash.js",
   "target/js/jquery.js",
-  "src/main/js/plugin.js",
+  "src/main/webapp/js/plugin.js",
   "src/test/js/*.js"
 ];
 

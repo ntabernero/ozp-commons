@@ -14,7 +14,7 @@
     <version>2.1.1</version>
 
     <name>Ozone :: Commons :: JavaScript Libraries :: Require JavaScript AMD Library</name>
-    <description>Angular with AMD wrapper</description>
+    <description>Require JavaScript AMD Library</description>
 
     <properties>
         <projectVersion>${project.version}</projectVersion>
@@ -28,18 +28,6 @@
 
     <build>
         <plugins>
-            <!-- <plugin>
-                <groupId>org.ozoneplatform.commons.maven</groupId>
-                <artifactId>js-import-maven-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>webminifier-maven-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>build-helper-maven-plugin</artifactId>
-            </plugin> -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
