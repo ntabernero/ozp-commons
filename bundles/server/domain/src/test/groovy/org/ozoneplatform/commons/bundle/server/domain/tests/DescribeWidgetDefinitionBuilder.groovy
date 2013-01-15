@@ -30,7 +30,7 @@ class DescribeWidgetDefinitionBuilder extends Specification {
 
         then: "built WidgetDefinition has all its required properties set"
         widgetDefinition.displayName == displayName
-        widgetDefinition.widgetGuid == guid
+        widgetDefinition.guid == guid
         widgetDefinition.width == width
         widgetDefinition.height == height
         widgetDefinition.imageUrlSmall == imageUrlSmall

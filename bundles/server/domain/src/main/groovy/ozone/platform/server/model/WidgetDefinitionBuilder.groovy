@@ -11,8 +11,6 @@ class WidgetDefinitionBuilder {
     private String url
     private String imageUrlSmall
     private String imageUrlLarge
-    private int width
-    private int height
     private WidgetType widgetType;
 
     protected WidgetDefinitionBuilder() { }
@@ -42,16 +40,6 @@ class WidgetDefinitionBuilder {
         return this
     }
 
-    WidgetDefinitionBuilder withHeight(int height) {
-        this.height = height
-        return this
-    }
-
-    WidgetDefinitionBuilder withWidth(int width) {
-        this.width = width
-        return this
-    }
-
     WidgetDefinitionBuilder withType(WidgetType type) {
         this.widgetType = widgetType
         return this
@@ -59,13 +47,11 @@ class WidgetDefinitionBuilder {
 
     WidgetDefinition build() {
         def widgetDefinition = new WidgetDefinition(
-                name,
                 guid,
+                name,
                 url,
                 imageUrlSmall,
                 imageUrlLarge,
-                width,
-                height,
                 widgetType);
         return widgetDefinition
     }
