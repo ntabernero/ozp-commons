@@ -7,7 +7,7 @@ package ozone.platform.server.model
  * May be expanded upon to include a common way of doing comparisons by ID
  * @param < T >
  */
-abstract class EntityWithId<T extends Comparable> {
+abstract class EntityWithId<T extends Comparable> implements Serializable {
 
     T id
 }

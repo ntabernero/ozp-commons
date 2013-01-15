@@ -2,18 +2,16 @@ package ozone.platform.server.model
 
 abstract class Dashboard extends Entity {
 
-    String title // UI consistently calls this title
     String guid
-    boolean isDefault //Capitalized d, should we change all booleans to is*?
-    Integer dashboardPosition
+    String name
     String description = ''
     String layoutConfig = ''
+    Integer position //Changed from dashboardPosition
     boolean locked = false
 
-    protected Dashboard(title, guid, isDefault, dashboardPosition) {
-        this.title = title
+    protected Dashboard(name, guid, position) {
+        this.name = name
         this.guid = guid
-        this.isDefault = isDefault
-        this.dashboardPosition = dashboardPosition
+        this.position = position
     }
 }

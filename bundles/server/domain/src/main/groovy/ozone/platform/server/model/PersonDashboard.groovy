@@ -2,14 +2,16 @@ package ozone.platform.server.model
 
 class PersonDashboard extends Dashboard {
 
-    protected Person user
+    boolean isDefault = false //Identifies the last used dashboard, OWF starts on default dashboard if no guid provided
 
-    protected PersonDashboard(name, guid, isDefault, dashboardPosition, alteredByAdmin, user) {
-        super(name, guid, isDefault, dashboardPosition, alteredByAdmin)
-        this.user = user
+    protected final Person person
+
+    protected PersonDashboard(name, guid, position, person) {
+        super(name, guid, position)
+        this.person = person
     }
 
-    Person getUser() {
-        return user
+    Person getPerson() {
+        return person
     }
 }
