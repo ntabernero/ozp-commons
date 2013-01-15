@@ -7,8 +7,8 @@ package ozone.platform.server.model
 class WidgetDefinitionBuilder {
 
     private String name
-    private String widgetGuid
-    private String widgetUrl
+    private String guid
+    private String url
     private String imageUrlSmall
     private String imageUrlLarge
     private int width
@@ -23,12 +23,12 @@ class WidgetDefinitionBuilder {
     }
 
     WidgetDefinitionBuilder withGuid(String guid) {
-        this.widgetGuid = guid
+        this.guid = guid
         return this
     }
 
-    WidgetDefinitionBuilder withWidgetUrl(String widgetUrl) {
-        this.widgetUrl = widgetUrl
+    WidgetDefinitionBuilder withUrl(String widgetUrl) {
+        this.url = widgetUrl
         return this
     }
 
@@ -60,8 +60,8 @@ class WidgetDefinitionBuilder {
     WidgetDefinition build() {
         def widgetDefinition = new WidgetDefinition(
                 name,
-                widgetGuid,
-                widgetUrl,
+                guid,
+                url,
                 imageUrlSmall,
                 imageUrlLarge,
                 width,
