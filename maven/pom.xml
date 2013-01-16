@@ -18,7 +18,6 @@
 
     <modules>
        <module>js-import-maven-plugin</module>
-       <module>jshint-mojo</module>
        <module>jshint</module>
        <module>javascript-archetype</module>
     </modules>

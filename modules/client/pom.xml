@@ -39,33 +39,6 @@
             </plugin-->
 
             <plugin>
-                <groupId>org.ozoneplatform.commons.maven</groupId>
-                <artifactId>jshint-maven-plugin</artifactId>
-                <version>1.0.0-SNAPSHOT</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>lint</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <!--<options>indent,camelcase,eqeqeq,forin,immed,latedef,noarg,noempty,nonew,undef,trailing</options>-->
-                    <!--<globals>require,$,yourFunkyJavascriptModule</globals>-->
-                    <!-- THESE ARE THE PLACES IN WHICH THE PLUGIN WILL SEARCH FOR *.js FILES
-                          THIS LIST DEFAULTS TO "src" (i.e. it searches for *.js everywhere under 'src/*')
-                    <directories>
-                        <directory>src/main/javascript</directory>
-                    </directories>
-                    -->
-                    <excludes>
-                        <!-- EXCLUDES ARE RESOLVED RELATIVE TO THE BASEDIR OF THE MODULE
-                                <exclude>src/main/webapp/hackyScript.js</exclude>
-                        -->
-                    </excludes>
-                </configuration>
-            </plugin>
-            <plugin>
 		        <groupId>org.apache.maven.plugins</groupId>
 		        <artifactId>maven-assembly-plugin</artifactId>
 		        <executions>
