@@ -11,12 +11,12 @@
     </parent>
 
     <groupId>org.ozoneplatform.commons.maven</groupId>
-    <artifactId>javascript-archetype</artifactId>
+    <artifactId>ozp-bundle-archetype</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>maven-archetype</packaging>
 
-    <name>Archetype for JavaScript project</name>
-    <description>Archetype for JavaScript project.  Includes javascript tests, jslint (jshint), </description>
+    <name>Ozone Bundle Archetype</name>
+    <description>Server side bundle includes Groovy, OSGi, and Spock configuration</description>
 
     <build>
         <extensions>
@@ -36,5 +36,4 @@
             </plugins>
         </pluginManagement>
     </build>
-
 </project>

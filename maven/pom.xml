@@ -16,9 +16,14 @@
     <description>Contains Maven Plugins and Archetypes</description>
     <packaging>pom</packaging>
 
+    <properties>
+        <archetype.plugin.version>2.2</archetype.plugin.version>
+    </properties>
+
     <modules>
        <module>jshint</module>
        <module>javascript-archetype</module>
+       <module>ozp-bundle-archetype</module>
     </modules>
 
 </project>
