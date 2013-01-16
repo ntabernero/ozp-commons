@@ -25,11 +25,11 @@
         <module>lodash</module>
         <module>expect</module>
         <module>sinon</module>
-        <module>plugin</module>
         <module>jquery</module>
         <module>jquery-ui</module>
         <module>bootstrap</module>
         <module>backbone</module>
+        <module>plugin</module>
     </modules>
 
     <build>

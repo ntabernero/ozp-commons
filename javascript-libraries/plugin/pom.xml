@@ -43,7 +43,7 @@
                                 <taskdef name="jshint" classname="com.philmander.jshint.JsHintAntTask"
                                          classpathref="maven.plugin.classpath"/>
 
-                                <jshint dir="${project.basedir}/src/main/js" options="strict=false">
+                                     <jshint dir="${project.basedir}/src/main/webapp/js" options="strict=false">
                                     <include name="**/*.js"/>
                                     <exclude name="**/*.min.js"/>
                                     <report type="jslint-xml" destFile="${project.build.directory}/jslint-reports/jslint.xml"/>
@@ -62,6 +62,10 @@
                         <version>0.3.3-SNAPSHOT</version>
                     </dependency>
                 </dependencies>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
             </plugin>
         </plugins>
     </build>
@@ -93,7 +97,7 @@
                                             <artifactId>jquery</artifactId>
                                             <version>1.8.3</version>
                                             <type>zip</type>
-                                            <classifier>jquery</classifier>
+                                            <classifier>js</classifier>
                                             <overWrite>true</overWrite>
                                             <outputDirectory>${project.build.directory}</outputDirectory>
                                         </artifactItem>
@@ -102,7 +106,7 @@
                                             <artifactId>require</artifactId>
                                             <version>2.1.1</version>
                                             <type>zip</type>
-                                            <classifier>require</classifier>
+                                            <classifier>js</classifier>
                                             <overWrite>true</overWrite>
                                             <outputDirectory>${project.build.directory}</outputDirectory>
                                         </artifactItem>
@@ -111,7 +115,7 @@
                                             <artifactId>lodash</artifactId>
                                             <version>1.0.0-rc.3</version>
                                             <type>zip</type>
-                                            <classifier>lodash</classifier>
+                                            <classifier>js</classifier>
                                             <overWrite>true</overWrite>
                                             <outputDirectory>${project.build.directory}</outputDirectory>
                                         </artifactItem>
@@ -120,7 +124,7 @@
                                             <artifactId>sinon</artifactId>
                                             <version>1.5.2</version>
                                             <type>zip</type>
-                                            <classifier>sinon</classifier>
+                                            <classifier>js</classifier>
                                             <overWrite>true</overWrite>
                                             <outputDirectory>${project.build.directory}</outputDirectory>
                                         </artifactItem>
@@ -129,7 +133,7 @@
                                             <artifactId>expect</artifactId>
                                             <version>0.2.0</version>
                                             <type>zip</type>
-                                            <classifier>expect</classifier>
+                                            <classifier>js</classifier>
                                             <overWrite>true</overWrite>
                                             <outputDirectory>${project.build.directory}</outputDirectory>
                                         </artifactItem>

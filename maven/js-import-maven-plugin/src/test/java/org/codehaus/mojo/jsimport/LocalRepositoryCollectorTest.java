@@ -105,7 +105,7 @@ public class LocalRepositoryCollectorTest
 
         verify( parentProject, times( 1 ) ).getModules();
         verify( parentProject, times( 1 ) ).getArtifactId();
-        verify( parentProject, times( 1 ) ).getBasedir();
+        verify( parentProject, times( 2 ) ).getBasedir();
         verify( parentProject, times( 1 ) ).getParent();
         verify( parentLocalRepositoryBaseDirFile, times( 1 ) ).getAbsolutePath();
 

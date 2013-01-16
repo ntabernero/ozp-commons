@@ -60,8 +60,12 @@ public class LocalRepositoryCollector
             if ( modules.contains( projectArtifactId ) )
             {
                 projectArtifactId = parentProject.getArtifactId();
-                String parentProjectPath = parentProject.getBasedir().getAbsolutePath();
-                localRepositoryPaths.add( parentProjectPath );
+                
+                if ( parentProject.getBasedir() != null ) 
+                {
+                    String parentProjectPath = parentProject.getBasedir().getAbsolutePath();
+                    localRepositoryPaths.add( parentProjectPath );
+                }
             }
             else
             {

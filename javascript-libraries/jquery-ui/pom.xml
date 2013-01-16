@@ -34,13 +34,15 @@
             <groupId>org.ozoneplatform.commons.javascript-libraries</groupId>
             <artifactId>require</artifactId>
             <version>2.1.1</version>
-            <type>js</type>
+            <type>zip</type>
+            <classifier>js</classifier>
         </dependency>
         <dependency>
             <groupId>org.ozoneplatform.commons.javascript-libraries</groupId>
             <artifactId>jquery</artifactId>
             <version>1.8.3</version>
-            <type>js</type>
+            <type>zip</type>
+            <classifier>js</classifier>
         </dependency>
     </dependencies>
 
