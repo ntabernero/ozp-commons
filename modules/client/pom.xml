@@ -29,15 +29,6 @@
 
     <build>
         <plugins>
-            <!-- plugin>
-                <groupId>org.ozoneplatform.commons.maven</groupId>
-                <artifactId>js-import-maven-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>webminifier-maven-plugin</artifactId>
-            </plugin-->
-
             <plugin>
 		        <groupId>org.apache.maven.plugins</groupId>
 		        <artifactId>maven-assembly-plugin</artifactId>

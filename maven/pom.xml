@@ -17,7 +17,6 @@
     <packaging>pom</packaging>
 
     <modules>
-       <module>js-import-maven-plugin</module>
        <module>jshint</module>
        <module>javascript-archetype</module>
     </modules>
