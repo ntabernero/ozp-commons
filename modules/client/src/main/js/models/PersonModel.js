@@ -1,4 +1,4 @@
-define([
+define('models/PersonModel', [
     'models/Model'
 ],
 
@@ -10,7 +10,7 @@ function(Model) {
         
         defaults: {
             "id": "",
-            "personname": "",
+            "personName": "",
             "email": "",
             "totalGroups": 0,
             "totalWidgets": 0,

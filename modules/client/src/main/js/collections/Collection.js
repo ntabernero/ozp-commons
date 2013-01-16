@@ -1,4 +1,4 @@
-define([
+define('collections/Collection', [
     'backbone'
 ],
 

@@ -1,4 +1,4 @@
-define([
+define('collections/PersonsCollection', [
     'models/PersonModel',
     'collections/Collection'
 ],

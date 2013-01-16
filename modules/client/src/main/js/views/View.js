@@ -1,4 +1,4 @@
-define([
+define('views/View', [
     'backbone',
     'jquery'
 ],

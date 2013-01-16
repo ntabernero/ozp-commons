@@ -1,4 +1,4 @@
-define([
+define('collections/WidgetStatesCollection', [
     'models/WidgetStateModel',
     'backbone'
 ],

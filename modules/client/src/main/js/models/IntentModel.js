@@ -1,4 +1,4 @@
-define([
+define('models/IntentModel', [
     'models/Model'
 ],
 

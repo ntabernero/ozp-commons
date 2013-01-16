@@ -1,13 +1,13 @@
-define([
+define('models/Model', [
     'backbone'
 ],
 
 function(Backbone) {
 
-    var BaseModel = Backbone.Model.extend({
+    var Model = Backbone.Model.extend({
 
     });
     
-    return BaseModel;
+    return Model;
 
 });

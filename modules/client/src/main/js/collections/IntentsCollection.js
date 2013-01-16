@@ -1,4 +1,4 @@
-define([
+define('collections/IntentsCollection', [
     'models/IntentModel',
     'collections/Collection'
 ],

@@ -1,5 +1,5 @@
-define([
-    'models/WidgetTypeModel'
+define('models/WidgetTypeModel', [
+    'models/Model'
 ],
 
 function(Model) {

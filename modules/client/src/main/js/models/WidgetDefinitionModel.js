@@ -1,10 +1,10 @@
-define([
+define('models/WidgetDefinitionModel', [
     'models/Model'
 ],
 
 function(Model) {
 
-    var WidgetModel = Model.extend({
+    var WidgetDefinitionModel = Model.extend({
 
         urlRoot: '/widget-definitions',
 
@@ -27,17 +27,11 @@ function(Model) {
             "background": false,
             "singleton": false,
             "visibleForLaunch": true,
-            "tags": ""
-            
-        },
-
-        parse: function (response) {
-            response.value.id = response.path;
-            return response.value;
+            "tags": ""   
         }
 
     });
 
-    return WidgetModel;
+    return WidgetDefinitionModel;
 
 });

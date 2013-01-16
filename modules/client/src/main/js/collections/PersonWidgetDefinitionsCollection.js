@@ -1,4 +1,4 @@
-define([
+define('collections/PersonWidgetDefinitionCollection', [
     'models/PersonWidgetDefinitionModel',
     'collections/Collection'
 ],
