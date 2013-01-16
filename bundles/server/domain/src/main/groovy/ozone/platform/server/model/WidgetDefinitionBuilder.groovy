@@ -41,7 +41,7 @@ class WidgetDefinitionBuilder {
     }
 
     WidgetDefinitionBuilder withType(WidgetType type) {
-        this.widgetType = widgetType
+        this.widgetType = type
         return this
     }
 
