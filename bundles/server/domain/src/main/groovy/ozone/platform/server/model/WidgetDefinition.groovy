@@ -4,8 +4,8 @@ import static ozone.platform.server.model.ValidationHelpers.isNotBlank
 
 class WidgetDefinition extends Entity {
 
-    public static final int MINIMUM_WIDGET_HEIGHT = 200;
-    public static final int MINIMUM_WIDGET_WIDTH = 200;
+    static final int MINIMUM_WIDGET_HEIGHT = 200
+    static final int MINIMUM_WIDGET_WIDTH = 200
 
     /*
      * Required
@@ -41,7 +41,7 @@ class WidgetDefinition extends Entity {
     /*
      * Has Many
      */
-    final Set<PersonWidgetDefinition> personWidgetDefinitions
+    final Set<PersonalWidgetDefinition> personalWidgetDefinitions
     final Set<String> tags //TODO: Find way to implement tags either like Grails Taggable plugin or new way
     final Set<Intent> intents
 
@@ -50,7 +50,7 @@ class WidgetDefinition extends Entity {
      * a complex operation. Too many arguments in the constructor is a confusing API.
      * Mitigate this complexity with the builder pattern.
      */
-    public static WidgetDefinitionBuilder builder() {
+    static WidgetDefinitionBuilder builder() {
         return new WidgetDefinitionBuilder()
     }
 
@@ -66,37 +66,37 @@ class WidgetDefinition extends Entity {
         setWidgetType(widgetType)
     }
 
-    public void setDisplayName(String displayName) {
+    void setDisplayName(String displayName) {
         assert isNotBlank(displayName), "display name is required"
         this.displayName = displayName
     }
 
-    public void setWidgetUrl(String url) {
+    void setWidgetUrl(String url) {
         assert isNotBlank(url), "widget url is required"
         this.widgetUrl = url
     }
 
-    public void setImageUrlSmall(String imageUrlSmall) {
+    void setImageUrlSmall(String imageUrlSmall) {
         assert isNotBlank(imageUrlSmall), "small image url is required"
         this.imageUrlSmall = imageUrlSmall
     }
 
-    public void setImageUrlLarge(String imageUrlLarge) {
+    void setImageUrlLarge(String imageUrlLarge) {
         assert isNotBlank(imageUrlLarge), "large image url is required"
         this.imageUrlLarge = imageUrlLarge
     }
 
-    public void setHeight(int height) {
+    void setHeight(int height) {
         assert height >= MINIMUM_WIDGET_HEIGHT, "height must be at least ${MINIMUM_WIDGET_HEIGHT}"
-        this.height = height;
+        this.height = height
     }
 
-    public void setWidth(int width) {
+    void setWidth(int width) {
         assert width >= MINIMUM_WIDGET_WIDTH, "width must be at least ${MINIMUM_WIDGET_WIDTH}"
-        this.width = width;
+        this.width = width
     }
 
-    public void setWidgetType(WidgetType widgetType) {
+    void setWidgetType(WidgetType widgetType) {
         assert widgetType != null, "widget type is required"
         this.widgetType = widgetType
     }

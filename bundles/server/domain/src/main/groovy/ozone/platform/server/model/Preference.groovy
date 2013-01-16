@@ -17,17 +17,17 @@ class Preference extends Entity {
         this.person = person
     }
 
-    public void setName(String name) {
+    void setName(String name) {
         assert isNotBlank(name), "name is required"
-        this.name = name;
+        this.name = name
     }
 
-    public void setNamespace(String namespace) {
+    void setNamespace(String namespace) {
         assert isNotBlank(namespace), "namespace is required"
         this.namespace = namespace
     }
 
-    public void setValue(String value) {
+    void setValue(String value) {
         assert isNotBlank(value), "value is required"
         this.value = value
     }

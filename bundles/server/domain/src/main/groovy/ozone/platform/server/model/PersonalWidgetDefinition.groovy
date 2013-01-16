@@ -1,6 +1,6 @@
 package ozone.platform.server.model
 
-class PersonWidgetDefinition extends Entity {
+class PersonalWidgetDefinition extends Entity {
 
     String displayName
     int position //Changed from pwdPosition
@@ -15,8 +15,8 @@ class PersonWidgetDefinition extends Entity {
 
     final Set<String> tags
 
-    protected PersonWidgetDefinition(person, widgetDefinition) {
+    protected PersonalWidgetDefinition(person, widgetDefinition) {
         this.person = person
-        this.widgetDefinition = widgetDefinition;
+        this.widgetDefinition = widgetDefinition
     }
 }

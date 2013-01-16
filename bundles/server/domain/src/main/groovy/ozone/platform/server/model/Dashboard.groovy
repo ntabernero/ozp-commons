@@ -17,7 +17,7 @@ abstract class Dashboard extends Entity {
         this.position = position
     }
 
-    public void setName(String name) {
+    void setName(String name) {
         assert isNotBlank(name), "Name is required"
         this.name = name
     }

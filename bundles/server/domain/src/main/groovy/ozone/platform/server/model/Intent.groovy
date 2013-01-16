@@ -9,27 +9,27 @@ class Intent extends Entity {
     boolean canSend
     boolean canReceive
 
-    public Intent(String action, String dataType, boolean canSend, boolean canReceive) {
+    Intent(String action, String dataType, boolean canSend, boolean canReceive) {
         setAction(action)
         setDataType(dataType)
         setSendReceivePair(canSend, canReceive)
     }
 
-    public void setAction(String action) {
+    void setAction(String action) {
         assert isNotBlank(action), "Action is required"
         this.action = action
     }
 
-    public void setDataType(String dataType) {
+    void setDataType(String dataType) {
         assert isNotBlank(dataType), "DataType is required"
         this.dataType = dataType
     }
 
-    public void setCanSend(boolean canSend) {
+    void setCanSend(boolean canSend) {
         setSendReceivePair(canSend, canReceive)
     }
 
-    public void setCanReceive(boolean canReceive) {
+    void setCanReceive(boolean canReceive) {
         setSendReceivePair(canSend, canReceive)
     }
 

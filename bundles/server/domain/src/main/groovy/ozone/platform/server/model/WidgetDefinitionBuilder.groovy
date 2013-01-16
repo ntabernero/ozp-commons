@@ -11,7 +11,7 @@ class WidgetDefinitionBuilder {
     private String url
     private String imageUrlSmall
     private String imageUrlLarge
-    private WidgetType widgetType;
+    private WidgetType widgetType
 
     protected WidgetDefinitionBuilder() { }
 
@@ -52,7 +52,7 @@ class WidgetDefinitionBuilder {
                 url,
                 imageUrlSmall,
                 imageUrlLarge,
-                widgetType);
+                widgetType)
         return widgetDefinition
     }
 }

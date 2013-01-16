@@ -17,29 +17,29 @@ class Person extends Entity {
     Calendar lastLogin
     Calendar prevLogin //Previous lastLogin date
 
-    final Set<PersonDashboard> dashboards
+    final Set<PersonalDashboard> dashboards
     final Set<Group> groups
-    final Set<PersonWidgetDefinition> personWidgetDefinitions
+    final Set<PersonalWidgetDefinition> personalWidgetDefinitions
     final Set<Preference> preferences
     final Set<Role> authorities
 
-    public Person(String username, String fullName) {
+    Person(String username, String fullName) {
         setUsername(username)
         setFullName(fullName)
     }
 
-    Dashboard createPersonDashboard(String name, String guid, int position) {
-        def dashboard = new PersonDashboard(name, guid, position, this)
+    Dashboard createPersonalDashboard(String name, String guid, int position) {
+        def dashboard = new PersonalDashboard(name, guid, position, this)
         dashboards.add(dashboard)
 
         return dashboard
     }
 
-    PersonWidgetDefinition createPersonWidgetDefinition(widgetDefinition) {
-        def personWidgetDefinition = new PersonWidgetDefinition(this, widgetDefinition)
-        personWidgetDefinitions.add(personWidgetDefinition)
+    PersonalWidgetDefinition createPersonalWidgetDefinition(widgetDefinition) {
+        def personalWidgetDefinition = new PersonalWidgetDefinition(this, widgetDefinition)
+        personalWidgetDefinitions.add(personalWidgetDefinition)
 
-        return personWidgetDefinition
+        return personalWidgetDefinition
     }
 
     Preference createPreference(String name, String namespace, String value) {
@@ -49,12 +49,12 @@ class Person extends Entity {
         return preference
     }
 
-    public void setUsername(String username) {
+    void setUsername(String username) {
         assert isNotBlank(username), "username is required"
         this.username = username
     }
 
-    public void setFullName(String fullName) {
+    void setFullName(String fullName) {
         assert isNotBlank(fullName), "full name is required"
         this.fullName = fullName
     }
