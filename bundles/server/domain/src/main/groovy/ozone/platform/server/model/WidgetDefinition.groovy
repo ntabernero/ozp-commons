@@ -43,7 +43,7 @@ class WidgetDefinition extends Entity {
      */
     final Set<PersonWidgetDefinition> personWidgetDefinitions
     final Set<String> tags //TODO: Find way to implement tags either like Grails Taggable plugin or new way
-    final Set<WidgetDefinitionIntent> widgetDefinitionIntents
+    final Set<Intent> intents
 
     /**
      * WidgetDefinition has many required properties making construction
