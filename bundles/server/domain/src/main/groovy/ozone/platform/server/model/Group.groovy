@@ -9,8 +9,15 @@ class Group extends AbstractGroup {
     final Set<WidgetDefinition> widgetDefinitions
     final Set<Stack> stacks
 
-    Group(String name, String displayName) {
+    Group(String name) {
         super(name)
-        this.displayName = displayName
+        this.displayName = name
+    }
+
+    GroupDashboard createDashboard(String name, String guid, int position) {
+        def gDashboard = new GroupDashboard(name, guid, position)
+        dashboards.add(gDashboard)
+
+        return gDashboard
     }
 }

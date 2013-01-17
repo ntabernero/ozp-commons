@@ -16,6 +16,6 @@ class Stack extends AbstractGroup {
 
     void setUrlName(String urlName) {
         assert isNotBlank(urlName), "url name is required"
-        this.username = username
+        this.urlName = urlName
     }
 }

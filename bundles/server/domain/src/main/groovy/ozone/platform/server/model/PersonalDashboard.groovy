@@ -8,6 +8,7 @@ class PersonalDashboard extends Dashboard {
 
     protected PersonalDashboard(String name, String guid, int position, Person person) {
         super(name, guid, position)
+        assert person, "Person is required"
         this.person = person
     }
 }

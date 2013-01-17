@@ -58,4 +58,22 @@ class Person extends Entity {
         assert isNotBlank(fullName), "full name is required"
         this.fullName = fullName
     }
+
+    void setEmail(String email) {
+        assert email ==~ "\\b[A-Z0-9._%-]+@[A-Z0-9.-]+\\.[A-Z]{2,4}\\b", "${email} is not a valid email"
+        this.email = email
+    }
+
+    // Keep login setters protected since updates should be made through recordLogin
+    protected void setLastLogin(Calendar cal) { lastLogin = cal }
+    protected void setpreviousLogin(Calendar cal) { prevLogin = cal }
+
+    /**
+     * Update both login tracking properties
+     * Sets prevLogin to lastLogin and then sets lastLogin to now
+     */
+    void recordLogin() {
+        prevLogin = lastLogin
+        lastLogin = Calendar.getInstance();
+    }
 }
