@@ -50,18 +50,18 @@ class Person extends Entity {
     }
 
     void setUsername(String username) {
-        assert isNotBlank(username), "username is required"
+        assert isNotBlank(username), "Username is required"
         this.username = username
     }
 
     void setFullName(String fullName) {
-        assert isNotBlank(fullName), "full name is required"
+        assert isNotBlank(fullName), "Full name is required"
         this.fullName = fullName
     }
 
     void setEmail(String email) {
         // Regex from http://groovyconsole.appspot.com/script/95001
-        assert email ==~ /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,4}/, "${email} is not a valid email"
+        assert email ==~ /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,6}/, "${email} is not a valid email"
         this.email = email
     }
 

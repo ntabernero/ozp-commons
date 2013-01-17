@@ -13,11 +13,4 @@ class Group extends AbstractGroup {
         super(name)
         this.displayName = name
     }
-
-    GroupDashboard createDashboard(String name, String guid, int position) {
-        def gDashboard = new GroupDashboard(name, guid, position)
-        dashboards.add(gDashboard)
-
-        return gDashboard
-    }
 }

@@ -13,9 +13,12 @@ class PersonalWidgetDefinition extends Entity {
     final Person person
     final WidgetDefinition widgetDefinition
 
-    final Set<String> tags
+    final Set<Tag> tags
 
     protected PersonalWidgetDefinition(person, widgetDefinition) {
+        assert person, "Person is required"
+        assert widgetDefinition, "Widget definition is required"
+        
         this.person = person
         this.widgetDefinition = widgetDefinition
     }

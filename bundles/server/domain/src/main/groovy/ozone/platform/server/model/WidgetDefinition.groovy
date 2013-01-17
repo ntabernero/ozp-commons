@@ -42,7 +42,7 @@ class WidgetDefinition extends Entity {
      * Has Many
      */
     final Set<PersonalWidgetDefinition> personalWidgetDefinitions
-    final Set<String> tags //TODO: Find way to implement tags either like Grails Taggable plugin or new way
+    final Set<Tag> tags
     final Set<Intent> intents
 
     /**
@@ -67,37 +67,37 @@ class WidgetDefinition extends Entity {
     }
 
     void setDisplayName(String displayName) {
-        assert isNotBlank(displayName), "display name is required"
+        assert isNotBlank(displayName), "Display name is required"
         this.displayName = displayName
     }
 
     void setWidgetUrl(String url) {
-        assert isNotBlank(url), "widget url is required"
+        assert isNotBlank(url), "Widget URL is required"
         this.widgetUrl = url
     }
 
     void setImageUrlSmall(String imageUrlSmall) {
-        assert isNotBlank(imageUrlSmall), "small image url is required"
+        assert isNotBlank(imageUrlSmall), "Small image URL is required"
         this.imageUrlSmall = imageUrlSmall
     }
 
     void setImageUrlLarge(String imageUrlLarge) {
-        assert isNotBlank(imageUrlLarge), "large image url is required"
+        assert isNotBlank(imageUrlLarge), "Large image URL is required"
         this.imageUrlLarge = imageUrlLarge
     }
 
     void setHeight(int height) {
-        assert height >= MINIMUM_WIDGET_HEIGHT, "height must be at least ${MINIMUM_WIDGET_HEIGHT}"
+        assert height >= MINIMUM_WIDGET_HEIGHT, "Height must be at least ${MINIMUM_WIDGET_HEIGHT}"
         this.height = height
     }
 
     void setWidth(int width) {
-        assert width >= MINIMUM_WIDGET_WIDTH, "width must be at least ${MINIMUM_WIDGET_WIDTH}"
+        assert width >= MINIMUM_WIDGET_WIDTH, "Width must be at least ${MINIMUM_WIDGET_WIDTH}"
         this.width = width
     }
 
     void setWidgetType(WidgetType widgetType) {
-        assert widgetType != null, "widget type is required"
+        assert widgetType != null, "Widget type is required"
         this.widgetType = widgetType
     }
 }

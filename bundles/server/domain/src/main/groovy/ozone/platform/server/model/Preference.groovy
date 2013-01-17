@@ -14,21 +14,23 @@ class Preference extends Entity {
         setName(name)
         setNamespace(namespace)
         setValue(value)
+
+        assert person, "Person is required"
         this.person = person
     }
 
     void setName(String name) {
-        assert isNotBlank(name), "name is required"
+        assert isNotBlank(name), "Name is required"
         this.name = name
     }
 
     void setNamespace(String namespace) {
-        assert isNotBlank(namespace), "namespace is required"
+        assert isNotBlank(namespace), "Namespace is required"
         this.namespace = namespace
     }
 
     void setValue(String value) {
-        assert isNotBlank(value), "value is required"
+        assert isNotBlank(value), "Value is required"
         this.value = value
     }
 }
