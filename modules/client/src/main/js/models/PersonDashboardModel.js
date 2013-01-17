@@ -1,4 +1,4 @@
-define('models/PersonDashboardModel', [
+define([
     'backbone',
     'models/DashboardModel'
 ],
@@ -10,9 +10,9 @@ function(Backbone, DashboardModel) {
         urlRoot: '/persons',
 
         defaults: function() {
-            return _.extend({
-                user: null
-            }, _.result(DashboardModel.__super__, 'defaults'));
+            return _.extend({},DashboardModel.prototype.defaults, {
+                person: null
+            });
         },
         
         sync: function(method, model, options) {

@@ -1,4 +1,4 @@
-define('collections/PersonsCollection', [
+define([
     'models/PersonModel',
     'collections/Collection'
 ],
@@ -11,8 +11,8 @@ function(PersonModel, Collection) {
 
         url: '/persons',
         
-        comparator: function(user) {
-            return contact.get('personRealName');
+        comparator: function(person) {
+            return person.get('personRealName');
         }
 
     });

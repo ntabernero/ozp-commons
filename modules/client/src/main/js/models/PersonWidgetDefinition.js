@@ -1,4 +1,4 @@
-define('models/PersonWidgetDefinition', [
+define([
     'models/Model'
 ],
 

@@ -1,4 +1,4 @@
-define('collections/WidgetTypeCollection', [
+define([
     'models/WidgetTypeModel',
     'backbone'
 ],

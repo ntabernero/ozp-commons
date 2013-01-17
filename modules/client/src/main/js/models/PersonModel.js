@@ -1,4 +1,4 @@
-define('models/PersonModel', [
+define([
     'models/Model'
 ],
 
@@ -9,7 +9,6 @@ function(Model) {
         urlRoot: '/persons',
         
         defaults: {
-            "id": "",
             "personName": "",
             "email": "",
             "totalGroups": 0,

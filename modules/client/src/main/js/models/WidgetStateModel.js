@@ -1,4 +1,4 @@
-define('models/WidgetStateModel', [
+define([
     'models/Model'
 ],
 

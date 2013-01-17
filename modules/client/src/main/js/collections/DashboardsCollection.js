@@ -1,4 +1,4 @@
-define('collections/DashboardsCollection', [
+define([
     'models/DashboardModel',
     'collections/Collection'
 ],

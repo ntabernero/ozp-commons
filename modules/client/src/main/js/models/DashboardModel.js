@@ -1,4 +1,4 @@
-define('models/DashboardModel', [
+define([
     'models/Model'
 ],
 
@@ -24,8 +24,7 @@ function(Model) {
             "createdBy": null,
             "editedDate": null,
             "stack": null,
-            "locked": false,
-            "user": null
+            "locked": false
         },
 
         initialize: function() {

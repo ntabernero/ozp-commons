@@ -1,4 +1,4 @@
-define('models/WidgetTypeModel', [
+define([
     'models/Model'
 ],
 

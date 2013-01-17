@@ -1,4 +1,4 @@
-define('collections/WidgetDefinitionsCollection', [
+define([
     'models/WidgetDefinitionModel',
     'collections/Collection'
 ],
