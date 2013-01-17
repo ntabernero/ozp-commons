@@ -60,8 +60,7 @@ class Person extends Entity {
     }
 
     void setEmail(String email) {
-        // Regex from http://groovyconsole.appspot.com/script/95001
-        assert email ==~ /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,6}/, "${email} is not a valid email"
+        assert email ==~ /^(\w+)([\-+.][\w]+)*@(\w[\-\w]*\.){1,5}([A-Za-z]){2,6}$/, "${email} is not a valid email"
         this.email = email
     }
 
