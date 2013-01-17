@@ -8,12 +8,9 @@ class DescribeIntent extends Specification {
     def "it must be created as an intent that is received and/or sent to widgets"() {
         when: "creating a new intent that cannot be sent or received"
         def intent = new Intent("plot", "application/vnd.google-earth.kml+xml", false, false)
+
         then: "throws"
         thrown(AssertionError)
-
-        when: "setting an existing intent to neither be sent nor received"
-
-        then: "throws"
     }
 
     def "it always is received and/or sent to widgets"() {
@@ -26,5 +23,9 @@ class DescribeIntent extends Specification {
 
         then: "throws"
         thrown(AssertionError)
+        and: "canReceive was set to false"
+        intent.canReceive == false
+        and: "canSend was not set to false"
+        intent.canSend == true
     }
 }
