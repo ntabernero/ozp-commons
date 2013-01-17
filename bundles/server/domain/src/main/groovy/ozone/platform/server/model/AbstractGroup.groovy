@@ -18,11 +18,4 @@ abstract class AbstractGroup extends Entity {
         assert isNotBlank(name), "Name is required"
         this.name = name
     }
-
-    GroupDashboard createDashboard(String name, String guid, int position) {
-        def groupDashboard = new GroupDashboard(name, guid, position)
-        dashboards.add(groupDashboard)
-
-        return groupDashboard
-    }
 }
