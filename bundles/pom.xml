@@ -23,7 +23,6 @@
 
     <modules>
         <module>server/domain</module>
-        <module>server/persistence/api</module>
     </modules>
 
 </project>

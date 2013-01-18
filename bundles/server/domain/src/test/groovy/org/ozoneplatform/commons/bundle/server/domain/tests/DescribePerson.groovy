@@ -1,69 +1,45 @@
 package org.ozoneplatform.commons.bundle.server.domain.tests
-
 import ozone.platform.server.model.Person
 import spock.lang.Specification
+import spock.lang.Unroll
 
 class DescribePerson extends Specification {
 
-    def "it checks for valid email addresses"() {
+    def "it accepts valid email addresses"(address) {
         given: "some person object"
         def person = new Person("smith", "John Smith")
 
-        when: "assigning an invalid email address without a domain"
-        person.email = "john.smith@"
-        then: "throws"
-        thrown(AssertionError)
-        assert person.email == null
+        when: "assigning a valid email address"
+        person.email = address
 
-        when: "assigning an invalid email address without a top-level domain"
-        person.email = "john.smith@test"
-        then: "throws"
-        thrown(AssertionError)
-        assert person.email == null
-
-        when: "assigning an invalid email address without an @"
-        person.email = "john.smith.test.com"
-        then: "throws"
-        thrown(AssertionError)
-        and: "email remains null"
-        assert person.email == null
-
-        when: "assigning an invalid email address with multiple @"
-        person.email = "j@hn.smith@test.com"
-        then: "throws"
-        thrown(AssertionError)
-        and: "email remains null"
-        assert person.email == null
-
-        when: "assigning an invalid email address with a space"
-        person.email = "john smith@test.com"
-        then: "throws"
-        thrown(AssertionError)
-        and: "email remains null"
-        assert person.email == null
-
-        when: "assigning an invalid email address with a top-level domain longer than the 6 chars"
-        person.email = "john.smith@test.josmith"
-        then: "throws"
-        thrown(AssertionError)
-        and: "email remains null"
-        assert person.email == null
-
-        when: "assigning an invalid email address with a top-level domain shorter than 2 chars"
-        person.email = "john.smith@test.j"
-        then: "throws"
-        thrown(AssertionError)
-        and: "email remains null"
-        assert person.email == null
-
-        when: "assigning a valid email address with the max top-level domain length"
-        person.email = "johnsmith1@test.jsmith"
         then: "email is set"
-        person.email == "johnsmith1@test.jsmith"
+        person.email == address
 
-        when: "assigning a valid .com email address"
-        person.email = "john.smith@test.com"
-        then: "email is set"
-        person.email == "john.smith@test.com"
+        where:
+        address << ["john.smith@test.com", "john.smith@test.jsmith"]
+    }
+
+    @Unroll
+    def "it won't accept email addresses #fallacy"(fallacy, address) {
+        given: "some person object"
+        def person = new Person("smith", "John Smith")
+
+        when: "assigning email address #fallacy"
+        person.email = address
+
+        then: "assertion thrown"
+        thrown(AssertionError)
+        and: "email remains null"
+        person.email == null
+
+        where:
+        fallacy | address
+        "without a domain"                                | "john.smith@"
+        "without a top-level domain"                      | "john.smith@test"
+        "without an '@'"                                  | "john.smith.test.com"
+        "with multiple @"                                 | "j@hn.smith@test.com"
+        "with a space"                                    | "john smith@test.com"
+        "with a top-level domain longer than the 6 chars" | "john.smith@test.josmith"
+        "with a top-level domain shorter than 2 chars"    | "john.smith@test.j"
     }
 }
