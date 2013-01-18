@@ -1,7 +1,7 @@
 var tests = Object.keys(window.__testacular__.files).filter(function (file) {
     return /Spec\.js$/.test(file);
 });
-debugger;
+
 require({
 
     // !! Testacular serves files from '/base'
