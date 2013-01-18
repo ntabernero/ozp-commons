@@ -13,7 +13,6 @@ files = [
   "target/js/expect.js",
   "target/js/sinon.js",
   "target/js/require.js",
-//  "target/js/lodash.js",
   "target/js/jquery.js",
   "src/main/webapp/js/plugin.js",
   "src/test/js/*.js"
@@ -67,7 +66,7 @@ browsers = ['PhantomJS'];
 
 
 // If browser does not capture in given timeout [ms], kill it
-captureTimeout = 10000;
+captureTimeout = 30000;
 
 
 // Continuous Integration mode

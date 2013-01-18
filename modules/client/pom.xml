@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
@@ -29,15 +30,6 @@
 
     <build>
         <plugins>
-            <!-- plugin>
-                <groupId>org.ozoneplatform.commons.maven</groupId>
-                <artifactId>js-import-maven-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>webminifier-maven-plugin</artifactId>
-            </plugin-->
-
             <plugin>
 		        <groupId>org.apache.maven.plugins</groupId>
 		        <artifactId>maven-assembly-plugin</artifactId>
@@ -59,5 +51,114 @@
         </plugins>
     </build>
 
-    
+    <profiles>
+        <profile>
+            <id>testacular</id>
+            <activation>
+                <property>
+                    <name>!skipClientTests</name>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-dependency-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>copy</id>
+                                <phase>generate-sources</phase>
+                                <goals>
+                                    <goal>unpack</goal>
+                                </goals>
+                                <configuration>
+                                    <artifactItems>
+                                        <artifactItem>
+                                            <groupId>org.ozoneplatform.commons.javascript-libraries</groupId>
+                                            <artifactId>jquery</artifactId>
+                                            <version>1.8.3</version>
+                                            <type>zip</type>
+                                            <classifier>jquery</classifier>
+                                            <overWrite>true</overWrite>
+                                            <outputDirectory>${project.build.directory}</outputDirectory>
+                                        </artifactItem>
+                                        <artifactItem>
+                                            <groupId>org.ozoneplatform.commons.javascript-libraries</groupId>
+                                            <artifactId>require</artifactId>
+                                            <version>2.1.1</version>
+                                            <type>zip</type>
+                                            <classifier>require</classifier>
+                                            <overWrite>true</overWrite>
+                                            <outputDirectory>${project.build.directory}</outputDirectory>
+                                        </artifactItem>
+                                        <artifactItem>
+                                            <groupId>org.ozoneplatform.commons.javascript-libraries</groupId>
+                                            <artifactId>lodash</artifactId>
+                                            <version>1.0.0-rc.3</version>
+                                            <type>zip</type>
+                                            <classifier>lodash</classifier>
+                                            <overWrite>true</overWrite>
+                                            <outputDirectory>${project.build.directory}</outputDirectory>
+                                        </artifactItem>
+                                        <artifactItem>
+                                            <groupId>org.ozoneplatform.commons.javascript-libraries</groupId>
+                                            <artifactId>sinon</artifactId>
+                                            <version>1.5.2</version>
+                                            <type>zip</type>
+                                            <classifier>sinon</classifier>
+                                            <overWrite>true</overWrite>
+                                            <outputDirectory>${project.build.directory}</outputDirectory>
+                                        </artifactItem>
+                                        <artifactItem>
+                                            <groupId>org.ozoneplatform.commons.javascript-libraries</groupId>
+                                            <artifactId>expect</artifactId>
+                                            <version>0.2.0</version>
+                                            <type>zip</type>
+                                            <classifier>expect</classifier>
+                                            <overWrite>true</overWrite>
+                                            <outputDirectory>${project.build.directory}</outputDirectory>
+                                        </artifactItem>
+                                        <artifactItem>
+                                            <groupId>org.ozoneplatform.commons.javascript-libraries</groupId>
+                                            <artifactId>backbone</artifactId>
+                                            <version>0.9.9</version>
+                                            <type>zip</type>
+                                            <classifier>backbone</classifier>
+                                            <overWrite>true</overWrite>
+                                            <outputDirectory>${project.build.directory}</outputDirectory>
+                                        </artifactItem>
+                                    </artifactItems>
+                                    
+                                    <overWriteReleases>false</overWriteReleases>
+                                    <overWriteSnapshots>true</overWriteSnapshots>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>exec-maven-plugin</artifactId>
+                        <version>1.1</version>
+                        <executions>
+                            <execution>
+                                <id>JS Testing</id>
+                                <phase>test</phase>
+                                <goals>
+                                    <goal>exec</goal>
+                                </goals>
+                                <configuration>
+                                    <executable>testacular</executable>
+                                    <arguments>
+                                        <argument>start</argument>
+                                        <argument>--browsers</argument>
+                                        <argument>${browsers}</argument>
+                                    </arguments>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>

@@ -1,22 +1,33 @@
 // Testacular configuration
-// Generated on Mon Dec 17 2012 13:47:49 GMT-0500 (EST)
+// Generated on Thu Jan 17 2013 09:28:34 GMT-0500 (Eastern Standard Time)
 
 
 // base path, that will be used to resolve files and exclude
-basePath = '.';
+basePath = '';
 
 
 // list of files / patterns to load in the browser
 files = [
   MOCHA,
   MOCHA_ADAPTER,
-  "target/classes/js/**/expect/**/*.js",
-  "target/classes/js/**/sinon/**/*.js",
-  "target/classes/js/**/require/**/*.js",
-  "target/classes/js/**/lodash/**/*.js",
-  "target/classes/js/**/jquery/**/*.js",
-  "src/main/js/plugin.js",
-  "src/test/js/*.js"
+  'target/js/lodash.js',
+  REQUIRE,
+  REQUIRE_ADAPTER,
+  
+  // Libs required for test framework
+  
+  // libs
+  'target/js/jquery.js',
+  'target/js/backbone.js',
+  'target/js/expect.js',
+  'target/js/sinon.js',
+  
+  // Include the script to configure and trigger require.
+  'src/test/js/config.js',
+  
+  // Include the src and test files on the test server but not as script tags.
+  {pattern: 'src/main/js/**/*.js', included: false},
+  {pattern: 'src/test/js/**/*.js', included: false}
 ];
 
 
@@ -28,15 +39,11 @@ exclude = [
 
 // test results reporter to use
 // possible values: 'dots', 'progress', 'junit'
-reporters = ['progress', 'junit'];
+reporters = ['progress'];
 
-junitReporter= {
-     outputFile: 'target/surefire-reports/test-results.xml',
-     suite: ''
-};
 
 // web server port
-port = 8899;
+port = 9876;
 
 
 // cli runner port
@@ -68,7 +75,7 @@ browsers = ['PhantomJS'];
 
 
 // If browser does not capture in given timeout [ms], kill it
-captureTimeout = 10000;
+captureTimeout = 30000;
 
 
 // Continuous Integration mode

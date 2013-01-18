@@ -9,7 +9,7 @@ function(IntentModel, Collection) {
         
         model: IntentModel,
         
-        url: '/owf/1.0/intents'
+        url: '/intents'
 
 
     });

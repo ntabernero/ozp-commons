@@ -40,28 +40,6 @@
                     </executions>
                 </plugin>
                 <plugin>
-                    <groupId>org.ozoneplatform.commons.maven</groupId>
-                    <artifactId>js-import-maven-plugin</artifactId>
-                    <version>1.0.0-SNAPSHOT</version>
-                    <executions>
-                        <execution>
-                            <id>process sources</id>
-                            <phase>process-sources</phase>
-                            <goals>
-                                <goal>import-js</goal>
-                            </goals>
-                        </execution>
-                        <execution>
-                            <id>prepare package</id>
-                            <phase>prepare-package</phase>
-                            <goals>
-                                <goal>import-js</goal>
-                                <goal>generate-html</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                </plugin>
-                <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>webminifier-maven-plugin</artifactId>
                     <version>1.0.1</version>

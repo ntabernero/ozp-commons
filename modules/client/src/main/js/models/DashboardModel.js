@@ -7,7 +7,7 @@ function(Model) {
     var DashboardModel = Model.extend({
 
         idAttribute: "guid",
-        urlRoot: '/owf/1.0/dashboards',
+        urlRoot: '/groups',
 
         defaults: {
             "guid": null,
@@ -24,14 +24,13 @@ function(Model) {
             "createdBy": null,
             "editedDate": null,
             "stack": null,
-            "locked": false,
-            "user": null
+            "locked": false
         },
 
         initialize: function() {
-            if( _.isString(this.get('layoutConfig')) )
-                this.set( 'layoutConfig', JSON.parse(this.get('layoutConfig')), {silent: true} );
-            
+//            if( _.isString(this.get('layoutConfig')) )
+//                this.set( 'layoutConfig', JSON.parse(this.get('layoutConfig')), {silent: true} );
+//            
             // TODO: Add a utility to generate a guid.
             //var guid = this.get('guid');
             // if( _.isNull(guid) || (_.isString(guild) && guid.length == 0))
