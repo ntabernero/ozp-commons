@@ -1,7 +1,6 @@
 package org.ozoneplatform.commons.bundle.server.domain.tests
 
 import ozone.platform.server.model.WidgetDefinition
-import ozone.platform.server.model.WidgetType
 import spock.lang.Specification
 
 class DescribeWidgetDefinitionBuilder extends Specification {
@@ -13,7 +12,7 @@ class DescribeWidgetDefinitionBuilder extends Specification {
         String widgetUrl = "http://example.com"
         String imageUrlSmall = "http://example.com/img/widget-icon-small.png"
         String imageUrlLarge = "http://example.com/img/widget-icon-large.png"
-        WidgetType type = new WidgetType("admin")
+        String widgetType = "admin"
 
         when: "system uses WidgetDefinition fluent construction api"
         def widgetDefinition = WidgetDefinition.builder()
@@ -22,7 +21,7 @@ class DescribeWidgetDefinitionBuilder extends Specification {
             .withImageUrlSmall(imageUrlSmall)
             .withImageUrlLarge(imageUrlLarge)
             .withUrl(widgetUrl)
-            .withType(type)
+            .withWidgetType(widgetType)
             .build();
 
         then: "built WidgetDefinition has all its required properties set"

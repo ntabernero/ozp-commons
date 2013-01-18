@@ -11,7 +11,7 @@ class WidgetDefinitionBuilder {
     private String url
     private String imageUrlSmall
     private String imageUrlLarge
-    private WidgetType widgetType
+    private String widgetType
 
     protected WidgetDefinitionBuilder() { }
 
@@ -40,8 +40,8 @@ class WidgetDefinitionBuilder {
         return this
     }
 
-    WidgetDefinitionBuilder withType(WidgetType type) {
-        this.widgetType = type
+    WidgetDefinitionBuilder withWidgetType(String widgetType) {
+        this.widgetType = widgetType
         return this
     }
 

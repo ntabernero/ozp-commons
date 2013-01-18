@@ -15,6 +15,7 @@ class WidgetDefinition extends Entity {
     String widgetUrl
     String imageUrlLarge
     String imageUrlSmall
+    String widgetType
 
     /*
      * Optional
@@ -34,16 +35,12 @@ class WidgetDefinition extends Entity {
     boolean visibleForLaunch = true //Changed from visible
 
     /*
-     * Has One
-     */
-    WidgetType widgetType //Changed from a hasMany to a one-to-one because a widget should never have multiple
-
-    /*
      * Has Many
      */
     final Set<PersonalWidgetDefinition> personalWidgetDefinitions
-    final Set<Tag> tags
-    final Set<Intent> intents
+    final Set<String> tags
+    final Set<Intent> sendableIntents
+    final Set<Intent> receivableIntents
 
     /**
      * WidgetDefinition has many required properties making construction
@@ -54,7 +51,7 @@ class WidgetDefinition extends Entity {
         return new WidgetDefinitionBuilder()
     }
 
-    protected WidgetDefinition(guid, displayName, widgetUrl, imageUrlSmall, imageUrlLarge, widgetType) {
+    protected WidgetDefinition(String guid, String displayName, String widgetUrl, String imageUrlSmall, String imageUrlLarge, String widgetType) {
 
         assert isNotBlank(guid), "GUID is required"
         this.guid = guid
@@ -86,6 +83,11 @@ class WidgetDefinition extends Entity {
         this.imageUrlLarge = imageUrlLarge
     }
 
+    void setWidgetType(String widgetType) {
+        assert isNotBlank(widgetType), "Widget type is required"
+        this.widgetType = widgetType
+    }
+
     void setHeight(int height) {
         assert height >= MINIMUM_WIDGET_HEIGHT, "Height must be at least ${MINIMUM_WIDGET_HEIGHT}"
         this.height = height
@@ -94,10 +96,5 @@ class WidgetDefinition extends Entity {
     void setWidth(int width) {
         assert width >= MINIMUM_WIDGET_WIDTH, "Width must be at least ${MINIMUM_WIDGET_WIDTH}"
         this.width = width
-    }
-
-    void setWidgetType(WidgetType widgetType) {
-        assert widgetType != null, "Widget type is required"
-        this.widgetType = widgetType
     }
 }

@@ -7,8 +7,6 @@ class Role extends Entity {
     String authority
     String description
 
-    final Set<Person> people
-
     Role(String authority) {
         setAuthority(authority)
     }
