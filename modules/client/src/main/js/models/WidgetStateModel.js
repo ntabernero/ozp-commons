@@ -1,5 +1,5 @@
 define([
-    'models/WidgetStateModel'
+    'models/Model'
 ],
 
 function(Model) {

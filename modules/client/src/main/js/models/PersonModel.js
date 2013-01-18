@@ -4,24 +4,23 @@ define([
 
 function(Model) {
 
-    var UserModel = Model.extend({
+    var PersonModel = Model.extend({
         
-        urlRoot: '/owf/1.0/users',
+        urlRoot: '/persons',
         
         defaults: {
-            "id": "",
-            "username": "",
+            "personName": "",
             "email": "",
             "totalGroups": 0,
             "totalWidgets": 0,
             "totalDashboards": 0,
             "totalStacks": 0,
             "lastLogin": "",
-            "userRealName": ""
+            "personRealName": ""
         }
 
     });
 
-    return UserModel;
+    return PersonModel;
 
 }); 

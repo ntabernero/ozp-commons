@@ -4,9 +4,9 @@ define([
 
 function(Model) {
 
-    var WidgetModel = Model.extend({
+    var WidgetDefinitionModel = Model.extend({
 
-        urlRoot: '/owf/1.0/widgets',
+        urlRoot: '/widget-definitions',
 
         defaults: {
             "guid": null,
@@ -27,17 +27,11 @@ function(Model) {
             "background": false,
             "singleton": false,
             "visibleForLaunch": true,
-            "tags": ""
-            
-        },
-
-        parse: function (response) {
-            response.value.id = response.path;
-            return response.value;
+            "tags": ""   
         }
 
     });
 
-    return WidgetModel;
+    return WidgetDefinitionModel;
 
 });

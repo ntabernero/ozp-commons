@@ -4,12 +4,12 @@ define([
 
 function(Model) {
 
-    var UserWidgetDefinitionModel = Model.extend({
+    var PersonWidgetDefinitionModel = Model.extend({
 
-        urlRoot: '/owf/1.0/widgets',
+        urlRoot: '/person-widget-definitions',
 
         defaults: {
-            "userDisplayName": null,
+            "personDisplayName": null,
             "position": 0,
             "disabled": false,
             "favorite": false,
@@ -23,6 +23,6 @@ function(Model) {
 
     });
 
-    return UserWidgetDefinitionModel;
+    return PersonWidgetDefinitionModel;
 
 });

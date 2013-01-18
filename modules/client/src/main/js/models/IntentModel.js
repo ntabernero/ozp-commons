@@ -5,7 +5,7 @@ define([
 function(Model) {
 
     var IntentModel = Model.extend({
-        urlRoot: '/owf/1.0/intents',
+        urlRoot: '/intents',
         
         defaults: {
             "action": "",
