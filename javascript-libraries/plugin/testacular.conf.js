@@ -10,6 +10,7 @@ basePath = '.';
 files = [
   MOCHA,
   MOCHA_ADAPTER,
+  "target/patches/mocha-patch.js",
   "target/js/expect.js",
   "target/js/sinon.js",
   "target/js/require.js",

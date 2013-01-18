@@ -23,14 +23,16 @@
     <modules>
         <module>require</module>
         <module>handlebars</module>
-        <module>lodash</module>
-        <module>expect</module>
-        <module>sinon</module>
         <module>jquery</module>
         <module>jquery-ui</module>
         <module>bootstrap</module>
         <module>backbone</module>
+        <module>modernizr</module>
         <module>plugin</module>
+        <module>lodash</module>
+        <module>mocha</module>
+        <module>expect</module>
+        <module>sinon</module>
     </modules>
 
     <build>
