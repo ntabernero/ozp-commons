@@ -10,23 +10,26 @@ function(Model) {
 
         defaults: {
             "guid": null,
-            "name": null,
-            "originalName": null,
-            "version": null,
-            "description": null,
-            "url": null,
-            "universalName": "",
             "displayName": "",
             "widgetUrl": null,
-            "descriptorUrl": null,
             "imageUrlLarge": null,
             "imageUrlSmall": null,
-            "widgetVersion": null,
+            "widgetType": null,
+            
+            "universalName": "",
+            "description": null,
+            "descriptorUrl": null,
+            "version": null,
+            
             "height": 200,
             "width": 200,
             "background": false,
             "singleton": false,
             "visibleForLaunch": true,
+            
+            "originalName": null,
+            "sendableIntents": null,
+            "receivableIntents": null,
             "tags": ""   
         }
 

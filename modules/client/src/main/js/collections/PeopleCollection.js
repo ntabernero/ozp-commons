@@ -5,17 +5,17 @@ define([
 
 function(PersonModel, Collection) {
         
-    var PersonsCollection = Collection.extend({
+    var PeopleCollection = Collection.extend({
         
         model: PersonModel,
 
-        url: '/persons',
+        url: '/people',
         
         comparator: function(person) {
-            return person.get('personRealName');
+            return person.get('fullname');
         }
 
     });
 
-    return PersonsCollection;
+    return PeopleCollection;
 });

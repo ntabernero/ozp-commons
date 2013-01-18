@@ -7,11 +7,11 @@ define(['models/PersonModel'], function(PersonModel) {
         });
     
         it('Test PersonModel creation.', function () {
-            var p1 =  new PersonModel({personName: 'foo', personRealName: 'Foo Bar'});
+            var p1 =  new PersonModel({username: 'foo', fullname: 'Foo Bar'});
             
             expect(p1).to.be.an('object');
-            expect(p1.get('personName')).to.eql('foo');
-            expect(p1.get('personRealName')).to.eql('Foo Bar');
+            expect(p1.get('username')).to.eql('foo');
+            expect(p1.get('fullname')).to.eql('Foo Bar');
         });
     
     });

@@ -12,7 +12,7 @@ function(PersonWidgetDefinitionModel, Collection) {
         url: '/person-widget-definitions',
         
         comparator: function(user) {
-            return contact.get('personDisplayName');
+            return contact.get('fullname');
         }
 
     });

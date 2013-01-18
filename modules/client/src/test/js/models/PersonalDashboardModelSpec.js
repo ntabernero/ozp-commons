@@ -1,13 +1,13 @@
-define(['models/PersonDashboardModel'], function(PersonDashboardModel) {
-    describe('PersonModelSpec', function() {
+define(['models/PersonalDashboardModel'], function(PersonalDashboardModel) {
+    describe('PersonalDashboardModelSpec', function() {
     
         beforeEach(function(done) {
             // Stub test initialization method;  And any custom pre-test elements here.
             done();
         });
     
-        it('Test PersonModel creation.', function () {
-            var p1 =  new PersonDashboardModel({person: 'bob', guid: 'xxx-xxx-xxx'});
+        it('Test PersonalDashboardModel creation.', function () {
+            var p1 =  new PersonalDashboardModel({person: 'bob', guid: 'xxx-xxx-xxx'});
             
             expect(p1).to.be.an('object');
             expect(p1.get('person')).to.eql('bob');

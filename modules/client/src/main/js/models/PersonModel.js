@@ -6,17 +6,18 @@ function(Model) {
 
     var PersonModel = Model.extend({
         
-        urlRoot: '/persons',
+        urlRoot: '/people',
         
         defaults: {
-            "personName": "",
+            "username": "",
+            "fullname": "",
             "email": "",
+            "lastLogin": "",
+            "prevLogin": "",
             "totalGroups": 0,
             "totalWidgets": 0,
             "totalDashboards": 0,
-            "totalStacks": 0,
-            "lastLogin": "",
-            "personRealName": ""
+            "totalStacks": 0     
         }
 
     });

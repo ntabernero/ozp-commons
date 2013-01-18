@@ -5,9 +5,9 @@ define([
 
 function(Backbone, DashboardModel) {
 
-    var PersonDashboardModel = DashboardModel.extend({
+    var PersonalDashboardModel = DashboardModel.extend({
 
-        urlRoot: '/persons',
+        urlRoot: '/people',
 
         defaults: function() {
             return _.extend({},DashboardModel.prototype.defaults, {
@@ -27,6 +27,6 @@ function(Backbone, DashboardModel) {
 
     });
     
-    return PersonDashboardModel;
+    return PersonalDashboardModel;
 
 });

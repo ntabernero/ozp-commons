@@ -9,9 +9,7 @@ function(Model) {
         
         defaults: {
             "action": "",
-            "dataType": "",
-            "send": "",
-            "receive": ""
+            "dataType": ""
         }
 
     });

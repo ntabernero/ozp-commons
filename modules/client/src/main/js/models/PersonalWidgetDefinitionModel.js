@@ -4,25 +4,25 @@ define([
 
 function(Model) {
 
-    var PersonWidgetDefinitionModel = Model.extend({
+    var PersonalWidgetDefinitionModel = Model.extend({
 
         urlRoot: '/person-widget-definitions',
 
         defaults: {
-            "personDisplayName": null,
+            "displayName": null,
             "position": 0,
+            "assignedByGroup": false,
+            "assignedToPerson": false,
             "disabled": false,
             "favorite": false,
-            "groupWidget": false,
-            "userWidget": false,
             "visibleForLaunch": true,
-            "user": null,
+            "person": null,
             "widgetDefinition": null,
             "tags": []
         }
 
     });
 
-    return PersonWidgetDefinitionModel;
+    return PersonalWidgetDefinitionModel;
 
 });
