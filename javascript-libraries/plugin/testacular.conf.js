@@ -28,10 +28,19 @@ exclude = [
 
 // test results reporter to use
 // possible values: 'dots', 'progress', 'junit'
-reporters = ['progress', 'junit'];
+reporters = ['progress', 'junit', 'coverage'];
 
 junitReporter= {
      outputFile: 'target/surefire-reports/test-results.xml'
+};
+
+preprocessors = {
+    '**/src/main/webapp/js/plugin.js': 'coverage'
+};
+
+coverageReporter = {
+  type : 'cobertura',
+  dir : 'target/coverage/'
 };
 
 // web server port
