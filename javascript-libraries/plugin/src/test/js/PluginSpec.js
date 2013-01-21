@@ -3,6 +3,7 @@ requirejs.config({
     enforceDefine: true
 });
 
+mocha.timeout(5000);
 describe('Plugin', function() {
 
     var plugin;
