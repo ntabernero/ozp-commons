@@ -11,8 +11,8 @@ function(WidgetDefinitionModel, Collection) {
 
         url: '/widget-definitions',
         
-        comparator: function(user) {
-            return contact.get('displayName');
+        comparator: function(widget) {
+            return widget.get('displayName');
         }
 
     });

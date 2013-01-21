@@ -1,7 +1,7 @@
 define([
-    'models/PersonModel',
-    'collections/Collection'
-],
+        'models/PersonModel',
+        'collections/Collection'
+    ],
 
 function(PersonModel, Collection) {
         

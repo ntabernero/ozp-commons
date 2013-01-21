@@ -1,9 +1,9 @@
 define([
-    'models/PersonDashboardModel',
+    'models/PersonalDashboardModel',
     'collections/Collection'
 ],
 
-function(PersonDashboardModel, Collection) {
+function(PersonalDashboardModel, Collection) {
 
     var PersonDashboardsCollection = Collection.extend({
         

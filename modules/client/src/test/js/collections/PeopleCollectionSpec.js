@@ -7,12 +7,12 @@ define(['models/PersonModel', 'collections/PeopleCollection'], function(PersonMo
             done();
         });
     
-        it('Test PersonsCollection creation.', function () {
+        it('Test PeopleCollection creation.', function () {
             var pc = new PeopleCollection();
             expect(pc).to.be.an('object');
         });
     
-        it('Test PersonsCollection sorting.', function () {
+        it('Test PeopleCollection sorting.', function () {
             
             var p1 = new PersonModel({username: 'Bob', fullname: 'Bob'});
             var p2 = new PersonModel({username: 'Charlie', fullname: 'Charlie'});
