@@ -15,12 +15,21 @@ require({
     baseUrl: '/base/src/main/js',
     paths: {
         require: '../target/js/require',
-        backbone: '/base/target/js/backbone'
+        jquery: '/base/target/js/jquery',
+        backbone: '/base/target/js/backbone',
+        lodash: '/base/target/js/lodash'
         //text: '../lib/text'
     },
     shim: {
+        jquery: {
+            exports: '$'
+        },
         backbone: {
+            deps: ['lodash', 'jquery'],
             exports: 'Backbone'
+        },
+        lodash: {
+            exports: '_'
         }
     }
 }, tests, function() {
