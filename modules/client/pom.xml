@@ -121,7 +121,7 @@
                                         <artifactItem>
                                             <groupId>org.ozoneplatform.commons.javascript-libraries</groupId>
                                             <artifactId>backbone</artifactId>
-                                            <version>0.9.9</version>
+                                            <version>0.9.10</version>
                                             <type>zip</type>
                                             <classifier>js</classifier>
                                             <overWrite>true</overWrite>
