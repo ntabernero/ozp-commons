@@ -17,19 +17,28 @@ require({
         require: '../target/js/require',
         jquery: '/base/target/js/jquery',
         backbone: '/base/target/js/backbone',
-        lodash: '/base/target/js/lodash'
+        lodash: '/base/target/js/lodash',
+        bootstrap: '/base/target/vendor/assets/javascripts'
         //text: '../lib/text'
     },
     shim: {
         jquery: {
             exports: '$'
         },
+        lodash: {
+            exports: '_'
+        },
         backbone: {
             deps: ['lodash', 'jquery'],
             exports: 'Backbone'
         },
-        lodash: {
-            exports: '_'
+        'bootstrap/bootstrap-transition': {
+            deps: ['jquery'],
+            exports: '$'
+        },
+        'bootstrap/bootstrap-modal': {
+            deps: ['jquery', 'bootstrap/bootstrap-transition'],
+            exports: '$'
         }
     }
 }, tests, function() {

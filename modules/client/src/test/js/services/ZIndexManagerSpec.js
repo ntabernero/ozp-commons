@@ -80,8 +80,6 @@ define(['services/ZIndexManager', 'backbone'], function(ZIndexManager) {
             var spy = sinon.spy();
             var spy2 = sinon.spy();
 
-            debugger;
-
             zIndexManager.register(view1, {activate: true});
             zIndexManager.register(view2, {activate: true});
             var zIndex1 = parseInt(view1.$el.css('z-index'));

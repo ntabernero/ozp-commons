@@ -1,6 +1,6 @@
 define(['events/EventBus'], function(EventBus) {
 
-    describe('EventBusSpec', function() {
+    describe('EventBus', function() {
 
         it('should be a singleton.', function() {
             expect(EventBus).to.be.an('object');
