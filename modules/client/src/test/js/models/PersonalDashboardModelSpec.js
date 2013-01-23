@@ -2,6 +2,12 @@ define(['models/PersonalDashboardModel'], function(PersonalDashboardModel) {
     describe('PersonalDashboardModelSpec', function() {
     
         beforeEach(function(done) {
+            this.dashboard = new PersonalDashboardModel({
+                name: "Test Dashboard",
+                description: "This is a test Dashboard",
+                person: 1
+            });
+            
             // Stub test initialization method;  And any custom pre-test elements here.
             done();
         });
@@ -15,5 +21,13 @@ define(['models/PersonalDashboardModel'], function(PersonalDashboardModel) {
             expect(p1.get('name')).to.eql(null);
         });
     
+        it('Test PersonalDashboardModel base url', function() {
+            var collection = {
+                url: '/people/dashboards'
+            }
+            this.dashboard.collection = collection;
+            expect(this.dashboard.url()).to.eql("/people/1/dashboards");
+            
+        });
     });
 });

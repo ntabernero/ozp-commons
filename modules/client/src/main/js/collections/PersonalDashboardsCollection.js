@@ -7,9 +7,26 @@ function(PersonalDashboardModel, Collection) {
 
     var PersonDashboardsCollection = Collection.extend({
         
-        model: PersonDashboardModel,
+        model: PersonalDashboardModel,
 
-        url: '/persons'
+        initialize: function(options) {
+            options || (options = {});
+            this.person = options.person;
+        },
+        
+        setPerson: function(person) {
+            this.person = person;
+        },
+          
+        url: function() {
+            var url = '/people';
+            if (!_.isUndefined(this.person)) {
+                url = url + '/' + this.person;
+            }
+            url = url + '/dashboards';
+            
+            return url;
+        }
 
     });
     

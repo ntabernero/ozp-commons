@@ -7,22 +7,25 @@ function(Backbone, DashboardModel) {
 
     var PersonalDashboardModel = DashboardModel.extend({
 
-        urlRoot: '/people',
-
+        idAttribute: 'guid',
+        
         defaults: function() {
             return _.extend({},DashboardModel.prototype.defaults, {
                 person: null
             });
         },
         
-        sync: function(method, model, options) {
-            // Clone options before changing it.
-            options = _(options).clone();
-            // Inject the user into the url.  
-            // TODO: How best to handle an empty user field?
-            options.url = model.urlRoot + '/' + model.get('person') + '/dashboards';
+        url: function() {
+            var url = '/people';
+            if (!_.isUndefined(this.get('person'))) {
+                url = url + '/' + this.get('person');
+            }
+            url = url + '/dashboards';
+            if (!_.isUndefined(this.get('guid')) && (this.get('guid') != null)) {
+                url = url + '/' + this.get('guid');
+            }
             
-            return Backbone.sync(method, model, options);
+            return url;
         }
 
     });

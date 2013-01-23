@@ -7,7 +7,7 @@ function(Model) {
     var DashboardModel = Model.extend({
 
         idAttribute: "guid",
-        urlRoot: '/groups',
+        //urlRoot: '/groups',
 
         defaults: {
             "guid": null,
@@ -25,16 +25,6 @@ function(Model) {
             "editedDate": null,
             "stack": null,
             "locked": false
-        },
-
-        initialize: function() {
-//            if( _.isString(this.get('layoutConfig')) )
-//                this.set( 'layoutConfig', JSON.parse(this.get('layoutConfig')), {silent: true} );
-//            
-            // TODO: Add a utility to generate a guid.
-            //var guid = this.get('guid');
-            // if( _.isNull(guid) || (_.isString(guild) && guid.length == 0))
-            //    this.set('guid', guid.util.guid())
         }
 
     });
