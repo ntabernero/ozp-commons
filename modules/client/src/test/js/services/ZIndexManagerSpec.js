@@ -8,6 +8,9 @@ define(['services/ZIndexManager', 'backbone'], function(ZIndexManager) {
             view1 = new Backbone.View();
             view2 = new Backbone.View();
             zIndexManager = new ZIndexManager();
+
+            view1.render();
+            view2.render();
         });
 
         afterEach(function() {
@@ -15,7 +18,6 @@ define(['services/ZIndexManager', 'backbone'], function(ZIndexManager) {
             view2.remove();
             view1 = view2 = null;
             
-            zIndexManager.destroy();
             zIndexManager = null;
         });
 
@@ -28,53 +30,24 @@ define(['services/ZIndexManager', 'backbone'], function(ZIndexManager) {
             expect(zIndexManager2.zBase).to.equal(zIndexManager.zBase + 10000);
         });
 
-        it('should not activate a view when registered without options.', function() {
+        it('should add a view to the bottom of the stack when registered without options.', function() {
             var spy = sinon.spy();
-            view1.on('activate', spy);
 
             zIndexManager.register(view1);
+            zIndexManager.register(view2);
 
-            expect(spy.calledOnce).to.not.be.ok();
+            expect(view2.$el.css('z-index')).to.be.lessThan(view1.$el.css('z-index'));
         });
 
-        it('should activate a view when registered with option `activate` set to true.', function() {
-            var spy = sinon.spy();
-            view1 = new Backbone.View();
-            view1.on('activate', spy);
-
-            zIndexManager.register(view1, {
-                activate: true
-            });
-
-            expect(spy.calledOnce).to.be.ok();
-        });
-
-        it('should not fire `activate` event when a view is already active', function() {
+        it('should add a view to the top of the stack when registered with "activate".', function() {
             var spy = sinon.spy();
 
-            zIndexManager.register(view1, {
-                activate: true
-            });
+            zIndexManager.register(view1);
+            zIndexManager.register(view2, {activate: true});
 
-            view1.on('activate', spy);
-            zIndexManager.bringToFront(view1);
-
-            expect(spy.calledOnce).to.not.be.ok();
+            expect(view2.$el.css('z-index')).to.be.greaterThan(view1.$el.css('z-index'));
         });
 
-        it('should fire `deactivate` event when another view is activated.', function() {
-            var spy = sinon.spy();
-            var spy2 = sinon.spy();
-            zIndexManager.register(view1, {
-                activate: true
-            });
-            view1.on('deactivate', spy);
-            view2.on('activate', spy2);
-            zIndexManager.bringToFront(view2);
-
-            expect(spy.calledOnce).to.be.ok();
-            expect(spy2.calledOnce).to.be.ok();
-        });
 
         it('should increment z-index by 4 for next view.', function() {
             var spy = sinon.spy();

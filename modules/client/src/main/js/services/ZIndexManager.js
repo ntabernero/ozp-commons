@@ -1,15 +1,13 @@
 define([
-    'jquery'
+    'jquery',
+    'lodash',
+    'backbone'
 ],
 
-function( $ ) {
+function( $, _, Backbone ) {
 
-    if (!Date.now) {
-        Date.now = function now() {
-            return +(new Date);
-        };
-    }
-    
+    'use strict'; 
+
     var INCREMENT_BY = 10000,
         ZBASE = INCREMENT_BY,
         IDSTR = '_zIndexManager-id',
@@ -25,53 +23,56 @@ function( $ ) {
         this.front = null;
         this._className = 'z-index-managed-' + this.zBase;
 
+        //create the views collection, which contains all 
+        //managed views in increasing order by z-index
+        this.initViews();
+
         ZBASE += INCREMENT_BY;
     }
 
-    ZIndexManager.prototype.destroy = function($el) {
-        this.front = null;
-        $doc.off('.' + this._className);
+    ZIndexManager.prototype.initViews = function() {
+        var refresh = _.bind(this.refreshIndices, this);
+
+        this.views = new Backbone.Collection();
+
+        this.views.on({
+            add: refresh,
+            remove: refresh
+        });
     };
 
-    ZIndexManager.prototype._incrementZIndex = function(view) {
-        view.$el.css('z-index', this.zBase);
-        this.zBase += 4;
+    ZIndexManager.prototype.refreshIndices = function() {
+        var index = this.zBase;
+
+        this.views.each(function(view) {
+            view.get('$el').css('z-index', index);
+            index += 4;
+        });
     };
 
     ZIndexManager.prototype.register = function(view, options) {
         var me = this;
 
-        view.$el.addClass(this._className);
-        view.$el.on('mousedown.' + this._className, function() {
-            me.bringToFront(view);
-        });
+        view.on('destroy.' + this._className, _.bind(this.unregister, this));
 
-        options && options.activate && me.bringToFront(view);
+        if (options && options.activate) {
+            this.views.push(view);
+        }
+        else {
+            this.views.unshift(view);
+        }
     };
 
     ZIndexManager.prototype.unregister = function(view) {
-        view.$el.removeClass(this._className);
-        view.off('.' + this._className);
+        this.views.remove(view);
+        view.off('destroy.' + this._className);
     };
 
     ZIndexManager.prototype.bringToFront = function(view) {
-        var oldFront = this.front;
+        var model = new Backbone.Model(view);
 
-        if(oldFront) {
-            if(oldFront === view) {
-                return;
-            }
-            else {
-                oldFront.$el.removeClass('active');
-                oldFront.trigger(DEACTIVATED);
-            }
-        }
-
-        this.front = view;
-        this.front.$el.addClass('active');
-        this._incrementZIndex(this.front);
-
-        this.front.trigger(ACTIVATED);
+        this.views.remove(model, {silent: true});
+        if (view) this.views.push(view);
     };
 
     return ZIndexManager;
