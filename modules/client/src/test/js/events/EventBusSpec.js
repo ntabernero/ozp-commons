@@ -6,7 +6,7 @@ define(['events/EventBus'], function(EventBus) {
             expect(EventBus).to.be.an('object');
         });
 
-        it('should not have on, off and trigger methods.', function () {
+        it('should have on, off and trigger methods.', function () {
             expect(EventBus).to.have.property('on');
             expect(EventBus).to.have.property('off');
             expect(EventBus).to.have.property('trigger');

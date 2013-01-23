@@ -20,6 +20,7 @@ files = [
   // libs
   'target/js/jquery.js',
   'target/js/backbone.js',
+  'target/js/handlebars.js',
   'target/js/expect.js',
   'target/js/sinon.js',
   

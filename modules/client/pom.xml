@@ -84,6 +84,15 @@
                                         </artifactItem>
                                         <artifactItem>
                                             <groupId>org.ozoneplatform.commons.javascript-libraries</groupId>
+                                            <artifactId>handlebars</artifactId>
+                                            <version>1.0.rc.1</version>
+                                            <type>zip</type>
+                                            <classifier>js</classifier>
+                                            <overWrite>true</overWrite>
+                                            <outputDirectory>${project.build.directory}</outputDirectory>
+                                        </artifactItem>
+                                        <artifactItem>
+                                            <groupId>org.ozoneplatform.commons.javascript-libraries</groupId>
                                             <artifactId>jquery</artifactId>
                                             <version>1.8.3</version>
                                             <type>zip</type>
