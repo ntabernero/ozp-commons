@@ -7,10 +7,8 @@ function(Model) {
     var DashboardModel = Model.extend({
 
         idAttribute: "guid",
-        //urlRoot: '/groups',
 
         defaults: {
-            "guid": null,
             "name": null,
             "description": null,
             "layoutConfig": null,

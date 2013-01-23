@@ -3,6 +3,9 @@ define(['models/PersonalDashboardModel', 'collections/PersonalDashboardsCollecti
     
         beforeEach(function(done) {
             this.collection = new PersonalDashboardsCollection();
+            this.dashboard1 = new PersonalDashboardModel({name: 'test dashboard 1', description: 'A sample dashboard', guid: '11111', person: 1})
+            this.dashboard2 = new PersonalDashboardModel({name: 'test dashboard 2', description: 'Another sample dashboard', guid: '22222', person: 1})
+            
             this.server = sinon.fakeServer.create();
             this.server.respondWith(
                 "GET",
@@ -72,6 +75,16 @@ define(['models/PersonalDashboardModel', 'collections/PersonalDashboardsCollecti
             expect(this.server.requests.length).to.eql(1);
             expect(this.server.requests[0].method).to.eql("GET");
             expect(this.server.requests[0].url).to.eql("/people/1/dashboards");
+        });
+        
+        it("Test PesonalDashboardsCollection bulk updates", function() {
+            this.collection.setPerson(1);
+            this.collection.add([this.dashboard1, this.dashboard2]);
+            this.collection.sync('update', this.collection);
+            expect(this.server.requests.length).to.eql(1);
+            expect(this.server.requests[0].method).to.eql("PUT");
+            expect(this.server.requests[0].url).to.eql("/people/1/dashboards");
+            expect(JSON.parse(this.server.requests[0].requestBody).length).to.eql(2);
         });
         
     });
