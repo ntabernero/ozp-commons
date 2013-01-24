@@ -13,15 +13,15 @@ function(Model) {
             "description": null,
             "layoutConfig": null,
             "alteredByAdmin": false,
-            "isdefault": false,
+            "defaultDashboard": false,
             "dashboardPosition": 0,
-            "removed": false,
-            "groups": [],
-            "isGroupDashboard": false,
-            "createdDate": null,
-            "createdBy": null,
-            "editedDate": null,
-            "stack": null,
+            //"removed": false,
+            //"groups": [],
+            //"isGroupDashboard": false,
+            //"createdDate": null,
+            //"createdBy": null,
+            //"editedDate": null,
+            //"stack": null,
             "locked": false
         }
 
@@ -30,3 +30,4 @@ function(Model) {
     return DashboardModel;
 
 });
+

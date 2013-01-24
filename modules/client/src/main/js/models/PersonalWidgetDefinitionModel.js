@@ -6,7 +6,7 @@ function(Model) {
 
     var PersonalWidgetDefinitionModel = Model.extend({
 
-        urlRoot: '/person-widget-definitions',
+        urlRoot: '/ozp/rest/owf/person-widget-definitions',
 
         defaults: {
             "displayName": null,

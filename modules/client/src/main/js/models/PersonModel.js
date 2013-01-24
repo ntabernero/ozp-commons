@@ -6,18 +6,14 @@ function(Model) {
 
     var PersonModel = Model.extend({
         
-        urlRoot: '/people',
+        urlRoot: '/ozp/rest/owf/persons',
         
         defaults: {
             "username": "",
             "fullname": "",
             "email": "",
             "lastLogin": "",
-            "prevLogin": "",
-            "totalGroups": 0,
-            "totalWidgets": 0,
-            "totalDashboards": 0,
-            "totalStacks": 0     
+            "prevLogin": ""
         }
 
     });

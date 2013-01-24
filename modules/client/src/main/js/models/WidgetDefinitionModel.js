@@ -6,7 +6,7 @@ function(Model) {
 
     var WidgetDefinitionModel = Model.extend({
 
-        urlRoot: '/widget-definitions',
+        urlRoot: '/widget-defs',
 
         defaults: {
             "guid": null,

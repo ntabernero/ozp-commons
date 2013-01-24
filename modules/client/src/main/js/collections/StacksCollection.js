@@ -9,7 +9,7 @@ function(StackModel, Collection) {
         
         model: StackModel,
 
-        url: '/stacks',
+        url: '/ozp/rest/owf/stacks',
         
         comparator: function(stack) {
             return stack.get('name');

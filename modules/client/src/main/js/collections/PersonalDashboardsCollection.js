@@ -18,16 +18,17 @@ function(PersonalDashboardModel, Collection) {
             this.person = person;
         },
           
-        url: function() {
-            var url = '/people';
-            if (!_.isUndefined(this.person)) {
-                url = url + '/' + this.person;
-            }
-            url = url + '/dashboards';
-            
-            return url;
-        }
+//        url: function() {
+//            var url = '/people';
+//            if (!_.isUndefined(this.person)) {
+//                url = url + '/' + this.person;
+//            }
+//            url = url + '/dashboards';
+//            
+//            return url;
+//        }
 
+         url: '/ozp/rest/owf/personal-dashboards'
     });
     
     return PersonDashboardsCollection;

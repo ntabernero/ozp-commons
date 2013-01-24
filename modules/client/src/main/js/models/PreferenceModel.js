@@ -5,13 +5,13 @@ define([
 function(Model) {
 
     var PreferenceModel = Model.extend({
-        urlRoot: '/preferences',
+        urlRoot: '/ozp/rest/owf/preferences',
         
         defaults: {
             "name": "",
             "namespace": "",
-            "value": "",
-            "person": null
+            "value": ""
+//            "person": null
         }
 
     });

@@ -9,7 +9,7 @@ function(GroupModel, Collection) {
         
         model: GroupModel,
 
-        url: '/groups',
+        url: '/ozp/rest/owf/groups',
         
         comparator: function(group) {
             return group.get('displayName');

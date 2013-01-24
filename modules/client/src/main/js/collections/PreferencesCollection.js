@@ -9,7 +9,7 @@ function(PreferenceModel, Collection) {
         
         model: PreferenceModel,
 
-        url: '/people',
+        url: '/ozp/rest/owf/preferences',
         
         comparator: function(preference) {
             return preference.get('namespace') + '.' + preference.get('name');

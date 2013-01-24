@@ -5,17 +5,13 @@ define([
 function(Model) {
 
     var StackModel = Model.extend({
-        urlRoot: '/stacks',
+        urlRoot: '/ozp/rest/owf/stacks',
         
         defaults: {
             "name": "",
             "description": "",
             "urlName": "",
-            "descriptorUrl": "",
-            
-            "dashboards": [],
-            "people": [],
-            "groups": []
+            "descriptorUrl": ""
         }
 
     });

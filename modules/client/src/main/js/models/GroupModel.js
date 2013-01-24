@@ -5,19 +5,19 @@ define([
 function(Model) {
 
     var GroupModel = Model.extend({
-        urlRoot: '/groups',
+        urlRoot: '/ozp/rest/owf/groups',
         
         defaults: {
             "name": "",
             "description": "",
             "displayName": "",
             "active": true,
-            "automatic": false,
+            "automatic": false
             
-            "dashboards": [],
-            "people": [],
-            "widgetDefinitions": [],
-            "stacks":[]
+//            "dashboards": [],
+//            "people": [],
+//            "widgetDefinitions": [],
+//            "stacks":[]
         }
 
     });

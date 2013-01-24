@@ -9,7 +9,7 @@ function(WidgetDefinitionModel, Collection) {
         
         model: WidgetDefinitionModel,
 
-        url: '/widget-definitions',
+        url: '/ozp/rest/owf/widget-defs',
         
         comparator: function(widget) {
             return widget.get('displayName');

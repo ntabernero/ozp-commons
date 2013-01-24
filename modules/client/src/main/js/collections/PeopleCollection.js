@@ -9,7 +9,7 @@ function(PersonModel, Collection) {
         
         model: PersonModel,
 
-        url: '/people',
+        url: '/ozp/rest/owf/persons',
         
         comparator: function(person) {
             return person.get('fullname');
