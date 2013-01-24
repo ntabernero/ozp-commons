@@ -18,6 +18,7 @@ require({
         jquery: '/base/target/js/jquery',
         backbone: '/base/target/js/backbone',
         lodash: '/base/target/js/lodash',
+        handlebars: '/base/target/js/handlebars',
         bootstrap: '/base/target/vendor/assets/javascripts'
         //text: '../lib/text'
     },
@@ -27,6 +28,9 @@ require({
         },
         lodash: {
             exports: '_'
+        },
+        handlebars: {
+            exports: 'Handlebars'
         },
         backbone: {
             deps: ['lodash', 'jquery'],

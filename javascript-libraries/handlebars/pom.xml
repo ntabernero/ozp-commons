@@ -10,7 +10,7 @@
     </parent>
 
     <artifactId>handlebars</artifactId>
-    <version>1.0.rc.1</version>
+    <version>1.0</version>
 
     <name>Handlebars</name>
     <description>Handlebars provides the power necessary to let you build semantic templates effectively with no frustration.</description>
