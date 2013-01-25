@@ -29,7 +29,7 @@ files = [
   
   // Include the src and test files on the test server but not as script tags.
   {pattern: 'target/vendor/assets/javascripts/*.js', included: false},
-  {pattern: 'src/main/js/**/*.js', included: false},
+  {pattern: 'src/main/webapp/js/**/*.js', included: false},
   {pattern: 'src/test/js/**/*.js', included: false}
 ];
 

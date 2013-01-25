@@ -6,7 +6,7 @@ function( $ ) {
 
     if (!Date.now) {
         Date.now = function now() {
-            return +(new Date);
+            return new Date().getTime();
         };
     }
     

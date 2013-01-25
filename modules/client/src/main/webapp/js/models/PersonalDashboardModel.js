@@ -1,9 +1,11 @@
 define([
     'backbone',
-    'models/DashboardModel'
+    'models/DashboardModel',
+
+    'lodash'
 ],
 
-function(Backbone, DashboardModel) {
+function(Backbone, DashboardModel, _) {
 
     var PersonalDashboardModel = DashboardModel.extend({
 

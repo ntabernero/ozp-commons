@@ -12,7 +12,7 @@ requirejs.config({
 require({
 
     // !! Testacular serves files from '/base'
-    baseUrl: '/base/src/main/js',
+    baseUrl: '/base/src/main/webapp/js',
     paths: {
         require: '../target/js/require',
         jquery: '/base/target/js/jquery',
