@@ -33,6 +33,7 @@
         <module>mocha</module>
         <module>expect</module>
         <module>sinon</module>
+        <module>json</module>
     </modules>
 
     <build>
