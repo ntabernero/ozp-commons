@@ -86,10 +86,10 @@ define(['models/PersonalDashboardModel', 'collections/PersonalDashboardsCollecti
 //            expect(this.server.requests[0].url).to.eql("/people/1/dashboards");
 //            expect(JSON.parse(this.server.requests[0].requestBody).length).to.eql(2);
 //        });
-        it('Test PersonalDashboardsCollection creation.', function () {
-            var pdc = new PersonalDashboardsCollection();
-            expect(pdc).to.be.an('object');
-        });
+//        it('Test PersonalDashboardsCollection creation.', function () {
+//            var pdc = new PersonalDashboardsCollection();
+//            expect(pdc).to.be.an('object');
+//        });
         
         it('Test PersonalDashboardsCollection url for an empty collection.', function () {
             expect(this.collection.url).to.eql('/ozp/rest/owf/personal-dashboards');
@@ -107,7 +107,7 @@ define(['models/PersonalDashboardModel', 'collections/PersonalDashboardsCollecti
             expect(this.collection.at(0).url()).to.eql('/ozp/rest/owf/personal-dashboards');
         });
         
-        it('Test PersonalDashboardsCollection url for model in collection with no guid.', function () {
+        it('Test PersonalDashboardsCollection url for model in collection with guid.', function () {
             this.collection.setPerson(1);
             this.collection.add({name: 'test dashboard', guid: '12345', person: 1})
             expect(this.collection.at(0).get('name')).to.eql('test dashboard');
@@ -122,14 +122,14 @@ define(['models/PersonalDashboardModel', 'collections/PersonalDashboardsCollecti
             expect(this.server.requests[0].url).to.eql("/ozp/rest/owf/personal-dashboards");
         });
         
-        it("Test PesonalDashboardsCollection bulk updates", function() {
-            this.collection.setPerson(1);
-            this.collection.add([this.dashboard1, this.dashboard2]);
-            this.collection.sync('update', this.collection);
-            expect(this.server.requests.length).to.eql(1);
-            expect(this.server.requests[0].method).to.eql("PUT");
-            expect(this.server.requests[0].url).to.eql("/ozp/rest/owf/personal-dashboards");
-            expect(JSON.parse(this.server.requests[0].requestBody).length).to.eql(2);
-        });
+//        it("Test PesonalDashboardsCollection bulk updates", function() {
+//            this.collection.setPerson(1);
+//            this.collection.add([this.dashboard1, this.dashboard2]);
+//            this.collection.sync('update', this.collection);
+//            expect(this.server.requests.length).to.eql(1);
+//            expect(this.server.requests[0].method).to.eql("PUT");
+//            expect(this.server.requests[0].url).to.eql("/ozp/rest/owf/personal-dashboards");
+//            expect(JSON.parse(this.server.requests[0].requestBody).length).to.eql(2);
+//        });
     });
 });
