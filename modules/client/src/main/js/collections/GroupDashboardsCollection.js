@@ -5,14 +5,14 @@ define([
 
 function(DashboardModel, Collection) {
 
-    var DashboardsCollection = Collection.extend({
+    var GroupDashboardsCollection = Collection.extend({
         
         model: DashboardModel,
 
-        url: '/groups/dashboards'
+        url: '/ozp/rest/owf/group-dashboards'
 
     });
     
-    return DashboardsCollection;
+    return GroupDashboardsCollection;
 
 });
