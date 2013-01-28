@@ -8,6 +8,9 @@ define(['services/ZIndexManager', 'backbone'], function(ZIndexManager) {
             view1 = new Backbone.View();
             view2 = new Backbone.View();
             zIndexManager = new ZIndexManager();
+
+            view1.render();
+            view2.render();
         });
 
         afterEach(function() {
@@ -15,79 +18,104 @@ define(['services/ZIndexManager', 'backbone'], function(ZIndexManager) {
             view2.remove();
             view1 = view2 = null;
             
-            zIndexManager.destroy();
             zIndexManager = null;
         });
 
-        it('should be a class.', function() {
+        it('is a class.', function() {
             expect(ZIndexManager).to.be.an('function');
         });
 
-        it('should increment z-index base for next instance by 10000.', function() {
+        it('increments z-index base for next instance by 10000.', function() {
             var zIndexManager2 = new ZIndexManager();
             expect(zIndexManager2.zBase).to.equal(zIndexManager.zBase + 10000);
         });
 
-        it('should not activate a view when registered without options.', function() {
+        it('adds a view to the bottom of the stack when registered without options.', function() {
             var spy = sinon.spy();
-            view1.on('activate', spy);
 
             zIndexManager.register(view1);
+            zIndexManager.register(view2);
 
-            expect(spy.calledOnce).to.not.be.ok();
+            expect(view2.$el.css('z-index')).to.be.lessThan(view1.$el.css('z-index'));
         });
 
-        it('should activate a view when registered with option `activate` set to true.', function() {
-            var spy = sinon.spy();
-            view1 = new Backbone.View();
-            view1.on('activate', spy);
+        it('adds a view to the top of the stack when registered with "activate".', function() {
+            zIndexManager.register(view1);
+            zIndexManager.register(view2, {activate: true});
 
-            zIndexManager.register(view1, {
-                activate: true
-            });
-
-            expect(spy.calledOnce).to.be.ok();
+            expect(view2.$el.css('z-index')).to.be.greaterThan(view1.$el.css('z-index'));
         });
 
-        it('should not fire `activate` event when a view is already active', function() {
-            var spy = sinon.spy();
+        it('gives the max z-index to the front view', function() {
+            zIndexManager.register(view1);
+            zIndexManager.register(view2);
 
-            zIndexManager.register(view1, {
-                activate: true
-            });
-
-            view1.on('activate', spy);
-            zIndexManager.bringToFront(view1);
-
-            expect(spy.calledOnce).to.not.be.ok();
-        });
-
-        it('should fire `deactivate` event when another view is activated.', function() {
-            var spy = sinon.spy();
-            var spy2 = sinon.spy();
-            zIndexManager.register(view1, {
-                activate: true
-            });
-            view1.on('deactivate', spy);
-            view2.on('activate', spy2);
             zIndexManager.bringToFront(view2);
 
-            expect(spy.calledOnce).to.be.ok();
-            expect(spy2.calledOnce).to.be.ok();
+            expect(view2.$el.css('z-index')).to.be.greaterThan(view1.$el.css('z-index'));
         });
 
-        it('should increment z-index by 4 for next view.', function() {
-            var spy = sinon.spy();
-            var spy2 = sinon.spy();
-
+        it('increments z-index by 4 for next view.', function() {
             zIndexManager.register(view1, {activate: true});
             zIndexManager.register(view2, {activate: true});
-            var zIndex1 = parseInt(view1.$el.css('z-index'));
-            var zIndex2 = parseInt(view2.$el.css('z-index'));
+            var zIndex1 = parseInt(view1.$el.css('z-index'), 10);
+            var zIndex2 = parseInt(view2.$el.css('z-index'), 10);
 
             expect(zIndex2).to.equal(zIndex1 + 4);
         });
 
+        it('automatically unregisters destroyed views', function() {
+            var unregSpy = sinon.spy(zIndexManager, 'unregister');
+
+            zIndexManager.register(view1);
+            view1.remove();
+
+            expect(unregSpy.calledOnce);
+        });
+
+        it('does not throw an exception when unregistering a non-registered view', function() {
+            zIndexManager.unregister(view1);
+        });
+
+        it('tracks a single reference to each registered view', function() {
+            zIndexManager.register(view1, {activate: true});
+            zIndexManager.register(view2, {activate: true});
+            
+            for (var i = 0; i < 10; i++) {
+                zIndexManager.bringToFront(view1);
+                zIndexManager.bringToFront(view2);
+            }
+
+            var els = _.map(zIndexManager.views, function(view) {
+                return view.$el;
+            });
+
+            expect(zIndexManager.views.length).to.equal(2);
+            expect(els).to.contain(view1.$el);
+            expect(els).to.contain(view2.$el);
+        });
+
+        it('removes references to all registered views when destroyed', function() {
+            zIndexManager.register(view1, {activate: true});
+            zIndexManager.register(view2, {activate: true});
+
+            zIndexManager.destroy();
+
+            expect(zIndexManager.views.length).to.equal(0);
+        });
+
+        it('does not change the zindex of views when destroyed', function() {
+            zIndexManager.register(view1, {activate: true});
+            zIndexManager.register(view2, {activate: true});
+            
+            var z1 = view1.$el.css('z-index');
+            var z2 = view2.$el.css('z-index');
+
+            zIndexManager.destroy();
+
+            expect(view1.$el.css('z-index')).to.equal(z1);
+            expect(view2.$el.css('z-index')).to.equal(z2);
+        });
     });
     
 });

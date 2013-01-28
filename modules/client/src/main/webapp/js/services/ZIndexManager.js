@@ -1,15 +1,13 @@
 define([
-    'jquery'
+    'jquery',
+    'lodash',
+    'backbone'
 ],
 
-function( $ ) {
+function( $, _, Backbone ) {
 
-    if (!Date.now) {
-        Date.now = function now() {
-            return new Date().getTime();
-        };
-    }
-    
+    'use strict'; 
+
     var INCREMENT_BY = 10000,
         ZBASE = INCREMENT_BY,
         IDSTR = '_zIndexManager-id',
@@ -25,53 +23,54 @@ function( $ ) {
         this.front = null;
         this._className = 'z-index-managed-' + this.zBase;
 
+        this.views = [];
+
         ZBASE += INCREMENT_BY;
     }
 
-    ZIndexManager.prototype.destroy = function($el) {
-        this.front = null;
-        $doc.off('.' + this._className);
-    };
+    ZIndexManager.prototype.refreshIndices = function() {
+        var index = this.zBase;
 
-    ZIndexManager.prototype._incrementZIndex = function(view) {
-        view.$el.css('z-index', this.zBase);
-        this.zBase += 4;
+        _.each(this.views, function(view) {
+            view.$el.css('z-index', index);
+            index += 4;
+        });
     };
 
     ZIndexManager.prototype.register = function(view, options) {
         var me = this;
 
-        view.$el.addClass(this._className);
-        view.$el.on('mousedown.' + this._className, function() {
-            me.bringToFront(view);
-        });
+        view.on('destroy.' + this._className, _.bind(this.unregister, this));
 
-        options && options.activate && me.bringToFront(view);
+        if (options && options.activate) {
+            this.views.push(view);
+        }
+        else {
+            this.views.unshift(view);
+        }
+
+        this.refreshIndices();
     };
 
-    ZIndexManager.prototype.unregister = function(view) {
-        view.$el.removeClass(this._className);
-        view.off('.' + this._className);
+    ZIndexManager.prototype.unregister = function(view, options) {
+        this.views = _.without(this.views, view);
+        view.off('destroy.' + this._className);
+
+        if (!(options && options.silent)) this.refreshIndices();
     };
 
     ZIndexManager.prototype.bringToFront = function(view) {
-        var oldFront = this.front;
+        this.views = _.without(this.views, view);
+        this.views.push(view);
+        this.refreshIndices();
+    };
 
-        if(oldFront) {
-            if(oldFront === view) {
-                return;
-            }
-            else {
-                oldFront.$el.removeClass('active');
-                oldFront.trigger(DEACTIVATED);
-            }
-        }
+    ZIndexManager.prototype.destroy = function() {
+        var me = this;
 
-        this.front = view;
-        this.front.$el.addClass('active');
-        this._incrementZIndex(this.front);
-
-        this.front.trigger(ACTIVATED);
+        _.each(this.views, function(view) {
+           me.unregister(view, {silent: true}); 
+        });
     };
 
     return ZIndexManager;
