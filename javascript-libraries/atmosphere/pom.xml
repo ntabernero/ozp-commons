@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+        <groupId>org.ozoneplatform.commons.javascript-libraries</groupId>
+        <artifactId>javascript-libraries</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
+
+	<artifactId>jquery-atmosphere</artifactId>
+	<version>1.1.0.beta2</version>
+
+	<name>Atmosphere jQuery.atmosphere.js</name>
+	<description>
+		The Atmosphere Framework is designed to make it easier to build Asynchronous Web applications that include a mix of WebSocket, Comet and 
+		RESTful behavior. The Atmosphere Framework is portable and can be deployed on any Web Server that supports the Servlet Specification 2.3.
+		
+		The jQuery.atmosphere.js client supports many features. Using the script is simple and can be summarized as:
+		1. Create a Request object
+		2. Subscribe
+		3. Received Events
+		4. Publish Messages
+	</description>
+
+	<properties>
+		<projectVersion>${project.version}</projectVersion>
+	</properties>
+
+	<packaging>pom</packaging>
+
+	<dependencies>
+        <dependency>
+            <groupId>org.ozoneplatform.commons.javascript-libraries</groupId>
+            <artifactId>require</artifactId>
+            <version>2.1.1</version>
+            <type>zip</type>
+            <classifier>js</classifier>
+        </dependency>
+        <dependency>
+            <groupId>org.ozoneplatform.commons.javascript-libraries</groupId>
+			<artifactId>jquery</artifactId>
+            <version>1.8.3</version>
+            <type>zip</type>
+            <classifier>js</classifier>
+		</dependency>
+	</dependencies>
+
+	<!-- We can't use the plugin extension for this project as it relies upon 
+		the artifact produced here to work - chicken and egg. -->
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+            	<artifactId>maven-assembly-plugin</artifactId>
+            </plugin>
+		</plugins>
+	</build>
+</project>
