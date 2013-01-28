@@ -21,10 +21,11 @@
     </properties>
 
     <modules>
-        <module>require</module>
+		<module>require</module>
         <module>handlebars</module>
         <module>jquery</module>
         <module>jquery-ui</module>
+        <module>jquery-atmosphere</module>
         <module>bootstrap</module>
         <module>backbone</module>
         <module>modernizr</module>
