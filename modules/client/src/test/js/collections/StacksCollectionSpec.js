@@ -1,12 +1,6 @@
 define(['models/StackModel', 'collections/StacksCollection'], function(StackModel, StacksCollection) {
     describe('StacksCollectionSpec', function() {
-    
-        beforeEach(function(done) {
-            
-            // Stub test initialization method;  And any custom pre-test elements here.
-            done();
-        });
-    
+      
         it('Test StacksCollection creation.', function () {
             var sc = new StacksCollection();
             expect(sc).to.be.an('object');

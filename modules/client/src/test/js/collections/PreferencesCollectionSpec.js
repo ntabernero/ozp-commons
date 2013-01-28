@@ -1,12 +1,6 @@
 define(['models/PreferenceModel', 'collections/PreferencesCollection'], function(PreferenceModel, PreferencesCollection) {
     describe('PreferencesCollectionSpec', function() {
     
-        beforeEach(function(done) {
-            
-            // Stub test initialization method;  And any custom pre-test elements here.
-            done();
-        });
-    
         it('Test PreferencesCollection creation.', function () {
             var pc = new PreferencesCollection();
             expect(pc).to.be.an('object');

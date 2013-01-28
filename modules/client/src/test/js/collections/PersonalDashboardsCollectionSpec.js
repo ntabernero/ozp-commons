@@ -122,14 +122,14 @@ define(['models/PersonalDashboardModel', 'collections/PersonalDashboardsCollecti
             expect(this.server.requests[0].url).to.eql("/ozp/rest/owf/personal-dashboards");
         });
         
-//        it("Test PesonalDashboardsCollection bulk updates", function() {
-//            this.collection.setPerson(1);
-//            this.collection.add([this.dashboard1, this.dashboard2]);
-//            this.collection.sync('update', this.collection);
-//            expect(this.server.requests.length).to.eql(1);
-//            expect(this.server.requests[0].method).to.eql("PUT");
-//            expect(this.server.requests[0].url).to.eql("/ozp/rest/owf/personal-dashboards");
-//            expect(JSON.parse(this.server.requests[0].requestBody).length).to.eql(2);
-//        });
+        it("Test PesonalDashboardsCollection bulk updates", function() {
+            this.collection.setPerson(1);
+            this.collection.add([this.dashboard1, this.dashboard2]);
+            this.collection.sync('update', this.collection);
+            expect(this.server.requests.length).to.eql(1);
+            expect(this.server.requests[0].method).to.eql("PUT");
+            expect(this.server.requests[0].url).to.eql("/ozp/rest/owf/personal-dashboards");
+            expect(JSON.parse(this.server.requests[0].requestBody).length).to.eql(2);
+        });
     });
 });

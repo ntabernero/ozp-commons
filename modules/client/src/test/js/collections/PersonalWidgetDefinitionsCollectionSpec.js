@@ -1,12 +1,6 @@
 define(['models/PersonalWidgetDefinitionModel', 'collections/PersonalWidgetDefinitionsCollection'], function(PersonalWidgetDefinitionModel, PersonalWidgetDefinitionsCollection) {
     describe('PersonalWidgetDefinitionsCollectionSpec', function() {
     
-        beforeEach(function(done) {
-            
-            // Stub test initialization method;  And any custom pre-test elements here.
-            done();
-        });
-    
         it('Test PersonalWidgetDefinitionsCollection creation.', function () {
             var wc = new PersonalWidgetDefinitionsCollection();
             expect(wc).to.be.an('object');

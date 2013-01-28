@@ -25,13 +25,13 @@ define(['models/PreferenceModel'], function(PreferenceModel) {
             expect(this.preference.get('value')).to.eql('sampleValue');
         });
     
-//        it('Test PreferencesModel test create url.', function() {
-//            this.preference.save();
-//            expect(this.server.requests.length).to.eql(1);
-//            expect(this.server.requests[0].method).to.eql("POST");
-//            expect(this.server.requests[0].url).to.eql("/ozp/rest/owf/preferences");
-//            expect(this.preference.url()).to.eql("/ozp/rest/owf/preferences");
-//        });
+        it('Test PreferencesModel test create url.', function() {
+            this.preference.save();
+            expect(this.server.requests.length).to.eql(1);
+            expect(this.server.requests[0].method).to.eql("POST");
+            expect(this.server.requests[0].url).to.eql("/ozp/rest/owf/preferences");
+            expect(this.preference.url()).to.eql("/ozp/rest/owf/preferences");
+        });
         
         it('Test PreferencesModel test fetch url', function() {
             this.preference.set('id', '1');
@@ -42,14 +42,14 @@ define(['models/PreferenceModel'], function(PreferenceModel) {
             expect(this.preference.url()).to.eql("/ozp/rest/owf/preferences/1");
         });
         
-//        it('Test PreferencesModel test update url', function() {
-//            this.preference.set('id', '1');
-//            this.preference.save();
-//            expect(this.server.requests.length).to.eql(1);
-//            expect(this.server.requests[0].method).to.eql("PUT");
-//            expect(this.server.requests[0].url).to.eql("/ozp/rest/owf/preferences/1");
-//            expect(this.preference.url()).to.eql("/ozp/rest/owf/preferences/1");
-//        });
+        it('Test PreferencesModel test update url', function() {
+            this.preference.set('id', '1');
+            this.preference.save();
+            expect(this.server.requests.length).to.eql(1);
+            expect(this.server.requests[0].method).to.eql("PUT");
+            expect(this.server.requests[0].url).to.eql("/ozp/rest/owf/preferences/1");
+            expect(this.preference.url()).to.eql("/ozp/rest/owf/preferences/1");
+        });
         
         it('Test PreferencesModel test delete url', function() {
             this.preference.set('id', 1);

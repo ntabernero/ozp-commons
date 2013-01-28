@@ -1,12 +1,6 @@
 define(['models/WidgetDefinitionModel', 'collections/WidgetDefinitionsCollection'], function(WidgetDefinitionModel, WidgetDefinitionsCollection) {
     describe('WidgetDefinitionsCollectionSpec', function() {
     
-        beforeEach(function(done) {
-            
-            // Stub test initialization method;  And any custom pre-test elements here.
-            done();
-        });
-    
         it('Test WidgetDefinitionsCollection creation.', function () {
             var wc = new WidgetDefinitionsCollection();
             expect(wc).to.be.an('object');

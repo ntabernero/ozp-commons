@@ -18,6 +18,7 @@ files = [
   // Libs required for test framework
   
   // libs
+  'target/js/json2.js',
   'target/js/jquery.js',
   'target/js/backbone.js',
   'target/js/handlebars.js',

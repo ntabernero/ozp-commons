@@ -44,13 +44,13 @@ define(['models/WidgetDefinitionModel'], function(WidgetDefinitionModel) {
             expect(this.widget.get('universalName')).to.eql('org.widgets.widgetone');
         });
     
-//        it('Test WidgetDefinitionModel test create url.', function() {
-//            this.widget.save();
-//            expect(this.server.requests.length).to.eql(1);
-//            expect(this.server.requests[0].method).to.eql("POST");
-//            expect(this.server.requests[0].url).to.eql("/widget-defs");
-//            expect(this.widget.url()).to.eql("/widget-defs");
-//        });
+        it('Test WidgetDefinitionModel test create url.', function() {
+            this.widget.save();
+            expect(this.server.requests.length).to.eql(1);
+            expect(this.server.requests[0].method).to.eql("POST");
+            expect(this.server.requests[0].url).to.eql("/widget-defs");
+            expect(this.widget.url()).to.eql("/widget-defs");
+        });
         
         it('Test WidgetDefinitionModel test fetch url', function() {
             this.widget.set('id', '1');
@@ -61,14 +61,14 @@ define(['models/WidgetDefinitionModel'], function(WidgetDefinitionModel) {
             expect(this.widget.url()).to.eql("/widget-defs/1");
         });
         
-//        it('Test WidgetDefinitionModel test update url', function() {
-//            this.widget.set('id', '1');
-//            this.widget.save();
-//            expect(this.server.requests.length).to.eql(1);
-//            expect(this.server.requests[0].method).to.eql("PUT");
-//            expect(this.server.requests[0].url).to.eql("/widget-defs/1");
-//            expect(this.widget.url()).to.eql("/widget-defs/1");
-//        });
+        it('Test WidgetDefinitionModel test update url', function() {
+            this.widget.set('id', '1');
+            this.widget.save();
+            expect(this.server.requests.length).to.eql(1);
+            expect(this.server.requests[0].method).to.eql("PUT");
+            expect(this.server.requests[0].url).to.eql("/widget-defs/1");
+            expect(this.widget.url()).to.eql("/widget-defs/1");
+        });
         
         it('Test WidgetDefinitionModel test delete url', function() {
             this.widget.set('id', 1);

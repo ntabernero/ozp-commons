@@ -73,22 +73,22 @@ define(['models/DashboardModel', 'collections/GroupDashboardsCollection'], funct
             expect(this.server.requests[0].url).to.eql("/ozp/rest/owf/group-dashboards");
         });
         
-//        it("Test GroupDashboardsCollection bulk updates", function() {
-//            this.collection.add([this.dashboard1, this.dashboard2]);
-//            this.collection.sync('update', this.collection);
-//            expect(this.server.requests.length).to.eql(1);
-//            expect(this.server.requests[0].method).to.eql("PUT");
-//            expect(this.server.requests[0].url).to.eql("/ozp/rest/owf/group-dashboards");
-//            expect(JSON.parse(this.server.requests[0].requestBody).length).to.eql(2);
-//        });
-//        
-//        it("Test GroupDashboardsCollection url used by update called on contained dashboard model", function() {
-//            this.collection.add(this.dashboard1);
-//            this.collection.at(0).save();
-//            expect(this.server.requests.length).to.eql(1);
-//            expect(this.server.requests[0].method).to.eql("PUT");
-//            expect(this.server.requests[0].url).to.eql("/ozp/rest/owf/group-dashboards/11111");
-//            expect(JSON.parse(this.server.requests[0].requestBody).name).to.eql('test dashboard 1');
-//        });
+        it("Test GroupDashboardsCollection bulk updates", function() {
+            this.collection.add([this.dashboard1, this.dashboard2]);
+            this.collection.sync('update', this.collection);
+            expect(this.server.requests.length).to.eql(1);
+            expect(this.server.requests[0].method).to.eql("PUT");
+            expect(this.server.requests[0].url).to.eql("/ozp/rest/owf/group-dashboards");
+            expect(JSON.parse(this.server.requests[0].requestBody).length).to.eql(2);
+        });
+        
+        it("Test GroupDashboardsCollection url used by update called on contained dashboard model", function() {
+            this.collection.add(this.dashboard1);
+            this.collection.at(0).save();
+            expect(this.server.requests.length).to.eql(1);
+            expect(this.server.requests[0].method).to.eql("PUT");
+            expect(this.server.requests[0].url).to.eql("/ozp/rest/owf/group-dashboards/11111");
+            expect(JSON.parse(this.server.requests[0].requestBody).name).to.eql('test dashboard 1');
+        });
     });
 });

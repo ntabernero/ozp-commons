@@ -1,12 +1,6 @@
 define(['models/PersonModel', 'collections/PeopleCollection'], function(PersonModel, PeopleCollection) {
     describe('PeopleCollectionSpec', function() {
     
-        beforeEach(function(done) {
-            
-            // Stub test initialization method;  And any custom pre-test elements here.
-            done();
-        });
-    
         it('Test PeopleCollection creation.', function () {
             var pc = new PeopleCollection();
             expect(pc).to.be.an('object');
