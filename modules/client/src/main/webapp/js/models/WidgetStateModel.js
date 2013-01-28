@@ -33,7 +33,9 @@ function(Model) {
             "background": false,
             "intentConfig": "",
             "launchData": ""
-        }
+        },
+
+        idAttribute: 'uniqueId'
     });
 
     return WidgetStateModel;
