@@ -86,13 +86,35 @@ define(['services/ZIndexManager', 'backbone'], function(ZIndexManager) {
                 zIndexManager.bringToFront(view2);
             }
 
-            var els = _.map(zIndexManager.views.toJSON(), function(model) {
-                return model.$el;
+            var els = _.map(zIndexManager.views, function(view) {
+                return view.$el;
             });
 
             expect(zIndexManager.views.length).to.equal(2);
             expect(els).to.contain(view1.$el);
             expect(els).to.contain(view2.$el);
+        });
+
+        it('removes references to all registered views when destroyed', function() {
+            zIndexManager.register(view1, {activate: true});
+            zIndexManager.register(view2, {activate: true});
+
+            zIndexManager.destroy();
+
+            expect(zIndexManager.views.length).to.equal(0);
+        });
+
+        it('does not change the zindex of views when destroyed', function() {
+            zIndexManager.register(view1, {activate: true});
+            zIndexManager.register(view2, {activate: true});
+            
+            var z1 = view1.$el.css('z-index');
+            var z2 = view2.$el.css('z-index');
+
+            zIndexManager.destroy();
+
+            expect(view1.$el.css('z-index')).to.equal(z1);
+            expect(view2.$el.css('z-index')).to.equal(z2);
         });
     });
     

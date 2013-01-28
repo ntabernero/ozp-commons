@@ -15,41 +15,6 @@ function( $, _, Backbone ) {
         DEACTIVATED = 'deactivate',
         $doc = $(document);
 
-    var ViewModel = Backbone.Model.extend((function() {
-
-        //static id Generator variable
-        var idGen = 0;
-
-        return {
-            parse: function(view) {
-                var id;
-
-                //each model needs an id.
-                //if it has a dom id, use that.
-                //Otherwise generate one and attach 
-                //it to the dom el
-                if (view.$el[0].id) {
-                    id = view.$el[0].id;
-                }
-                else {
-                    id = 'z-index-managed-' + idGen;
-                    idGen++;
-
-                    view.$el[0].id = id;
-                }
-
-                return {
-                    id: id,
-                    $el: view.$el
-                };
-            }
-        };
-    }()));
-
-    var ViewCollection = Backbone.Collection.extend({
-        model: ViewModel
-    });
-
     function ZIndexManager() {
 
         var me = this;
@@ -58,57 +23,54 @@ function( $, _, Backbone ) {
         this.front = null;
         this._className = 'z-index-managed-' + this.zBase;
 
-        //create the views collection, which contains all 
-        //managed views in increasing order by z-index
-        this.initViews();
+        this.views = [];
 
         ZBASE += INCREMENT_BY;
     }
 
-    ZIndexManager.prototype.initViews = function() {
-        var refresh = _.bind(this.refreshIndices, this);
-
-        this.views = new ViewCollection();
-
-        this.views.on({
-            add: refresh,
-            remove: refresh
-        });
-    };
-
     ZIndexManager.prototype.refreshIndices = function() {
         var index = this.zBase;
 
-        this.views.each(function(view) {
-            view.get('$el').css('z-index', index);
+        _.each(this.views, function(view) {
+            view.$el.css('z-index', index);
             index += 4;
         });
     };
 
     ZIndexManager.prototype.register = function(view, options) {
-        var me = this,
-            model = new ViewModel(view, {parse: true});
+        var me = this;
 
         view.on('destroy.' + this._className, _.bind(this.unregister, this));
 
         if (options && options.activate) {
-            this.views.push(model);
+            this.views.push(view);
         }
         else {
-            this.views.unshift(model);
+            this.views.unshift(view);
         }
+
+        this.refreshIndices();
     };
 
-    ZIndexManager.prototype.unregister = function(view) {
-        this.views.remove(new ViewModel(view, {parse: true}));
+    ZIndexManager.prototype.unregister = function(view, options) {
+        this.views = _.without(this.views, view);
         view.off('destroy.' + this._className);
+
+        if (!(options && options.silent)) this.refreshIndices();
     };
 
     ZIndexManager.prototype.bringToFront = function(view) {
-        var model = new ViewModel(view, {parse: true});
+        this.views = _.without(this.views, view);
+        this.views.push(view);
+        this.refreshIndices();
+    };
 
-        this.views.remove(model, {silent: true});
-        this.views.push(model);
+    ZIndexManager.prototype.destroy = function() {
+        var me = this;
+
+        _.each(this.views, function(view) {
+           me.unregister(view, {silent: true}); 
+        });
     };
 
     return ZIndexManager;
