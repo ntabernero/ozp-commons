@@ -19,7 +19,7 @@ require({
         backbone: '/base/target/js/backbone',
         lodash: '/base/target/js/lodash',
         handlebars: '/base/target/js/handlebars',
-        bootstrap: '/base/target/vendor/assets/javascripts'
+        bootstrap: '/base/target/js/bootstrap'
         //text: '../lib/text'
     },
     shim: {
