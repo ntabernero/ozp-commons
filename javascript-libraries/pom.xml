@@ -35,6 +35,7 @@
         <module>sinon</module>
         <module>json</module>
         <module>jquery-splitter</module>
+        <module>animate</module>
     </modules>
 
     <build>
