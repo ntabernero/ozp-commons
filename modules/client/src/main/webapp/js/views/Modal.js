@@ -82,7 +82,7 @@ function(View, $, _, Handlebars) {
                 animate: true
             }, this.options);
 
-            this.animate && this.$el.addClass('fade in');
+            this.animate && this.$el.addClass('fade');
 
             this.$el.on('hidden', function() {
                 me.trigger('hidden');

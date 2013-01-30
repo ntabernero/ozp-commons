@@ -17,7 +17,6 @@ define(['views/Modal', 'backbone', 'lodash'], function(Modal, Backbone, _) {
             expect(view.$el.hasClass('modal')).to.be.ok();
             expect(view.$el.hasClass('hide')).to.be.ok();
             expect(view.$el.hasClass('fade')).to.be.ok();
-            expect(view.$el.hasClass('in')).to.be.ok();
         });
 
         it('should add `modal hide` classes to a view if option animate is set to false.', function() {
