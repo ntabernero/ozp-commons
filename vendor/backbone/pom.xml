@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+        <groupId>org.ozoneplatform.commons.vendor</groupId>
+        <artifactId>vendor</artifactId>
+        <version>8.0.0-ALPHA-SPRINT3-SNAPSHOT</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
+
+	<artifactId>backbone</artifactId>
+	<version>0.9.10</version>
+
+	<name>Backbone Library</name>
+	<description>Backbone.js gives structure to web applications by providing models with key-value binding and custom events, collections with a rich API of enumerable functions, views with declarative event handling, and connects it all to your existing API over a RESTful JSON interface.</description>
+
+	<properties>
+		<projectVersion>${project.version}</projectVersion>
+	</properties>
+
+	<packaging>pom</packaging>
+
+	<dependencies>
+        <dependency>
+            <groupId>org.ozoneplatform.commons.vendor</groupId>
+            <artifactId>require</artifactId>
+            <version>2.1.1</version>
+            <type>zip</type>
+            <classifier>js</classifier>
+        </dependency>
+        <dependency>
+            <groupId>org.ozoneplatform.commons.vendor</groupId>
+			<artifactId>jquery</artifactId>
+            <version>1.8.3</version>
+            <type>zip</type>
+            <classifier>js</classifier>
+		</dependency>
+		<dependency>
+            <groupId>org.ozoneplatform.commons.vendor</groupId>
+			<artifactId>lodash</artifactId>
+            <version>1.0.0-rc.3</version>
+            <type>zip</type>
+            <classifier>js</classifier>
+		</dependency>
+	</dependencies>
+
+	<!-- We can't use the plugin extension for this project as it relies upon 
+		the artifact produced here to work - chicken and egg. -->
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+            	<artifactId>maven-assembly-plugin</artifactId>
+            </plugin>
+		</plugins>
+	</build>
+</project>

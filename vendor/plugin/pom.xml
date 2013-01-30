@@ -5,16 +5,16 @@
     <parent>
         <groupId>org.ozoneplatform.commons.vendor</groupId>
         <artifactId>vendor</artifactId>
-        <version>${version}</version>
+        <version>8.0.0-ALPHA-SPRINT3-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <groupId>${groupId}</groupId>
-    <artifactId>${artifactId}</artifactId>
-    <version>${version}</version>
+    <groupId>org.ozoneplatform.commons.vendor</groupId>
+    <artifactId>plugin</artifactId>
+    <version>8.0.0-ALPHA-SPRINT3-SNAPSHOT</version>
 
-    <name>JavaScript Project</name>
-    <description>JavaScript Project</description>
+    <name>Ozone :: Commons :: JavaScript Libraries :: Plugin JavaScript Library</name>
+    <description>Plugin JavaScript Library</description>
 
     <properties>
         <projectVersion>${project.version}</projectVersion>
@@ -24,78 +24,46 @@
 
     <packaging>pom</packaging>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.ozoneplatform.commons.vendor</groupId>
-            <artifactId>require</artifactId>
-            <version>2.1.1</version>
-            <type>js</type>
-        </dependency>
-        <dependency>
-            <groupId>org.ozoneplatform.commons.vendor</groupId>
-            <artifactId>jquery</artifactId>
-            <version>1.8.3</version>
-            <type>js</type>
-        </dependency>
-        <dependency>
-            <groupId>org.ozoneplatform.commons.vendor</groupId>
-            <artifactId>lodash</artifactId>
-            <version>1.0.0-rc.3</version>
-            <type>js</type>
-        </dependency>
-        <dependency>
-            <groupId>org.ozoneplatform.commons.vendor</groupId>
-            <artifactId>sinon</artifactId>
-            <version>1.5.2</version>
-            <type>js</type>
-        </dependency>
-        <dependency>
-            <groupId>org.ozoneplatform.commons.vendor</groupId>
-            <artifactId>expect</artifactId>
-            <version>0.2.0</version>
-            <type>js</type>
-        </dependency>
-
-    </dependencies>
-
     <!-- We can't use the plugin extension for this project as it relies upon
          the artifact produced here to work - chicken and egg. -->
 
     <build>
         <plugins>
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>webminifier-maven-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>minify-js</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>build-helper-maven-plugin</artifactId>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
                 <version>1.7</version>
                 <executions>
                     <execution>
-                        <id>attach-artifacts</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>attach-artifact</goal>
-                        </goals>
+                        <id>jshint</id>
+                        <phase>validate</phase>
                         <configuration>
-                            <artifacts>
-                                <artifact>
-                                    <file>target/min/classes/1.js</file>
-                                    <type>js</type>
-                                </artifact>
-                            </artifacts>
+                            <target>
+                                <taskdef name="jshint" classname="com.philmander.jshint.JsHintAntTask" classpathref="maven.plugin.classpath" />
+
+                                     <jshint dir="${project.basedir}/src/main/webapp/js" options="strict=false">
+                                    <include name="**/*.js" />
+                                    <exclude name="**/*.min.js" />
+                                    <report type="jslint-xml" destFile="${project.build.directory}/jslint-reports/jslint.xml" />
+                                </jshint>
+                            </target>
                         </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
                     </execution>
                 </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.philmander.jshint</groupId>
+                        <artifactId>ant-jshint</artifactId>
+                        <version>0.3.3-SNAPSHOT</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
             </plugin>
         </plugins>
     </build>
@@ -127,7 +95,7 @@
                                             <artifactId>jquery</artifactId>
                                             <version>1.8.3</version>
                                             <type>zip</type>
-                                            <classifier>jquery</classifier>
+                                            <classifier>js</classifier>
                                             <overWrite>true</overWrite>
                                             <outputDirectory>${project.build.directory}</outputDirectory>
                                         </artifactItem>
@@ -136,7 +104,7 @@
                                             <artifactId>require</artifactId>
                                             <version>2.1.1</version>
                                             <type>zip</type>
-                                            <classifier>require</classifier>
+                                            <classifier>js</classifier>
                                             <overWrite>true</overWrite>
                                             <outputDirectory>${project.build.directory}</outputDirectory>
                                         </artifactItem>
@@ -145,7 +113,7 @@
                                             <artifactId>lodash</artifactId>
                                             <version>1.0.0-rc.3</version>
                                             <type>zip</type>
-                                            <classifier>lodash</classifier>
+                                            <classifier>js</classifier>
                                             <overWrite>true</overWrite>
                                             <outputDirectory>${project.build.directory}</outputDirectory>
                                         </artifactItem>
@@ -154,7 +122,7 @@
                                             <artifactId>sinon</artifactId>
                                             <version>1.5.2</version>
                                             <type>zip</type>
-                                            <classifier>sinon</classifier>
+                                            <classifier>js</classifier>
                                             <overWrite>true</overWrite>
                                             <outputDirectory>${project.build.directory}</outputDirectory>
                                         </artifactItem>
@@ -163,7 +131,16 @@
                                             <artifactId>expect</artifactId>
                                             <version>0.2.0</version>
                                             <type>zip</type>
-                                            <classifier>expect</classifier>
+                                            <classifier>js</classifier>
+                                            <overWrite>true</overWrite>
+                                            <outputDirectory>${project.build.directory}</outputDirectory>
+                                        </artifactItem>
+                                        <artifactItem>
+                                            <groupId>org.ozoneplatform.commons.vendor</groupId>
+                                            <artifactId>mocha</artifactId>
+                                            <version>1.8.1</version>
+                                            <type>zip</type>
+                                            <classifier>js</classifier>
                                             <overWrite>true</overWrite>
                                             <outputDirectory>${project.build.directory}</outputDirectory>
                                         </artifactItem>
@@ -201,6 +178,5 @@
             </build>
         </profile>
     </profiles>
-
 
 </project>

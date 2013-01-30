@@ -29,7 +29,7 @@
     <modules>
         <module>bundles</module>
         <module>maven</module>
-        <module>javascript-libraries</module>
+        <module>vendor</module>
         <module>modules</module>
     </modules>
 
