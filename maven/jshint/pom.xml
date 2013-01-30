@@ -10,7 +10,7 @@
 
 	<groupId>com.philmander.jshint</groupId>
 	<artifactId>ant-jshint</artifactId>
-	<version>8.0.0-ALPHA-SPRINT3-SNAPSHOT</version>
+    <version>0.3.3</version>
 	<name>ant-jshint</name>
 	<packaging>jar</packaging>
 	<description>Ant task for jshint</description>
@@ -116,7 +116,7 @@
 			<plugin>
 				<artifactId>maven-assembly-plugin</artifactId>
 				<configuration>
-					<finalName>${artifactId}-${project.version}-deps</finalName>
+					<finalName>${project.artifactId}-${project.version}-deps</finalName>
 					<appendAssemblyId>false</appendAssemblyId>
 					<descriptorRefs>
 						<descriptorRef>jar-with-dependencies</descriptorRef>
