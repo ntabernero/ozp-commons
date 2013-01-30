@@ -34,7 +34,6 @@
         <module>expect</module>
         <module>sinon</module>
         <module>json</module>
-        <module>hScrollBtns</module>
     </modules>
 
     <build>
