@@ -13,7 +13,7 @@
     <artifactId>require</artifactId>
     <version>2.1.1</version>
 
-    <name>Ozone :: Commons :: JavaScript Libraries :: Require JavaScript AMD Library</name>
+    <name>Ozone :: Commons :: Vendor Libraries :: Require JavaScript AMD Library</name>
     <description>Require JavaScript AMD Library</description>
 
     <properties>

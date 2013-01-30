@@ -10,7 +10,7 @@ basePath = '';
 files = [
   MOCHA,
   MOCHA_ADAPTER,
-  'target/patches/mocha-patch.js',
+  'target/libs/patches/mocha-patch.js',
   'target/libs/js/lodash.js',
   REQUIRE,
   REQUIRE_ADAPTER,

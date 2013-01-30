@@ -12,7 +12,7 @@
     <groupId>org.ozoneplatform.commons.vendor</groupId>
     <artifactId>vendor</artifactId>
     <version>8.0.0-ALPHA-SPRINT3-SNAPSHOT</version>
-    <name> OzonePlatform :: Commons :: JavaScript Libraries :: Module</name>
+    <name> OzonePlatform :: Commons :: Vendor Libraries :: Module</name>
     <packaging>pom</packaging>
 
     <properties>
