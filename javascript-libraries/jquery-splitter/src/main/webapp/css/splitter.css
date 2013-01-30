@@ -1,0 +1,130 @@
+/*!
+
+Split Pane v0.2
+
+Copyright (c) 2012 Simon Hagström
+
+Released under the MIT license
+https://raw.github.com/shagstrom/split-pane/master/LICENSE
+
+*/
+.box {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.box > .divider {
+    background: #aaa;
+}
+
+.box > .divider.horizontal-divider {
+    height: 5px;
+}
+
+.box > .divider.vertical-divider {
+    width: 5px;
+}
+
+.horizontal-percent > .one,
+.fixed-bottom > .one {
+    margin-bottom: 5px;
+}
+
+.fixed-top > .two {
+    margin-top: 5px;
+}
+
+.fixed-right > .one,
+.vertical-percent > .one  {
+    margin-right: 5px;
+}
+
+.fixed-left > .two {
+    margin-left: 5px;
+}
+
+.box.fixed-top > .pane,
+.box.fixed-bottom > .pane,
+.box.horizontal-percent > .pane {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    overflow: auto;
+    top: auto;
+    bottom: 0;
+    z-index: 1;
+}
+
+.box.fixed-top > .pane:first-child,
+.box.fixed-bottom > .pane:first-child,
+.box.horizontal-percent > .pane:first-child {
+    top: 0;
+    bottom: auto;
+}
+
+.box.fixed-top > .divider,
+.box.fixed-bottom > .divider,
+.box.horizontal-percent > .divider {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    cursor: ns-resize;
+    cursor: n-resize\9;
+    z-index: 2;
+}
+
+.box.fixed-left > .pane,
+.box.fixed-right > .pane,
+.box.vertical-percent > .pane {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    overflow: auto;
+    left: auto;
+    right: 0;
+    z-index: 1;
+}
+
+.box.fixed-left > .pane:first-child,
+.box.fixed-right > .pane:first-child,
+.box.vertical-percent > .pane:first-child {
+    left: 0;
+    right: auto;
+}
+
+.box.fixed-left > .divider,
+.box.fixed-right > .divider,
+.box.vertical-percent > .divider {
+    position: absolute;
+    height: 100%;
+    top: 0;
+    cursor: ew-resize;
+    cursor: w-resize\9;
+    z-index: 2;
+}
+
+.resize-shim {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10000;
+    display: none;
+}
+
+.box.fixed-left > .resize-shim,
+.box.fixed-right > .resize-shim,
+.box.vertical-percent > .resize-shim {
+    cursor: ew-resize;
+    cursor: w-resize\9;
+}
+
+.box.fixed-top > .resize-shim,
+.box.fixed-bottom > .resize-shim,
+.box.horizontal-percent > .resize-shim {
+    cursor: ns-resize;
+    cursor: n-resize\9;
+}
