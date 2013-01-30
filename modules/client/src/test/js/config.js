@@ -30,12 +30,12 @@ require({
     // !! Testacular serves files from '/base'
     baseUrl: '/base/src/main/webapp/js',
     paths: {
-        require: '../target/js/require',
-        jquery: '/base/target/js/jquery',
-        backbone: '/base/target/js/backbone',
-        lodash: '/base/target/js/lodash',
-        handlebars: '/base/target/js/handlebars',
-        bootstrap: '/base/target/js/bootstrap'
+        require: '../target/libs/js/require',
+        jquery: '/base/target/libs/js/jquery',
+        backbone: '/base/target/libs/js/backbone',
+        lodash: '/base/target/libs/js/lodash',
+        handlebars: '/base/target/libs/js/handlebars',
+        bootstrap: '/base/target/libs/js/bootstrap'
         //text: '../lib/text'
     },
     shim: {

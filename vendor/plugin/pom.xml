@@ -97,7 +97,7 @@
                                             <type>zip</type>
                                             <classifier>js</classifier>
                                             <overWrite>true</overWrite>
-                                            <outputDirectory>${project.build.directory}</outputDirectory>
+                                            <outputDirectory>${project.build.directory}/libs</outputDirectory>
                                         </artifactItem>
                                         <artifactItem>
                                             <groupId>org.ozoneplatform.commons.vendor</groupId>
@@ -106,7 +106,7 @@
                                             <type>zip</type>
                                             <classifier>js</classifier>
                                             <overWrite>true</overWrite>
-                                            <outputDirectory>${project.build.directory}</outputDirectory>
+                                            <outputDirectory>${project.build.directory}/libs</outputDirectory>
                                         </artifactItem>
                                         <artifactItem>
                                             <groupId>org.ozoneplatform.commons.vendor</groupId>
@@ -115,7 +115,7 @@
                                             <type>zip</type>
                                             <classifier>js</classifier>
                                             <overWrite>true</overWrite>
-                                            <outputDirectory>${project.build.directory}</outputDirectory>
+                                            <outputDirectory>${project.build.directory}/libs</outputDirectory>
                                         </artifactItem>
                                         <artifactItem>
                                             <groupId>org.ozoneplatform.commons.vendor</groupId>
@@ -124,7 +124,7 @@
                                             <type>zip</type>
                                             <classifier>js</classifier>
                                             <overWrite>true</overWrite>
-                                            <outputDirectory>${project.build.directory}</outputDirectory>
+                                            <outputDirectory>${project.build.directory}/libs</outputDirectory>
                                         </artifactItem>
                                         <artifactItem>
                                             <groupId>org.ozoneplatform.commons.vendor</groupId>
@@ -133,7 +133,7 @@
                                             <type>zip</type>
                                             <classifier>js</classifier>
                                             <overWrite>true</overWrite>
-                                            <outputDirectory>${project.build.directory}</outputDirectory>
+                                            <outputDirectory>${project.build.directory}/libs</outputDirectory>
                                         </artifactItem>
                                         <artifactItem>
                                             <groupId>org.ozoneplatform.commons.vendor</groupId>
@@ -142,7 +142,7 @@
                                             <type>zip</type>
                                             <classifier>js</classifier>
                                             <overWrite>true</overWrite>
-                                            <outputDirectory>${project.build.directory}</outputDirectory>
+                                            <outputDirectory>${project.build.directory}/libs</outputDirectory>
                                         </artifactItem>
                                     </artifactItems>
                                     

@@ -11,10 +11,10 @@ files = [
   MOCHA,
   MOCHA_ADAPTER,
   "target/patches/mocha-patch.js",
-  "target/js/expect.js",
-  "target/js/sinon.js",
-  "target/js/require.js",
-  "target/js/jquery.js",
+  "target/libs/js/expect.js",
+  "target/libs/js/sinon.js",
+  "target/libs/js/require.js",
+  "target/libs/js/jquery.js",
   "src/main/webapp/js/plugin.js",
   "src/test/js/*.js"
 ];

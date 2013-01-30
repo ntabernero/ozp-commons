@@ -11,25 +11,25 @@ files = [
   MOCHA,
   MOCHA_ADAPTER,
   'target/patches/mocha-patch.js',
-  'target/js/lodash.js',
+  'target/libs/js/lodash.js',
   REQUIRE,
   REQUIRE_ADAPTER,
   
   // Libs required for test framework
   
   // libs
-  'target/js/json2.js',
-  'target/js/jquery.js',
-  'target/js/backbone.js',
-  'target/js/handlebars.js',
-  'target/js/expect.js',
-  'target/js/sinon.js',
+  'target/libs/js/json2.js',
+  'target/libs/js/jquery.js',
+  'target/libs/js/backbone.js',
+  'target/libs/js/handlebars.js',
+  'target/libs/js/expect.js',
+  'target/libs/js/sinon.js',
   
   // Include the script to configure and trigger require.
   'src/test/js/config.js',
   
   // Include the src and test files on the test server but not as script tags.
-  {pattern: 'target/js/bootstrap/*.js', included: false},
+  {pattern: 'target/libs/js/bootstrap/*.js', included: false},
   {pattern: 'src/main/webapp/js/**/*.js', included: false},
   {pattern: 'src/test/js/**/*.js', included: false}
 ];
