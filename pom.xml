@@ -6,13 +6,13 @@
     <parent>
         <groupId>org.ozoneplatform</groupId>
         <artifactId>ozoneplatform</artifactId>
-        <version>8.0.0-ALPHA-SPRINT2</version>
+        <version>8.0.0-ALPHA-SPRINT3-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
     <groupId>org.ozoneplatform.commons</groupId>
     <artifactId>commons</artifactId>
-    <version>8.0.0-ALPHA-SPRINT2</version>
+    <version>8.0.0-ALPHA-SPRINT3-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>Commons Parent Project</name>
     <description>see README.md</description>

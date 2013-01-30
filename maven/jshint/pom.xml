@@ -4,13 +4,13 @@
     <parent>
         <groupId>org.ozoneplatform.commons.maven</groupId>
         <artifactId>maven</artifactId>
-        <version>8.0.0-ALPHA-SPRINT2</version>
+        <version>8.0.0-ALPHA-SPRINT3-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
 	<groupId>com.philmander.jshint</groupId>
 	<artifactId>ant-jshint</artifactId>
-	<version>8.0.0-ALPHA-SPRINT2</version>
+	<version>8.0.0-ALPHA-SPRINT3-SNAPSHOT</version>
 	<name>ant-jshint</name>
 	<packaging>jar</packaging>
 	<description>Ant task for jshint</description>
