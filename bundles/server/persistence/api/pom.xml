@@ -9,9 +9,10 @@
 
     <groupId>org.ozoneplatform.commons.bundles.server</groupId>
     <artifactId>persistence-support-api</artifactId>
+    <version>8.0.0-ALPHA-SPRINT3-SNAPSHOT</version>
+
     <name>Basic Persistence Support Layer</name>
     <description>This layer is used by the persistence API to avoid reuse. Defines basic repository pattern to be composed in domain specific repositories</description>
-    <version>1.0.0-SNAPSHOT</version>
 
     <dependencies>
         <dependency>
