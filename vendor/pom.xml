@@ -36,6 +36,7 @@
         <module>json</module>
         <module>plugin</module>
         <module>jquery-splitter</module>
+        <module>jeditable</module>
         <module>animate</module>
     </modules>
 
