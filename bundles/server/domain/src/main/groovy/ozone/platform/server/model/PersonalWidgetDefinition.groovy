@@ -20,7 +20,6 @@ class PersonalWidgetDefinition extends Entity {
 
     String displayName
     int position //Changed from pwdPosition
-    boolean assignedByGroup = false //Changed from groupWidget
     boolean assignedToPerson = false //Changed from personWidget
     boolean favorite = false
     boolean launchDisabled = false //Changed from disabled
@@ -29,6 +28,8 @@ class PersonalWidgetDefinition extends Entity {
     final Person person
     final WidgetDefinition widgetDefinition
 
+    final Set<Group> groups
+    final Set<Stack> stacks
     final Set<String> tags
 
     protected PersonalWidgetDefinition(Person person, WidgetDefinition widgetDefinition) {

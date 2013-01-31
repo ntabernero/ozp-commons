@@ -26,7 +26,6 @@ class WidgetDefinition extends Entity {
     /*
      * Required
      */
-    final String guid //Changed from widgetGuid. final bc GUIDs never change
     String displayName
     String widgetUrl
     String imageUrlLarge
@@ -53,6 +52,7 @@ class WidgetDefinition extends Entity {
     /*
      * Has Many
      */
+    final Set<WidgetDefinition> requiredWidgets //Widgets required by this widget
     final Set<PersonalWidgetDefinition> personalWidgetDefinitions
     final Set<String> tags
     final Set<Intent> sendableIntents
@@ -67,11 +67,7 @@ class WidgetDefinition extends Entity {
         return new WidgetDefinitionBuilder()
     }
 
-    protected WidgetDefinition(String guid, String displayName, String widgetUrl, String imageUrlSmall, String imageUrlLarge, String widgetType) {
-
-        assert isNotBlank(guid), "GUID is required"
-        this.guid = guid
-
+    protected WidgetDefinition(String displayName, String widgetUrl, String imageUrlSmall, String imageUrlLarge, String widgetType) {
         setDisplayName(displayName)
         setWidgetUrl(widgetUrl)
         setImageUrlSmall(imageUrlSmall)

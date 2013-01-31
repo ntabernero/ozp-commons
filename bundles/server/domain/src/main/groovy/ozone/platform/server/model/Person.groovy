@@ -33,19 +33,20 @@ class Person extends Entity {
     Calendar lastLogin
     Calendar prevLogin //Previous lastLogin date
 
-    final Set<PersonalDashboard> dashboards
+    final Set<Role> authorities
     final Set<Group> groups
+    final Set<PersonalDashboard> dashboards
     final Set<PersonalWidgetDefinition> personalWidgetDefinitions
     final Set<Preference> preferences
-    final Set<Role> authorities
+    final Set<Stack> stacks
 
     Person(String username, String fullName) {
         setUsername(username)
         setFullName(fullName)
     }
 
-    Dashboard createPersonalDashboard(String name, String guid, int position) {
-        def dashboard = new PersonalDashboard(name, guid, position, this)
+    Dashboard createPersonalDashboard(String name, int position) {
+        def dashboard = new PersonalDashboard(name, position, this)
         dashboards.add(dashboard)
 
         return dashboard
@@ -81,15 +82,15 @@ class Person extends Entity {
     }
 
     // Keep login setters protected since updates should be made through recordLogin
-    protected void setLastLogin(Calendar cal) { lastLogin = cal }
-    protected void setpreviousLogin(Calendar cal) { prevLogin = cal }
+    protected void setLastLogin(Calendar cal) { this.lastLogin = cal }
+    protected void setpreviousLogin(Calendar cal) { this.prevLogin = cal }
 
     /**
      * Update both login tracking properties
      * Sets prevLogin to lastLogin and then sets lastLogin to now
      */
     void recordLogin() {
-        prevLogin = lastLogin
-        lastLogin = Calendar.getInstance();
+        this.prevLogin = this.lastLogin
+        this.lastLogin = Calendar.getInstance();
     }
 }

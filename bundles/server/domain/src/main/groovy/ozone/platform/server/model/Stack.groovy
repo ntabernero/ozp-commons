@@ -18,16 +18,26 @@ package ozone.platform.server.model
 
 import static ozone.platform.server.model.ValidationHelpers.isNotBlank
 
-class Stack extends AbstractGroup {
+class Stack extends Entity {
 
+    String name
     String urlName //Changed from stackContext
     String descriptorUrl
+    String description = ''
 
+    final Set<GroupDashboard> dashboards
     final Set<Group> groups
+    final Set<Person> people
+    final Set<WidgetDefinition> widgetDefinitions
 
     Stack(String name, String urlName) {
-        super(name)
+        setName(name)
         setUrlName(urlName)
+    }
+
+    void setName(String name) {
+        assert isNotBlank(name), "Name is required"
+        this.name = name
     }
 
     void setUrlName(String urlName) {

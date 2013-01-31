@@ -17,10 +17,26 @@
 package ozone.platform.server.model
 
 class GroupDashboard extends Dashboard {
+
+    final String author
+
+    final Calendar created
+    Calendar lastModified
     
     final Set<Group> groups
+    final Set<PersonalDashboard> personalDashboards //Personal dashboards copied from this
 
-    GroupDashboard(String name, String guid, int position) {
-        super(name, guid, position)
+    GroupDashboard(String name, int position, String author) {
+        super(name, position)
+
+        this.author = author
+        this.created = Calendar.getInstance();
+    }
+
+    // Keep lastModified setter protected since updates should be made through modified
+    protected void setLastLogin(Calendar cal) { this.lastLogin = cal }
+
+    void modified() {
+        this.lastModified = Calendar.getInstance();
     }
 }
