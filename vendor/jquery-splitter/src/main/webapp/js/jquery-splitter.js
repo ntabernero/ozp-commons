@@ -40,6 +40,7 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
         EVENTS = {
             DRAG_START: 'dragstart',
             DRAG_END: 'dragend',
+            LAYOUT_CHANGE: 'layoutChange',
             RESIZE: 'resize'
         },
         $document = $(document),
@@ -245,7 +246,7 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
         $document
             .on('mousemove', mousemove)
             .one('mouseup', function(event) {
-                $this.trigger(EVENTS.DRAG_END);
+                $this.trigger(EVENTS.DRAG_END).trigger(EVENTS.LAYOUT_CHANGE);
                 mousemove(event, true);
 
                 // cleanup
