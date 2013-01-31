@@ -28,14 +28,24 @@ class Group extends Entity {
     final Set<Person> people
     final Set<Stack> stacks
     final Set<WidgetDefinition> widgetDefinitions
+    final Set<Preference> preferences
 
     Group(String name) {
         setName(name)
         this.displayName = name
     }
 
-    void setName(String name) {
-        assert isNotBlank(name), "Name is required"
-        this.name = name
+    Preference createPreference(String name, String namespace, String value) {
+        def preference = new Preference(name, namespace, value)
+
+        // Replace old preference with new value object
+        removePreference(preference)
+        preferences.add(preference)
+
+        return preference
+    }
+
+    void removePreference(Preference preference) {
+        preferences.remove(preference)
     }
 }

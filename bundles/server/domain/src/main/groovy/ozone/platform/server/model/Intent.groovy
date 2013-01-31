@@ -18,23 +18,32 @@ package ozone.platform.server.model
 
 import static ozone.platform.server.model.ValidationHelpers.isNotBlank
 
-class Intent extends Entity {
+class Intent {
 
-    String action
-    String dataType
+    final String action
+    final String dataType
 
     Intent(String action, String dataType) {
-        setAction(action)
-        setDataType(dataType)
-    }
-
-    void setAction(String action) {
         assert isNotBlank(action), "Action is required"
+        assert isNotBlank(dataType), "DataType is required"
+
         this.action = action
+        this.dataType = dataType
     }
 
-    void setDataType(String dataType) {
-        assert isNotBlank(dataType), "DataType is required"
-        this.dataType = dataType
+    boolean equals(o) {
+        if (this.is(o)) return true
+        if (getClass() != o.class) return false
+
+        Intent intent = (Intent) o
+
+        return action == intent.action && dataType == intent.dataType
+    }
+
+    int hashCode() {
+        int result
+        result = action.hashCode()
+        result = 31 * result + dataType.hashCode()
+        return result
     }
 }

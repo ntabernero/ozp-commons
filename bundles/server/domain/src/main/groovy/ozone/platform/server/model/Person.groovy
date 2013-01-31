@@ -60,10 +60,17 @@ class Person extends Entity {
     }
 
     Preference createPreference(String name, String namespace, String value) {
-        def preference = new Preference(name, namespace, value, this)
+        def preference = new Preference(name, namespace, value)
+
+        // Replace old preference with new value object
+        removePreference(preference)
         preferences.add(preference)
 
         return preference
+    }
+
+    void removePreference(Preference preference) {
+        preferences.remove(preference)
     }
 
     void setUsername(String username) {
