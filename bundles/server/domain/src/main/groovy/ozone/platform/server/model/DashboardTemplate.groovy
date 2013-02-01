@@ -43,7 +43,7 @@ class DashboardTemplate extends Dashboard {
     }
 
     // Keep lastModified setter protected since updates should be made through modified
-    protected void setLastLogin(Calendar cal) { this.lastLogin = cal }
+    protected void setLastModified(Calendar cal) { this.lastModified = cal }
 
     void modified() {
         this.lastModified = Calendar.getInstance();
