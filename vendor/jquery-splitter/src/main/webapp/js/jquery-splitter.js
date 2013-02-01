@@ -1,6 +1,6 @@
 /*!
 
-Split Pane v0.2
+Split Pane v0.3
 
 Copyright (c) 2012 Simon Hagström
 
@@ -140,6 +140,9 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
         },
         methods = {
             init: function(options) {
+                // destroy if existing
+                methods['destroy'].call(this);
+
                 var $boxes = this,
                     $firstPane = $boxes.children('.pane:first').addClass('one'),
                     $lastPane = $boxes.children('.pane:last').addClass('two'),
@@ -172,15 +175,24 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
             },
             destroy: function () {
                 var $boxes = this;
+                if(!$boxes.data('splitter')) {
+                    return;
+                }
+
                 $boxes
+                    .off('_splitpaneparentresize')
+                    .removeData('splitter').removeData('_splitpaneparentresizeHandler')
                     .removeClass(allClasses)
                     .children('.divider').off('.splitter').remove();
+
+                $boxes.children('.resize-shim').remove();
+                $boxes.children('.pane').addBack().removeAttr('style');
 
                 return this;
             }
         };
     
-    $.fn.splitPane = function( method ) {
+    $.fn.splitter = function( method ) {
         if ( methods[method] ) {
             return methods[method].apply( this, slice.call( arguments, 1 ) );
         }
@@ -218,7 +230,7 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
         },
         teardown: function(namespaces) {
             var parent = $(this).parent().closest('.box ')[0] || window;
-            $(parent).unbind('resize', $(this).data(SPLITPANERESIZE_HANDLER));
+            $(parent).off('resize', $(this).data(SPLITPANERESIZE_HANDLER));
             $(this).removeData(SPLITPANERESIZE_HANDLER);
         }
     };
@@ -330,14 +342,14 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
                 setBottom($box, $firstComponent, $divider, $lastComponent, bottom + 'px', flush);
             };
         } else if ($box.is('.horizontal-percent')) {
-            var splitPaneHeight = $box.height(),
+            var boxHeight = $box.height(),
                 lastComponentMinHeight = minHeight($lastComponent),
-                maxLastComponentHeight = splitPaneHeight - minHeight($firstComponent) - $divider.height(),
+                maxLastComponentHeight = boxHeight - minHeight($firstComponent) - $divider.height(),
                 bottomOffset = $lastComponent.height() + pageY;
             return function(event, flush) {
                 event.preventDefault();
                 var bottom = Math.min(Math.max(lastComponentMinHeight, bottomOffset - event.pageY), maxLastComponentHeight);
-                setBottom($box, $firstComponent, $divider, $lastComponent, (bottom / splitPaneHeight * 100) + '%', flush);
+                setBottom($box, $firstComponent, $divider, $lastComponent, (bottom / boxHeight * 100) + '%', flush);
             };
         } else if ($box.is('.fixed-left')) {
             var firstComponentMinWidth = minWidth($firstComponent),
@@ -358,14 +370,14 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
                 setRight($box, $firstComponent, $divider, $lastComponent, right + 'px', flush);
             };
         } else if ($box.is('.vertical-percent')) {
-            var splitPaneWidth = $box.width(),
+            var boxWidth = $box.width(),
                 lastComponentMinWidth = minWidth($lastComponent),
-                maxLastComponentWidth = splitPaneWidth - minWidth($firstComponent) - $divider.width(),
+                maxLastComponentWidth = boxWidth - minWidth($firstComponent) - $divider.width(),
                 rightOffset = $lastComponent.width() + pageX;
             return function(event, flush) {
                 event.preventDefault();
                 var right = Math.min(Math.max(lastComponentMinWidth, rightOffset - event.pageX), maxLastComponentWidth);
-                setRight($box, $firstComponent, $divider, $lastComponent, (right / splitPaneWidth * 100) + '%', flush);
+                setRight($box, $firstComponent, $divider, $lastComponent, (right / boxWidth * 100) + '%', flush);
             };
         }
     }
