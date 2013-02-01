@@ -68,7 +68,7 @@ class WidgetDefinition extends Entity {
         return new WidgetDefinitionBuilder()
     }
 
-    protected WidgetDefinition(String displayName, String widgetUrl, String imageUrlSmall, String imageUrlLarge, String widgetType) {
+    public WidgetDefinition(String displayName, String widgetUrl, String imageUrlSmall, String imageUrlLarge, String widgetType) {
         this.displayName = displayName
         this.widgetUrl = widgetUrl
         this.imageUrlSmall = imageUrlSmall
