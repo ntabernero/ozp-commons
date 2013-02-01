@@ -26,4 +26,16 @@ package ozone.platform.server.model
 abstract class EntityWithId<T extends Comparable> implements Serializable {
 
     T id
+
+    /**
+     * Validates all properties of an Entity and returns a list of ValidationError's
+     * for each invalid property
+     *
+     * Valid entities return an empty list of ValidationErrors
+     * @return
+     */
+    List<ValidationError> validate() {
+        def errors = []
+        return errors as ValidationError[]
+    }
 }

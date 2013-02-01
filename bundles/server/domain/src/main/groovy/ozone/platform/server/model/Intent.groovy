@@ -16,7 +16,7 @@
 
 package ozone.platform.server.model
 
-import static ozone.platform.server.model.ValidationHelpers.isNotBlank
+import static org.ozoneplatform.commons.server.domain.validation.ValidationHelpers.isNotBlank
 
 class Intent {
 

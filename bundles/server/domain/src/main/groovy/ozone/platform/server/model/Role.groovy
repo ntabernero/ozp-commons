@@ -15,20 +15,21 @@
 */
 
 package ozone.platform.server.model
-
-import static ozone.platform.server.model.ValidationHelpers.isNotBlank
+import org.ozoneplatform.commons.server.domain.validation.EntityValidationAnnotationProcessor
+import org.ozoneplatform.commons.server.domain.validation.NotBlank
 
 class Role extends Entity {
 
+    @NotBlank
     String authority
     String description
 
     Role(String authority) {
-        setAuthority(authority)
+        this.authority = authority
     }
 
-    void setAuthority(String authority) {
-        assert isNotBlank(authority), "Authority is required"
-        this.authority = authority
+    @Override
+    List<ValidationError> validate() {
+        EntityValidationAnnotationProcessor.instance.validate(this)
     }
 }

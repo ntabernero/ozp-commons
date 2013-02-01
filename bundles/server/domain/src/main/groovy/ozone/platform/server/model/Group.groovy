@@ -15,9 +15,12 @@
 */
 
 package ozone.platform.server.model
+import org.ozoneplatform.commons.server.domain.validation.EntityValidationAnnotationProcessor
+import org.ozoneplatform.commons.server.domain.validation.NotBlank
 
 class Group extends Entity {
 
+    @NotBlank
     String name
     String displayName
     String description = ''
@@ -31,7 +34,7 @@ class Group extends Entity {
     final Set<Preference> preferences
 
     Group(String name) {
-        setName(name)
+        this.name = name
         this.displayName = name
     }
 
@@ -47,5 +50,10 @@ class Group extends Entity {
 
     void removePreference(Preference preference) {
         preferences.remove(preference)
+    }
+
+    @Override
+    List<ValidationError> validate() {
+        EntityValidationAnnotationProcessor.instance.validate(this)
     }
 }

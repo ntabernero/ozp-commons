@@ -16,15 +16,16 @@
 
 package ozone.platform.server.model
 
-import static ozone.platform.server.model.ValidationHelpers.isNotBlank
+import org.ozoneplatform.commons.server.domain.validation.EntityValidationAnnotationProcessor
+import org.ozoneplatform.commons.server.domain.validation.NotBlank
 
 class Person extends Entity {
 
     /*
      * Required
      */
-    String username
-    String fullName //Changed from userRealName
+    @NotBlank String username
+    @NotBlank String fullName //Changed from userRealName
 
     /*
      * Optional
@@ -41,8 +42,8 @@ class Person extends Entity {
     final Set<Stack> stacks
 
     Person(String username, String fullName) {
-        setUsername(username)
-        setFullName(fullName)
+        this.username = username
+        this.fullName = fullName
     }
 
     Dashboard createPersonalDashboard(String name, int position) {
@@ -73,21 +74,6 @@ class Person extends Entity {
         preferences.remove(preference)
     }
 
-    void setUsername(String username) {
-        assert isNotBlank(username), "Username is required"
-        this.username = username
-    }
-
-    void setFullName(String fullName) {
-        assert isNotBlank(fullName), "Full name is required"
-        this.fullName = fullName
-    }
-
-    void setEmail(String email) {
-        assert email ==~ /^(\w+)([\-+.][\w]+)*@(\w[\-\w]*\.){1,5}([A-Za-z]){2,6}$/, "${email} is not a valid email"
-        this.email = email
-    }
-
     // Keep login setters protected since updates should be made through recordLogin
     protected void setLastLogin(Calendar cal) { this.lastLogin = cal }
     protected void setpreviousLogin(Calendar cal) { this.prevLogin = cal }
@@ -99,5 +85,17 @@ class Person extends Entity {
     void recordLogin() {
         this.prevLogin = this.lastLogin
         this.lastLogin = Calendar.getInstance();
+    }
+
+    @Override
+    List<ValidationError> validate() {
+        def errors = EntityValidationAnnotationProcessor.instance.validate(this)
+
+        // Validate email address
+        if(email && !(email ==~ /^(\w+)([\-+.][\w]+)*@(\w[\-\w]*\.){1,5}([A-Za-z]){2,6}$/)) {
+            errors << new ValidationError('email', "${email} is not a valid email address")
+        }
+
+        errors
     }
 }

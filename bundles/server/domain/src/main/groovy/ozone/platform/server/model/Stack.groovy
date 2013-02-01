@@ -16,12 +16,20 @@
 
 package ozone.platform.server.model
 
-import static ozone.platform.server.model.ValidationHelpers.isNotBlank
+import org.ozoneplatform.commons.server.domain.validation.EntityValidationAnnotationProcessor
+import org.ozoneplatform.commons.server.domain.validation.NotBlank
 
 class Stack extends Entity {
 
-    String name
-    String urlName //Changed from stackContext
+    /**
+     * Required
+     */
+    @NotBlank String name
+    @NotBlank String urlName //Changed from stackContext
+
+    /**
+     * Optional
+     */
     String descriptorUrl
     String description = ''
 
@@ -31,17 +39,12 @@ class Stack extends Entity {
     final Set<WidgetDefinition> widgetDefinitions
 
     Stack(String name, String urlName) {
-        setName(name)
-        setUrlName(urlName)
-    }
-
-    void setName(String name) {
-        assert isNotBlank(name), "Name is required"
         this.name = name
+        this.urlName = urlName
     }
 
-    void setUrlName(String urlName) {
-        assert isNotBlank(urlName), "URL name is required"
-        this.urlName = urlName
+    @Override
+    List<ValidationError> validate() {
+        EntityValidationAnnotationProcessor.instance.validate(this)
     }
 }

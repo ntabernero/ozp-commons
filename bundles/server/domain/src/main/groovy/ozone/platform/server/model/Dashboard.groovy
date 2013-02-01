@@ -16,10 +16,11 @@
 
 package ozone.platform.server.model
 
-import static ozone.platform.server.model.ValidationHelpers.isNotBlank
+import org.ozoneplatform.commons.server.domain.validation.*
 
 abstract class Dashboard extends Entity {
 
+    @NotBlank
     String name
     String description = ''
     String layoutConfig = ''
@@ -27,12 +28,12 @@ abstract class Dashboard extends Entity {
     boolean locked = false
 
     protected Dashboard(String name, int position) {
-        setName(name)
+        this.name = name
         this.position = position
     }
 
-    void setName(String name) {
-        assert isNotBlank(name), "Name is required"
-        this.name = name
+    @Override
+    List<ValidationError> validate() {
+        EntityValidationAnnotationProcessor.instance.validate(this)
     }
 }

@@ -22,6 +22,7 @@ package ozone.platform.server.model
  */
 class DashboardTemplate extends Dashboard {
 
+    // Immutable
     final String author
 
     final Calendar created

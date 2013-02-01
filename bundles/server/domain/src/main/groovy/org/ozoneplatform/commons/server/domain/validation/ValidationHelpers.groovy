@@ -14,11 +14,15 @@
    limitations under the License.
 */
 
-package ozone.platform.server.model
+package org.ozoneplatform.commons.server.domain.validation
 
 class ValidationHelpers {
 
     static boolean isNotBlank(String s) {
         return s && !s.isAllWhitespace()
+    }
+
+    static boolean isBlank(String s) {
+        return !isNotBlank(s)
     }
 }

@@ -44,9 +44,8 @@ class DescribePerson extends Specification {
         person.email = address
 
         then: "assertion thrown"
-        thrown(AssertionError)
-        and: "email remains null"
-        person.email == null
+        def validationError = person.validate().find { it.property == 'email' }
+        validationError != null
 
         where:
         fallacy | address
