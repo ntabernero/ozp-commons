@@ -116,7 +116,7 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
 
             if( isPercentageSize( firstPaneWidth ) ) {
                 boxClass = verticalPercent;
-                firstPaneCss = { right: firstPaneWidth };
+                firstPaneCss = { right: 100 - parseInt(firstPaneWidth) + '%' };
                 lastPaneCss = { width: 100 - parseInt(firstPaneWidth) + '%' };
                 dividerCss = firstPaneCss;
             }
