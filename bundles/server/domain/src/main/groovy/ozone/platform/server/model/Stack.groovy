@@ -25,7 +25,7 @@ class Stack extends Entity {
      * Required
      */
     @NotBlank String name
-    @NotBlank String urlName //Changed from stackContext
+    @NotBlank String urlName
 
     /**
      * Optional
@@ -36,7 +36,6 @@ class Stack extends Entity {
     final Set<DashboardTemplate> dashboards
     final Set<Group> groups
     final Set<Person> people
-    final Set<WidgetDefinition> widgetDefinitions
 
     Stack(String name, String urlName) {
         this.name = name

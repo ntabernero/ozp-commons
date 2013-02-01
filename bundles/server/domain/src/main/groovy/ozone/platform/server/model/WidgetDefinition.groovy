@@ -39,7 +39,7 @@ class WidgetDefinition extends Entity {
     String universalName
     String description = ''
     String descriptorUrl
-    String version //Changed from widgetVersion
+    String version
 
     /*
      * Defaults to value
@@ -48,12 +48,12 @@ class WidgetDefinition extends Entity {
     int width = MINIMUM_WIDGET_WIDTH
     boolean background = false
     boolean singleton = false
-    boolean visibleForLaunch = true //Changed from visible
+    boolean visibleForLaunch = true
 
     /*
      * Has Many
      */
-    final Set<WidgetDefinition> requiredWidgets //Widgets required by this widget
+    final Set<WidgetDefinition> requiredWidgets // Widgets required by this widget
     final Set<PersonalWidgetDefinition> personalWidgetDefinitions
     final Set<String> tags
     final Set<Intent> sendableIntents

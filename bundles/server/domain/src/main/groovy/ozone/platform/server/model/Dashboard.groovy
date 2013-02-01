@@ -24,7 +24,7 @@ abstract class Dashboard extends Entity {
     String name
     String description = ''
     String layoutConfig = ''
-    int position //Changed from dashboardPosition
+    int position
     boolean locked = false
 
     protected Dashboard(String name, int position) {

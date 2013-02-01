@@ -21,7 +21,7 @@ import static org.ozoneplatform.commons.server.domain.validation.ValidationHelpe
 class Preference {
 
     final String namespace
-    final String name // renamed path to name to match user interface
+    final String name
     final String value
 
     protected Preference(String namespace, String name, String value) {

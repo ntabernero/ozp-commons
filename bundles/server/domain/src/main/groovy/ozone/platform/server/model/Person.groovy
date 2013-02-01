@@ -25,14 +25,14 @@ class Person extends Entity {
      * Required
      */
     @NotBlank String username
-    @NotBlank String fullName //Changed from userRealName
+    @NotBlank String fullName
 
     /*
      * Optional
      */
     String email
     Calendar lastLogin
-    Calendar prevLogin //Previous lastLogin date
+    Calendar prevLogin // Previous lastLogin date
 
     final Set<Role> authorities
     final Set<Group> groups

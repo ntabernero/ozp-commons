@@ -18,9 +18,9 @@ package ozone.platform.server.model
 
 class PersonalDashboard extends Dashboard {
 
-    boolean isDefault = false //Identifies last used dashboard, OWF starts on default dashboard if no dashboard id provided
+    boolean isDefault = false // Identifies last used dashboard, OWF starts on default dashboard if no dashboard id provided
 
-    final DashboardTemplate dashboardTemplate //Dashboard this was copied from
+    final DashboardTemplate dashboardTemplate // Dashboard this was copied from
     final Person person
 
     protected PersonalDashboard(String name, int position, Person person, DashboardTemplate dashboardTemplate) {
