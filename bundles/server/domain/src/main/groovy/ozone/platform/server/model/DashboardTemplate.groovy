@@ -16,17 +16,26 @@
 
 package ozone.platform.server.model
 
-class GroupDashboard extends Dashboard {
+/**
+ * A DashboardTemplate can belong to either a stack or any number of groups (never both).
+ * It is never used directly and is only copied into PersonalDashboards which are used.
+ */
+class DashboardTemplate extends Dashboard {
 
     final String author
 
     final Calendar created
     Calendar lastModified
     
+    // Only one of these may be assigned at a time, DashboardTemplate may belong to
+    // either a stack OR any number of groups
+    final Stack stack
     final Set<Group> groups
-    final Set<PersonalDashboard> personalDashboards //Personal dashboards copied from this
 
-    GroupDashboard(String name, int position, String author) {
+    final Set<PersonalDashboard> personalDashboards // Personal dashboards copied from this
+    final Set<WidgetDefinition> widgets // Unique widgets in layoutConfig, when layoutConfig updated this must be synced
+
+    DashboardTemplate(String name, int position, String author) {
         super(name, position)
 
         this.author = author

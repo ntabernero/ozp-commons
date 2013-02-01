@@ -25,7 +25,7 @@ class Stack extends Entity {
     String descriptorUrl
     String description = ''
 
-    final Set<GroupDashboard> dashboards
+    final Set<DashboardTemplate> dashboards
     final Set<Group> groups
     final Set<Person> people
     final Set<WidgetDefinition> widgetDefinitions
