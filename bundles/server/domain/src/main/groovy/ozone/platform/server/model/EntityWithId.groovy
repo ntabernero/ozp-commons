@@ -26,6 +26,8 @@ package ozone.platform.server.model
 abstract class EntityWithId<T extends Comparable> implements Serializable {
 
     T id
+    Calendar created
+    Calendar lastModified
 
     /**
      * Validates all properties of an Entity and returns a list of ValidationError's
@@ -38,4 +40,25 @@ abstract class EntityWithId<T extends Comparable> implements Serializable {
         def errors = []
         return errors as ValidationError[]
     }
+
+    /**
+     * Private setter for lastModified
+     * Use 'touch' to set lastModified to now
+     * @param lastModified
+     */
+    private void setLastModified(Calendar lastModified) { this.lastModified = lastModified }
+    private void setCreated(Calendar created) { this.created = created }
+
+    /**
+     * Analogous to unix command 'touch'
+     * Will set lastModified to now and will also set created to now if
+     * created is not set
+     */
+    void touch() {
+        def now = Calendar.instance
+        if (!created) created = now
+        lastModified = now
+    }
+
+
 }

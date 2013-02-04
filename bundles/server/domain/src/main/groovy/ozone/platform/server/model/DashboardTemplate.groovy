@@ -25,9 +25,6 @@ class DashboardTemplate extends Dashboard {
     // Immutable
     final String author
 
-    final Calendar created
-    Calendar lastModified
-    
     // Only one of these may be assigned at a time, DashboardTemplate may belong to
     // either a stack OR any number of groups
     final Stack stack
@@ -41,12 +38,5 @@ class DashboardTemplate extends Dashboard {
 
         this.author = author
         this.created = Calendar.getInstance();
-    }
-
-    // Keep lastModified setter protected since updates should be made through modified
-    protected void setLastModified(Calendar cal) { this.lastModified = cal }
-
-    void modified() {
-        this.lastModified = Calendar.getInstance();
     }
 }
