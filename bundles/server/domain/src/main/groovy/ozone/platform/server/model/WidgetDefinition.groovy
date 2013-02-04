@@ -54,7 +54,6 @@ class WidgetDefinition extends Entity {
      * Has Many
      */
     final Set<WidgetDefinition> requiredWidgets // Widgets required by this widget
-    final Set<PersonalWidgetDefinition> personalWidgetDefinitions
     final Set<String> tags
     final Set<Intent> sendableIntents
     final Set<Intent> receivableIntents

@@ -22,15 +22,11 @@ package ozone.platform.server.model
  */
 class DashboardTemplate extends Dashboard {
 
-    // Immutable
-    final String author
-
     // Only one of these may be assigned at a time, DashboardTemplate may belong to
     // either a stack OR any number of groups
     final Stack stack
     final Set<Group> groups
 
-    final Set<DashboardInstance> dashboards // Dashboards instances copied from this
     final Set<WidgetDefinition> widgets // Unique widgets in layoutConfig, when layoutConfig updated this must be synced
 
     DashboardTemplate(String name, int position) {

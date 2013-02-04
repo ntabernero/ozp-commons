@@ -51,7 +51,7 @@ class Person extends Principal {
         return dashboard
     }
 
-    PersonalWidgetDefinition createPersonalWidgetDefinition(widgetDefinition) {
+    PersonalWidgetDefinition createPersonalWidgetDefinition(WidgetDefinition widgetDefinition) {
         def personalWidgetDefinition = new PersonalWidgetDefinition(this, widgetDefinition)
         personalWidgetDefinitions.add(personalWidgetDefinition)
 
