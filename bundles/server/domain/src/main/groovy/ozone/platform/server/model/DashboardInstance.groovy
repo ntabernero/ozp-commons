@@ -23,11 +23,15 @@ class DashboardInstance extends Dashboard {
     final DashboardTemplate dashboardTemplate // Dashboard this was copied from
     final Person person
 
-    protected DashboardInstance(String name, int position, Person person, DashboardTemplate dashboardTemplate) {
+    protected DashboardInstance(String name, int position, Person person) {
         super(name, position)
 
         assert person, "Person is required"
         this.person = person
+    }
+
+    protected DashboardInstance(String name, int position, Person person, DashboardTemplate dashboardTemplate) {
+        this(name, position, person)
 
         this.dashboardTemplate = dashboardTemplate
     }

@@ -28,7 +28,6 @@ class Group extends Principal {
     boolean isPermissionsActive = true // If people will have access to group's dashboards, stacks, and widgets
     boolean isAutomatic = false // If people will be automatically handled by external sources
 
-    final Set<DashboardTemplate> dashboardTemplates
     final Set<Person> people
     final Set<WidgetDefinition> widgetDefinitions
 

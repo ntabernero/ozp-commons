@@ -24,7 +24,7 @@ abstract class Principal extends Entity {
     final Set<Preference> preferences
     final Set<Stack> stacks
 
-    Preference createPreference(String name, String namespace, String value) {
+    Preference setPreference(String name, String namespace, String value) {
         def preference = new Preference(name, namespace, value)
 
         // Replace old preference with new value object
