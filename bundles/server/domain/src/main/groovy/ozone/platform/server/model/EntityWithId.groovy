@@ -29,8 +29,9 @@ abstract class EntityWithId<T extends Comparable> implements Serializable {
     Calendar created
     Calendar lastModified
     /**
-     * Username of the user who last modified this entity
+     * Username of the user who last created/modified this entity
      */
+    String createdBy
     String lastModifiedBy
 
     /**
@@ -61,7 +62,10 @@ abstract class EntityWithId<T extends Comparable> implements Serializable {
      */
     void touch(String currentUser) {
         def now = Calendar.instance
-        if (!created) created = now
+        if (!created) {
+            created = now
+            createdBy = currentUser
+        }
         lastModified = now
         lastModifiedBy = currentUser
     }

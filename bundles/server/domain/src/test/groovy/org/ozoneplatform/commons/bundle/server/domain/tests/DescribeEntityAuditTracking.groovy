@@ -15,6 +15,7 @@ class DescribeEntityAuditTracking extends Specification {
 
         then: "created == lastModified"
         created.compareTo(entity.lastModified) == 0
+        entity.createdBy == 'testUser'
         entity.lastModifiedBy == 'testUser'
 
         when: "touch again"
@@ -23,6 +24,7 @@ class DescribeEntityAuditTracking extends Specification {
         then: "lastModified later than created. Created remains the same"
         entity.created.compareTo(entity.lastModified) < 0
         entity.created.compareTo(created) == 0
+        entity.createdBy == 'testUser'
         entity.lastModifiedBy == 'testAdmin'
     }
 
