@@ -33,10 +33,7 @@ class DashboardTemplate extends Dashboard {
     final Set<DashboardInstance> dashboards // Dashboards instances copied from this
     final Set<WidgetDefinition> widgets // Unique widgets in layoutConfig, when layoutConfig updated this must be synced
 
-    DashboardTemplate(String name, int position, String author) {
+    DashboardTemplate(String name, int position) {
         super(name, position)
-
-        this.author = author
-        this.created = Calendar.getInstance();
     }
 }

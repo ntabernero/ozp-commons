@@ -10,18 +10,20 @@ class DescribeEntityAuditTracking extends Specification {
         def entity = new TestEntity()
 
         when: "touch"
-        entity.touch()
+        entity.touch('testUser')
         def created = entity.created
 
         then: "created == lastModified"
         created.compareTo(entity.lastModified) == 0
+        entity.lastModifiedBy == 'testUser'
 
         when: "touch again"
-        entity.touch()
+        entity.touch('testAdmin')
 
         then: "lastModified later than created. Created remains the same"
         entity.created.compareTo(entity.lastModified) < 0
         entity.created.compareTo(created) == 0
+        entity.lastModifiedBy == 'testAdmin'
     }
 
     class TestEntity extends Entity {

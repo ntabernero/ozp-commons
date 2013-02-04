@@ -28,6 +28,10 @@ abstract class EntityWithId<T extends Comparable> implements Serializable {
     T id
     Calendar created
     Calendar lastModified
+    /**
+     * Username of the user who last modified this entity
+     */
+    String lastModifiedBy
 
     /**
      * Validates all properties of an Entity and returns a list of ValidationError's
@@ -48,16 +52,18 @@ abstract class EntityWithId<T extends Comparable> implements Serializable {
      */
     private void setLastModified(Calendar lastModified) { this.lastModified = lastModified }
     private void setCreated(Calendar created) { this.created = created }
+    private void setLastModifiedBy(String lastModifiedBy) { this.lastModifiedBy = lastModifiedBy }
 
     /**
      * Analogous to unix command 'touch'
      * Will set lastModified to now and will also set created to now if
      * created is not set
      */
-    void touch() {
+    void touch(String currentUser) {
         def now = Calendar.instance
         if (!created) created = now
         lastModified = now
+        lastModifiedBy = currentUser
     }
 
 
