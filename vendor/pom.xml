@@ -26,6 +26,7 @@
         <module>handlebars</module>
         <module>jquery</module>
         <module>jquery-ui</module>
+        <module>jquery-atmosphere</module>
         <module>bootstrap</module>
         <module>backbone</module>
         <module>modernizr</module>
@@ -38,6 +39,7 @@
         <module>jquery-splitter</module>
         <module>bootstrap-editable</module>
         <module>animate</module>
+        
     </modules>
 
     <build>

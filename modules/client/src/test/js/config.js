@@ -35,7 +35,8 @@ require({
         backbone: '/base/target/libs/js/backbone',
         lodash: '/base/target/libs/js/lodash',
         handlebars: '/base/target/libs/js/handlebars',
-        bootstrap: '/base/target/libs/js/bootstrap'
+        bootstrap: '/base/target/libs/js/bootstrap',
+        jqueryatmosphere: '/base/target/libs/js/jquery.atmosphere'
         //text: '../lib/text'
     },
     shim: {
@@ -58,6 +59,10 @@ require({
         },
         'bootstrap/bootstrap-modal': {
             deps: ['jquery', 'bootstrap/bootstrap-transition'],
+            exports: '$'
+        },
+        jqueryatmosphere: {
+            deps: ['jquery'],
             exports: '$'
         }
     }
