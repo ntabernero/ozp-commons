@@ -23,7 +23,6 @@ class DescribeWidgetDefinitionBuilder extends Specification {
 
     def "it can construct WidgetDefinition"() {
         given:
-        String guid = UUID.randomUUID().toString()
         String displayName = "Maps Widget"
         String widgetUrl = "http://example.com"
         String imageUrlSmall = "http://example.com/img/widget-icon-small.png"
@@ -33,7 +32,6 @@ class DescribeWidgetDefinitionBuilder extends Specification {
         when: "system uses WidgetDefinition fluent construction api"
         def widgetDefinition = WidgetDefinition.builder()
             .withDisplayName(displayName)
-            .withGuid(guid)
             .withImageUrlSmall(imageUrlSmall)
             .withImageUrlLarge(imageUrlLarge)
             .withUrl(widgetUrl)
@@ -42,7 +40,6 @@ class DescribeWidgetDefinitionBuilder extends Specification {
 
         then: "built WidgetDefinition has all its required properties set"
         widgetDefinition.displayName == displayName
-        widgetDefinition.guid == guid
         widgetDefinition.imageUrlSmall == imageUrlSmall
         widgetDefinition.imageUrlLarge == imageUrlLarge
         widgetDefinition.widgetUrl == widgetUrl

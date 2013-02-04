@@ -16,22 +16,33 @@
 
 package ozone.platform.server.model
 
-import static ozone.platform.server.model.ValidationHelpers.isNotBlank
+import org.ozoneplatform.commons.server.domain.validation.EntityValidationAnnotationProcessor
+import org.ozoneplatform.commons.server.domain.validation.NotBlank
 
-class Stack extends AbstractGroup {
+class Stack extends Entity {
 
-    String urlName //Changed from stackContext
+    /**
+     * Required
+     */
+    @NotBlank String name
+    @NotBlank String urlName
+
+    /**
+     * Optional
+     */
     String descriptorUrl
+    String description = ''
 
-    final Set<Group> groups
+    final Set<DashboardTemplate> dashboardTemplates
+    final Set<Principal> principals // People and Groups granted permission to this Stack's dashboards
 
     Stack(String name, String urlName) {
-        super(name)
-        setUrlName(urlName)
+        this.name = name
+        this.urlName = urlName
     }
 
-    void setUrlName(String urlName) {
-        assert isNotBlank(urlName), "URL name is required"
-        this.urlName = urlName
+    @Override
+    List<ValidationError> validate() {
+        EntityValidationAnnotationProcessor.instance.validate(this)
     }
 }

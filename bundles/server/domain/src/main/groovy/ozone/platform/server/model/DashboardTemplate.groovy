@@ -16,9 +16,20 @@
 
 package ozone.platform.server.model
 
-class ValidationHelpers {
+/**
+ * A DashboardTemplate can belong to either a stack or any number of groups (never both).
+ * It is never used directly and is only copied into DashboardInstances which are used.
+ */
+class DashboardTemplate extends Dashboard {
 
-    static boolean isNotBlank(String s) {
-        return s && !s.isAllWhitespace()
+    // Only one of these may be assigned at a time, DashboardTemplate may belong to
+    // either a stack OR any number of groups
+    final Stack stack
+    final Set<Group> groups
+
+    final Set<WidgetDefinition> widgets // Unique widgets in layoutConfig, when layoutConfig updated this must be synced
+
+    DashboardTemplate(String name, int position) {
+        super(name, position)
     }
 }

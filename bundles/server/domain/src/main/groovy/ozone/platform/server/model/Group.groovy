@@ -16,17 +16,29 @@
 
 package ozone.platform.server.model
 
-class Group extends AbstractGroup {
+import org.ozoneplatform.commons.server.domain.validation.EntityValidationAnnotationProcessor
+import org.ozoneplatform.commons.server.domain.validation.NotBlank
 
+class Group extends Principal {
+
+    @NotBlank
+    String name
     String displayName
-    boolean active = true //Changed from [String status = 'active'] since there's only 2 states: active and inactive
-    boolean automatic = false //Whether group's people set will be automatically handled by external sources
+    String description = ''
+    boolean isActive = true
+    boolean isAutomatic = false // Whether group's people set will be automatically handled by external sources
 
+    final Set<DashboardTemplate> dashboardTemplates
+    final Set<Person> people
     final Set<WidgetDefinition> widgetDefinitions
-    final Set<Stack> stacks
 
     Group(String name) {
-        super(name)
+        this.name = name
         this.displayName = name
+    }
+
+    @Override
+    List<ValidationError> validate() {
+        EntityValidationAnnotationProcessor.instance.validate(this)
     }
 }

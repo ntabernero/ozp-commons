@@ -19,12 +19,11 @@ package ozone.platform.server.model
 class PersonalWidgetDefinition extends Entity {
 
     String displayName
-    int position //Changed from pwdPosition
-    boolean assignedByGroup = false //Changed from groupWidget
-    boolean assignedToPerson = false //Changed from personWidget
-    boolean favorite = false
-    boolean launchDisabled = false //Changed from disabled
-    boolean visibleForLaunch = true //Changed from visible
+    int position
+    boolean isAssignedToPerson = false
+    boolean isFavorite = false
+    boolean isLaunchDisabled = false
+    boolean isVisibleForLaunch = true
 
     final Person person
     final WidgetDefinition widgetDefinition

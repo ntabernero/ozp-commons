@@ -16,11 +16,19 @@
 
 package ozone.platform.server.model
 
-class GroupDashboard extends Dashboard {
-    
-    final Set<Group> groups
+class DashboardInstance extends Dashboard {
 
-    GroupDashboard(String name, String guid, int position) {
-        super(name, guid, position)
+    boolean isDefault = false // Identifies last used dashboard, OWF starts on default dashboard if no dashboard id provided
+
+    final DashboardTemplate dashboardTemplate // Dashboard this was copied from
+    final Person person
+
+    protected DashboardInstance(String name, int position, Person person, DashboardTemplate dashboardTemplate) {
+        super(name, position)
+
+        assert person, "Person is required"
+        this.person = person
+
+        this.dashboardTemplate = dashboardTemplate
     }
 }

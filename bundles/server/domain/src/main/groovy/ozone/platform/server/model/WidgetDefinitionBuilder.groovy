@@ -23,7 +23,6 @@ package ozone.platform.server.model
 class WidgetDefinitionBuilder {
 
     private String name
-    private String guid
     private String url
     private String imageUrlSmall
     private String imageUrlLarge
@@ -33,11 +32,6 @@ class WidgetDefinitionBuilder {
 
     WidgetDefinitionBuilder withDisplayName(String name) {
         this.name = name
-        return this
-    }
-
-    WidgetDefinitionBuilder withGuid(String guid) {
-        this.guid = guid
         return this
     }
 
@@ -63,7 +57,6 @@ class WidgetDefinitionBuilder {
 
     WidgetDefinition build() {
         def widgetDefinition = new WidgetDefinition(
-                guid,
                 name,
                 url,
                 imageUrlSmall,

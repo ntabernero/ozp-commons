@@ -16,22 +16,25 @@
 
 package ozone.platform.server.model
 
-import static ozone.platform.server.model.ValidationHelpers.isNotBlank
+/**
+ * Abstracts commonalities between Person and Group.
+ */
+abstract class Principal extends Entity {
 
-abstract class AbstractGroup extends Entity {
+    final Set<Preference> preferences
+    final Set<Stack> stacks
 
-    String name
-    String description = ''
+    Preference createPreference(String name, String namespace, String value) {
+        def preference = new Preference(name, namespace, value)
 
-    final Set<GroupDashboard> dashboards
-    final Set<Person> people
+        // Replace old preference with new value object
+        removePreference(preference)
+        preferences.add(preference)
 
-    AbstractGroup(String name) {
-        setName(name)
+        return preference
     }
 
-    void setName(String name) {
-        assert isNotBlank(name), "Name is required"
-        this.name = name
+    void removePreference(Preference preference) {
+        preferences.remove(preference)
     }
 }

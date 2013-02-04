@@ -16,37 +16,36 @@
 
 package ozone.platform.server.model
 
-import static ozone.platform.server.model.ValidationHelpers.isNotBlank
+import static org.ozoneplatform.commons.server.domain.validation.ValidationHelpers.isNotBlank
 
-class Preference extends Entity {
+class Preference {
 
-    String name // renamed path to name to match user interface
-    String namespace
-    String value
+    final String namespace
+    final String name
+    final String value
 
-    final Person person
-
-    protected Preference(String name, String namespace, String value, Person person) {
-        setName(name)
-        setNamespace(namespace)
-        setValue(value)
-
-        assert person, "Person is required"
-        this.person = person
-    }
-
-    void setName(String name) {
-        assert isNotBlank(name), "Name is required"
-        this.name = name
-    }
-
-    void setNamespace(String namespace) {
+    protected Preference(String namespace, String name, String value) {
         assert isNotBlank(namespace), "Namespace is required"
+        assert isNotBlank(name), "Name is required"
+        assert isNotBlank(value), "Value is required"
+
         this.namespace = namespace
+        this.name = name
+        this.value = value
     }
 
-    void setValue(String value) {
-        assert isNotBlank(value), "Value is required"
-        this.value = value
+    boolean equals(o) {
+        if (this.is(o)) return true
+        if (getClass() != o.class) return false
+
+        Preference that = (Preference) o
+        return name == that.name && namespace == that.namespace
+    }
+
+    int hashCode() {
+        int result
+        result = name.hashCode()
+        result = 31 * result + namespace.hashCode()
+        return result
     }
 }

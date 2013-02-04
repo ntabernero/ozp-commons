@@ -16,7 +16,8 @@
 
 package ozone.platform.server.model
 
-import static ozone.platform.server.model.ValidationHelpers.isNotBlank
+import org.ozoneplatform.commons.server.domain.validation.EntityValidationAnnotationProcessor
+import org.ozoneplatform.commons.server.domain.validation.NotBlank
 
 class WidgetDefinition extends Entity {
 
@@ -26,12 +27,11 @@ class WidgetDefinition extends Entity {
     /*
      * Required
      */
-    final String guid //Changed from widgetGuid. final bc GUIDs never change
-    String displayName
-    String widgetUrl
-    String imageUrlLarge
-    String imageUrlSmall
-    String widgetType
+    @NotBlank String displayName
+    @NotBlank String widgetUrl
+    @NotBlank String imageUrlLarge
+    @NotBlank String imageUrlSmall
+    @NotBlank String widgetType
 
     /*
      * Optional
@@ -39,21 +39,21 @@ class WidgetDefinition extends Entity {
     String universalName
     String description = ''
     String descriptorUrl
-    String version //Changed from widgetVersion
+    String version
 
     /*
      * Defaults to value
      */
     int height = MINIMUM_WIDGET_HEIGHT
     int width = MINIMUM_WIDGET_WIDTH
-    boolean background = false
-    boolean singleton = false
-    boolean visibleForLaunch = true //Changed from visible
+    boolean isBackground = false
+    boolean isSingleton = false
+    boolean isVisibleForLaunch = true
 
     /*
      * Has Many
      */
-    final Set<PersonalWidgetDefinition> personalWidgetDefinitions
+    final Set<WidgetDefinition> requiredWidgets // Widgets required by this widget
     final Set<String> tags
     final Set<Intent> sendableIntents
     final Set<Intent> receivableIntents
@@ -67,50 +67,21 @@ class WidgetDefinition extends Entity {
         return new WidgetDefinitionBuilder()
     }
 
-    protected WidgetDefinition(String guid, String displayName, String widgetUrl, String imageUrlSmall, String imageUrlLarge, String widgetType) {
-
-        assert isNotBlank(guid), "GUID is required"
-        this.guid = guid
-
-        setDisplayName(displayName)
-        setWidgetUrl(widgetUrl)
-        setImageUrlSmall(imageUrlSmall)
-        setImageUrlLarge(imageUrlLarge)
-        setWidgetType(widgetType)
-    }
-
-    void setDisplayName(String displayName) {
-        assert isNotBlank(displayName), "Display name is required"
+    public WidgetDefinition(String displayName, String widgetUrl, String imageUrlSmall, String imageUrlLarge, String widgetType) {
         this.displayName = displayName
-    }
-
-    void setWidgetUrl(String url) {
-        assert isNotBlank(url), "Widget URL is required"
-        this.widgetUrl = url
-    }
-
-    void setImageUrlSmall(String imageUrlSmall) {
-        assert isNotBlank(imageUrlSmall), "Small image URL is required"
+        this.widgetUrl = widgetUrl
         this.imageUrlSmall = imageUrlSmall
-    }
-
-    void setImageUrlLarge(String imageUrlLarge) {
-        assert isNotBlank(imageUrlLarge), "Large image URL is required"
         this.imageUrlLarge = imageUrlLarge
-    }
-
-    void setWidgetType(String widgetType) {
-        assert isNotBlank(widgetType), "Widget type is required"
         this.widgetType = widgetType
     }
 
-    void setHeight(int height) {
-        assert height >= MINIMUM_WIDGET_HEIGHT, "Height must be at least ${MINIMUM_WIDGET_HEIGHT}"
-        this.height = height
-    }
+    @Override
+    List<ValidationError> validate() {
+        def errors = EntityValidationAnnotationProcessor.instance.validate(this)
 
-    void setWidth(int width) {
-        assert width >= MINIMUM_WIDGET_WIDTH, "Width must be at least ${MINIMUM_WIDGET_WIDTH}"
-        this.width = width
+        if (width >= MINIMUM_WIDGET_WIDTH) errors << new ValidationError("width", "Width must be at least ${MINIMUM_WIDGET_WIDTH}")
+        if (height >= MINIMUM_WIDGET_HEIGHT) errors << new ValidationError("height", "Height must be at least ${MINIMUM_WIDGET_HEIGHT}")
+
+        errors
     }
 }

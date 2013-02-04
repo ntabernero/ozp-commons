@@ -14,17 +14,15 @@
    limitations under the License.
 */
 
-package ozone.platform.server.model
+package org.ozoneplatform.commons.server.domain.validation
 
-class PersonalDashboard extends Dashboard {
+class ValidationHelpers {
 
-    boolean isDefault = false //Identifies the last used dashboard, OWF starts on default dashboard if no guid provided
+    static boolean isNotBlank(String s) {
+        return s && !s.isAllWhitespace()
+    }
 
-    final Person person
-
-    protected PersonalDashboard(String name, String guid, int position, Person person) {
-        super(name, guid, position)
-        assert person, "Person is required"
-        this.person = person
+    static boolean isBlank(String s) {
+        return !isNotBlank(s)
     }
 }

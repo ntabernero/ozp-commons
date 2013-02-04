@@ -18,7 +18,7 @@ package org.ozoneplatform.commons.bundle.server.domain.tests
 import spock.lang.Specification
 import spock.lang.Unroll
 
-import static ozone.platform.server.model.ValidationHelpers.isNotBlank
+import static org.ozoneplatform.commons.server.domain.validation.ValidationHelpers.isNotBlank
 
 class DescribeValidationHelpers extends Specification {
 
