@@ -24,6 +24,7 @@ files = [
   'target/js/handlebars.js',
   'target/js/expect.js',
   'target/js/sinon.js',
+  'target/js/jquery.atmosphere.js',
   
   // Include the script to configure and trigger require.
   'src/test/js/config.js',
