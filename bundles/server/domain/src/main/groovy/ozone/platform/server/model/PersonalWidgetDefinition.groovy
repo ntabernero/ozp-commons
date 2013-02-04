@@ -20,10 +20,10 @@ class PersonalWidgetDefinition extends Entity {
 
     String displayName
     int position
-    boolean assignedToPerson = false
-    boolean favorite = false
-    boolean launchDisabled = false
-    boolean visibleForLaunch = true
+    boolean isAssignedToPerson = false
+    boolean isFavorite = false
+    boolean isLaunchDisabled = false
+    boolean isVisibleForLaunch = true
 
     final Person person
     final WidgetDefinition widgetDefinition

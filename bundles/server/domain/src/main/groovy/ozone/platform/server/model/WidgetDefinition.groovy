@@ -46,9 +46,9 @@ class WidgetDefinition extends Entity {
      */
     int height = MINIMUM_WIDGET_HEIGHT
     int width = MINIMUM_WIDGET_WIDTH
-    boolean background = false
-    boolean singleton = false
-    boolean visibleForLaunch = true
+    boolean isBackground = false
+    boolean isSingleton = false
+    boolean isVisibleForLaunch = true
 
     /*
      * Has Many

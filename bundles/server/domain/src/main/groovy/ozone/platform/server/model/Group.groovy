@@ -25,8 +25,8 @@ class Group extends Principal {
     String name
     String displayName
     String description = ''
-    boolean active = true
-    boolean automatic = false // Whether group's people set will be automatically handled by external sources
+    boolean isActive = true
+    boolean isAutomatic = false // Whether group's people set will be automatically handled by external sources
 
     final Set<DashboardTemplate> dashboards
     final Set<Person> people

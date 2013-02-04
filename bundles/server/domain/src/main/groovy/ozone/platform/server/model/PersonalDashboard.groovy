@@ -20,6 +20,7 @@ class PersonalDashboard extends Dashboard {
 
     boolean isDefault = false // Identifies last used dashboard, OWF starts on default dashboard if no dashboard id provided
 
+
     final DashboardTemplate dashboardTemplate // Dashboard this was copied from
     final Person person
 
