@@ -19,7 +19,7 @@ package ozone.platform.server.model
 import org.ozoneplatform.commons.server.domain.validation.EntityValidationAnnotationProcessor
 import org.ozoneplatform.commons.server.domain.validation.NotBlank
 
-class Person extends Entity {
+class Person extends Principal {
 
     /*
      * Required
@@ -38,8 +38,6 @@ class Person extends Entity {
     final Set<Group> groups
     final Set<PersonalDashboard> dashboards
     final Set<PersonalWidgetDefinition> personalWidgetDefinitions
-    final Set<Preference> preferences
-    final Set<Stack> stacks
 
     Person(String username, String fullName) {
         this.username = username
@@ -58,20 +56,6 @@ class Person extends Entity {
         personalWidgetDefinitions.add(personalWidgetDefinition)
 
         return personalWidgetDefinition
-    }
-
-    Preference createPreference(String name, String namespace, String value) {
-        def preference = new Preference(name, namespace, value)
-
-        // Replace old preference with new value object
-        removePreference(preference)
-        preferences.add(preference)
-
-        return preference
-    }
-
-    void removePreference(Preference preference) {
-        preferences.remove(preference)
     }
 
     // Keep login setters protected since updates should be made through recordLogin

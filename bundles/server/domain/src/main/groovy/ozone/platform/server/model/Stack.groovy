@@ -34,8 +34,7 @@ class Stack extends Entity {
     String description = ''
 
     final Set<DashboardTemplate> dashboards
-    final Set<Group> groups
-    final Set<Person> people
+    final Set<Principal> principals // People and Groups granted permission to this Stack's dashboards
 
     Stack(String name, String urlName) {
         this.name = name

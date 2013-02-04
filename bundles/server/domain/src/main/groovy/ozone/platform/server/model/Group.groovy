@@ -15,10 +15,11 @@
 */
 
 package ozone.platform.server.model
+
 import org.ozoneplatform.commons.server.domain.validation.EntityValidationAnnotationProcessor
 import org.ozoneplatform.commons.server.domain.validation.NotBlank
 
-class Group extends Entity {
+class Group extends Principal {
 
     @NotBlank
     String name
@@ -29,27 +30,11 @@ class Group extends Entity {
 
     final Set<DashboardTemplate> dashboards
     final Set<Person> people
-    final Set<Stack> stacks
     final Set<WidgetDefinition> widgetDefinitions
-    final Set<Preference> preferences
 
     Group(String name) {
         this.name = name
         this.displayName = name
-    }
-
-    Preference createPreference(String name, String namespace, String value) {
-        def preference = new Preference(name, namespace, value)
-
-        // Replace old preference with new value object
-        removePreference(preference)
-        preferences.add(preference)
-
-        return preference
-    }
-
-    void removePreference(Preference preference) {
-        preferences.remove(preference)
     }
 
     @Override
