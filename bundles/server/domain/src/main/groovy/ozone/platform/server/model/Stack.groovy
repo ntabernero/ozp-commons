@@ -33,7 +33,7 @@ class Stack extends Entity {
     String descriptorUrl
     String description = ''
 
-    final Set<DashboardTemplate> dashboards
+    final Set<DashboardTemplate> dashboardTemplates
     final Set<Principal> principals // People and Groups granted permission to this Stack's dashboards
 
     Stack(String name, String urlName) {

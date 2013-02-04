@@ -36,7 +36,7 @@ class Person extends Principal {
 
     final Set<Role> authorities
     final Set<Group> groups
-    final Set<PersonalDashboard> dashboards
+    final Set<DashboardInstance> dashboards
     final Set<PersonalWidgetDefinition> personalWidgetDefinitions
 
     Person(String username, String fullName) {
@@ -44,8 +44,8 @@ class Person extends Principal {
         this.fullName = fullName
     }
 
-    Dashboard createPersonalDashboard(String name, int position) {
-        def dashboard = new PersonalDashboard(name, position, this)
+    Dashboard createDashboardInstance(String name, int position) {
+        def dashboard = new DashboardInstance(name, position, this)
         dashboards.add(dashboard)
 
         return dashboard

@@ -18,7 +18,7 @@ package ozone.platform.server.model
 
 /**
  * A DashboardTemplate can belong to either a stack or any number of groups (never both).
- * It is never used directly and is only copied into PersonalDashboards which are used.
+ * It is never used directly and is only copied into DashboardInstances which are used.
  */
 class DashboardTemplate extends Dashboard {
 
@@ -33,7 +33,7 @@ class DashboardTemplate extends Dashboard {
     final Stack stack
     final Set<Group> groups
 
-    final Set<PersonalDashboard> personalDashboards // Personal dashboards copied from this
+    final Set<DashboardInstance> dashboards // Dashboards instances copied from this
     final Set<WidgetDefinition> widgets // Unique widgets in layoutConfig, when layoutConfig updated this must be synced
 
     DashboardTemplate(String name, int position, String author) {

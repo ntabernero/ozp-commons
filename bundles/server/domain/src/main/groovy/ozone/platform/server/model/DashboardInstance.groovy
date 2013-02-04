@@ -16,15 +16,14 @@
 
 package ozone.platform.server.model
 
-class PersonalDashboard extends Dashboard {
+class DashboardInstance extends Dashboard {
 
     boolean isDefault = false // Identifies last used dashboard, OWF starts on default dashboard if no dashboard id provided
-
 
     final DashboardTemplate dashboardTemplate // Dashboard this was copied from
     final Person person
 
-    protected PersonalDashboard(String name, int position, Person person, DashboardTemplate dashboardTemplate) {
+    protected DashboardInstance(String name, int position, Person person, DashboardTemplate dashboardTemplate) {
         super(name, position)
 
         assert person, "Person is required"

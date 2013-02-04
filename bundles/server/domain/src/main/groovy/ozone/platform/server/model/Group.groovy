@@ -28,7 +28,7 @@ class Group extends Principal {
     boolean isActive = true
     boolean isAutomatic = false // Whether group's people set will be automatically handled by external sources
 
-    final Set<DashboardTemplate> dashboards
+    final Set<DashboardTemplate> dashboardTemplates
     final Set<Person> people
     final Set<WidgetDefinition> widgetDefinitions
 
