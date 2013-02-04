@@ -65,6 +65,10 @@ define(['views/View'], function(View) {
             expect(view.hide()).to.have.property('then');
         });
 
+        it('should store a reference to a view instance using jQuery Data API.', function () {
+            expect(view.$el.data('view')).to.be(view);
+        });
+
         it('should relay events from $el to a view instantce.', function () {
             var fooSpy = sinon.spy();
             var barSpy = sinon.spy();
