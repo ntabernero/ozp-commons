@@ -16,10 +16,11 @@
 
 define([
     'backbone',
-    'jquery'
+    'jquery',
+    'lodash'
 ],
 
-function(Backbone, $) {
+function(Backbone, $, _) {
 
     var View = Backbone.View.extend({
 
@@ -27,17 +28,35 @@ function(Backbone, $) {
         //Syntax is similar to the 'events' property
         modelEvents: null,
 
+        // array of events that will be relayed to a view instance from $el
+        relayElEvents: null,
+
         initialize: function() {
-            Backbone.View.prototype.initialize.apply(this, arguments);
+            var me = this;
 
-            if (this.modelEvents) {
-                this._prepareModelEvents();
+            _.extend(me, _.pick(me.options, 'modelEvents', 'relayElEvents'));
 
-                if (this.model)
-                    this.listenTo(this.model, this.modelEvents);
-                if (this.collection)
-                    this.listenTo(this.collection, this.modelEvents);
+            // Store reference to the view instance, for easy retrieval of Backbone views from DOM Elements 
+            me.$el.data('view', me);
+            if (me.modelEvents) {
+                me._prepareModelEvents();
+
+                if (me.model) {
+                    me.listenTo(me.model, me.modelEvents);
+                }
+                if (me.collection) {
+                    me.listenTo(me.collection, me.modelEvents);
+                }
             }
+
+            if(me.relayElEvents) {
+                _( _.result(this, 'relayElEvents') ).each(function (eventName, index) {
+                    me.$el.on(eventName + '.relayElEvents' + this.cid, function () {
+                        me.trigger(eventName, arguments);
+                    });
+                });
+            }
+            Backbone.View.prototype.initialize.apply(me, arguments);
         },
 
         show: function() {
