@@ -148,7 +148,7 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
                     $lastPane = $boxes.children('.pane:last').addClass('two'),
                     $divider, orientation, panes;
 
-                options = $.extend(true, {}, (options && options.orientation === horizontal) ? horizontalDefaults : verticalDefaults, options);
+                options = $.extend({}, (options && options.orientation === horizontal) ? horizontalDefaults : verticalDefaults, options);
 
                 $boxes
                     .data('splitter', options)
@@ -258,13 +258,14 @@ https://raw.github.com/shagstrom/split-pane/master/LICENSE
         $document
             .on('mousemove', mousemove)
             .one('mouseup', function(event) {
-                $this.trigger(EVENTS.DRAG_END).trigger(EVENTS.LAYOUT_CHANGE);
                 mousemove(event, true);
 
                 // cleanup
                 $resizeShim.hide();
                 $document.off('mousemove', mousemove);
                 $dividerProxy.remove();
+                
+                $this.trigger(EVENTS.DRAG_END).trigger(EVENTS.LAYOUT_CHANGE);
             });
     }
 
