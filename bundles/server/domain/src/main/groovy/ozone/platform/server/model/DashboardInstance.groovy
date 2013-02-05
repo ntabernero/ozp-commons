@@ -30,8 +30,8 @@ class DashboardInstance extends Dashboard {
         this.person = person
     }
 
-    protected DashboardInstance(String name, int position, Person person, DashboardTemplate dashboardTemplate) {
-        this(name, position, person)
+    protected DashboardInstance(DashboardTemplate dashboardTemplate, Person person) {
+        this(dashboardTemplate.name, dashboardTemplate.position, person)
 
         this.dashboardTemplate = dashboardTemplate
     }

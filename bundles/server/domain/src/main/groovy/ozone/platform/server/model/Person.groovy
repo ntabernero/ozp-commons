@@ -51,8 +51,8 @@ class Person extends Principal {
         return dashboard
     }
 
-    DashboardInstance createDashboardInstanceFromTemplate(String name, int position, DashboardTemplate template) {
-        def dashboard = new DashboardInstance(name, position, this, template)
+    DashboardInstance createDashboardInstanceFromTemplate(DashboardTemplate template) {
+        def dashboard = new DashboardInstance(template, this)
         dashboards.add(dashboard)
 
         return dashboard
