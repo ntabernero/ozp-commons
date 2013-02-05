@@ -14,7 +14,7 @@
    limitations under the License.
 */
 
-package ozone.platform.server.model
+package org.ozoneplatform.commons.server.domain.model
 
 /**
  * Abstracts commonalities between Person and Group.

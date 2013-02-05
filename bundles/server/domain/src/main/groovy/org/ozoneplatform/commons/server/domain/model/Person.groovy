@@ -14,7 +14,7 @@
    limitations under the License.
 */
 
-package ozone.platform.server.model
+package org.ozoneplatform.commons.server.domain.model
 
 import org.ozoneplatform.commons.server.domain.validation.EntityValidationAnnotationProcessor
 import org.ozoneplatform.commons.server.domain.validation.NotBlank

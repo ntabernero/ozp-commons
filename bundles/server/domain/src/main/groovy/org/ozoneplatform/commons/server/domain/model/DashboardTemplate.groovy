@@ -14,7 +14,7 @@
    limitations under the License.
 */
 
-package ozone.platform.server.model
+package org.ozoneplatform.commons.server.domain.model
 
 /**
  * A DashboardTemplate can belong to either a stack or any number of groups (never both).

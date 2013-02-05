@@ -14,28 +14,36 @@
    limitations under the License.
 */
 
-package org.ozoneplatform.commons.bundle.server.domain.tests
-import spock.lang.Specification
-import spock.lang.Unroll
+package org.ozoneplatform.commons.server.domain.model
 
 import static org.ozoneplatform.commons.server.domain.validation.ValidationHelpers.isNotBlank
 
-class DescribeValidationHelpers extends Specification {
+class Intent {
 
-    def "it recognizes valid strings are not blank"() {
-        expect:
-        isNotBlank("Foo")
+    final String action
+    final String dataType
+
+    Intent(String action, String dataType) {
+        assert isNotBlank(action), "Action is required"
+        assert isNotBlank(dataType), "DataType is required"
+
+        this.action = action
+        this.dataType = dataType
     }
 
-    @Unroll
-    def "it recognizes #fallacy as blank"(s, fallacy) {
-        expect: "${fallacy} is blank"
-        !isNotBlank(s)
+    boolean equals(o) {
+        if (this.is(o)) return true
+        if (getClass() != o.class) return false
 
-        where:
-        s    | fallacy
-        ""   | "empty string"
-        "  " | "all whitespace"
-        null | "null"
+        Intent intent = (Intent) o
+
+        return action == intent.action && dataType == intent.dataType
+    }
+
+    int hashCode() {
+        int result
+        result = action.hashCode()
+        result = 31 * result + dataType.hashCode()
+        return result
     }
 }

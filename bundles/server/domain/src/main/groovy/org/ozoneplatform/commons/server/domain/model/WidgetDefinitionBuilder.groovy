@@ -14,7 +14,7 @@
    limitations under the License.
 */
 
-package ozone.platform.server.model
+package org.ozoneplatform.commons.server.domain.model
 
 /**
  * Provide a fluent interface for building new WidgetDefinition entities

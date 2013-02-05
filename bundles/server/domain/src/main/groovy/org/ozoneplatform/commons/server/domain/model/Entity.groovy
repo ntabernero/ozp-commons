@@ -14,7 +14,7 @@
    limitations under the License.
 */
 
-package ozone.platform.server.model
+package org.ozoneplatform.commons.server.domain.model
 
 /**
  * It's likely that all Entities will share the same type of ID so Entities should use

@@ -14,26 +14,28 @@
    limitations under the License.
 */
 
-package ozone.platform.server.model
+package org.ozoneplatform.commons.server.domain.tests
+import spock.lang.Specification
+import spock.lang.Unroll
 
-import org.ozoneplatform.commons.server.domain.validation.*
+import static org.ozoneplatform.commons.server.domain.validation.ValidationHelpers.isNotBlank
 
-abstract class Dashboard extends Entity {
+class DescribeValidationHelpers extends Specification {
 
-    @NotBlank
-    String name
-    String description = ''
-    String layoutConfig = ''
-    int position
-    boolean isLocked = false
-
-    protected Dashboard(String name, int position) {
-        this.name = name
-        this.position = position
+    def "it recognizes valid strings are not blank"() {
+        expect:
+        isNotBlank("Foo")
     }
 
-    @Override
-    List<ValidationError> validate() {
-        EntityValidationAnnotationProcessor.instance.validate(this)
+    @Unroll
+    def "it recognizes #fallacy as blank"(s, fallacy) {
+        expect: "${fallacy} is blank"
+        !isNotBlank(s)
+
+        where:
+        s    | fallacy
+        ""   | "empty string"
+        "  " | "all whitespace"
+        null | "null"
     }
 }

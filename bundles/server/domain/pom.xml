@@ -51,7 +51,7 @@
                 <extensions>true</extensions>
                 <configuration>
                     <instructions>
-                        <Export-Package>ozone.platform.server.model</Export-Package>
+                        <Export-Package>org.ozoneplatform.commons.server.domain.model</Export-Package>
                     </instructions>
                 </configuration>
             </plugin>
