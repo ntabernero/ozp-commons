@@ -18,7 +18,7 @@ package ozone.platform.server.model
 
 class DashboardInstance extends Dashboard {
 
-    boolean isDefault = false // Identifies last used dashboard, OWF starts on default dashboard if no dashboard id provided
+    Calendar lastAccessed // Used to open the most recently viewed dashboard on start
 
     final DashboardTemplate dashboardTemplate // Dashboard this was copied from
     final Person person
@@ -34,5 +34,12 @@ class DashboardInstance extends Dashboard {
         this(name, position, person)
 
         this.dashboardTemplate = dashboardTemplate
+    }
+
+    // Keep lastAccessed setter protected since updates should be made through accessed
+    protected void setLastAccessed(Calendar cal) { this.lastAccessed = cal }
+
+    void accessed() {
+        lastAccessed = Calendar.instance
     }
 }
