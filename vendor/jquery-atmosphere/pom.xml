@@ -32,14 +32,14 @@
 
 	<dependencies>
         <dependency>
-            <groupId>org.ozoneplatform.commons.javascript-libraries</groupId>
+            <groupId>org.ozoneplatform.commons.vendor</groupId>
             <artifactId>require</artifactId>
             <version>2.1.1</version>
             <type>zip</type>
             <classifier>js</classifier>
         </dependency>
         <dependency>
-            <groupId>org.ozoneplatform.commons.javascript-libraries</groupId>
+            <groupId>org.ozoneplatform.commons.vendor</groupId>
 			<artifactId>jquery</artifactId>
             <version>1.8.3</version>
             <type>zip</type>
