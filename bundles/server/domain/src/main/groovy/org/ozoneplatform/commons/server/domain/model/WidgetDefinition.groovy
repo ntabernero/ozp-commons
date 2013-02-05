@@ -14,7 +14,7 @@
    limitations under the License.
 */
 
-package ozone.platform.server.model
+package org.ozoneplatform.commons.server.domain.model
 
 import org.ozoneplatform.commons.server.domain.validation.EntityValidationAnnotationProcessor
 import org.ozoneplatform.commons.server.domain.validation.NotBlank
@@ -50,14 +50,6 @@ class WidgetDefinition extends Entity {
     boolean isSingleton = false
     boolean isVisibleForLaunch = true
 
-    /*
-     * Has Many
-     */
-    final Set<WidgetDefinition> requiredWidgets // Widgets required by this widget
-    final Set<String> tags
-    final Set<Intent> sendableIntents
-    final Set<Intent> receivableIntents
-
     /**
      * WidgetDefinition has many required properties making construction
      * a complex operation. Too many arguments in the constructor is a confusing API.
@@ -73,6 +65,69 @@ class WidgetDefinition extends Entity {
         this.imageUrlSmall = imageUrlSmall
         this.imageUrlLarge = imageUrlLarge
         this.widgetType = widgetType
+    }
+
+    /**
+     * Has many required WidgetDefinitions
+     * TODO Open this up as a public API for managing WidgetDefinition dependencies when more is known about this feature
+     */
+    private Set<WidgetDefinition> requiredWidgets // Widgets required by this widget
+
+    /**
+     * Has many Tags
+     * @return
+     */
+    Iterable<String> getTags() {
+        tags
+    }
+    /**
+     * Replaces set of tags with a new set
+     * @param tags
+     */
+    void setTags(Set<String> tags) {
+        this.tags = tags
+    }
+    private Set<String> tags
+
+    /**
+     * Sends many Intents
+     * @return
+     */
+    Iterable<Intent> getSendableIntents() { getMutableSendableIntents() }
+    private Set<Intent> getMutableSendableIntents() {
+        if (!mutableSendableIntents)
+            mutableSendableIntents = new HashSet<Intent>()
+        mutableSendableIntents
+    }
+    private Set<Intent> mutableSendableIntents
+
+    void addSendableIntent(Intent intent) {
+        getMutableSendableIntents().add(intent)
+    }
+
+    void removeSendableIntent(Intent intent) {
+        getMutableSendableIntents().remove(intent)
+    }
+
+    /**
+     * Receives many Intents
+     * @return
+     */
+    Iterable<Intent> getReceivableIntents() { getMutableReceivableIntents() }
+    private Set<Intent> getMutableReceivableIntents() {
+        if (!mutableReceivableIntents) {
+            mutableReceivableIntents = new HashSet<Intent>()
+        }
+        mutableReceivableIntents
+    }
+    private Set<Intent> mutableReceivableIntents
+
+    void addReceivableIntent(Intent intent) {
+        getMutableReceivableIntents().add(intent)
+    }
+
+    void removeReceivableIntent(Intent intent) {
+        getMutableReceivableIntents().remove(intent)
     }
 
     @Override

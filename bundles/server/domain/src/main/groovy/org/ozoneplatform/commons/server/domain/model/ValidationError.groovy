@@ -1,5 +1,5 @@
-/* 
-   Copyright 2013 Next Century Corporation 
+/*
+   Copyright 2013 Next Century Corporation
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -14,26 +14,24 @@
    limitations under the License.
 */
 
-package ozone.platform.server.model
+package org.ozoneplatform.commons.server.domain.model
 
-import org.ozoneplatform.commons.server.domain.validation.*
+class ValidationError {
 
-abstract class Dashboard extends Entity {
+    ValidationError() { }
 
-    @NotBlank
-    String name
-    String description = ''
-    String layoutConfig = ''
-    int position
-    boolean isLocked = false
-
-    protected Dashboard(String name, int position) {
-        this.name = name
-        this.position = position
+    ValidationError(String property, String validationMessage) {
+        this.property = property
+        this.validationMessage = validationMessage
     }
 
-    @Override
-    List<ValidationError> validate() {
-        EntityValidationAnnotationProcessor.instance.validate(this)
-    }
+    /**
+     * Name of the property which causes an object to be invalid
+     */
+    String property
+
+    /**
+     * Human readable explanation why this property is invalid
+     */
+    String validationMessage
 }

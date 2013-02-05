@@ -14,9 +14,9 @@
    limitations under the License.
 */
 
-package org.ozoneplatform.commons.bundle.server.domain.tests
+package org.ozoneplatform.commons.server.domain.tests
 
-import ozone.platform.server.model.WidgetDefinition
+import org.ozoneplatform.commons.server.domain.model.WidgetDefinition
 import spock.lang.Specification
 
 class DescribeWidgetDefinitionBuilder extends Specification {

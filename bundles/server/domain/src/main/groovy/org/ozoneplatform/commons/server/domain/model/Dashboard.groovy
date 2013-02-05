@@ -14,27 +14,22 @@
    limitations under the License.
 */
 
-package ozone.platform.server.model
+package org.ozoneplatform.commons.server.domain.model
 
-import org.ozoneplatform.commons.server.domain.validation.EntityValidationAnnotationProcessor
-import org.ozoneplatform.commons.server.domain.validation.NotBlank
+import org.ozoneplatform.commons.server.domain.validation.*
 
-class Group extends Principal {
+abstract class Dashboard extends Entity {
 
     @NotBlank
     String name
-    String displayName
     String description = ''
-    boolean isActive = true
-    boolean isAutomatic = false // Whether group's people set will be automatically handled by external sources
+    String layoutConfig = ''
+    int position
+    boolean isLocked = false
 
-    final Set<DashboardTemplate> dashboardTemplates
-    final Set<Person> people
-    final Set<WidgetDefinition> widgetDefinitions
-
-    Group(String name) {
+    protected Dashboard(String name, int position) {
         this.name = name
-        this.displayName = name
+        this.position = position
     }
 
     @Override

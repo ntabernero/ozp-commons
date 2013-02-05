@@ -14,36 +14,38 @@
    limitations under the License.
 */
 
-package ozone.platform.server.model
+package org.ozoneplatform.commons.server.domain.model
 
 import static org.ozoneplatform.commons.server.domain.validation.ValidationHelpers.isNotBlank
 
-class Intent {
+class Preference {
 
-    final String action
-    final String dataType
+    final String namespace
+    final String name
+    final String value
 
-    Intent(String action, String dataType) {
-        assert isNotBlank(action), "Action is required"
-        assert isNotBlank(dataType), "DataType is required"
+    protected Preference(String namespace, String name, String value) {
+        assert isNotBlank(namespace), "Namespace is required"
+        assert isNotBlank(name), "Name is required"
+        assert isNotBlank(value), "Value is required"
 
-        this.action = action
-        this.dataType = dataType
+        this.namespace = namespace
+        this.name = name
+        this.value = value
     }
 
     boolean equals(o) {
         if (this.is(o)) return true
         if (getClass() != o.class) return false
 
-        Intent intent = (Intent) o
-
-        return action == intent.action && dataType == intent.dataType
+        Preference that = (Preference) o
+        return name == that.name && namespace == that.namespace
     }
 
     int hashCode() {
         int result
-        result = action.hashCode()
-        result = 31 * result + dataType.hashCode()
+        result = name.hashCode()
+        result = 31 * result + namespace.hashCode()
         return result
     }
 }

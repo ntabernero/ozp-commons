@@ -14,8 +14,8 @@
    limitations under the License.
 */
 
-package org.ozoneplatform.commons.bundle.server.domain.tests
-import ozone.platform.server.model.Person
+package org.ozoneplatform.commons.server.domain.tests
+import org.ozoneplatform.commons.server.domain.model.Person
 import spock.lang.Specification
 import spock.lang.Unroll
 

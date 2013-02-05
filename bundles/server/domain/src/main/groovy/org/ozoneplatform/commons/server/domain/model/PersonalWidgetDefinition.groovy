@@ -14,7 +14,7 @@
    limitations under the License.
 */
 
-package ozone.platform.server.model
+package org.ozoneplatform.commons.server.domain.model
 
 class PersonalWidgetDefinition extends Entity {
 
@@ -25,16 +25,29 @@ class PersonalWidgetDefinition extends Entity {
     boolean isLaunchDisabled = false
     boolean isVisibleForLaunch = true
 
-    final Person person
     final WidgetDefinition widgetDefinition
 
-    final Set<String> tags
-
-    protected PersonalWidgetDefinition(Person person, WidgetDefinition widgetDefinition) {
-        assert person, "Person is required"
+    protected PersonalWidgetDefinition(WidgetDefinition widgetDefinition) {
         assert widgetDefinition, "Widget definition is required"
         
-        this.person = person
         this.widgetDefinition = widgetDefinition
     }
+
+    /**
+     * Has many tags
+     * @return
+     */
+    Iterable<String> getTags() {
+        if (!tags)
+            tags = new HashSet<String>()
+        tags
+    }
+    /**
+     * Replaces tags with new of tags
+     * @param tags
+     */
+    void setTags(Set<String> tags) {
+        this.tags = tags
+    }
+    private Set<String> tags
 }

@@ -1,6 +1,6 @@
 package org.ozoneplatform.commons.server.domain.validation
 
-import ozone.platform.server.model.ValidationError
+import org.ozoneplatform.commons.server.domain.model.ValidationError
 
 import java.lang.annotation.Annotation
 

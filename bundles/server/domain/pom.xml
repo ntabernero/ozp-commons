@@ -51,7 +51,7 @@
                 <extensions>true</extensions>
                 <configuration>
                     <instructions>
-                        <Export-Package>ozone.platform.server.model;version=${project.version}</Export-Package>
+                        <Export-Package>org.ozoneplatform.commons.server.domain.model;version=${project.version}</Export-Package>
                         <Private-Package>org.ozoneplatform.commons.server.domain.validation</Private-Package>
                     </instructions>
                 </configuration>

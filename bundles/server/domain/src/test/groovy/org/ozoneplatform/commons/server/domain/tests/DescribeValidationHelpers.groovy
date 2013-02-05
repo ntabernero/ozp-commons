@@ -14,22 +14,28 @@
    limitations under the License.
 */
 
-package ozone.platform.server.model
-import org.ozoneplatform.commons.server.domain.validation.EntityValidationAnnotationProcessor
-import org.ozoneplatform.commons.server.domain.validation.NotBlank
+package org.ozoneplatform.commons.server.domain.tests
+import spock.lang.Specification
+import spock.lang.Unroll
 
-class Role extends Entity {
+import static org.ozoneplatform.commons.server.domain.validation.ValidationHelpers.isNotBlank
 
-    @NotBlank
-    String authority
-    String description
+class DescribeValidationHelpers extends Specification {
 
-    Role(String authority) {
-        this.authority = authority
+    def "it recognizes valid strings are not blank"() {
+        expect:
+        isNotBlank("Foo")
     }
 
-    @Override
-    List<ValidationError> validate() {
-        EntityValidationAnnotationProcessor.instance.validate(this)
+    @Unroll
+    def "it recognizes #fallacy as blank"(s, fallacy) {
+        expect: "${fallacy} is blank"
+        !isNotBlank(s)
+
+        where:
+        s    | fallacy
+        ""   | "empty string"
+        "  " | "all whitespace"
+        null | "null"
     }
 }

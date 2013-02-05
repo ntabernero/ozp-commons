@@ -14,21 +14,13 @@
    limitations under the License.
 */
 
-package ozone.platform.server.model
+package org.ozoneplatform.commons.server.domain.model
 
-class DashboardInstance extends Dashboard {
-
-    boolean isDefault = false // Identifies last used dashboard, OWF starts on default dashboard if no dashboard id provided
-
-    final DashboardTemplate dashboardTemplate // Dashboard this was copied from
-    final Person person
-
-    protected DashboardInstance(String name, int position, Person person, DashboardTemplate dashboardTemplate) {
-        super(name, position)
-
-        assert person, "Person is required"
-        this.person = person
-
-        this.dashboardTemplate = dashboardTemplate
-    }
+/**
+ * It's likely that all Entities will share the same type of ID so Entities should use
+ * this class for their base class. Should Ozone switch the type of its identifiers (e.g.
+ * GUID to long) then only this base needs to be changed
+ * @param < String >
+ */
+abstract class Entity<String> extends EntityWithId {
 }
