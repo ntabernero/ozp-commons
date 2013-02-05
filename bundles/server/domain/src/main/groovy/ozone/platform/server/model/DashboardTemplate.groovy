@@ -22,14 +22,19 @@ package ozone.platform.server.model
  */
 class DashboardTemplate extends Dashboard {
 
-    // Only one of these may be assigned at a time, DashboardTemplate may belong to
-    // either a stack OR any number of groups
-    final Stack stack
-    final Set<Group> groups
-
-    final Set<WidgetDefinition> widgets // Unique widgets in layoutConfig, when layoutConfig updated this must be synced
-
     DashboardTemplate(String name, int position) {
         super(name, position)
     }
+
+    /**
+     * Has many WidgetDefinitions
+     * @return
+     */
+    Iterable<WidgetDefinition> getWidgetDefinitions() { getMutableWidgetDefinitions() }
+    private Set<WidgetDefinition> getMutableWidgetDefinitions() {
+        if(!mutableWidgetDefinitions)
+            mutableWidgetDefinitions = new HashSet<WidgetDefinition>()
+        mutableWidgetDefinitions
+    }
+    private Set<WidgetDefinition> mutableWidgetDefinitions // Unique widgets in layoutConfig, when layoutConfig updated this must be synced
 }

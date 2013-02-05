@@ -21,17 +21,13 @@ class DashboardInstance extends Dashboard {
     Calendar lastAccessed // Used to open the most recently viewed dashboard on start
 
     final DashboardTemplate dashboardTemplate // Dashboard this was copied from
-    final Person person
 
-    protected DashboardInstance(String name, int position, Person person) {
+    protected DashboardInstance(String name, int position) {
         super(name, position)
-
-        assert person, "Person is required"
-        this.person = person
     }
 
-    protected DashboardInstance(DashboardTemplate dashboardTemplate, Person person) {
-        this(dashboardTemplate.name, dashboardTemplate.position, person)
+    protected DashboardInstance(DashboardTemplate dashboardTemplate) {
+        this(dashboardTemplate.name, dashboardTemplate.position)
 
         this.dashboardTemplate = dashboardTemplate
     }

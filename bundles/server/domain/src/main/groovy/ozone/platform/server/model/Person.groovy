@@ -34,33 +34,53 @@ class Person extends Principal {
     Calendar lastLogin
     Calendar prevLogin // Previous lastLogin date
 
-    final Set<Role> authorities
-    final Set<Group> groups
-    final Set<DashboardInstance> dashboards
-    final Set<PersonalWidgetDefinition> personalWidgetDefinitions
-
     Person(String username, String fullName) {
         this.username = username
         this.fullName = fullName
     }
 
+    /**
+     * Has many DashboardInstances
+     * @return
+     */
+    Iterable<DashboardInstance> getDashboards() { getMutableDashboards() }
+    private Set<DashboardInstance> getMutableDashboards() {
+        if(!mutableDashboards)
+            mutableDashboards = new HashSet<DashboardInstance>()
+        mutableDashboards
+    }
+    private Set<DashboardInstance> mutableDashboards
+
     DashboardInstance createDashboardInstance(String name, int position) {
-        def dashboard = new DashboardInstance(name, position, this)
-        dashboards.add(dashboard)
+        def dashboard = new DashboardInstance(name, position)
+        getMutableDashboards().add(dashboard)
 
         return dashboard
     }
 
     DashboardInstance createDashboardInstanceFromTemplate(DashboardTemplate template) {
-        def dashboard = new DashboardInstance(template, this)
-        dashboards.add(dashboard)
+        def dashboard = new DashboardInstance(template)
+        getMutableDashboards().add(dashboard)
 
         return dashboard
     }
 
+    /**
+     * Has many PersonalWidgetDefinitions
+     * @return
+     */
+    Iterable<PersonalWidgetDefinition> getPersonalWidgetDefinitions() { mutablePersonalWidgetDefinitions }
+    private Set<PersonalWidgetDefinition> getMutablePersonalWidgetDefinitions() {
+        if(!mutablePersonalWidgetDefinitions)
+            mutablePersonalWidgetDefinitions = new HashSet<PersonalWidgetDefinition>()
+        mutablePersonalWidgetDefinitions
+    }
+    private Set<PersonalWidgetDefinition> mutablePersonalWidgetDefinitions
+
+
     PersonalWidgetDefinition createPersonalWidgetDefinition(WidgetDefinition widgetDefinition) {
-        def personalWidgetDefinition = new PersonalWidgetDefinition(this, widgetDefinition)
-        personalWidgetDefinitions.add(personalWidgetDefinition)
+        def personalWidgetDefinition = new PersonalWidgetDefinition(widgetDefinition)
+        getMutablePersonalWidgetDefinitions().add(personalWidgetDefinition)
 
         return personalWidgetDefinition
     }

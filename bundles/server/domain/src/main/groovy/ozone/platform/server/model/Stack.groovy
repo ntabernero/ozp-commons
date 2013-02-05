@@ -33,12 +33,29 @@ class Stack extends Entity {
     String descriptorUrl
     String description = ''
 
-    final Set<DashboardTemplate> dashboardTemplates
-    final Set<Principal> principals // People and Groups granted permission to this Stack's dashboards
-
     Stack(String name, String urlName) {
         this.name = name
         this.urlName = urlName
+    }
+
+    /**
+     * Has many DashboardTemplates
+     * @return
+     */
+    Iterable<DashboardTemplate> getDashboardTemplates() { getMutableDashboardTemplates() }
+    private Set<DashboardTemplate> getMutableDashboardTemplates() {
+        if (!mutableDashboardTemplates)
+            mutableDashboardTemplates = new HashSet<DashboardTemplate>()
+        mutableDashboardTemplates
+    }
+    private Set<DashboardTemplate> mutableDashboardTemplates
+
+    void addDashboardTemplate(DashboardTemplate dashboardTemplate) {
+        getMutableDashboardTemplates().add(dashboardTemplate)
+    }
+
+    void removeDashboardTemplate(DashboardTemplate dashboardTemplate) {
+        getMutableDashboardTemplates().remove(dashboardTemplate)
     }
 
     @Override

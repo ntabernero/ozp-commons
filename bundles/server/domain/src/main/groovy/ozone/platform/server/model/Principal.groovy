@@ -21,20 +21,60 @@ package ozone.platform.server.model
  */
 abstract class Principal extends Entity {
 
-    final Set<Preference> preferences
-    final Set<Stack> stacks
+    /**
+     * Has many Preferences
+     * @return
+     */
+    Iterable<Preference> getPreferences() { getMutablePreferences() }
+    private Set<Preference> getMutablePreferences() {
+        if (!mutablePreferences)
+            mutablePreferences = new HashSet<Preference>()
+        mutablePreferences
+    }
+    private Set<Preference> mutablePreferences
 
+    /**
+     * Creates a new preference or replaces an existing one with the new value
+     * @param name
+     * @param namespace
+     * @param value
+     * @return
+     */
     Preference setPreference(String name, String namespace, String value) {
         def preference = new Preference(name, namespace, value)
 
         // Replace old preference with new value object
         removePreference(preference)
-        preferences.add(preference)
+        getMutablePreferences().add(preference)
 
         return preference
     }
 
+    /**
+     * Removes a preference with the same (namespace, name) pair
+     * @param preference
+     */
     void removePreference(Preference preference) {
-        preferences.remove(preference)
+        getMutablePreferences().remove(preference)
+    }
+
+    /**
+     * Has many Stacks
+     * @return
+     */
+    Iterable<Stack> getStacks() { getMutableStacks() }
+    private Set<Stack> getMutableStacks() {
+        if (!mutableStacks)
+            mutableStacks = new HashSet<Stack>()
+        mutableStacks
+    }
+    private Set<Stack> mutableStacks
+
+    void addStack(Stack stack) {
+        getMutableStacks().add(stack)
+    }
+
+    void removeStack(Stack stack) {
+        getMutableStacks().remove(stack)
     }
 }

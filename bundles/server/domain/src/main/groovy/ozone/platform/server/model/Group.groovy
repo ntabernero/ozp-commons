@@ -28,12 +28,49 @@ class Group extends Principal {
     boolean isPermissionsActive = true // If people will have access to group's dashboards, stacks, and widgets
     boolean isAutomatic = false // If people will be automatically handled by external sources
 
-    final Set<Person> people
-    final Set<WidgetDefinition> widgetDefinitions
-
     Group(String name) {
         this.name = name
         this.displayName = name
+    }
+
+    /**
+     * Has many Persons
+     * @return
+     */
+    Iterable<Person> getPersons() { getMutablePersons() }
+    private Set<Person> getMutablePersons() {
+        if (!mutablePersons)
+            mutablePersons = new HashSet<Person>()
+        mutablePersons
+    }
+    private Set<Person> mutablePersons
+
+    void addPerson(Person person) {
+        getMutablePersons().add(person)
+    }
+
+    void removePerson(Person person) {
+        getMutablePersons().remove(person)
+    }
+
+    /**
+     * Has many WidgetDefinitions
+     * @return
+     */
+    Iterable<WidgetDefinition> getWidgetDefinitions() { getMutableWidgetDefinitions() }
+    private Set<WidgetDefinition> getMutableWidgetDefinitions() {
+        if (!mutableWidgetDefinitions)
+            mutableWidgetDefinitions = new HashSet<WidgetDefinition>()
+        mutableWidgetDefinitions
+    }
+    private Set<WidgetDefinition> mutableWidgetDefinitions
+
+    void addWidgetDefinition(WidgetDefinition widgetDefinition) {
+        getMutableWidgetDefinitions().add(widgetDefinition)
+    }
+
+    void removeWidgetDefinition(WidgetDefinition widgetDefinition) {
+        getMutableWidgetDefinitions().remove(widgetDefinition)
     }
 
     @Override
