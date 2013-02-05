@@ -21,9 +21,9 @@
     </properties>
 
     <scm>
-        <connection>scm:git:https://www.owfgoss.org/git/repos/commons.git</connection>
-        <developerConnection>scm:git:https://www.owfgoss.org/git/repos/commons.git</developerConnection>
-        <url>https://www.owfgoss.org/crucible/browse/commons/</url>
+        <connection>scm:git:https://www.owfgoss.org/git/repos/ozp-commons.git</connection>
+        <developerConnection>scm:git:https://www.owfgoss.org/git/repos/ozp-commons.git</developerConnection>
+        <url>https://www.owfgoss.org/crucible/browse/ozp-commons/</url>
     </scm>
 
     <modules>
