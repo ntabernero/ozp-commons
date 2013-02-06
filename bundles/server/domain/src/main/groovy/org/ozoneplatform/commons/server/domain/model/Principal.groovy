@@ -40,8 +40,8 @@ abstract class Principal extends Entity {
      * @param value
      * @return
      */
-    Preference setPreference(String name, String namespace, String value) {
-        def preference = new Preference(name, namespace, value)
+    Preference setPreference(String namespace, String name, String value) {
+        def preference = new Preference(namespace, name, value)
 
         // Replace old preference with new value object
         removePreference(preference)
