@@ -48,7 +48,7 @@ function(View, $, _, Handlebars) {
                     );
 
     /**
-     * Bootstrap Modal wrapper for use with Backbone.uk>
+     * Bootstrap Modal wrapper for use with Backbone
      *
      * Events:
      * shown: Fired when the modal has finished animating in
@@ -108,13 +108,12 @@ function(View, $, _, Handlebars) {
             this.$el.on('shown', function() {
                 me.trigger('shown');
             });
-
-            View.prototype.initialize.apply(this, arguments);
         },
         
-        afterRender: function  () {
-            this.$el.append( template(this) );
-            this.$body = $('.modal-body', this.$el);
+        render: function () {
+            this.$el.html( template(this) );
+            this.$body = this.$el.children( '.modal-body' );
+            this.isRendered = true;
 
             return this;
         },
@@ -123,17 +122,21 @@ function(View, $, _, Handlebars) {
         /*
          *Override to handle click on OK button.
          */
-        ok: $.noop,
+        ok: function (evt) {
+            evt.preventDefault();
+        },
 
         /*
          * Override to handle click on cancel button.
          */
-        cancel: $.noop,
+        cancel: function (evt) {
+            evt.preventDefault();
+        },
 
         /*
          * Show window. If render is not called before, view is added to body.
          */
-        show: function() {
+        show: function () {
             var dfd = $.Deferred();
 
             if(!this.isRendered) {
@@ -154,7 +157,7 @@ function(View, $, _, Handlebars) {
         /*
          * Hide window.
          */
-        hide: function() {
+        hide: function () {
             var me = this,
                 dfd = $.Deferred();
 
@@ -163,6 +166,16 @@ function(View, $, _, Handlebars) {
             }).modal('hide');
 
             return dfd.promise();
+        },
+
+        remove: function (animate) {
+            var me = this,
+                args = arguments;
+            function callSuper () {
+                View.prototype.remove.apply( me, args );
+            }
+
+            animate !== false ? this.hide().then(callSuper) : callSuper();
         }
     });
 
