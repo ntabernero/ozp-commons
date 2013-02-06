@@ -33,6 +33,7 @@ require({
         require: '../target/libs/js/require',
         jquery: '/base/target/libs/js/jquery',
         backbone: '/base/target/libs/js/backbone',
+        'backbone.declarative.views': '/base/target/libs/js/backbone.declarative.views',
         lodash: '/base/target/libs/js/lodash',
         handlebars: '/base/target/libs/js/handlebars',
         bootstrap: '/base/target/libs/js/bootstrap',
@@ -64,6 +65,10 @@ require({
         jqueryatmosphere: {
             deps: ['jquery'],
             exports: '$'
+        },
+        'backbone.declarative.views': {
+            deps: ['lodash', 'backbone'],
+            exports: 'Backbone'
         }
     }
 }, tests, function() {

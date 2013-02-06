@@ -17,7 +17,8 @@
 define([
     'backbone',
     'jquery',
-    'lodash'
+    'lodash',
+    'backbone.declarative.views'
 ],
 
 function(Backbone, $, _) {

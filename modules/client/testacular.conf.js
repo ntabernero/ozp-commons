@@ -21,6 +21,7 @@ files = [
   'target/libs/js/json2.js',
   'target/libs/js/jquery.js',
   'target/libs/js/backbone.js',
+  'target/libs/js/backbone.declarative.views.js',
   'target/libs/js/handlebars.js',
   'target/libs/js/expect.js',
   'target/libs/js/sinon.js',
