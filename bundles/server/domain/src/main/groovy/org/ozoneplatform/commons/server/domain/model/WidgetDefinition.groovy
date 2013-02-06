@@ -68,6 +68,17 @@ class WidgetDefinition extends Entity {
     }
 
     /**
+     * Is contained in many groups
+     * This back reference is provided as an optimization for the widget launcher
+     * @return
+     */
+    Iterable<Group> getGroups() { groups }
+    private void setGroups(Set<Group> groups) {
+        this.groups = groups
+    }
+    private Set<Group> groups
+
+    /**
      * Has many required WidgetDefinitions
      * TODO Open this up as a public API for managing WidgetDefinition dependencies when more is known about this feature
      */
