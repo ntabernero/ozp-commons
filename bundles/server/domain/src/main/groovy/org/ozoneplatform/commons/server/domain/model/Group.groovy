@@ -73,6 +73,22 @@ class Group extends Principal {
         getMutableWidgetDefinitions().remove(widgetDefinition)
     }
 
+    Iterable<DashboardTemplate> getDashboardTemplates() { getMutableDashboardTemplates() }
+    private Set<DashboardTemplate> getMutableDashboardTemplates() {
+        if (!mutableDashboardTemplates)
+            mutableDashboardTemplates = new HashSet<DashboardTemplate>()
+        mutableDashboardTemplates
+    }
+    private Set<DashboardTemplate> mutableDashboardTemplates
+
+    void addDashboardTemplate(DashboardTemplate dashboardTemplate) {
+        getMutableDashboardTemplates().add(dashboardTemplate)
+    }
+
+    void removeDashboardTemplate(DashboardTemplate dashboardTemplate) {
+        getMutableDashboardTemplates().remove(dashboardTemplate)
+    }
+
     @Override
     List<ValidationError> validate() {
         EntityValidationAnnotationProcessor.instance.validate(this)
