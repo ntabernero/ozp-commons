@@ -39,7 +39,7 @@
         <module>jquery-splitter</module>
         <module>bootstrap-editable</module>
         <module>animate</module>
-        
+		<module>backbone.declarative.views</module>
     </modules>
 
     <build>

@@ -108,12 +108,13 @@ function(View, $, _, Handlebars) {
             this.$el.on('shown', function() {
                 me.trigger('shown');
             });
+
+            View.prototype.initialize.apply(this, arguments);
         },
         
-        render: function  () {
-            this.$el.html( template(this) );
+        afterRender: function  () {
+            this.$el.append( template(this) );
             this.$body = $('.modal-body', this.$el);
-            this.isRendered = true;
 
             return this;
         },
