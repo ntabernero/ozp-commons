@@ -67,10 +67,12 @@ class Group extends Principal {
 
     void addWidgetDefinition(WidgetDefinition widgetDefinition) {
         getMutableWidgetDefinitions().add(widgetDefinition)
+        widgetDefinition.mutableGroups.add(this)
     }
 
     void removeWidgetDefinition(WidgetDefinition widgetDefinition) {
         getMutableWidgetDefinitions().remove(widgetDefinition)
+        widgetDefinition.mutableGroups.remove(this)
     }
 
     Iterable<DashboardTemplate> getDashboardTemplates() { getMutableDashboardTemplates() }
@@ -83,10 +85,12 @@ class Group extends Principal {
 
     void addDashboardTemplate(DashboardTemplate dashboardTemplate) {
         getMutableDashboardTemplates().add(dashboardTemplate)
+        dashboardTemplate.mutableGroups.add(this)
     }
 
     void removeDashboardTemplate(DashboardTemplate dashboardTemplate) {
         getMutableDashboardTemplates().remove(dashboardTemplate)
+        dashboardTemplate.mutableGroups.remove(this)
     }
 
     @Override

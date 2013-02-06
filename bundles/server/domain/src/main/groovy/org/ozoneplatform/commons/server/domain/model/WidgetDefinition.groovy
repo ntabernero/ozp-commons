@@ -72,11 +72,13 @@ class WidgetDefinition extends Entity {
      * This back reference is provided as an optimization for the widget launcher
      * @return
      */
-    Iterable<Group> getGroups() { groups }
-    private void setGroups(Set<Group> groups) {
-        this.groups = groups
+    Iterable<Group> getGroups() { getMutableGroups() }
+    protected Set<Group> getMutableGroups() {
+        if (!mutableGroups)
+            mutableGroups = new HashSet<Group>()
+        mutableGroups
     }
-    private Set<Group> groups
+    private Set<Group> mutableGroups
 
     /**
      * Has many required WidgetDefinitions

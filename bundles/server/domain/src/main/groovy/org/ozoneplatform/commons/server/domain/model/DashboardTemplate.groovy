@@ -45,22 +45,26 @@ class DashboardTemplate extends Dashboard {
      * the switcher, may list the groups this dashboard is a part of
      * @return
      */
-    Iterable<Group> getGroups() { groups }
-    private void setGroups(Set<Group> groups) {
-        this.groups = groups
+    Iterable<Group> getGroups() { getMutableGroups() }
+    protected Set<Group> getMutableGroups() {
+        if (!mutableGroups)
+            mutableGroups = new HashSet<Group>()
+        mutableGroups
     }
-    private Set<Group> groups
+    private Set<Group> mutableGroups
 
     /**
      * Is contained in many stacks
      * This back references is provided as an optimization for the
-     * dashboard switcher so that it may group dashboards in stacks
+     * dashboard switcher so that it may aggregate dashboards in stacks
      * with just one call
      * @return
      */
-    Iterable<Stack> getStacks() { stacks }
-    private void setStacks(Set<Stack> stacks) {
-        this.stacks = stacks
+    Iterable<Stack> getStacks() { getMutableStacks() }
+    protected Set<Stack> getMutableStacks() {
+        if (!stacks)
+            stacks = new HashSet<Stack>()
+        stacks
     }
     private Set<Stack> stacks
 }
