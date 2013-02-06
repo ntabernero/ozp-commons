@@ -17,60 +17,62 @@
 define([
     'collections/Collection'
 ], function(Collection) {
-    var collection,
-        model1,
-        model2;
+    describe('Collection', function() {
+        var collection,
+            model1,
+            model2;
 
-    beforeEach(function(done) {
-        collection = new Collection();
+        beforeEach(function(done) {
+            collection = new Collection();
 
-        model1 = new Backbone.Model();
-        model2 = new Backbone.Model();
+            model1 = new Backbone.Model();
+            model2 = new Backbone.Model();
 
-        collection.add([model1, model2]);
-        done();
-    });
+            collection.add([model1, model2]);
+            done();
+        });
 
-    afterEach(function(done) {
-        done();
-    });
+        afterEach(function(done) {
+            done();
+        });
 
-    it('moves a model up to the new specified index', function() {
-        collection.updateIndex(model1, 1);
+        it('moves a model up to the new specified index', function() {
+            collection.updateIndex(model1, 1);
 
-        expect(collection.at(0)).to.be(model2);
-        expect(collection.at(1)).to.be(model1);
-    });
+            expect(collection.at(0)).to.be(model2);
+            expect(collection.at(1)).to.be(model1);
+        });
 
-    it('moves a model down to the new specified index', function() {
-        collection.updateIndex(model2, 0);
+        it('moves a model down to the new specified index', function() {
+            collection.updateIndex(model2, 0);
 
-        expect(collection.at(0)).to.be(model2);
-        expect(collection.at(1)).to.be(model1);
-    });
+            expect(collection.at(0)).to.be(model2);
+            expect(collection.at(1)).to.be(model1);
+        });
 
-    it('fires reorder when updateIndex is called', function() {
-        var callback = sinon.spy();
+        it('fires reorder when updateIndex is called', function() {
+            var callback = sinon.spy();
 
-        collection.on('reorder', callback);
+            collection.on('reorder', callback);
 
-        collection.updateIndex(model1, 1);
+            collection.updateIndex(model1, 1);
 
-        expect(callback.calledWith(model1, 1)).to.be.ok();
-    });
+            expect(callback.calledWith(model1, 1)).to.be.ok();
+        });
 
-    it('does not modify the collection or fire events if updateIndex ' +
-            'is called on a model that is not in the collection', function() {
+        it('does not modify the collection or fire events if updateIndex ' +
+                'is called on a model that is not in the collection', function() {
 
-        var callback = sinon.spy();
+            var callback = sinon.spy();
 
-        collection.on('reorder', callback);
+            collection.on('reorder', callback);
 
-        collection.updateIndex(new Backbone.Model(), 1);
+            collection.updateIndex(new Backbone.Model(), 1);
 
-        expect(callback.called).to.equal(false);
-        expect(collection.length).to.equal(2);
-        expect(collection.at(0)).to.be(model1);
-        expect(collection.at(1)).to.be(model2);
+            expect(callback.called).to.equal(false);
+            expect(collection.length).to.equal(2);
+            expect(collection.at(0)).to.be(model1);
+            expect(collection.at(1)).to.be(model2);
+        });
     });
 });
