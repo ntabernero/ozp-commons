@@ -22,8 +22,29 @@ function(Backbone) {
 
     var Collection = Backbone.Collection.extend({
 
+        /**
+         * Reorders the collection so that the 
+         * specified model is at the specified index.
+         * Relative ordering of all other models is preserved.
+         * In the case where the model being moved was previously
+         * at a lower index, the element that was at the newIndex
+         * will end up before the model being moved.
+         *
+         * @param model The model to move
+         * @param newIndex The desired index of the model
+         * @fires reorder (model, newIndex) Upon completion
+         */
+        updateIndex: function(model, newIndex) {
+            if (!this.contains(model)) {
+                return;
+            }
+
+            this.remove(model, {silent: true});
+            this.add(model, {at: newIndex, silent: true});
+
+            this.trigger('reorder', model, newIndex);
+        }
     });
     
     return Collection;
-
 });

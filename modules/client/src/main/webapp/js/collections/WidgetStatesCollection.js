@@ -16,15 +16,13 @@
 
 define([
     'models/WidgetStateModel',
-    'backbone'
+    'collections/Collection'
 ],
 
-function(WidgetStateModel, Backbone) {
+function(WidgetStateModel, Collection) {
 
-    var WidgetStatesCollection = Backbone.Collection.extend({
-        
+    var WidgetStatesCollection = Collection.extend({
         model: WidgetStateModel
-
     });
 
     return WidgetStatesCollection;
