@@ -14,13 +14,11 @@
    limitations under the License.
 */
 
-package org.ozoneplatform.commons.bundles.server.persistence;
+package org.ozoneplatform.commons.server.persistence.api;
 
 import org.ozoneplatform.commons.server.domain.model.WidgetDefinition;
 
 public interface WidgetDefinitionRepository extends Repository<WidgetDefinition> {
-
-    WidgetDefinition getByGuid(String guid);
 
     WidgetDefinition getByUniversalName(String universalName);
 

@@ -1,25 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-    Generated from archetype; please customize.
--->
-
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-
-    <modelVersion>4.0.0</modelVersion>
-
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <groupId>org.ozoneplatform.commons.bundles</groupId>
-        <artifactId>bundles</artifactId>
+        <artifactId>persistence</artifactId>
         <version>8.0.0-ALPHA-SPRINT3-SNAPSHOT</version>
-        <relativePath>../../pom.xml</relativePath>
+        <relativePath>../pom.xml</relativePath>
     </parent>
+    <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.ozoneplatform.commons.bundles</groupId>
-    <artifactId>domain</artifactId>
+    <artifactId>ozone-persistence-jpa</artifactId>
     <version>8.0.0-ALPHA-SPRINT3-SNAPSHOT</version>
-    <name>Ozone :: Commons :: Bundles :: Server Domain Model Library</name>
-    <description>Server Domain Model Library</description>
     <packaging>bundle</packaging>
+
+    <name>Ozone :: Commons :: Ozone JPA</name>
+    <description>JPA implementation of the Ozone persistence API</description>
 
     <dependencies>
         <dependency>
@@ -51,8 +48,7 @@
                 <extensions>true</extensions>
                 <configuration>
                     <instructions>
-                        <Export-Package>org.ozoneplatform.commons.server.domain.model;version=${project.version}</Export-Package>
-                        <Private-Package>org.ozoneplatform.commons.server.domain.validation</Private-Package>
+                        <Export-Package>org.ozoneplatform.commons.server.persistence.jpa</Export-Package>
                     </instructions>
                 </configuration>
             </plugin>

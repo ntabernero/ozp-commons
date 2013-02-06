@@ -19,10 +19,14 @@
     <properties>
         <projectVersion>${project.version}</projectVersion>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <groovy.version>2.0.6</groovy.version>
+        <spock.version>0.7-groovy-2.0</spock.version>
+        <junit.version>4.11</junit.version>
     </properties>
 
     <modules>
         <module>server/domain</module>
+        <module>server/persistence</module>
     </modules>
 
 </project>

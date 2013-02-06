@@ -14,7 +14,7 @@
    limitations under the License.
 */
 
-package org.ozoneplatform.commons.bundles.server.persistence;
+package org.ozoneplatform.commons.server.persistence.api;
 
 import java.util.List;
 

@@ -1,5 +1,5 @@
-/*
-   Copyright 2013 Next Century Corporation
+/* 
+   Copyright 2013 Next Century Corporation 
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -14,13 +14,12 @@
    limitations under the License.
 */
 
-package org.ozoneplatform.commons.bundles.server.persistence;
+package org.ozoneplatform.commons.server.persistence.jpa
 
 /**
- * All repositories will likely use one type of identifier (TKey); however, the one type
- * they use may change so define the type here so we only have to change it in one spot
- * @param < T >
+ * This needs to be here so the bundle configuration in the POM is happy
+ * Just trying to set up directory structure right now will delete as soon as
+ * there is at least one real class in this package
  */
-interface Repository<T> extends RepositoryWithId<T, Long> {
-
+abstract class Placeholder {
 }
