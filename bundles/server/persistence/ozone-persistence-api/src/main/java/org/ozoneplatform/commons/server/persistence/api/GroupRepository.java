@@ -16,5 +16,15 @@
 
 package org.ozoneplatform.commons.server.persistence.api;
 
+import org.ozoneplatform.commons.server.domain.model.Group;
+import org.ozoneplatform.commons.server.domain.model.Person;
+import org.ozoneplatform.commons.server.domain.model.Stack;
+
+import java.util.List;
+
 public interface GroupRepository extends Repository {
+
+    List<Group> getGroupsForPerson(Person person);
+
+    List<Group> getGroupsForStack(Stack stack);
 }

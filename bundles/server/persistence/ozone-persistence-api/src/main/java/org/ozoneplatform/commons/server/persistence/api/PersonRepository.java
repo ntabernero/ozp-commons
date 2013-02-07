@@ -17,9 +17,17 @@
 package org.ozoneplatform.commons.server.persistence.api;
 
 import org.ozoneplatform.commons.server.domain.model.Person;
+import org.ozoneplatform.commons.server.domain.model.Stack;
+import org.ozoneplatform.commons.server.domain.model.WidgetDefinition;
+
+import java.util.List;
 
 public interface PersonRepository extends Repository {
 
     Person getByUsername(String username);
+
+    List<Person> getPersonsWhoHaveWidget(WidgetDefinition widgetDefinition);
+
+    List<Person> getPersonsWhoHaveStack(Stack stack);
 
 }
