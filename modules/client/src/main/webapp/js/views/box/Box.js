@@ -16,7 +16,7 @@
 
 define([
     'views/View',
-    './Pane',
+    'views/panes/Pane',
     'jquery',
     'lodash',
     'jquery-splitter'
@@ -37,38 +37,31 @@ define([
         events: {
             'layoutChange': 'updateLayout'
         },
+        
+        // must be set when extending this class
+        sizingProperty: null,
 
         views: function () {
             return this.options.panes;
-        },
-
-        initialize: function () {
-            if( !this.options.orientation ) {
-                this.options.orientation = 'vertical';
-            }
-
-            this.$el.addClass( this.options.orientation && this.options.orientation === 'vertical' ? 'hbox' : 'vbox');
-            View.prototype.initialize.apply(this, arguments);
         },
 
         afterRender: function () {
             this.firstPane = this.views[0];
             this.secondPane = this.views[1];
 
-            this.$el.splitter( this.options );
+            this.listenTo( this.firstPane, 'sizeChange', _.bind(this.firstPaneSizeChanged, this) );
+            this.listenTo( this.secondPane, 'sizeChange', _.bind(this.secondPaneSizeChanged, this) );
+            
+            this.$el.splitter( _.extend({}, this.options, { orientation: this.orientation }) );
 
             return this;
-        },
-
-        getSizingProperty: function () {
-            return this.options.orientation === 'vertical' ? 'width' : 'height';
         },
 
         updateLayout: function (evt) {
             evt.stopPropagation();
             
             var firstPaneOptions = this.firstPane.options,
-                prop = this.getSizingProperty();
+                prop = this.sizingProperty;
 
             if( firstPaneOptions.flex ) {
                 this.secondPaneSizeChanged( this.firstPane.$el[prop]() + 'px' );
@@ -86,7 +79,7 @@ define([
             console.log(pane.$el, otherPaneSize);
             var size = parseFloat( otherPaneSize ),
                 options = {},
-                prop = this.getSizingProperty();
+                prop = this.sizingProperty;
 
             if( isPercentageSize( otherPaneSize ) ) {
                 options[ prop ] = (100 - size) + '%';
@@ -100,7 +93,7 @@ define([
 
         secondPaneSizeChanged: function (size) {
             var options = {},
-                prop = this.getSizingProperty();
+                prop = this.sizingProperty;
 
             options[prop] = size;
             this.secondPane.updateSize( options );
@@ -109,7 +102,7 @@ define([
 
         firstPaneSizeChanged: function (size) {
             var options = {},
-                prop = this.getSizingProperty();
+                prop = this.sizingProperty;
 
             options[prop] = size;
             this.firstPane.updateSize( options );

@@ -39,21 +39,27 @@
             this.viewsConfig = this.viewsConfig ? [].concat(this.viewsConfig) : [];
 
             for(var i = 0; i < this.viewsConfig.length; i++) {
-                var viewInstance,
-                    config = this.viewsConfig[i],
-                    vtype = config.vtype;
+                this.initView( this.viewsConfig[i] );
+            }
+        },
 
-                if(vtype) {
-                    if(_.isString(vtype)) {
-                        var Impl = Backbone.ViewManager.get(vtype);
-                        viewInstance = new Impl(config);
-                    }
-                    else {
-                        viewInstance = new config.vtype(config);
-                    }
-                    this.views.push(viewInstance);
+        initView: function (config) {
+            var view,
+                vtype = config.vtype;
+
+            if(vtype) {
+                if(_.isString(vtype)) {
+                    var Impl = Backbone.ViewManager.get(vtype);
+                    view = new Impl(config);
+                }
+                else {
+                    view = new config.vtype(config);
                 }
             }
+
+            this.views.push( view );
+
+            return view;
         },
 
         // beforeRender is an empty function by default. Override it with your own
@@ -99,6 +105,22 @@
         // afterRender is an empty function by default. Override it with your own
         // after render logic.
         afterRender: function() {},
+
+        addView: function ( config ) {
+            var view;
+            if( config instanceof Backbone.View ) {
+                view = config;
+                this.views.push( view );
+            }
+            else {
+                view = this.initView( config );
+            }
+            view.render();
+            var renderTo = (view.renderTo || view.options.renderTo || this.$el);
+            renderTo.append( view.el );
+
+            return view;
+        },
 
         getView: function (vid) {
             return _.find(this.views, function (view) {
