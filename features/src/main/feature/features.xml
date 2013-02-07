@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<features name="org.ozoneplatform.commons.features-repo">
+    
+	<feature name="ozone-commons-server" version="${project.version}" description="Ozone Commons Server Features">
+		<bundle>mvn:org.ozoneplatform.commons.bundles/domain/${project.version}</bundle>
+	</feature>
+
+</features>
