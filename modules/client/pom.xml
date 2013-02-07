@@ -137,6 +137,15 @@
                                         </artifactItem>
                                         <artifactItem>
                                             <groupId>org.ozoneplatform.commons.vendor</groupId>
+                                            <artifactId>jquery-splitter</artifactId>
+                                            <version>0.3</version>
+                                            <type>zip</type>
+                                            <classifier>js</classifier>
+                                            <overWrite>true</overWrite>
+                                            <outputDirectory>${project.build.directory}/libs</outputDirectory>
+                                        </artifactItem>
+                                        <artifactItem>
+                                            <groupId>org.ozoneplatform.commons.vendor</groupId>
                                             <artifactId>sinon</artifactId>
                                             <version>1.5.2</version>
                                             <type>zip</type>

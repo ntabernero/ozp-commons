@@ -37,7 +37,8 @@ require({
         lodash: '/base/target/libs/js/lodash',
         handlebars: '/base/target/libs/js/handlebars',
         bootstrap: '/base/target/libs/js/bootstrap',
-        jqueryatmosphere: '/base/target/libs/js/jquery.atmosphere'
+        jqueryatmosphere: '/base/target/libs/js/jquery.atmosphere',
+        'jquery-splitter': '/base/target/libs/js/jquery-splitter'
         //text: '../lib/text'
     },
     shim: {
@@ -54,6 +55,10 @@ require({
             deps: ['lodash', 'jquery'],
             exports: 'Backbone'
         },
+        'backbone.declarative.views': {
+            deps: ['lodash', 'backbone'],
+            exports: 'Backbone'
+        },
         'bootstrap/bootstrap-transition': {
             deps: ['jquery'],
             exports: '$'
@@ -66,9 +71,9 @@ require({
             deps: ['jquery'],
             exports: '$'
         },
-        'backbone.declarative.views': {
-            deps: ['lodash', 'backbone'],
-            exports: 'Backbone'
+        'jquery-splitter': {
+            deps: ['jquery'],
+            exports: '$'
         }
     }
 }, tests, function() {
