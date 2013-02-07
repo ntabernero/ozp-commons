@@ -68,6 +68,19 @@ class WidgetDefinition extends Entity {
     }
 
     /**
+     * Is contained in many groups
+     * This back reference is provided as an optimization for the widget launcher
+     * @return
+     */
+    Iterable<Group> getGroups() { getMutableGroups() }
+    protected Set<Group> getMutableGroups() {
+        if (!mutableGroups)
+            mutableGroups = new HashSet<Group>()
+        mutableGroups
+    }
+    private Set<Group> mutableGroups
+
+    /**
      * Has many required WidgetDefinitions
      * TODO Open this up as a public API for managing WidgetDefinition dependencies when more is known about this feature
      */

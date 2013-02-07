@@ -37,4 +37,29 @@ class DashboardTemplate extends Dashboard {
         mutableWidgetDefinitions
     }
     private Set<WidgetDefinition> mutableWidgetDefinitions // Unique widgets in layoutConfig, when layoutConfig updated this must be synced
+
+    /**
+     * Is contained in many groups
+     * This back reference is provided as an optimization so the
+     * tool tip, which is displayed when the user hovers over a dashboard in
+     * the switcher, may list the groups this dashboard is a part of
+     * @return
+     */
+    Iterable<Group> getGroups() { getMutableGroups() }
+    protected Set<Group> getMutableGroups() {
+        if (!mutableGroups)
+            mutableGroups = new HashSet<Group>()
+        mutableGroups
+    }
+    private Set<Group> mutableGroups
+
+    /**
+     * Is contained in at most one stack
+     * This back references is provided as an optimization for the
+     * dashboard switcher so that it may aggregate dashboards in stacks
+     * with just one call
+     * @return
+     */
+    Stack getStack() { stack }
+    private Stack stack
 }
