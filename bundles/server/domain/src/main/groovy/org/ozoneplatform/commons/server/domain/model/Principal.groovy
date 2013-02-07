@@ -35,8 +35,8 @@ abstract class Principal extends Entity {
 
     /**
      * Creates a new preference or replaces an existing one with the new value
-     * @param name
      * @param namespace
+     * @param name
      * @param value
      * @return
      */

@@ -61,5 +61,5 @@ class DashboardTemplate extends Dashboard {
      * @return
      */
     Stack getStack() { stack }
-    private Stack stack
+    protected Stack stack
 }
