@@ -52,12 +52,12 @@ class Stack extends Entity {
 
     void addDashboardTemplate(DashboardTemplate dashboardTemplate) {
         getMutableDashboardTemplates().add(dashboardTemplate)
-        dashboardTemplate.mutableStacks.add(this)
+        dashboardTemplate.stack = this
     }
 
     void removeDashboardTemplate(DashboardTemplate dashboardTemplate) {
         getMutableDashboardTemplates().remove(dashboardTemplate)
-        dashboardTemplate.mutableStacks.remove(this)
+        dashboardTemplate.stack = null
     }
 
     @Override
