@@ -57,7 +57,9 @@
     <url>http://jira.codehaus.org/browse/MOJO</url>
   </issueManagement>
 
-  <distributionManagement>
+  <!-- BEGIN MODIFIED BY PATCH -->
+
+  <!-- <distributionManagement>
     <repository>
       <id>codehaus-nexus-staging</id>
       <name>Codehaus Release Repository</name>
@@ -73,7 +75,9 @@
       <name>Mojo Website</name>
       <url>dav:https://dav.codehaus.org/mojo/codenarc-maven-plugin/</url>
     </site>
-  </distributionManagement>
+  </distributionManagement> -->
+  
+  <!-- END MODIFIED BY PATCH -->
 
   <properties>
     <gmavenVersion>1.4</gmavenVersion>
