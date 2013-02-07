@@ -51,10 +51,14 @@ define([
 
             this.listenTo( this.firstPane, 'sizeChange', _.bind(this.firstPaneSizeChanged, this) );
             this.listenTo( this.secondPane, 'sizeChange', _.bind(this.secondPaneSizeChanged, this) );
-            
-            this.$el.splitter( _.extend({}, this.options, { orientation: this.orientation }) );
+
+            this.initSplitter();
 
             return this;
+        },
+
+        initSplitter: function () {
+            this.$el.splitter( _.extend({}, this.options, { orientation: this.orientation }) );
         },
 
         updateLayout: function (evt) {
@@ -76,7 +80,6 @@ define([
         },
 
         updatePane: function (pane, otherPaneSize) {
-            console.log(pane.$el, otherPaneSize);
             var size = parseFloat( otherPaneSize ),
                 options = {},
                 prop = this.sizingProperty;
@@ -88,7 +91,7 @@ define([
             else {
                 pane.updateSize( options );
             }
-            this.$el.splitter( this.options );
+            this.initSplitter();
         },
 
         secondPaneSizeChanged: function (size) {
