@@ -54,17 +54,12 @@ class DashboardTemplate extends Dashboard {
     private Set<Group> mutableGroups
 
     /**
-     * Is contained in many stacks
+     * Is contained in at most one stack
      * This back references is provided as an optimization for the
      * dashboard switcher so that it may aggregate dashboards in stacks
      * with just one call
      * @return
      */
-    Iterable<Stack> getStacks() { getMutableStacks() }
-    protected Set<Stack> getMutableStacks() {
-        if (!stacks)
-            stacks = new HashSet<Stack>()
-        stacks
-    }
-    private Set<Stack> stacks
+    Stack getStack() { stack }
+    private Stack stack
 }
