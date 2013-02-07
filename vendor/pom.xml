@@ -40,7 +40,7 @@
         <module>bootstrap-editable</module>
         <module>animate</module>
 		<module>backbone.declarative.views</module>
-        <module>codenarc-maven-plugin-patch</module>
+        <module>codenarc-maven-plugin</module>
     </modules>
 
     <build>

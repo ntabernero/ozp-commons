@@ -2,23 +2,20 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd ">
   <modelVersion>4.0.0</modelVersion>
 
-  <!-- BEGIN MODIFIED BY PATCH -->
   <parent>
-    <groupId>org.ozoneplatform.commons.vendor</groupId>
-    <artifactId>vendor</artifactId>
-    <version>8.0.0-ALPHA-SPRINT3-SNAPSHOT</version>
-    <relativePath>../pom.xml</relativePath>
+    <groupId>org.codehaus.mojo</groupId>
+    <artifactId>mojo-parent</artifactId>
+    <version>30</version>
   </parent>
 
-  <artifactId>codenarc-maven-plugin-patch</artifactId>
+  <artifactId>codenarc-maven-plugin</artifactId>
+  <!-- BEGIN MODIFIED BY PATCH -->
+  <version>0.18-1-ozp-patch</version>
   <!-- END MODIFIED BY PATCH -->
-  <version>0.18-1</version>
   <packaging>maven-plugin</packaging>
 
-  <!-- BEGIN MODIFIED BY PATCH -->
-  <name>CodeNarc Maven Plugin Patch</name>
-  <description>This Plug-In generates reports based on the CodeNarc Analyzer, patched</description>
-  <!-- END MODIFIED BY PATCH -->
+  <name>CodeNarc Maven Plugin</name>
+  <description>This Plug-In generates reports based on the CodeNarc Analyzer</description>
   <url>http://mojo.codehaus.org/codenarc-maven-plugin</url>
   <inceptionYear>2010</inceptionYear>
   <licenses>
