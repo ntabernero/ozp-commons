@@ -16,7 +16,7 @@
 
 define([
     'views/View',
-    'views/panes/Pane',
+    'views/panes/_Pane',
     'jquery',
     'lodash',
     'jquery-splitter'
