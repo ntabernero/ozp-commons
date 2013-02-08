@@ -16,6 +16,9 @@
 
 package org.ozoneplatform.commons.server.domain.model
 
+import groovy.transform.ToString
+
+@ToString(includeSuper=true, includeNames=true, ignoreNulls=true)
 class DashboardInstance extends Dashboard {
 
     Calendar lastAccessed // Used to open the most recently viewed dashboard on start
