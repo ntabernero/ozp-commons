@@ -15,10 +15,11 @@
  */
 
 define([
-    'models/Model'
+    'models/Model',
+    'jquery'
 ],
 
-function(Model) {
+function(Model, $) {
 
     var WidgetStateModel = Model.extend({
 
@@ -51,7 +52,10 @@ function(Model) {
             "launchData": ""
         },
 
-        idAttribute: 'uniqueId'
+        idAttribute: 'uniqueId',
+
+        //widget state models are not saved to the server directly
+        sync: $.noop
     });
 
     return WidgetStateModel;
