@@ -20,11 +20,9 @@ import org.ozoneplatform.commons.server.domain.model.Group;
 import org.ozoneplatform.commons.server.domain.model.Person;
 import org.ozoneplatform.commons.server.domain.model.Stack;
 
-import java.util.List;
+public interface GroupRepository extends Repository<Group> {
 
-public interface GroupRepository extends Repository {
+    Iterable<Group> findGroupsForPerson(Person person);
 
-    List<Group> getGroupsForPerson(Person person);
-
-    List<Group> getGroupsForStack(Stack stack);
+    Iterable<Group> findGroupsForStack(Stack stack);
 }

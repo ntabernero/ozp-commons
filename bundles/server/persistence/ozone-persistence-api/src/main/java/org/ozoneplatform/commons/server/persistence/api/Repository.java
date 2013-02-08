@@ -17,10 +17,56 @@
 package org.ozoneplatform.commons.server.persistence.api;
 
 /**
- * All repositories will likely use one type of identifier (TKey); however, the one type
- * they use may change so define the type here so we only have to change it in one spot
- * @param < T >
+ * Base interface for convenience while defining repositories. This does not imply that
+ * all repositories must implement this interface nor does it imply that the persistence
+ * implementation must provide a generic repository implementation (hence why this is not public)
+ *
+ * If it is the case that some repositories do not support one of the operations
+ * of this base repository (e.g. users cannot be deleted) then those repository
+ * interfaces should not extend this
+ *
+ * By convention, get* methods return an instance of T and find* methods return a list of T
+ *
+ * Modeled after http://martinfowler.com/eaaCatalog/repository.html
+ *
+ * @param < T > Type of the entity being persisted
  */
-interface Repository<T> extends RepositoryWithId<T, Long> {
+interface Repository<T> {
+
+    /**
+     * Retrieve a single entity by is ID
+     * @param id Unique ID of a persisted entity
+     * @return
+     */
+    T getById(String id);
+
+    /**
+     * Retrieves all entities in the repository of type T
+     * @return
+     */
+    Iterable<T> findAll();
+
+    /**
+     * See {@link #findAll()}
+     * Paging by example
+     * page = 0, pageSize = 15 returns items [0,15)
+     * page = 1, pageSize = 15 returns items [15, 30)
+     * @param page For paging, the page number offset
+     * @param pageSize For paging, the maximum number of items to retrieve for a page
+     * @return
+     */
+    Iterable<T> findAll(int page, int pageSize);
+
+    /**
+     * Add a new entity to the repository
+     * @param entity
+     */
+    void add(T entity);
+
+    /**
+     * Remove an entity from the repository
+     * @param entity
+     */
+    void remove(T entity);
 
 }

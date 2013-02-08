@@ -16,10 +16,14 @@
 
 package org.ozoneplatform.commons.server.persistence.jpa
 
-/**
- * This needs to be here so the bundle configuration in the POM is happy
- * Just trying to set up directory structure right now will delete as soon as
- * there is at least one real class in this package
- */
-abstract class Placeholder {
+import org.ozoneplatform.commons.server.domain.model.Stack
+import org.ozoneplatform.commons.server.persistence.api.StackRepository
+
+import javax.persistence.EntityManager
+
+class StackRepositoryImpl extends GenericRepository<Stack> implements StackRepository {
+
+    StackRepositoryImpl(EntityManager entityManager) {
+        super(entityManager)
+    }
 }
