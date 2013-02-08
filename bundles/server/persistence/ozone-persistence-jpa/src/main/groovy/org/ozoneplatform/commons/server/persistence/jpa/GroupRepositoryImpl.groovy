@@ -31,14 +31,14 @@ class GroupRepositoryImpl extends GenericRepository<Group> implements GroupRepos
 
     @Override
     Iterable<Group> findGroupsForPerson(Person person) {
-        def query = entityManager.createQuery("SELECT g FROM Group g, Person p, WHERE p.id = :pid AND p member OF g.persons")
+        def query = entityManager.createQuery("SELECT g FROM Group g, Person p, WHERE p.id = :pid AND p member OF g.persons", Group.class)
         query.setParameter('pid', person.id)
         query.getResultList()
     }
 
     @Override
     Iterable<Group> findGroupsForStack(Stack stack) {
-        def query = entityManager.createQuery("SELECT g FROM Group g, Stack s, WHERE s.id = :sid AND s member OF g.stacks")
+        def query = entityManager.createQuery("SELECT g FROM Group g, Stack s, WHERE s.id = :sid AND s member OF g.stacks", Group.class)
         query.setParameter('sid', stack.id)
         query.getResultList()
     }

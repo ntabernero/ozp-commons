@@ -34,6 +34,11 @@
             <artifactId>geronimo-jpa_2.0_spec</artifactId>
             <version>1.1</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.openjpa</groupId>
+            <artifactId>openjpa</artifactId>
+            <version>${openjpa.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>org.ozoneplatform.commons.bundles</groupId>
@@ -53,6 +58,12 @@
             <version>${spock.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.apache.derby</groupId>
+            <artifactId>derby</artifactId>
+            <version>10.9.1.0</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -65,6 +76,7 @@
                 <configuration>
                     <instructions>
                         <Export-Package>org.ozoneplatform.commons.server.persistence.jpa</Export-Package>
+                        <Meta-Persistence>META-INF/persistence.xml</Meta-Persistence>
                     </instructions>
                 </configuration>
             </plugin>

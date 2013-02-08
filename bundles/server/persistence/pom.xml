@@ -16,6 +16,10 @@
     <description>Persistence bundles</description>
     <packaging>pom</packaging>
 
+    <properties>
+        <openjpa.version>2.2.1</openjpa.version>
+    </properties>
+
     <modules>
         <module>ozone-persistence-api</module>
         <module>ozone-persistence-jpa</module>
