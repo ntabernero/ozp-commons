@@ -20,6 +20,11 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.ozoneplatform.commons.bundles</groupId>
+            <artifactId>domain</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.codehaus.gmaven.runtime</groupId>
             <artifactId>gmaven-runtime-2.0</artifactId>
             <version>1.5</version>
