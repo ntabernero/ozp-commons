@@ -39,7 +39,7 @@ class DescribeWidgetDefinitionMapping extends Specification {
     }
 
     def cleanupSpec() {
-        em.close()
-        emFactory.close()
+        em?.close()
+        emFactory?.close()
     }
 }
