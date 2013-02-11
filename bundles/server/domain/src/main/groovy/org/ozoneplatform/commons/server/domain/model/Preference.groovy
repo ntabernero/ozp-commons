@@ -24,6 +24,8 @@ class Preference {
     final String name
     final String value
 
+    protected Preference() { }
+
     protected Preference(String namespace, String name, String value) {
         assert isNotBlank(namespace), "Namespace is required"
         assert isNotBlank(name), "Name is required"

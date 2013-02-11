@@ -33,31 +33,32 @@ class Stack extends Entity {
     String descriptorUrl
     String description = ''
 
+    protected Stack() { }
+
     Stack(String name, String urlName) {
         this.name = name
         this.urlName = urlName
+
+        mutableDashboardTemplates = new HashSet<DashboardTemplate>()
     }
 
     /**
      * Has many DashboardTemplates
      * @return
      */
-    Iterable<DashboardTemplate> getDashboardTemplates() { getMutableDashboardTemplates() }
-    private Set<DashboardTemplate> getMutableDashboardTemplates() {
-        if (!mutableDashboardTemplates)
-            mutableDashboardTemplates = new HashSet<DashboardTemplate>()
-        mutableDashboardTemplates
-    }
+    Iterable<DashboardTemplate> getDashboardTemplates() { mutableDashboardTemplates }
     private Set<DashboardTemplate> mutableDashboardTemplates
 
     void addDashboardTemplate(DashboardTemplate dashboardTemplate) {
-        getMutableDashboardTemplates().add(dashboardTemplate)
-        dashboardTemplate.mutableStacks.add(this)
+        assert dashboardTemplate.stack == null, "Dashboard Templates may only belong to at most one Stack"
+
+        mutableDashboardTemplates.add(dashboardTemplate)
+        dashboardTemplate.stack = this
     }
 
     void removeDashboardTemplate(DashboardTemplate dashboardTemplate) {
-        getMutableDashboardTemplates().remove(dashboardTemplate)
-        dashboardTemplate.mutableStacks.remove(this)
+        mutableDashboardTemplates.remove(dashboardTemplate)
+        dashboardTemplate.stack = null
     }
 
     @Override

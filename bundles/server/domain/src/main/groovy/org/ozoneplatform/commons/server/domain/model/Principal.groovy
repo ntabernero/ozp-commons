@@ -21,16 +21,16 @@ package org.ozoneplatform.commons.server.domain.model
  */
 abstract class Principal extends Entity {
 
+    public Principal() {
+        mutablePreferences = new HashSet<Preference>()
+        mutableStacks = new HashSet<Stack>()
+    }
+
     /**
      * Has many Preferences
      * @return
      */
-    Iterable<Preference> getPreferences() { getMutablePreferences() }
-    private Set<Preference> getMutablePreferences() {
-        if (!mutablePreferences)
-            mutablePreferences = new HashSet<Preference>()
-        mutablePreferences
-    }
+    Iterable<Preference> getPreferences() { mutablePreferences }
     private Set<Preference> mutablePreferences
 
     /**
@@ -45,7 +45,7 @@ abstract class Principal extends Entity {
 
         // Replace old preference with new value object
         removePreference(preference)
-        getMutablePreferences().add(preference)
+        mutablePreferences.add(preference)
 
         return preference
     }
@@ -55,26 +55,21 @@ abstract class Principal extends Entity {
      * @param preference
      */
     void removePreference(Preference preference) {
-        getMutablePreferences().remove(preference)
+        mutablePreferences.remove(preference)
     }
 
     /**
      * Has many Stacks
      * @return
      */
-    Iterable<Stack> getStacks() { getMutableStacks() }
-    private Set<Stack> getMutableStacks() {
-        if (!mutableStacks)
-            mutableStacks = new HashSet<Stack>()
-        mutableStacks
-    }
+    Iterable<Stack> getStacks() { mutableStacks }
     private Set<Stack> mutableStacks
 
     void addStack(Stack stack) {
-        getMutableStacks().add(stack)
+        mutableStacks.add(stack)
     }
 
     void removeStack(Stack stack) {
-        getMutableStacks().remove(stack)
+        mutableStacks.remove(stack)
     }
 }

@@ -59,12 +59,18 @@ class WidgetDefinition extends Entity {
         return new WidgetDefinitionBuilder()
     }
 
+    protected WidgetDefinition() { }
+
     public WidgetDefinition(String displayName, String widgetUrl, String imageUrlSmall, String imageUrlLarge, String widgetType) {
         this.displayName = displayName
         this.widgetUrl = widgetUrl
         this.imageUrlSmall = imageUrlSmall
         this.imageUrlLarge = imageUrlLarge
         this.widgetType = widgetType
+
+        mutableGroups = new HashSet<Group>()
+        mutableReceivableIntents = new HashSet<Intent>()
+        mutableSendableIntents = new HashSet<Intent>()
     }
 
     /**
@@ -72,12 +78,7 @@ class WidgetDefinition extends Entity {
      * This back reference is provided as an optimization for the widget launcher
      * @return
      */
-    Iterable<Group> getGroups() { getMutableGroups() }
-    protected Set<Group> getMutableGroups() {
-        if (!mutableGroups)
-            mutableGroups = new HashSet<Group>()
-        mutableGroups
-    }
+    Iterable<Group> getGroups() { mutableGroups }
     private Set<Group> mutableGroups
 
     /**
@@ -106,41 +107,30 @@ class WidgetDefinition extends Entity {
      * Sends many Intents
      * @return
      */
-    Iterable<Intent> getSendableIntents() { getMutableSendableIntents() }
-    private Set<Intent> getMutableSendableIntents() {
-        if (!mutableSendableIntents)
-            mutableSendableIntents = new HashSet<Intent>()
-        mutableSendableIntents
-    }
+    Iterable<Intent> getSendableIntents() { mutableSendableIntents }
     private Set<Intent> mutableSendableIntents
 
     void addSendableIntent(Intent intent) {
-        getMutableSendableIntents().add(intent)
+        mutableSendableIntents.add(intent)
     }
 
     void removeSendableIntent(Intent intent) {
-        getMutableSendableIntents().remove(intent)
+        mutableSendableIntents.remove(intent)
     }
 
     /**
      * Receives many Intents
      * @return
      */
-    Iterable<Intent> getReceivableIntents() { getMutableReceivableIntents() }
-    private Set<Intent> getMutableReceivableIntents() {
-        if (!mutableReceivableIntents) {
-            mutableReceivableIntents = new HashSet<Intent>()
-        }
-        mutableReceivableIntents
-    }
+    Iterable<Intent> getReceivableIntents() { mutableReceivableIntents }
     private Set<Intent> mutableReceivableIntents
 
     void addReceivableIntent(Intent intent) {
-        getMutableReceivableIntents().add(intent)
+        mutableReceivableIntents.add(intent)
     }
 
     void removeReceivableIntent(Intent intent) {
-        getMutableReceivableIntents().remove(intent)
+        mutableReceivableIntents.remove(intent)
     }
 
     @Override

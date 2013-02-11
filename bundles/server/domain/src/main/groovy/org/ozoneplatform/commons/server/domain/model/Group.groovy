@@ -28,68 +28,60 @@ class Group extends Principal {
     boolean isPermissionsActive = true // If people will have access to group's dashboards, stacks, and widgets
     boolean isAutomatic = false // If people will be automatically handled by external sources
 
+    protected Group() {  }
+
     Group(String name) {
+        super()
         this.name = name
         this.displayName = name
+
+        mutablePersons = new HashSet<Person>()
+        mutableWidgetDefinitions = new HashSet<WidgetDefinition>()
+        mutableDashboardTemplates = new HashSet<DashboardTemplate>()
     }
 
     /**
      * Has many Persons
      * @return
      */
-    Iterable<Person> getPersons() { getMutablePersons() }
-    private Set<Person> getMutablePersons() {
-        if (!mutablePersons)
-            mutablePersons = new HashSet<Person>()
-        mutablePersons
-    }
+    Iterable<Person> getPersons() { mutablePersons }
     private Set<Person> mutablePersons
 
     void addPerson(Person person) {
-        getMutablePersons().add(person)
+        mutablePersons.add(person)
     }
 
     void removePerson(Person person) {
-        getMutablePersons().remove(person)
+        mutablePersons.remove(person)
     }
 
     /**
      * Has many WidgetDefinitions
      * @return
      */
-    Iterable<WidgetDefinition> getWidgetDefinitions() { getMutableWidgetDefinitions() }
-    private Set<WidgetDefinition> getMutableWidgetDefinitions() {
-        if (!mutableWidgetDefinitions)
-            mutableWidgetDefinitions = new HashSet<WidgetDefinition>()
-        mutableWidgetDefinitions
-    }
+    Iterable<WidgetDefinition> getWidgetDefinitions() { mutableWidgetDefinitions }
     private Set<WidgetDefinition> mutableWidgetDefinitions
 
     void addWidgetDefinition(WidgetDefinition widgetDefinition) {
-        getMutableWidgetDefinitions().add(widgetDefinition)
+        mutableWidgetDefinitions.add(widgetDefinition)
         widgetDefinition.mutableGroups.add(this)
     }
 
     void removeWidgetDefinition(WidgetDefinition widgetDefinition) {
-        getMutableWidgetDefinitions().remove(widgetDefinition)
+        mutableWidgetDefinitions.remove(widgetDefinition)
         widgetDefinition.mutableGroups.remove(this)
     }
 
-    Iterable<DashboardTemplate> getDashboardTemplates() { getMutableDashboardTemplates() }
-    private Set<DashboardTemplate> getMutableDashboardTemplates() {
-        if (!mutableDashboardTemplates)
-            mutableDashboardTemplates = new HashSet<DashboardTemplate>()
-        mutableDashboardTemplates
-    }
+    Iterable<DashboardTemplate> getDashboardTemplates() { mutableDashboardTemplates }
     private Set<DashboardTemplate> mutableDashboardTemplates
 
     void addDashboardTemplate(DashboardTemplate dashboardTemplate) {
-        getMutableDashboardTemplates().add(dashboardTemplate)
+        mutableDashboardTemplates.add(dashboardTemplate)
         dashboardTemplate.mutableGroups.add(this)
     }
 
     void removeDashboardTemplate(DashboardTemplate dashboardTemplate) {
-        getMutableDashboardTemplates().remove(dashboardTemplate)
+        mutableDashboardTemplates.remove(dashboardTemplate)
         dashboardTemplate.mutableGroups.remove(this)
     }
 

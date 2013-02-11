@@ -27,6 +27,8 @@ class PersonalWidgetDefinition extends Entity {
 
     final WidgetDefinition widgetDefinition
 
+    protected PersonalWidgetDefinition() { }
+
     protected PersonalWidgetDefinition(WidgetDefinition widgetDefinition) {
         assert widgetDefinition, "Widget definition is required"
         

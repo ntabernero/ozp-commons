@@ -22,6 +22,8 @@ class DashboardInstance extends Dashboard {
 
     final DashboardTemplate dashboardTemplate // Dashboard this was copied from
 
+    protected DashboardInstance() { }
+
     protected DashboardInstance(String name, int position) {
         super(name, position)
     }

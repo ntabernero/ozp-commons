@@ -22,20 +22,20 @@ package org.ozoneplatform.commons.server.domain.model
  */
 class DashboardTemplate extends Dashboard {
 
+    protected DashboardTemplate() { }
+
     DashboardTemplate(String name, int position) {
         super(name, position)
+
+        mutableWidgetDefinitions = new HashSet<WidgetDefinition>()
+        mutableGroups = new HashSet<Group>()
     }
 
     /**
      * Has many WidgetDefinitions
      * @return
      */
-    Iterable<WidgetDefinition> getWidgetDefinitions() { getMutableWidgetDefinitions() }
-    private Set<WidgetDefinition> getMutableWidgetDefinitions() {
-        if(!mutableWidgetDefinitions)
-            mutableWidgetDefinitions = new HashSet<WidgetDefinition>()
-        mutableWidgetDefinitions
-    }
+    Iterable<WidgetDefinition> getWidgetDefinitions() { mutableWidgetDefinitions }
     private Set<WidgetDefinition> mutableWidgetDefinitions // Unique widgets in layoutConfig, when layoutConfig updated this must be synced
 
     /**
@@ -45,12 +45,7 @@ class DashboardTemplate extends Dashboard {
      * the switcher, may list the groups this dashboard is a part of
      * @return
      */
-    Iterable<Group> getGroups() { getMutableGroups() }
-    protected Set<Group> getMutableGroups() {
-        if (!mutableGroups)
-            mutableGroups = new HashSet<Group>()
-        mutableGroups
-    }
+    Iterable<Group> getGroups() { mutableGroups }
     private Set<Group> mutableGroups
 
     /**

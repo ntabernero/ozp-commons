@@ -17,10 +17,54 @@
 package org.ozoneplatform.commons.server.domain.model
 
 /**
- * It's likely that all Entities will share the same type of ID so Entities should use
- * this class for their base class. Should Ozone switch the type of its identifiers (e.g.
- * GUID to long) then only this base needs to be changed
+ * Base class for persistence entities.
+ * Entities: http://martinfowler.com/bliki/EvansClassification.html
  * @param < String >
  */
-abstract class Entity<String> extends EntityWithId {
+abstract class Entity {
+
+    String id
+    Calendar created
+    Calendar lastModified
+    /**
+     * Username of the user who last created/modified this entity
+     */
+    String createdBy
+    String lastModifiedBy
+
+    /**
+     * Validates all properties of an Entity and returns a list of ValidationError's
+     * for each invalid property
+     *
+     * Valid entities return an empty list of ValidationErrors
+     * @return
+     */
+    List<ValidationError> validate() {
+        def errors = []
+        return errors as ValidationError[]
+    }
+
+    /**
+     * Private setter for lastModified
+     * Use 'touch' to set lastModified to now
+     * @param lastModified
+     */
+    private void setLastModified(Calendar lastModified) { this.lastModified = lastModified }
+    private void setCreated(Calendar created) { this.created = created }
+    private void setLastModifiedBy(String lastModifiedBy) { this.lastModifiedBy = lastModifiedBy }
+
+    /**
+     * Analogous to unix command 'touch'
+     * Will set lastModified to now and will also set created to now if
+     * created is not set
+     */
+    void touch(String currentUser) {
+        def now = Calendar.instance
+        if (!created) {
+            created = now
+            createdBy = currentUser
+        }
+        lastModified = now
+        lastModifiedBy = currentUser
+    }
 }

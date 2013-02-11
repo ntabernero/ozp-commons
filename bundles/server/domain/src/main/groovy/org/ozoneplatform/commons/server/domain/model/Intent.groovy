@@ -23,6 +23,8 @@ class Intent {
     final String action
     final String dataType
 
+    protected Intent() { }
+
     Intent(String action, String dataType) {
         assert isNotBlank(action), "Action is required"
         assert isNotBlank(dataType), "DataType is required"
