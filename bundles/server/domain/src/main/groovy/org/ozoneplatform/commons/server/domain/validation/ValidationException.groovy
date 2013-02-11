@@ -14,12 +14,18 @@
    limitations under the License.
 */
 
-package org.ozoneplatform.commons.server.persistence.jpa.test
+package org.ozoneplatform.commons.server.domain.validation
 
-class DescribeWidgetDefinitionMapping extends OzoneJpaTest {
+import org.ozoneplatform.commons.server.domain.model.ValidationError
 
-    def "it does nothing"() {
-        expect:
-        true
+class ValidationException extends RuntimeException {
+
+    final String message
+    final ValidationError[] errors
+
+    ValidationException(String message, List<ValidationError> errors) {
+        super(message)
+        this.message = message
+        this.errors = errors
     }
 }

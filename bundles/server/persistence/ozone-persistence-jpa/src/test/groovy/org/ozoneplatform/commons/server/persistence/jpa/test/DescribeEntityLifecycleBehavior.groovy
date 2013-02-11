@@ -16,10 +16,19 @@
 
 package org.ozoneplatform.commons.server.persistence.jpa.test
 
-class DescribeWidgetDefinitionMapping extends OzoneJpaTest {
+import org.ozoneplatform.commons.server.domain.model.Group
+import org.ozoneplatform.commons.server.domain.validation.ValidationException
 
-    def "it does nothing"() {
-        expect:
-        true
+class DescribeEntityLifecycleBehavior extends OzoneJpaTest {
+
+    def "it validates an Entity before saving"() {
+        given: "A Group entity which is known to have a NotEmpty name"
+        def group = new Group(null)
+
+        when: "Save Group with empty name"
+        em.persist(group)
+
+        then: "Exception thrown"
+        thrown(ValidationException)
     }
 }

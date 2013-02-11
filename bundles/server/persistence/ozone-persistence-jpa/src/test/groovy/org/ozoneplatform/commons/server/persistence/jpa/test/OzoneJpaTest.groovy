@@ -15,11 +15,25 @@
 */
 
 package org.ozoneplatform.commons.server.persistence.jpa.test
+import spock.lang.Shared
+import spock.lang.Specification
 
-class DescribeWidgetDefinitionMapping extends OzoneJpaTest {
+import javax.persistence.EntityManager
+import javax.persistence.EntityManagerFactory
+import javax.persistence.Persistence
 
-    def "it does nothing"() {
-        expect:
-        true
+abstract class OzoneJpaTest extends Specification {
+
+    @Shared EntityManagerFactory entityManagerFactory
+    @Shared EntityManager em
+
+    def setupSpec() {
+        entityManagerFactory = Persistence.createEntityManagerFactory("ozone-test")
+        em = entityManagerFactory.createEntityManager()
+    }
+
+    def cleanupSpec() {
+        em?.close()
+        entityManagerFactory?.close()
     }
 }

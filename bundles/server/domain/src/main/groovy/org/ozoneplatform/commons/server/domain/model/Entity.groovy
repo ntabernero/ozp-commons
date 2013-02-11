@@ -40,8 +40,7 @@ abstract class Entity {
      * @return
      */
     List<ValidationError> validate() {
-        def errors = []
-        return errors as ValidationError[]
+        []
     }
 
     /**
