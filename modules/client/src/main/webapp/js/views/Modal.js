@@ -124,6 +124,7 @@ function(View, $, _, Handlebars) {
          */
         ok: function (evt) {
             evt.preventDefault();
+            evt.stopPropagation();
         },
 
         /*
@@ -131,6 +132,7 @@ function(View, $, _, Handlebars) {
          */
         cancel: function (evt) {
             evt.preventDefault();
+            evt.stopPropagation();
         },
 
         /*
