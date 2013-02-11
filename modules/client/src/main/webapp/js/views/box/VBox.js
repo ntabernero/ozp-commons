@@ -23,7 +23,7 @@ define([
     return Box.extend({
         vtype: 'vbox',
         
-        className: 'box vbox',
+        className: Box.prototype.className + ' vbox',
 
         orientation: 'horizontal',
         sizingProperty: 'height'

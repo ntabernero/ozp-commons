@@ -26,6 +26,7 @@ files = [
   'target/libs/js/expect.js',
   'target/libs/js/sinon.js',
   'target/libs/js/jquery.atmosphere.js',
+  'target/libs/js/jquery-splitter.js',
   
   // Include the script to configure and trigger require.
   'src/test/js/config.js',

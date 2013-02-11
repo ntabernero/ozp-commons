@@ -41,11 +41,14 @@ define([
         // must be set when extending this class
         sizingProperty: null,
 
+        // must be set when extending this class
+        orientation: null,
+
         views: function () {
             return this.options.panes;
         },
 
-        afterRender: function () {
+        afterRender: function () {  
             this.firstPane = this.views[0];
             this.secondPane = this.views[1];
 
@@ -68,7 +71,7 @@ define([
                 prop = this.sizingProperty;
 
             if( firstPaneOptions.flex ) {
-                this.secondPaneSizeChanged( this.firstPane.$el[prop]() + 'px' );
+                this.secondPaneSizeChanged( this.secondPane.$el[prop]() + 'px' );
             }
             else if( isPercentageSize( firstPaneOptions[prop] ) ) {
                 var newSize = Math.round( (this.firstPane.$el[prop]() / this.$el[prop]()) * 100 ) + '%';
