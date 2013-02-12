@@ -26,6 +26,7 @@ function(Model, $) {
         defaults: {
             "id": null,
             "widgetGuid": null,
+            "universalName": null, //redundant in most cases but needed for migrating dashboards to other OWF instances
             "name": "",
             "active": false,
             "height": 200,
