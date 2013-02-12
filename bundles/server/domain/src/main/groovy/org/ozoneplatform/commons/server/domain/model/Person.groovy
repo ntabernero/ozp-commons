@@ -66,6 +66,10 @@ class Person extends Principal {
         return dashboard
     }
 
+    void removeDashboardInstance(DashboardInstance dashboardInstance) {
+        mutableDashboards.remove(dashboardInstance)
+    }
+
     /**
      * Has many PersonalWidgetDefinitions
      * @return
@@ -79,6 +83,10 @@ class Person extends Principal {
         mutablePersonalWidgetDefinitions.add(personalWidgetDefinition)
 
         return personalWidgetDefinition
+    }
+
+    void removePersonalWidgetDefinition(PersonalWidgetDefinition personalWidgetDefinition) {
+        mutablePersonalWidgetDefinitions.remove(personalWidgetDefinition)
     }
 
     // Keep login setters protected since updates should be made through recordLogin

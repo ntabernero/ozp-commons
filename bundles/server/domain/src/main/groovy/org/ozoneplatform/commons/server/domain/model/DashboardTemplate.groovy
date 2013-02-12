@@ -38,6 +38,10 @@ class DashboardTemplate extends Dashboard {
     Iterable<WidgetDefinition> getWidgetDefinitions() { mutableWidgetDefinitions }
     private Set<WidgetDefinition> mutableWidgetDefinitions // Unique widgets in layoutConfig, when layoutConfig updated this must be synced
 
+    void addWidgetDefinition(WidgetDefinition widgetDefinition) {
+        mutableWidgetDefinitions.add(widgetDefinition)
+    }
+
     /**
      * Is contained in many groups
      * This back reference is provided as an optimization so the

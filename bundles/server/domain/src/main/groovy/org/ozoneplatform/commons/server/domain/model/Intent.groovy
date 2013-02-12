@@ -33,7 +33,8 @@ class Intent {
         this.dataType = dataType
     }
 
-    boolean equals(o) {
+    @Override
+    boolean equals(Object o) {
         if (this.is(o)) return true
         if (getClass() != o.class) return false
 
@@ -42,6 +43,7 @@ class Intent {
         return action == intent.action && dataType == intent.dataType
     }
 
+    @Override
     int hashCode() {
         int result
         result = action.hashCode()

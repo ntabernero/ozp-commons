@@ -37,7 +37,11 @@ public class EntityListener {
         Entity entity = (Entity)object;
         List<ValidationError> validationErrors = entity.validate();
         if (validationErrors != null && !validationErrors.isEmpty()) {
-            throw new ValidationException("Entity violates validation constraints", validationErrors);
+            String message = "Entity violates validation constraints";
+            for(ValidationError error : validationErrors) {
+                message += String.format("\nProperty: %s, Error: %s", error.getProperty(), error.getValidationMessage());
+            }
+            throw new ValidationException(message, validationErrors);
         }
     }
 }

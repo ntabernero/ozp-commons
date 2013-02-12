@@ -16,11 +16,14 @@
 
 package org.ozoneplatform.commons.server.domain.model
 
+import groovy.transform.EqualsAndHashCode
+
 /**
  * Base class for persistence entities.
  * Entities: http://martinfowler.com/bliki/EvansClassification.html
  * @param < String >
  */
+@EqualsAndHashCode(includes = 'id')
 abstract class Entity {
 
     String id

@@ -136,17 +136,23 @@
             <basic name="prevLogin">
                 <column name="PREV_LOGIN"/>
             </basic>
-            <one-to-many name="mutableDashboards" target-entity="DashboardInstance" fetch="LAZY">
+            <one-to-many name="mutableDashboards" target-entity="DashboardInstance" fetch="LAZY" orphan-removal="true">
                 <join-table name="OZP_PERSON_DASH_INSTANCE">
                     <join-column name="PERSON_ID" referenced-column-name="ID" column-definition="VARCHAR(256)"/>
                     <inverse-join-column name="DASHBOARD_INSTANCE_ID" referenced-column-name="ID" column-definition="VARCHAR(256)"/>
                 </join-table>
+                <cascade>
+                    <cascade-persist/>
+                </cascade>
             </one-to-many>
-            <one-to-many name="mutablePersonalWidgetDefinitions" target-entity="PersonalWidgetDefinition" fetch="LAZY">
+            <one-to-many name="mutablePersonalWidgetDefinitions" target-entity="PersonalWidgetDefinition" fetch="LAZY" orphan-removal="true">
                 <join-table name="OZP_PERSON_PERSONAL_WDGT_DEF">
                     <join-column name="PERSON_ID" referenced-column-name="ID" column-definition="VARCHAR(256)"/>
                     <inverse-join-column name="PERSONAL_WIDGET_DEFINITION_ID" referenced-column-name="ID" column-definition="VARCHAR(256)"/>
                 </join-table>
+                <cascade>
+                    <cascade-persist/>
+                </cascade>
             </one-to-many>
         </attributes>
     </entity>

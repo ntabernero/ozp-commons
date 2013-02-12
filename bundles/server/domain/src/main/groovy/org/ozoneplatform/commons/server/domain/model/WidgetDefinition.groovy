@@ -137,8 +137,8 @@ class WidgetDefinition extends Entity {
     List<ValidationError> validate() {
         def errors = EntityValidationAnnotationProcessor.instance.validate(this)
 
-        if (width >= MINIMUM_WIDGET_WIDTH) errors << new ValidationError("width", "Width must be at least ${MINIMUM_WIDGET_WIDTH}")
-        if (height >= MINIMUM_WIDGET_HEIGHT) errors << new ValidationError("height", "Height must be at least ${MINIMUM_WIDGET_HEIGHT}")
+        if (width < MINIMUM_WIDGET_WIDTH) errors << new ValidationError("width", "Width must be at least ${MINIMUM_WIDGET_WIDTH}")
+        if (height < MINIMUM_WIDGET_HEIGHT) errors << new ValidationError("height", "Height must be at least ${MINIMUM_WIDGET_HEIGHT}")
 
         errors
     }
