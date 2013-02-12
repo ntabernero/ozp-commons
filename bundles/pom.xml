@@ -6,13 +6,13 @@
     <parent>
         <groupId>org.ozoneplatform.commons</groupId>
         <artifactId>commons</artifactId>
-        <version>8.0.0-ALPHA-SPRINT3-SNAPSHOT</version>
+        <version>8.0.0-ALPHA-SPRINT3</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
     <groupId>org.ozoneplatform.commons.bundles</groupId>
     <artifactId>bundles</artifactId>
-    <version>8.0.0-ALPHA-SPRINT3-SNAPSHOT</version>
+    <version>8.0.0-ALPHA-SPRINT3</version>
     <name> OzonePlatform :: Commons :: Bundles :: Bundle</name>
     <packaging>pom</packaging>
 

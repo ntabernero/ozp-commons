@@ -10,13 +10,13 @@
     <parent>
         <groupId>org.ozoneplatform.commons.bundles</groupId>
         <artifactId>bundles</artifactId>
-        <version>8.0.0-ALPHA-SPRINT3-SNAPSHOT</version>
+        <version>8.0.0-ALPHA-SPRINT3</version>
         <relativePath>../../pom.xml</relativePath>
     </parent>
 
     <groupId>org.ozoneplatform.commons.bundles</groupId>
     <artifactId>domain</artifactId>
-    <version>8.0.0-ALPHA-SPRINT3-SNAPSHOT</version>
+    <version>8.0.0-ALPHA-SPRINT3</version>
     <name>Ozone :: Commons :: Bundles :: Server Domain Model Library</name>
     <description>Server Domain Model Library</description>
     <packaging>bundle</packaging>

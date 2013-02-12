@@ -5,13 +5,13 @@
     <parent>
         <groupId>org.ozoneplatform.commons.maven</groupId>
         <artifactId>maven</artifactId>
-        <version>8.0.0-ALPHA-SPRINT3-SNAPSHOT</version>
+        <version>8.0.0-ALPHA-SPRINT3</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
     <groupId>org.ozoneplatform.commons.maven</groupId>
     <artifactId>javascript-archetype</artifactId>
-    <version>8.0.0-ALPHA-SPRINT3-SNAPSHOT</version>
+    <version>8.0.0-ALPHA-SPRINT3</version>
     <packaging>maven-archetype</packaging>
 
     <name>Archetype for JavaScript project</name>

@@ -5,13 +5,13 @@
     <parent>
 	    <groupId>org.ozoneplatform.commons</groupId>
 	    <artifactId>commons</artifactId>
-	    <version>8.0.0-ALPHA-SPRINT3-SNAPSHOT</version>
+	    <version>8.0.0-ALPHA-SPRINT3</version>
 		<relativePath>../pom.xml</relativePath>
     </parent>
 
     <groupId>org.ozoneplatform.commons.vendor</groupId>
     <artifactId>vendor</artifactId>
-    <version>8.0.0-ALPHA-SPRINT3-SNAPSHOT</version>
+    <version>8.0.0-ALPHA-SPRINT3</version>
     <name> OzonePlatform :: Commons :: Vendor Libraries :: Module</name>
     <packaging>pom</packaging>
 

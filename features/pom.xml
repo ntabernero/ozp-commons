@@ -3,13 +3,13 @@
     <parent>
         <groupId>org.ozoneplatform.commons</groupId>
         <artifactId>commons</artifactId>
-        <version>8.0.0-ALPHA-SPRINT3-SNAPSHOT</version>
+        <version>8.0.0-ALPHA-SPRINT3</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
     <groupId>org.ozoneplatform.commons</groupId>
     <artifactId>features</artifactId>
-    <version>8.0.0-ALPHA-SPRINT3-SNAPSHOT</version>
+    <version>8.0.0-ALPHA-SPRINT3</version>
     <packaging>pom</packaging>
     <name>Ozone Platform :: OWF Commons Bundles :: OSGi Commons Features</name>
 
