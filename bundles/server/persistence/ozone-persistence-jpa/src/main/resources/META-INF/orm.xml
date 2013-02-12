@@ -9,6 +9,7 @@
 
     <package>org.ozoneplatform.commons.server.domain.model</package>
 
+    <schema>OZP</schema>
 
     <entity name="Entity" class="Entity" access="FIELD">
         <inheritance strategy="TABLE_PER_CLASS"/>
@@ -59,7 +60,7 @@
     </entity>
 
     <entity name="DashboardInstance" class="DashboardInstance" access="FIELD">
-        <table name="DASHBOARD_INSTANCE"/>
+        <table name="OZP_DASHBOARD_INSTANCE"/>
         <attributes>
             <basic name="lastAccessed">
                 <column name="LAST_ACCESSED"/>
@@ -71,13 +72,13 @@
     </entity>
 
     <entity name="DashboardTemplate" class="DashboardTemplate" access="FIELD">
-        <table name="DASHBOARD_TEMPLATE"/>
+        <table name="OZP_DASHBOARD_TEMPLATE"/>
         <attributes>
             <many-to-one name="stack" target-entity="Stack" fetch="LAZY" optional="true">
                 <join-column name="STACK_ID"/>
             </many-to-one>
             <many-to-many name="mutableWidgetDefinitions" target-entity="WidgetDefinition" fetch="LAZY">
-                <join-table name="DASHBOARD_TEMPLATE_WIDGET_DEFINITION">
+                <join-table name="OZP_DASHBOARD_TEMPLATE_WIDGET_DEFINITION">
                     <join-column name="DASHBOARD_TEMPLATE_ID" referenced-column-name="ID"/>
                     <inverse-join-column name="WIDGET_DEFINITION_ID" referenced-column-name="ID"/>
                 </join-table>
@@ -87,7 +88,7 @@
     </entity>
 
     <entity name="Stack" class="Stack" access="FIELD">
-        <table name="STACK"/>
+        <table name="OZP_STACK"/>
         <attributes>
             <basic name="name">
                 <column name="NAME" nullable="false"/>
@@ -109,21 +110,17 @@
         <inheritance strategy="TABLE_PER_CLASS"/>
         <attributes>
             <many-to-many name="mutableStacks" target-entity="Stack" fetch="LAZY">
-                <join-table name="PRINCIPAL_STACK">
-                    <join-column name="PRINCIPAL_ID" referenced-column-name="ID"/>
+                <join-table>
+                    <join-column referenced-column-name="ID"/>
                     <inverse-join-column name="STACK_ID" referenced-column-name="ID"/>
                 </join-table>
             </many-to-many>
-            <element-collection name="mutablePreferences" fetch="EAGER">
-                <collection-table name="PREFERENCE">
-                    <join-column name="PRINCIPAL_ID"/>
-                </collection-table>
-            </element-collection>
+            <element-collection name="mutablePreferences" />
         </attributes>
     </entity>
 
     <entity name="Person" class="Person" access="FIELD">
-        <table name="PERSON"/>
+        <table name="OZP_PERSON"/>
         <attributes>
             <basic name="username">
                 <column name="USERNAME" length="100" nullable="false"/>
@@ -141,13 +138,13 @@
                 <column name="PREV_LOGIN"/>
             </basic>
             <one-to-many name="mutableDashboards" target-entity="DashboardInstance" fetch="LAZY">
-                <join-table name="PERSON_DASHBOARD_INSTANCE">
+                <join-table name="OZP_PERSON_DASHBOARD_INSTANCE">
                     <join-column name="PERSON_ID" referenced-column-name="ID"/>
                     <inverse-join-column name="DASHBOARD_INSTANCE_ID" referenced-column-name="ID"/>
                 </join-table>
             </one-to-many>
             <one-to-many name="mutablePersonalWidgetDefinitions" target-entity="PersonalWidgetDefinition" fetch="LAZY">
-                <join-table name="PERSON_PERSONAL_WIDGET_DEFINITION">
+                <join-table name="OZP_PERSON_PERSONAL_WIDGET_DEFINITION">
                     <join-column name="PERSON_ID" referenced-column-name="ID"/>
                     <inverse-join-column name="PERSONAL_WIDGET_DEFINITION_ID" referenced-column-name="ID"/>
                 </join-table>
@@ -156,7 +153,7 @@
     </entity>
 
     <entity name="Group" class="Group" access="FIELD">
-        <table name="OWF_GROUP"/>
+        <table name="OZP_GROUP"/>
         <attributes>
             <basic name="name">
                 <column name="NAME" nullable="false"/>
@@ -174,19 +171,19 @@
                 <column name="IS_AUTOMATIC" nullable="false"/>
             </basic>
             <many-to-many name="mutablePersons" target-entity="Person" fetch="LAZY">
-                <join-table name="GROUP_PERSON">
+                <join-table name="OZP_GROUP_PERSON">
                     <join-column name="GROUP_ID" referenced-column-name="ID"/>
                     <inverse-join-column name="PERSON_ID" referenced-column-name="ID"/>
                 </join-table>
             </many-to-many>
             <many-to-many name="mutableWidgetDefinitions" target-entity="WidgetDefinition" fetch="LAZY">
-                <join-table name="GROUP_WIDGET_DEFINITION">
+                <join-table name="OZP_GROUP_WIDGET_DEFINITION">
                     <join-column name="GROUP_ID" referenced-column-name="ID"/>
                     <inverse-join-column name="WIDGET_DEFINITION_ID" referenced-column-name="ID"/>
                 </join-table>
             </many-to-many>
             <many-to-many name="mutableDashboardTemplates" target-entity="DashboardTemplate" fetch="LAZY" >
-                <join-table name="GROUP_DASHBOARD_TEMPLATE">
+                <join-table name="OZP_GROUP_DASHBOARD_TEMPLATE">
                     <join-column name="GROUP_ID" referenced-column-name="ID"/>
                     <inverse-join-column name="DASHBOARD_TEMPLATE_ID" referenced-column-name="ID"/>
                 </join-table>
@@ -195,7 +192,7 @@
     </entity>
 
     <entity name="WidgetDefinition" class="WidgetDefinition" access="FIELD">
-        <table name="WIDGET_DEFINITION"/>
+        <table name="OZP_WIDGET_DEFINITION"/>
         <attributes>
             <basic name="displayName">
                 <column name="DISPLAY_NAME" nullable="false"/>
@@ -239,17 +236,19 @@
             <basic name="isVisibleForLaunch">
                 <column name="IS_VISIBLE_FOR_LAUNCH"/>
             </basic>
-            <basic name="tags">
-                <column name="TAGS"/>
-            </basic>
             <many-to-many name="mutableGroups" target-entity="Group" fetch="LAZY" mapped-by="mutableWidgetDefinitions"/>
             <element-collection name="mutableReceivableIntents" fetch="LAZY">
-                <collection-table name="INTENTS">
+                <collection-table name="OZP_RECEIVABLE_INTENT">
                     <join-column name="WIDGET_DEFINITION_ID"/>
                 </collection-table>
             </element-collection>
             <element-collection name="mutableSendableIntents" fetch="LAZY">
-                <collection-table name="INTENTS">
+                <collection-table name="OZP_SENDABLE_INTENT">
+                    <join-column name="WIDGET_DEFINITION_ID"/>
+                </collection-table>
+            </element-collection>
+            <element-collection name="tags" fetch="LAZY">
+                <collection-table name="OZP_WIDGET_DEFINITION_TAG">
                     <join-column name="WIDGET_DEFINITION_ID"/>
                 </collection-table>
             </element-collection>
@@ -257,7 +256,7 @@
     </entity>
 
     <entity name="PersonalWidgetDefinition" class="PersonalWidgetDefinition" access="FIELD">
-        <table name="PERSONAL_WIDGET_DEFINITION"/>
+        <table name="OZP_PERSONAL_WIDGET_DEFINITION"/>
         <attributes>
             <basic name="displayName">
                 <column name="DISPLAY_NAME"/>
@@ -277,12 +276,14 @@
             <basic name="isVisibleForLaunch">
                 <column name="IS_VISIBLE_FOR_LAUNCH"/>
             </basic>
-            <basic name="tags">
-                <column name="TAGS"/>
-            </basic>
             <many-to-one name="widgetDefinition" target-entity="WidgetDefinition" fetch="LAZY">
                 <join-column name="WIDGET_DEFINITION_ID"/>
             </many-to-one>
+            <element-collection name="tags" fetch="LAZY">
+                <collection-table name="OZP_PERSONAL_WIDGET_DEFINITION_TAG">
+                    <join-column name="PERSONAL_WIDGET_DEFINITION_ID"/>
+                </collection-table>
+            </element-collection>
         </attributes>
     </entity>
 
