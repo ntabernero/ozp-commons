@@ -23,7 +23,7 @@ package org.ozoneplatform.commons.server.domain.model
  * May be expanded upon to include a common way of doing comparisons by ID
  * @param < T >
  */
-abstract class EntityWithId<T extends Comparable> implements Serializable {
+abstract class EntityWithId<T extends String> implements Serializable {
 
     T id
     Calendar created
