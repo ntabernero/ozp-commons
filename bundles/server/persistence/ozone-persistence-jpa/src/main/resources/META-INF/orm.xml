@@ -9,8 +9,6 @@
 
     <package>org.ozoneplatform.commons.server.domain.model</package>
 
-    <schema>OZP</schema>
-
     <entity name="Entity" class="Entity" access="FIELD">
         <inheritance strategy="TABLE_PER_CLASS"/>
         <entity-listeners>
@@ -21,19 +19,19 @@
         </entity-listeners>
         <attributes>
             <id name="id">
-                <column name="ID"/>
+                <column name="ID" length="256"/>
             </id>
             <basic name="created">
                 <column name="CREATED"/>
             </basic>
             <basic name="createdBy">
-                <column name="CREATED_BY"/>
+                <column name="CREATED_BY" length="256"/>
             </basic>
             <basic name="lastModified">
                 <column name="LAST_MODIFIED"/>
             </basic>
             <basic name="lastModifiedBy">
-                <column name="LAST_MODIFIED_BY"/>
+                <column name="LAST_MODIFIED_BY" length="256"/>
             </basic>
         </attributes>
     </entity>
@@ -42,13 +40,14 @@
         <inheritance strategy="TABLE_PER_CLASS"/>
         <attributes>
             <basic name="name">
-                <column name="NAME" nullable="false"/>
+                <column name="NAME" length="256" nullable="false"/>
             </basic>
             <basic name="description">
-                <column name="DESCRIPTION"/>
+                <column name="DESCRIPTION" length="4000"/>
             </basic>
             <basic name="layoutConfig">
                 <column name="LAYOUT_CONFIG"/>
+                <lob/>
             </basic>
             <basic name="position">
                 <column name="POSITION"/>
@@ -66,7 +65,7 @@
                 <column name="LAST_ACCESSED"/>
             </basic>
             <many-to-one name="dashboardTemplate" target-entity="DashboardTemplate" fetch="LAZY">
-                <join-column name="DASHBOARD_TEMPLATE_ID"/>
+                <join-column name="DASHBOARD_TEMPLATE_ID" referenced-column-name="ID" column-definition="VARCHAR(256)"/>
             </many-to-one>
         </attributes>
     </entity>
@@ -75,12 +74,12 @@
         <table name="OZP_DASHBOARD_TEMPLATE"/>
         <attributes>
             <many-to-one name="stack" target-entity="Stack" fetch="LAZY" optional="true">
-                <join-column name="STACK_ID"/>
+                <join-column name="STACK_ID" referenced-column-name="ID" column-definition="VARCHAR(256)"/>
             </many-to-one>
             <many-to-many name="mutableWidgetDefinitions" target-entity="WidgetDefinition" fetch="LAZY">
-                <join-table name="OZP_DASHBOARD_TEMPLATE_WIDGET_DEFINITION">
-                    <join-column name="DASHBOARD_TEMPLATE_ID" referenced-column-name="ID"/>
-                    <inverse-join-column name="WIDGET_DEFINITION_ID" referenced-column-name="ID"/>
+                <join-table name="OZP_DASH_TMPL_WDGT_DEF">
+                    <join-column name="DASHBOARD_TEMPLATE_ID" referenced-column-name="ID" column-definition="VARCHAR(256)"/>
+                    <inverse-join-column name="WIDGET_DEFINITION_ID" referenced-column-name="ID" column-definition="VARCHAR(256)"/>
                 </join-table>
             </many-to-many>
             <many-to-many name="mutableGroups" target-entity="Group" fetch="LAZY" mapped-by="mutableDashboardTemplates"/>
@@ -91,16 +90,16 @@
         <table name="OZP_STACK"/>
         <attributes>
             <basic name="name">
-                <column name="NAME" nullable="false"/>
+                <column name="NAME" length="256" nullable="false"/>
             </basic>
             <basic name="description">
-                <column name="DESCRIPTION"/>
+                <column name="DESCRIPTION" length="4000"/>
             </basic>
             <basic name="urlName">
-                <column name="URL_NAME" nullable="false"/>
+                <column name="URL_NAME" length="256" nullable="false"/>
             </basic>
             <basic name="descriptorUrl">
-                <column name="DESCRIPTOR_URL"/>
+                <column name="DESCRIPTOR_URL" length="2083"/>
             </basic>
             <one-to-many name="mutableDashboardTemplates" target-entity="DashboardTemplate" fetch="LAZY" mapped-by="stack"/>
         </attributes>
@@ -111,8 +110,8 @@
         <attributes>
             <many-to-many name="mutableStacks" target-entity="Stack" fetch="LAZY">
                 <join-table>
-                    <join-column referenced-column-name="ID"/>
-                    <inverse-join-column name="STACK_ID" referenced-column-name="ID"/>
+                    <join-column referenced-column-name="ID" column-definition="VARCHAR(256)"/>
+                    <inverse-join-column name="STACK_ID" referenced-column-name="ID" column-definition="VARCHAR(256)"/>
                 </join-table>
             </many-to-many>
             <element-collection name="mutablePreferences" />
@@ -123,13 +122,13 @@
         <table name="OZP_PERSON"/>
         <attributes>
             <basic name="username">
-                <column name="USERNAME" length="100" nullable="false"/>
+                <column name="USERNAME" length="256" nullable="false"/>
             </basic>
             <basic name="fullName">
-                <column name="FULL_NAME" length="100" nullable="false"/>
+                <column name="FULL_NAME" length="256" nullable="false"/>
             </basic>
             <basic name="email">
-                <column name="EMAIL" length="100"/>
+                <column name="EMAIL" length="256"/>
             </basic>
             <basic name="lastLogin">
                 <column name="LAST_LOGIN"/>
@@ -138,15 +137,15 @@
                 <column name="PREV_LOGIN"/>
             </basic>
             <one-to-many name="mutableDashboards" target-entity="DashboardInstance" fetch="LAZY">
-                <join-table name="OZP_PERSON_DASHBOARD_INSTANCE">
-                    <join-column name="PERSON_ID" referenced-column-name="ID"/>
-                    <inverse-join-column name="DASHBOARD_INSTANCE_ID" referenced-column-name="ID"/>
+                <join-table name="OZP_PERSON_DASH_INSTANCE">
+                    <join-column name="PERSON_ID" referenced-column-name="ID" column-definition="VARCHAR(256)"/>
+                    <inverse-join-column name="DASHBOARD_INSTANCE_ID" referenced-column-name="ID" column-definition="VARCHAR(256)"/>
                 </join-table>
             </one-to-many>
             <one-to-many name="mutablePersonalWidgetDefinitions" target-entity="PersonalWidgetDefinition" fetch="LAZY">
-                <join-table name="OZP_PERSON_PERSONAL_WIDGET_DEFINITION">
-                    <join-column name="PERSON_ID" referenced-column-name="ID"/>
-                    <inverse-join-column name="PERSONAL_WIDGET_DEFINITION_ID" referenced-column-name="ID"/>
+                <join-table name="OZP_PERSON_PERSONAL_WDGT_DEF">
+                    <join-column name="PERSON_ID" referenced-column-name="ID" column-definition="VARCHAR(256)"/>
+                    <inverse-join-column name="PERSONAL_WIDGET_DEFINITION_ID" referenced-column-name="ID" column-definition="VARCHAR(256)"/>
                 </join-table>
             </one-to-many>
         </attributes>
@@ -156,13 +155,13 @@
         <table name="OZP_GROUP"/>
         <attributes>
             <basic name="name">
-                <column name="NAME" nullable="false"/>
+                <column name="NAME" length="256" nullable="false"/>
             </basic>
             <basic name="displayName">
-                <column name="DISPLAY_NAME" nullable="false"/>
+                <column name="DISPLAY_NAME" length="256" nullable="false"/>
             </basic>
             <basic name="description">
-                <column name="DESCRIPTION" nullable="false"/>
+                <column name="DESCRIPTION" length="4000" nullable="false"/>
             </basic>
             <basic name="isPermissionsActive">
                 <column name="IS_PERMISSIONS_ACTIVE" nullable="false"/>
@@ -172,20 +171,20 @@
             </basic>
             <many-to-many name="mutablePersons" target-entity="Person" fetch="LAZY">
                 <join-table name="OZP_GROUP_PERSON">
-                    <join-column name="GROUP_ID" referenced-column-name="ID"/>
-                    <inverse-join-column name="PERSON_ID" referenced-column-name="ID"/>
+                    <join-column name="GROUP_ID" referenced-column-name="ID" column-definition="VARCHAR(256)"/>
+                    <inverse-join-column name="PERSON_ID" referenced-column-name="ID" column-definition="VARCHAR(256)"/>
                 </join-table>
             </many-to-many>
             <many-to-many name="mutableWidgetDefinitions" target-entity="WidgetDefinition" fetch="LAZY">
-                <join-table name="OZP_GROUP_WIDGET_DEFINITION">
-                    <join-column name="GROUP_ID" referenced-column-name="ID"/>
-                    <inverse-join-column name="WIDGET_DEFINITION_ID" referenced-column-name="ID"/>
+                <join-table name="OZP_GROUP_WDGT_DEF">
+                    <join-column name="GROUP_ID" referenced-column-name="ID" column-definition="VARCHAR(256)"/>
+                    <inverse-join-column name="WIDGET_DEFINITION_ID" referenced-column-name="ID" column-definition="VARCHAR(256)"/>
                 </join-table>
             </many-to-many>
             <many-to-many name="mutableDashboardTemplates" target-entity="DashboardTemplate" fetch="LAZY" >
-                <join-table name="OZP_GROUP_DASHBOARD_TEMPLATE">
-                    <join-column name="GROUP_ID" referenced-column-name="ID"/>
-                    <inverse-join-column name="DASHBOARD_TEMPLATE_ID" referenced-column-name="ID"/>
+                <join-table name="OZP_GROUP_DASH_TMPL">
+                    <join-column name="GROUP_ID" referenced-column-name="ID" column-definition="VARCHAR(256)"/>
+                    <inverse-join-column name="DASHBOARD_TEMPLATE_ID" referenced-column-name="ID" column-definition="VARCHAR(256)"/>
                 </join-table>
             </many-to-many>
         </attributes>
@@ -195,31 +194,31 @@
         <table name="OZP_WIDGET_DEFINITION"/>
         <attributes>
             <basic name="displayName">
-                <column name="DISPLAY_NAME" nullable="false"/>
+                <column name="DISPLAY_NAME" length="256" nullable="false"/>
             </basic>
             <basic name="widgetUrl">
-                <column name="WIDGET_URL" nullable="false"/>
+                <column name="WIDGET_URL" length="2083" nullable="false"/>
             </basic>
             <basic name="imageUrlLarge">
-                <column name="IMAGE_URL_LARGE" nullable="false"/>
+                <column name="IMAGE_URL_LARGE" length="2083" nullable="false"/>
             </basic>
             <basic name="imageUrlSmall">
-                <column name="IMAGE_URL_SMALL" nullable="false"/>
+                <column name="IMAGE_URL_SMALL" length="2083" nullable="false"/>
             </basic>
             <basic name="widgetType">
-                <column name="WIDGET_TYPE" nullable="false"/>
+                <column name="WIDGET_TYPE" length="256" nullable="false"/>
             </basic>
             <basic name="universalName">
-                <column name="UNIVERSAL_NAME"/>
+                <column name="UNIVERSAL_NAME" length="256"/>
             </basic>
             <basic name="description">
-                <column name="DESCRIPTION"/>
+                <column name="DESCRIPTION" length="4000"/>
             </basic>
             <basic name="descriptorUrl">
-                <column name="DESCRIPTOR_URL"/>
+                <column name="DESCRIPTOR_URL" length="2083"/>
             </basic>
             <basic name="version">
-                <column name="VERSION"/>
+                <column name="VERSION" length="2083"/>
             </basic>
             <basic name="height">
                 <column name="HEIGHT"/>
@@ -239,17 +238,17 @@
             <many-to-many name="mutableGroups" target-entity="Group" fetch="LAZY" mapped-by="mutableWidgetDefinitions"/>
             <element-collection name="mutableReceivableIntents" fetch="LAZY">
                 <collection-table name="OZP_RECEIVABLE_INTENT">
-                    <join-column name="WIDGET_DEFINITION_ID"/>
+                    <join-column name="WIDGET_DEFINITION_ID" referenced-column-name="ID" column-definition="VARCHAR(256)"/>
                 </collection-table>
             </element-collection>
             <element-collection name="mutableSendableIntents" fetch="LAZY">
                 <collection-table name="OZP_SENDABLE_INTENT">
-                    <join-column name="WIDGET_DEFINITION_ID"/>
+                    <join-column name="WIDGET_DEFINITION_ID" referenced-column-name="ID" column-definition="VARCHAR(256)"/>
                 </collection-table>
             </element-collection>
             <element-collection name="tags" fetch="LAZY">
                 <collection-table name="OZP_WIDGET_DEFINITION_TAG">
-                    <join-column name="WIDGET_DEFINITION_ID"/>
+                    <join-column name="WIDGET_DEFINITION_ID" referenced-column-name="ID" column-definition="VARCHAR(256)"/>
                 </collection-table>
             </element-collection>
         </attributes>
@@ -259,7 +258,7 @@
         <table name="OZP_PERSONAL_WIDGET_DEFINITION"/>
         <attributes>
             <basic name="displayName">
-                <column name="DISPLAY_NAME"/>
+                <column name="DISPLAY_NAME" length="256"/>
             </basic>
             <basic name="position">
                 <column name="POSITION"/>
@@ -277,11 +276,11 @@
                 <column name="IS_VISIBLE_FOR_LAUNCH"/>
             </basic>
             <many-to-one name="widgetDefinition" target-entity="WidgetDefinition" fetch="LAZY">
-                <join-column name="WIDGET_DEFINITION_ID"/>
+                <join-column name="WIDGET_DEFINITION_ID" referenced-column-name="ID" column-definition="VARCHAR(256)"/>
             </many-to-one>
             <element-collection name="tags" fetch="LAZY">
-                <collection-table name="OZP_PERSONAL_WIDGET_DEFINITION_TAG">
-                    <join-column name="PERSONAL_WIDGET_DEFINITION_ID"/>
+                <collection-table name="OZP_PERSONAL_WDGT_DEF_TAG">
+                    <join-column name="PERSONAL_WIDGET_DEFINITION_ID" referenced-column-name="ID" column-definition="VARCHAR(256)"/>
                 </collection-table>
             </element-collection>
         </attributes>
@@ -290,13 +289,14 @@
     <embeddable class="Preference" access="FIELD">
         <attributes>
             <basic name="namespace">
-                <column name="NAMESPACE" nullable="false"/>
+                <column name="NAMESPACE" length="256" nullable="false"/>
             </basic>
             <basic name="name">
-                <column name="NAME" nullable="false"/>
+                <column name="NAME" length="256" nullable="false"/>
             </basic>
             <basic name="value">
                 <column name="VALUE" nullable="false"/>
+                <lob/>
             </basic>
         </attributes>
     </embeddable>
@@ -304,10 +304,10 @@
     <embeddable class="Intent" access="FIELD">
         <attributes>
             <basic name="action">
-                <column name="ACTION" nullable="false"/>
+                <column name="ACTION" length="256" nullable="false"/>
             </basic>
             <basic name="dataType">
-                <column name="DATA_TYPE" nullable="false"/>
+                <column name="DATA_TYPE" length="256" nullable="false"/>
             </basic>
         </attributes>
     </embeddable>
