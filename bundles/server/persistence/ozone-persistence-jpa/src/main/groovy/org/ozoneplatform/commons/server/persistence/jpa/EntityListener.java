@@ -23,6 +23,22 @@ import org.ozoneplatform.commons.server.domain.validation.ValidationException;
 import java.util.List;
 import java.util.UUID;
 
+/**
+ * EntityListener performs validation and before saving and updating entities
+ * and will throw a ValidationException if ValidationErrors are found
+ * Before saving an Entity, EntityListener generates a new GUID
+ *
+ * TODO This would be an ideal place to also call the Entity.touch(String username)
+ * method which updates the entity's audit fields. This is not yet implemented
+ * because the touch method needs to record which user is saving and updating the
+ * entity and the service that provides that information is not yet available
+ *
+ * Important:
+ * EntityListener must be written in Java as its Groovy equivalent is not
+ * compatible with OpenJPA as OpenJPA fails during the bytecode enhancement
+ * phase.
+ *
+ */
 public class EntityListener {
 
     public EntityListener() { }
