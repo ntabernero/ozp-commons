@@ -19,8 +19,8 @@ define(['models/DashboardModel', 'collections/GroupDashboardsCollection'], funct
     
         beforeEach(function(done) {
             this.collection = new GroupDashboardsCollection();
-            this.dashboard1 = new DashboardModel({name: 'test dashboard 1', description: 'A sample dashboard', guid: '11111', person: 1})
-            this.dashboard2 = new DashboardModel({name: 'test dashboard 2', description: 'Another sample dashboard', guid: '22222', person: 1})
+            this.dashboard1 = new DashboardModel({name: 'test dashboard 1', description: 'A sample dashboard', id: '11111', person: 1})
+            this.dashboard2 = new DashboardModel({name: 'test dashboard 2', description: 'Another sample dashboard', id: '22222', person: 1})
             
             this.server = sinon.fakeServer.create();
             this.server.respondWith(
@@ -30,19 +30,21 @@ define(['models/DashboardModel', 'collections/GroupDashboardsCollection'], funct
                     200,
                     {"Content-Type": "application/json"},
                     '{"response":{ \
-                        "guid": "12345", \
+                        "id": "12345", \
                         "name": "Test Dashboard", \
                         "description": "This is a test dashboard", \
                         "layoutConfig": "{widgets: []}", \
                         "alteredByAdmin": false, \
-                        "isdefault": true, \
-                        "dashboardPosition": 0, \
+                        "isDefault": true, \
+                        "position": 0, \
                         "removed": false, \
                         "groups": [], \
                         "isGroupDashboard": false, \
-                        "createdDate": "Jan 1 2013 00:00:00", \
+                        "created": "Jan 1 2013 00:00:00", \
                         "createdBy": 1, \
-                        "editedDate": "Jan 1 2013 12:00:00", \
+                        "lastModified": "Jan 1 2013 12:00:00", \
+                        "lastAccessed": "Jan 1 2013 12:00:00", \
+                        "dashboardTemplate": null, \
                         "stack": null, \
                         "locked": false \
                     }'
@@ -77,7 +79,7 @@ define(['models/DashboardModel', 'collections/GroupDashboardsCollection'], funct
         });
         
         it('Test GroupDashboardsCollection url for model in collection with no guid.', function () {
-            this.collection.add({name: 'test dashboard', guid: '12345', person: 1})
+            this.collection.add({name: 'test dashboard', id: '12345', person: 1})
             expect(this.collection.at(0).get('name')).to.eql('test dashboard');
             expect(this.collection.at(0).url()).to.eql('/ozp/rest/owf/group-dashboards/12345');
         });

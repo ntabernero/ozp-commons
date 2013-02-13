@@ -26,7 +26,7 @@ function(Model) {
         
         defaults: {
             "username": "",
-            "fullname": "",
+            "fullName": "",
             "email": "",
             "lastLogin": "",
             "prevLogin": ""

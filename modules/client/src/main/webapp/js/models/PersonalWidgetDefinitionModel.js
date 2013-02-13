@@ -27,12 +27,10 @@ function(Model) {
         defaults: {
             "displayName": null,
             "position": 0,
-            "assignedByGroup": false,
-            "assignedToPerson": false,
-            "disabled": false,
-            "favorite": false,
-            "visibleForLaunch": true,
-            "person": null,
+            "isAssignedToPerson": false,
+            "isLaunchDisabled": false,
+            "isFavorite": false,
+            "isVisibleForLaunch": true,
             "widgetDefinition": null,
             "tags": []
         }

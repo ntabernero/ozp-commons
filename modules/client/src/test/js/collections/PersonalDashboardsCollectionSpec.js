@@ -19,8 +19,8 @@ define(['models/PersonalDashboardModel', 'collections/PersonalDashboardsCollecti
     
         beforeEach(function(done) {
             this.collection = new PersonalDashboardsCollection();
-            this.dashboard1 = new PersonalDashboardModel({name: 'test dashboard 1', description: 'A sample dashboard', guid: '11111', person: 1})
-            this.dashboard2 = new PersonalDashboardModel({name: 'test dashboard 2', description: 'Another sample dashboard', guid: '22222', person: 1})
+            this.dashboard1 = new PersonalDashboardModel({name: 'test dashboard 1', description: 'A sample dashboard', id: '11111', person: 1})
+            this.dashboard2 = new PersonalDashboardModel({name: 'test dashboard 2', description: 'Another sample dashboard', id: '22222', person: 1})
             
             this.server = sinon.fakeServer.create();
             this.server.respondWith(
@@ -30,7 +30,7 @@ define(['models/PersonalDashboardModel', 'collections/PersonalDashboardsCollecti
                     200,
                     {"Content-Type": "application/json"},
                     '{"response":{ \
-                        "guid": "12345", \
+                        "id": "12345", \
                         "name": "Test Dashboard", \
                         "description": "This is a test dashboard", \
                         "layoutConfig": "{widgets: []}", \
@@ -125,7 +125,7 @@ define(['models/PersonalDashboardModel', 'collections/PersonalDashboardsCollecti
         
         it('Test PersonalDashboardsCollection url for model in collection with guid.', function () {
             this.collection.setPerson(1);
-            this.collection.add({name: 'test dashboard', guid: '12345', person: 1})
+            this.collection.add({name: 'test dashboard', id: '12345', person: 1})
             expect(this.collection.at(0).get('name')).to.eql('test dashboard');
             expect(this.collection.at(0).url()).to.eql('/ozp/rest/owf/personal-dashboards/12345');
         });

@@ -27,7 +27,6 @@ function(Model) {
             "name": "",
             "namespace": "",
             "value": ""
-//            "person": null
         }
 
     });

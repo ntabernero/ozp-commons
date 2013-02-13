@@ -27,8 +27,8 @@ function(Model) {
             "name": "",
             "description": "",
             "displayName": "",
-            "active": true,
-            "automatic": false
+            "isPermissionsActive": true,
+            "isAutomatic": false
             
 //            "dashboards": [],
 //            "people": [],

@@ -81,11 +81,11 @@ define(['models/PersonalDashboardModel'], function(PersonalDashboardModel) {
         });
         
         it('Test PersonalDashboardModel creation.', function () {
-            var p1 =  new PersonalDashboardModel({person: 'bob', guid: 'xxx-xxx-xxx'});
+            var p1 =  new PersonalDashboardModel({person: 'bob', id: 'xxx-xxx-xxx'});
             
             expect(p1).to.be.an('object');
             expect(p1.get('person')).to.eql('bob');
-            expect(p1.get('guid')).to.eql('xxx-xxx-xxx');
+            expect(p1.get('id')).to.eql('xxx-xxx-xxx');
             expect(p1.get('name')).to.eql(null);
         });
     
@@ -98,7 +98,7 @@ define(['models/PersonalDashboardModel'], function(PersonalDashboardModel) {
         });
         
         it('Test PersonalDashboardModel test fetch url', function() {
-            this.dashboard.set('guid', '12345');
+            this.dashboard.set('id', '12345');
             this.dashboard.fetch();
             expect(this.server.requests.length).to.eql(1);
             expect(this.server.requests[0].method).to.eql("GET");
@@ -107,7 +107,7 @@ define(['models/PersonalDashboardModel'], function(PersonalDashboardModel) {
         });
         
         it('Test PersonalDashboardModel test update url', function() {
-            this.dashboard.set('guid', '12345');
+            this.dashboard.set('id', '12345');
             this.dashboard.save();
             expect(this.server.requests.length).to.eql(1);
             expect(this.server.requests[0].method).to.eql("PUT");
@@ -116,7 +116,7 @@ define(['models/PersonalDashboardModel'], function(PersonalDashboardModel) {
         });
         
         it('Test PersonalDashboardModel test delete url', function() {
-            this.dashboard.set('guid', '12345');
+            this.dashboard.set('id', '12345');
             this.dashboard.destroy();
             expect(this.server.requests.length).to.eql(1);
             expect(this.server.requests[0].method).to.eql("DELETE");

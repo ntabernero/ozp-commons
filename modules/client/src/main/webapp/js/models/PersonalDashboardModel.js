@@ -24,8 +24,6 @@ define([
 function(Backbone, DashboardModel, _) {
 
     var PersonalDashboardModel = DashboardModel.extend({
-
-        idAttribute: 'guid',
         
         defaults: function() {
             return _.extend({},DashboardModel.prototype.defaults, {
