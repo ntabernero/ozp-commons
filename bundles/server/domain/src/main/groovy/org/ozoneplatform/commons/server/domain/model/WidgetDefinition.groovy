@@ -72,7 +72,7 @@ class WidgetDefinition extends Entity {
      * This back reference is provided as an optimization for the widget launcher
      * @return
      */
-    Iterable<Group> getGroups() { getMutableGroups() }
+    Set<Group> getGroups() { Collections.unmodifiableSet(getMutableGroups()) }
     protected Set<Group> getMutableGroups() {
         if (!mutableGroups)
             mutableGroups = new HashSet<Group>()
@@ -90,8 +90,8 @@ class WidgetDefinition extends Entity {
      * Has many Tags
      * @return
      */
-    Iterable<String> getTags() {
-        tags
+    Set<String> getTags() {
+        Collections.unmodifiableSet(tags)
     }
     /**
      * Replaces set of tags with a new set
@@ -106,7 +106,7 @@ class WidgetDefinition extends Entity {
      * Sends many Intents
      * @return
      */
-    Iterable<Intent> getSendableIntents() { getMutableSendableIntents() }
+    Set<Intent> getSendableIntents() { Collections.unmodifiableSet(getMutableSendableIntents()) }
     private Set<Intent> getMutableSendableIntents() {
         if (!mutableSendableIntents)
             mutableSendableIntents = new HashSet<Intent>()
@@ -126,7 +126,7 @@ class WidgetDefinition extends Entity {
      * Receives many Intents
      * @return
      */
-    Iterable<Intent> getReceivableIntents() { getMutableReceivableIntents() }
+    Set<Intent> getReceivableIntents() { Collections.unmodifiableSet(getMutableReceivableIntents()) }
     private Set<Intent> getMutableReceivableIntents() {
         if (!mutableReceivableIntents) {
             mutableReceivableIntents = new HashSet<Intent>()

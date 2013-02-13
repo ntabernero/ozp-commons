@@ -33,7 +33,7 @@ class DashboardTemplate extends Dashboard {
      * Has many WidgetDefinitions
      * @return
      */
-    Iterable<WidgetDefinition> getWidgetDefinitions() { getMutableWidgetDefinitions() }
+    Set<WidgetDefinition> getWidgetDefinitions() { Collections.unmodifiableSet(getMutableWidgetDefinitions()) }
     private Set<WidgetDefinition> getMutableWidgetDefinitions() {
         if(!mutableWidgetDefinitions)
             mutableWidgetDefinitions = new HashSet<WidgetDefinition>()
@@ -48,7 +48,7 @@ class DashboardTemplate extends Dashboard {
      * the switcher, may list the groups this dashboard is a part of
      * @return
      */
-    Iterable<Group> getGroups() { getMutableGroups() }
+    Set<Group> getGroups() { Collections.unmodifiableSet(getMutableGroups()) }
     protected Set<Group> getMutableGroups() {
         if (!mutableGroups)
             mutableGroups = new HashSet<Group>()
