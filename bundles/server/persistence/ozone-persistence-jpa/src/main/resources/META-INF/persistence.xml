@@ -3,6 +3,22 @@
              xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
              version="2.0">
 
+    <persistence-unit name="ozppu" transaction-type="JTA">
+        <description>Persistence unit for ozone platform</description>
+
+        <provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>
+
+        <jta-data-source>osgi:service/javax.sql.DataSource/(osgi.jndi.service.name=jdbc/ozpdb)</jta-data-source>
+        <non-jta-data-source>osgi:service/javax.sql.DataSource/(osgi.jndi.service.name=jdbc/ozpdb_no_jta)</non-jta-data-source>
+
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+
+        <properties>
+            <property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema(ForeignKeys=true)"/>
+            <property name="openjpa.jdbc.DBDictionary" value="derby"/>
+        </properties>
+    </persistence-unit>
+
     <persistence-unit name="ozone-test" transaction-type="RESOURCE_LOCAL">
         <description>Persistence unit for in memory unit tests</description>
 

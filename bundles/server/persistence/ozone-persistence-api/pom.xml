@@ -35,7 +35,7 @@
                 <extensions>true</extensions>
                 <configuration>
                     <instructions>
-                        <Export-Package>org.ozoneplatform.commons.server.persistence.api</Export-Package>
+                        <Export-Package>org.ozoneplatform.commons.server.persistence.api;version=${project.version}</Export-Package>
                     </instructions>
                 </configuration>
             </plugin>

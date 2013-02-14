@@ -75,7 +75,7 @@
                 <extensions>true</extensions>
                 <configuration>
                     <instructions>
-                        <Export-Package>org.ozoneplatform.commons.server.persistence.jpa</Export-Package>
+                        <Export-Package>org.ozoneplatform.commons.server.persistence.jpa;version=${project.version}</Export-Package>
                         <Meta-Persistence>META-INF/persistence.xml</Meta-Persistence>
                     </instructions>
                 </configuration>
