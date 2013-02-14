@@ -5,14 +5,14 @@
     <parent>
         <groupId>org.ozoneplatform.commons.bundles</groupId>
         <artifactId>persistence</artifactId>
-        <version>8.0.0-ALPHA-SPRINT3-SNAPSHOT</version>
+        <version>8.0.0-ALPHA-SPRINT4-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.ozoneplatform.commons.bundles</groupId>
     <artifactId>ozone-persistence-jpa</artifactId>
-    <version>8.0.0-ALPHA-SPRINT3-SNAPSHOT</version>
+    <version>8.0.0-ALPHA-SPRINT4-SNAPSHOT</version>
     <packaging>bundle</packaging>
 
     <name>Ozone :: Commons :: Ozone JPA</name>

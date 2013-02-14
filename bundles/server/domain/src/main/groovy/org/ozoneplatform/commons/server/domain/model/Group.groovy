@@ -19,6 +19,7 @@ package org.ozoneplatform.commons.server.domain.model
 import org.ozoneplatform.commons.server.domain.validation.EntityValidationAnnotationProcessor
 import org.ozoneplatform.commons.server.domain.validation.NotBlank
 
+@javax.persistence.Entity
 class Group extends Principal {
 
     @NotBlank
@@ -44,7 +45,7 @@ class Group extends Principal {
      * Has many Persons
      * @return
      */
-    Iterable<Person> getPersons() { mutablePersons }
+    Set<Person> getPersons() { Collections.unmodifiableSet(mutablePersons) }
     private Set<Person> mutablePersons
 
     void addPerson(Person person) {
@@ -59,7 +60,7 @@ class Group extends Principal {
      * Has many WidgetDefinitions
      * @return
      */
-    Iterable<WidgetDefinition> getWidgetDefinitions() { mutableWidgetDefinitions }
+    Set<WidgetDefinition> getWidgetDefinitions() { Collections.unmodifiableSet(mutableWidgetDefinitions) }
     private Set<WidgetDefinition> mutableWidgetDefinitions
 
     void addWidgetDefinition(WidgetDefinition widgetDefinition) {
@@ -72,7 +73,7 @@ class Group extends Principal {
         widgetDefinition.mutableGroups.remove(this)
     }
 
-    Iterable<DashboardTemplate> getDashboardTemplates() { mutableDashboardTemplates }
+    Set<DashboardTemplate> getDashboardTemplates() { Collections.unmodifiableSet(mutableDashboardTemplates) }
     private Set<DashboardTemplate> mutableDashboardTemplates
 
     void addDashboardTemplate(DashboardTemplate dashboardTemplate) {

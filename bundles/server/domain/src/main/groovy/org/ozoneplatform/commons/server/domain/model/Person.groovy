@@ -19,6 +19,7 @@ package org.ozoneplatform.commons.server.domain.model
 import org.ozoneplatform.commons.server.domain.validation.EntityValidationAnnotationProcessor
 import org.ozoneplatform.commons.server.domain.validation.NotBlank
 
+@javax.persistence.Entity
 class Person extends Principal {
 
     /*
@@ -49,7 +50,7 @@ class Person extends Principal {
      * Has many DashboardInstances
      * @return
      */
-    Iterable<DashboardInstance> getDashboards() { mutableDashboards }
+    Set<DashboardInstance> getDashboards() { Collections.unmodifiableSet(mutableDashboards) }
     private Set<DashboardInstance> mutableDashboards
 
     DashboardInstance createDashboardInstance(String name, int position) {
@@ -74,7 +75,7 @@ class Person extends Principal {
      * Has many PersonalWidgetDefinitions
      * @return
      */
-    Iterable<PersonalWidgetDefinition> getPersonalWidgetDefinitions() { mutablePersonalWidgetDefinitions }
+    Set<PersonalWidgetDefinition> getPersonalWidgetDefinitions() { Collections.unmodifiableSet(mutablePersonalWidgetDefinitions) }
     private Set<PersonalWidgetDefinition> mutablePersonalWidgetDefinitions
 
 

@@ -18,6 +18,7 @@ package org.ozoneplatform.commons.server.domain.model
 
 import static org.ozoneplatform.commons.server.domain.validation.ValidationHelpers.isNotBlank
 
+@javax.persistence.Entity
 class Preference {
 
     final String namespace

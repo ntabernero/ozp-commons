@@ -1,10 +1,10 @@
 package org.ozoneplatform.commons.server.domain.validation
 
+import static org.ozoneplatform.commons.server.domain.validation.ValidationHelpers.isBlank
+
 import org.ozoneplatform.commons.server.domain.model.ValidationError
 
 import java.lang.annotation.*
-
-import static org.ozoneplatform.commons.server.domain.validation.ValidationHelpers.isBlank
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)

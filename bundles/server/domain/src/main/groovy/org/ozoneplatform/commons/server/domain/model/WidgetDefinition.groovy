@@ -19,6 +19,7 @@ package org.ozoneplatform.commons.server.domain.model
 import org.ozoneplatform.commons.server.domain.validation.EntityValidationAnnotationProcessor
 import org.ozoneplatform.commons.server.domain.validation.NotBlank
 
+@javax.persistence.Entity
 class WidgetDefinition extends Entity {
 
     static final int MINIMUM_WIDGET_HEIGHT = 200
@@ -78,7 +79,7 @@ class WidgetDefinition extends Entity {
      * This back reference is provided as an optimization for the widget launcher
      * @return
      */
-    Iterable<Group> getGroups() { mutableGroups }
+    Set<Group> getGroups() { Collections.unmodifiableSet(mutableGroups) }
     private Set<Group> mutableGroups
 
     /**
@@ -91,8 +92,8 @@ class WidgetDefinition extends Entity {
      * Has many Tags
      * @return
      */
-    Iterable<String> getTags() {
-        tags
+    Set<String> getTags() {
+        Collections.unmodifiableSet(tags)
     }
     /**
      * Replaces set of tags with a new set
@@ -107,7 +108,7 @@ class WidgetDefinition extends Entity {
      * Sends many Intents
      * @return
      */
-    Iterable<Intent> getSendableIntents() { mutableSendableIntents }
+    Set<Intent> getSendableIntents() { Collections.unmodifiableSet(mutableSendableIntents) }
     private Set<Intent> mutableSendableIntents
 
     void addSendableIntent(Intent intent) {
@@ -122,7 +123,7 @@ class WidgetDefinition extends Entity {
      * Receives many Intents
      * @return
      */
-    Iterable<Intent> getReceivableIntents() { mutableReceivableIntents }
+    Set<Intent> getReceivableIntents() { Collections.unmodifiableSet(mutableReceivableIntents) }
     private Set<Intent> mutableReceivableIntents
 
     void addReceivableIntent(Intent intent) {

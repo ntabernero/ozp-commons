@@ -16,16 +16,24 @@
 
 package org.ozoneplatform.commons.server.domain.model
 
+import groovy.json.JsonOutput
+import groovy.json.JsonSlurper
+import groovy.transform.ToString
 import org.ozoneplatform.commons.server.domain.validation.*
 
+@javax.persistence.Entity
+@ToString(includeNames=true, ignoreNulls=true)
 abstract class Dashboard extends Entity {
 
     @NotBlank
     String name
     String description = ''
+
     String layoutConfig = ''
     int position
     boolean isLocked = false
+
+    transient static private JsonSlurper jsonSlurper = new JsonSlurper()
 
     protected Dashboard() { }
 
@@ -38,4 +46,13 @@ abstract class Dashboard extends Entity {
     List<ValidationError> validate() {
         EntityValidationAnnotationProcessor.instance.validate(this)
     }
+
+    Object getLayoutConfigJson() {
+        return jsonSlurper.parseText(layoutConfig)
+    }
+
+    void setLayoutConfigJson(Object json) {
+        this.layoutConfig = JsonOutput.toJson(json)
+    }
+
 }

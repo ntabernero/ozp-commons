@@ -6,19 +6,19 @@
   <parent>
     <groupId>org.ozoneplatform.commons.vendor</groupId>
     <artifactId>vendor</artifactId>
-    <version>8.0.0-ALPHA-SPRINT3-SNAPSHOT</version>
+    <version>8.0.0-ALPHA-SPRINT4-SNAPSHOT</version>
     <relativePath>../pom.xml</relativePath>
   </parent>
-
-  <artifactId>codenarc-maven-plugin-patch</artifactId>
   <!-- END MODIFIED BY PATCH -->
-  <version>0.18-1</version>
+
+  <artifactId>codenarc-maven-plugin</artifactId>
+  <!-- BEGIN MODIFIED BY PATCH -->
+  <version>0.18-1-ozp-patch</version>
+  <!-- END MODIFIED BY PATCH -->
   <packaging>maven-plugin</packaging>
 
-  <!-- BEGIN MODIFIED BY PATCH -->
-  <name>CodeNarc Maven Plugin Patch</name>
-  <description>This Plug-In generates reports based on the CodeNarc Analyzer, patched</description>
-  <!-- END MODIFIED BY PATCH -->
+  <name>CodeNarc Maven Plugin</name>
+  <description>This Plug-In generates reports based on the CodeNarc Analyzer</description>
   <url>http://mojo.codehaus.org/codenarc-maven-plugin</url>
   <inceptionYear>2010</inceptionYear>
   <licenses>

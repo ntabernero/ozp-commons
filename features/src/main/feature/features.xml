@@ -6,6 +6,7 @@
 		<!-- Dependencies -->
         <feature>jpa</feature>
 
+        <bundle dependency="true">mvn:org.codehaus.groovy/groovy-all/${groovy.version}</bundle>
         <!--<bundle dependency="true">mvn:org.ops4j.pax.jdbc/pax-jdbc-derby/0.1.0</bundle>-->
         <bundle dependency="true">mvn:commons-collections/commons-collections/3.2.1</bundle>
         <bundle dependency="true">mvn:commons-pool/commons-pool/1.6</bundle>

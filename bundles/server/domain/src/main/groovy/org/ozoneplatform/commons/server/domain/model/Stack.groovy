@@ -19,6 +19,7 @@ package org.ozoneplatform.commons.server.domain.model
 import org.ozoneplatform.commons.server.domain.validation.EntityValidationAnnotationProcessor
 import org.ozoneplatform.commons.server.domain.validation.NotBlank
 
+@javax.persistence.Entity
 class Stack extends Entity {
 
     /**
@@ -46,7 +47,7 @@ class Stack extends Entity {
      * Has many DashboardTemplates
      * @return
      */
-    Iterable<DashboardTemplate> getDashboardTemplates() { mutableDashboardTemplates }
+    Set<DashboardTemplate> getDashboardTemplates() { Collections.unmodifiableSet(mutableDashboardTemplates) }
     private Set<DashboardTemplate> mutableDashboardTemplates
 
     void addDashboardTemplate(DashboardTemplate dashboardTemplate) {

@@ -19,6 +19,7 @@ package org.ozoneplatform.commons.server.domain.model
 /**
  * Abstracts commonalities between Person and Group.
  */
+@javax.persistence.Entity
 abstract class Principal extends Entity {
 
     public Principal() {
@@ -30,13 +31,13 @@ abstract class Principal extends Entity {
      * Has many Preferences
      * @return
      */
-    Iterable<Preference> getPreferences() { mutablePreferences }
+    Set<Preference> getPreferences() { Collections.unmodifiableSet(mutablePreferences) }
     private Set<Preference> mutablePreferences
 
     /**
      * Creates a new preference or replaces an existing one with the new value
-     * @param name
      * @param namespace
+     * @param name
      * @param value
      * @return
      */
@@ -62,7 +63,7 @@ abstract class Principal extends Entity {
      * Has many Stacks
      * @return
      */
-    Iterable<Stack> getStacks() { mutableStacks }
+    Set<Stack> getStacks() { Collections.unmodifiableSet(mutableStacks) }
     private Set<Stack> mutableStacks
 
     void addStack(Stack stack) {

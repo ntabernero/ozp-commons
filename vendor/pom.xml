@@ -5,13 +5,13 @@
     <parent>
 	    <groupId>org.ozoneplatform.commons</groupId>
 	    <artifactId>commons</artifactId>
-	    <version>8.0.0-ALPHA-SPRINT3-SNAPSHOT</version>
+	    <version>8.0.0-ALPHA-SPRINT4-SNAPSHOT</version>
 		<relativePath>../pom.xml</relativePath>
     </parent>
 
     <groupId>org.ozoneplatform.commons.vendor</groupId>
     <artifactId>vendor</artifactId>
-    <version>8.0.0-ALPHA-SPRINT3-SNAPSHOT</version>
+    <version>8.0.0-ALPHA-SPRINT4-SNAPSHOT</version>
     <name> OzonePlatform :: Commons :: Vendor Libraries :: Module</name>
     <packaging>pom</packaging>
 
@@ -40,7 +40,8 @@
         <module>bootstrap-editable</module>
         <module>animate</module>
 		<module>backbone.declarative.views</module>
-        <module>codenarc-maven-plugin-patch</module>
+        <module>codenarc-maven-plugin</module>
+        <module>shindig</module>
     </modules>
 
     <build>

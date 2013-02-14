@@ -16,10 +16,14 @@
 
 package org.ozoneplatform.commons.server.domain.model
 
+import groovy.transform.ToString
+
 /**
  * A DashboardTemplate can belong to either a stack or any number of groups (never both).
  * It is never used directly and is only copied into DashboardInstances which are used.
  */
+@javax.persistence.Entity
+@ToString(includeSuper=true, includeNames=true, ignoreNulls=true)
 class DashboardTemplate extends Dashboard {
 
     protected DashboardTemplate() { }
@@ -35,7 +39,7 @@ class DashboardTemplate extends Dashboard {
      * Has many WidgetDefinitions
      * @return
      */
-    Iterable<WidgetDefinition> getWidgetDefinitions() { mutableWidgetDefinitions }
+    Set<WidgetDefinition> getWidgetDefinitions() { Collections.unmodifiableSet(mutableWidgetDefinitions) }
     private Set<WidgetDefinition> mutableWidgetDefinitions // Unique widgets in layoutConfig, when layoutConfig updated this must be synced
 
     void addWidgetDefinition(WidgetDefinition widgetDefinition) {
@@ -49,7 +53,7 @@ class DashboardTemplate extends Dashboard {
      * the switcher, may list the groups this dashboard is a part of
      * @return
      */
-    Iterable<Group> getGroups() { mutableGroups }
+    Set<Group> getGroups() { Collections.unmodifiableSet(mutableGroups) }
     private Set<Group> mutableGroups
 
     /**
@@ -60,5 +64,5 @@ class DashboardTemplate extends Dashboard {
      * @return
      */
     Stack getStack() { stack }
-    private Stack stack
+    protected Stack stack
 }
