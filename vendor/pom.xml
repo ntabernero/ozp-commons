@@ -41,6 +41,7 @@
         <module>animate</module>
 		<module>backbone.declarative.views</module>
         <module>codenarc-maven-plugin</module>
+        <module>shindig</module>
     </modules>
 
     <build>

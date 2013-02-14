@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.ozoneplatform.commons.vendor</groupId>
+        <artifactId>vendor</artifactId>
+        <version>8.0.0-ALPHA-SPRINT4-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <groupId>org.ozoneplatform.commons.vendor</groupId>
+    <artifactId>shindig</artifactId>
+    <version>8.0.0-ALPHA-SPRINT4-SNAPSHOT</version>
+
+    <name>Shindig</name>
+    <description>Ozone Customized Shindig</description>
+    <packaging>pom</packaging>
+
+    <properties>
+        <projectVersion>${project.version}</projectVersion>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+</project>
