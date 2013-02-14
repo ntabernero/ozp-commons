@@ -3,7 +3,29 @@
 <features name="org.ozoneplatform.commons.features-repo">
     
 	<feature name="ozone-commons-server" version="${project.version}" description="Ozone Commons Server Features">
-		<bundle>mvn:org.ozoneplatform.commons.bundles/domain/${project.version}</bundle>
-	</feature>
+		<!-- Dependencies -->
+        <feature>jpa</feature>
+
+        <!--<bundle dependency="true">mvn:org.ops4j.pax.jdbc/pax-jdbc-derby/0.1.0</bundle>-->
+        <bundle dependency="true">mvn:commons-collections/commons-collections/3.2.1</bundle>
+        <bundle dependency="true">mvn:commons-pool/commons-pool/1.6</bundle>
+        <bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.serp/1.13.1_2</bundle>
+        <bundle dependency="true">mvn:org.apache.openjpa/openjpa/2.0.1</bundle>
+        <bundle dependency="true">mvn:org.apache.derby/derby/10.9.1.0</bundle>
+        <!--<bundle dependency="true">mvn:org.ops4j.pax.jdbc/pax-jdbc/0.1.0</bundle>
+        <bundle dependency="true">mvn:org.ops4j.base/ops4j-base-spi/1.4.0</bundle>
+        <bundle dependency="true">mvn:org.ops4j.base/ops4j-base-lang/1.4.0</bundle>
+        <bundle dependency="true">mvn:org.ops4j.pax.swissbox/pax-swissbox-core/1.5.1</bundle>
+        <bundle dependency="true">mvn:org.ops4j.pax.swissbox/pax-swissbox-extender/1.5.1</bundle>
+        <bundle dependency="true">mvn:org.ops4j.pax.swissbox/pax-swissbox-lifecycle/1.5.1</bundle>
+        <bundle dependency="true">mvn:org.osgi/org.osgi.enterprise/4.2.0</bundle>-->
+
+        <!-- OzonePlatform Commons Bundles -->
+        <bundle>mvn:org.ozoneplatform.commons.bundles/domain/${project.version}</bundle>
+        <bundle>mvn:org.ozoneplatform.commons.bundles/ozone-persistence-api/${project.version}</bundle>
+        <bundle>mvn:org.ozoneplatform.commons.bundles/ozone-persistence-jpa/${project.version}</bundle>
+        <bundle>mvn:org.ozoneplatform.commons.bundles/ozone-datasource/${project.version}</bundle>
+
+    </feature>
 
 </features>

@@ -39,8 +39,8 @@ limitations under the License.
     </bean>
 
     <service ref="groupRepositoryImpl" interface="org.ozoneplatform.commons.server.persistence.api.GroupRepository"/>
-    <service ref="personRepositoryImpl" interface="org.ozoneplatform.commons.server.persistence.api.PersonRepositoryImpl"/>
-    <service ref="stackRepositoryImpl" interface="org.ozoneplatform.commons.server.persistence.api.StackRepositoryImpl"/>
-    <service ref="widgetDefinitionRepositoryImpl" interface="org.ozoneplatform.commons.server.persistence.api.WidgetDefinitionRepositoryImpl"/>
+    <service ref="personRepositoryImpl" interface="org.ozoneplatform.commons.server.persistence.api.PersonRepository"/>
+    <service ref="stackRepositoryImpl" interface="org.ozoneplatform.commons.server.persistence.api.StackRepository"/>
+    <service ref="widgetDefinitionRepositoryImpl" interface="org.ozoneplatform.commons.server.persistence.api.WidgetDefinitionRepository"/>
 
 </blueprint>

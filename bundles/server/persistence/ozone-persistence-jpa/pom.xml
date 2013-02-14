@@ -76,6 +76,12 @@
                 <configuration>
                     <instructions>
                         <Export-Package>org.ozoneplatform.commons.server.persistence.jpa;version=${project.version}</Export-Package>
+                        <Import-Package>
+                            org.ozoneplatform.commons.server.domain.model;version=${project.version},
+                            org.ozoneplatform.commons.server.domain.validation;version=${project.version},
+                            org.ozoneplatform.commons.server.persistence.api;version=${project.version},
+                            *
+                        </Import-Package>
                         <Meta-Persistence>META-INF/persistence.xml</Meta-Persistence>
                     </instructions>
                 </configuration>

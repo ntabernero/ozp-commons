@@ -29,6 +29,13 @@
         </dependency>
 
         <dependency>
+            <groupId>org.codehaus.groovy</groupId>
+            <artifactId>groovy-all</artifactId>
+            <version>${groovy.version}</version>
+        </dependency>
+
+
+        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>${junit.version}</version>
@@ -51,7 +58,14 @@
                 <extensions>true</extensions>
                 <configuration>
                     <instructions>
-                        <Export-Package>org.ozoneplatform.commons.server.domain.model;version=${project.version},org.ozoneplatform.commons.server.domain.validation;version=${project.version}</Export-Package>
+                        <Export-Package>
+                            org.ozoneplatform.commons.server.domain.model;version=${project.version},
+                            org.ozoneplatform.commons.server.domain.validation;version=${project.version}
+                        </Export-Package>
+                        <Import-Package>
+                            org.codehaus.groovy.util,
+                            *
+                        </Import-Package>
                     </instructions>
                 </configuration>
             </plugin>
