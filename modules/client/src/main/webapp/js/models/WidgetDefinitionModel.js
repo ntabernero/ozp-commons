@@ -23,7 +23,7 @@ function(Model) {
     
     var WidgetDefinitionModel = Model.extend({
 
-        urlRoot: '/widget-defs',
+        urlRoot: '/ozp/rest/owf/widget-defs',
 
         defaults: {
             "guid": null,
@@ -45,9 +45,9 @@ function(Model) {
             "visibleForLaunch": true,
             
             "originalName": null,
-            "sendableIntents": null,
-            "receivableIntents": null,
-            "tags": ""   
+            "sendableIntents": [],
+            "receivableIntents": [],
+            "tags": [] 
         }
 
     });
