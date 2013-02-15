@@ -15,20 +15,29 @@
  */
 
 define([
-    'models/DashboardModel',
+    'models/DashboardInstanceModel',
     'collections/Collection'
 ],
 
-function(DashboardModel, Collection) {
-
-    var GroupDashboardsCollection = Collection.extend({
+function(DashboardInstanceModel, Collection) {
+    'use strict';
+    
+    var DashboardInstancesCollection = Collection.extend({
         
-        model: DashboardModel,
+        model: DashboardInstanceModel,
 
-        url: '/ozp/rest/owf/group-dashboards'
+        initialize: function(options) {
+            options || (options = {});
+            this.person = options.person;
+        },
+        
+        setPerson: function(person) {
+            this.person = person;
+        },
 
+        url: '/ozp/rest/owf/dashboard-instances'
     });
     
-    return GroupDashboardsCollection;
+    return DashboardInstancesCollection;
 
 });

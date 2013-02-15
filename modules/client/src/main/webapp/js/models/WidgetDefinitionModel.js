@@ -19,7 +19,8 @@ define([
 ],
 
 function(Model) {
-
+    'use strict';
+    
     var WidgetDefinitionModel = Model.extend({
 
         urlRoot: '/widget-defs',

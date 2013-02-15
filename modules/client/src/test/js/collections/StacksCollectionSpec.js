@@ -17,12 +17,12 @@
 define(['models/StackModel', 'collections/StacksCollection'], function(StackModel, StacksCollection) {
     describe('StacksCollectionSpec', function() {
       
-        it('Test StacksCollection creation.', function () {
+        it('creates a collection', function () {
             var sc = new StacksCollection();
             expect(sc).to.be.an('object');
         });
     
-        it('Test StacksCollection sorting.', function () {
+        it('can sort by name.', function () {
             
             var s1 = new StackModel({name: 'Bravo'});
             var s2 = new StackModel({name: 'Charlie'});

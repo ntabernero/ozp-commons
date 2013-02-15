@@ -19,7 +19,8 @@ define([
 ],
 
 function(Model) {
-
+    'use strict';
+    
     var PersonModel = Model.extend({
         
         urlRoot: '/ozp/rest/owf/persons',

@@ -19,7 +19,8 @@ define([
 ],
 
 function(Backbone) {
-
+    'use strict';
+    
     var Model = Backbone.Model.extend({
 
     });

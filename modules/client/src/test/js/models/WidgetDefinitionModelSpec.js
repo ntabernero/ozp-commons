@@ -48,12 +48,12 @@ define(['models/WidgetDefinitionModel'], function(WidgetDefinitionModel) {
             done();
         });
     
-        it('Test WidgetDefinitionModel base url', function() {
+        it('should generate a base url with id', function() {
             this.widget.set("id", 1);
             expect(this.widget.url()).to.eql("/widget-defs/1");
         });
         
-        it('Test WidgetDefinitionModel creation.', function () {
+        it('should create a basic model', function () {
             expect(this.widget).to.be.an('object');
             expect(this.widget.get('guid')).to.eql('11111');
             expect(this.widget.get('displayName')).to.eql('Widget One');

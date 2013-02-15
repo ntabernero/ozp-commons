@@ -20,7 +20,8 @@ define([
 ],
 
 function(DashboardModel, Collection) {
-
+    'use strict';
+    
     var DashboardsCollection = Collection.extend({
         
         model: DashboardModel,

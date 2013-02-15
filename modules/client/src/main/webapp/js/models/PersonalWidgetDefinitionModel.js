@@ -19,10 +19,11 @@ define([
 ],
 
 function(Model) {
-
+    'use strict';
+    
     var PersonalWidgetDefinitionModel = Model.extend({
 
-        urlRoot: '/ozp/rest/owf/person-widget-definitions',
+        urlRoot: '/ozp/rest/owf/personal-widget-defs',
 
         defaults: {
             "displayName": null,

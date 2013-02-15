@@ -19,7 +19,8 @@ define([
 ],
 
 function(Model) {
-
+    'use strict';
+    
     var DashboardModel = Model.extend({
 
         idAttribute: "id",
@@ -35,11 +36,6 @@ function(Model) {
             "lastAccessed": null,
             "dashboardTemplate": null,
             "layoutConfig": null,
-            //"alteredByAdmin": false,
-            //"defaultDashboard": false,
-            //"removed": false,
-            //"groups": [],
-            //"stack": null,
             "isDefault": false,
             "isLocked": false
         }

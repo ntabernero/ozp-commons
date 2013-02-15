@@ -17,12 +17,12 @@
 define(['models/WidgetDefinitionModel', 'collections/WidgetDefinitionsCollection'], function(WidgetDefinitionModel, WidgetDefinitionsCollection) {
     describe('WidgetDefinitionsCollectionSpec', function() {
     
-        it('Test WidgetDefinitionsCollection creation.', function () {
+        it('creates a collection', function () {
             var wc = new WidgetDefinitionsCollection();
             expect(wc).to.be.an('object');
         });
     
-        it('Test WidgetDefinitionsCollection sorting.', function () {
+        it('can sort by displayName.', function () {
             
             var w1 = new WidgetDefinitionModel({displayName: 'Apple'});
             var w2 = new WidgetDefinitionModel({displayName: 'Chestnut'});

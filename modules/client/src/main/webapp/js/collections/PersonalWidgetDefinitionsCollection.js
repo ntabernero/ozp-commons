@@ -20,12 +20,13 @@ define([
 ],
 
 function(PersonalWidgetDefinitionModel, Collection) {
-
+    'use strict';
+    
     var PersonalWidgetDefinitionsCollection = Collection.extend({
         
         model: PersonalWidgetDefinitionModel,
 
-        url: '/personal-widget-definitions',
+        url: '/ozp/rest/owf/personal-widget-defs',
         
         comparator: function(widget) {
             return widget.get('displayName');
