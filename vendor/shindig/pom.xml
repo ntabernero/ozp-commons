@@ -9,20 +9,17 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>modernizr</artifactId>
-    <version>2.6.2</version>
+    <groupId>org.ozoneplatform.commons.vendor</groupId>
+    <artifactId>shindig</artifactId>
+    <version>8.0.0-ALPHA-SPRINT4-SNAPSHOT</version>
 
-    <name>Modernizr</name>
-    <description>Modernizr is a JavaScript library that detects HTML5 and CSS3 features in the user’s browser.</description>
+    <name>Shindig</name>
+    <description>Ozone Customized Shindig</description>
+    <packaging>pom</packaging>
 
     <properties>
         <projectVersion>${project.version}</projectVersion>
     </properties>
-
-    <packaging>pom</packaging>
-
-    <!-- We can't use the plugin extension for this project as it relies upon 
-        the artifact produced here to work - chicken and egg. -->
 
     <build>
         <plugins>
