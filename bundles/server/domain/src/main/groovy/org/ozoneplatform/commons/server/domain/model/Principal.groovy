@@ -19,7 +19,6 @@ package org.ozoneplatform.commons.server.domain.model
 /**
  * Abstracts commonalities between Person and Group.
  */
-@javax.persistence.Entity
 abstract class Principal extends Entity {
 
     public Principal() {

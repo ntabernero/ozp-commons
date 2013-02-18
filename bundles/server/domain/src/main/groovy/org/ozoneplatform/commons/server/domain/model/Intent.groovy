@@ -18,7 +18,6 @@ package org.ozoneplatform.commons.server.domain.model
 
 import static org.ozoneplatform.commons.server.domain.validation.ValidationHelpers.isNotBlank
 
-@javax.persistence.Entity
 class Intent {
 
     final String action

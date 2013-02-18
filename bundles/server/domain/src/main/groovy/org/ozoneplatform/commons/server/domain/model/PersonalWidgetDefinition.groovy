@@ -16,7 +16,6 @@
 
 package org.ozoneplatform.commons.server.domain.model
 
-@javax.persistence.Entity
 class PersonalWidgetDefinition extends Entity {
 
     String displayName

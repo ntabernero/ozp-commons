@@ -19,7 +19,6 @@ package org.ozoneplatform.commons.server.domain.model
 import org.ozoneplatform.commons.server.domain.validation.EntityValidationAnnotationProcessor
 import org.ozoneplatform.commons.server.domain.validation.NotBlank
 
-@javax.persistence.Entity
 class WidgetDefinition extends Entity {
 
     static final int MINIMUM_WIDGET_HEIGHT = 200

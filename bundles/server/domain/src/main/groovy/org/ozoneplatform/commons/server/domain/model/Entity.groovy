@@ -23,7 +23,6 @@ import groovy.transform.EqualsAndHashCode
  * Entities: http://martinfowler.com/bliki/EvansClassification.html
  * @param < String >
  */
-@javax.persistence.Entity
 @EqualsAndHashCode(includes = 'id')
 abstract class Entity {
 

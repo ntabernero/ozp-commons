@@ -27,6 +27,17 @@
         </dependency>
 
         <dependency>
+            <groupId>org.ozoneplatform.commons.bundles</groupId>
+            <artifactId>domain</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.ozoneplatform.commons.bundles</groupId>
+            <artifactId>ozone-persistence-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.11</version>

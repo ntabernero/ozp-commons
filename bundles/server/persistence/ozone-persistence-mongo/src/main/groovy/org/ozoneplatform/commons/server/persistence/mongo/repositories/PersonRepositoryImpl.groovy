@@ -76,7 +76,6 @@ class PersonRepositoryImpl implements PersonRepository {
         entity.id = UUID.randomUUID().toString()
         def document = mapper.toDocument(entity)
 
-        println entity
         collection << document
     }
 }

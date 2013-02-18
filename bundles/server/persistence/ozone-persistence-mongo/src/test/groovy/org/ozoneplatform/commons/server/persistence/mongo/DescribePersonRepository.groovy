@@ -36,9 +36,9 @@ class DescribePersonRepository extends Specification {
 
         when:
         repository.add(person)
-        def persons = repository.findAll()
+        def persistedPerson = repository.getById(person.id)
 
         then:
-        persons.toList().size() == 1
+        person == persistedPerson
     }
 }

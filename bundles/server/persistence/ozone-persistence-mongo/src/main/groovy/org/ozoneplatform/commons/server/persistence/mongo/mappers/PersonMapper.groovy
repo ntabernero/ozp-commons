@@ -19,11 +19,13 @@ package org.ozoneplatform.commons.server.persistence.mongo.mappers
 import org.ozoneplatform.commons.server.domain.model.Person
 import org.ozoneplatform.commons.server.persistence.mongo.proxy.PersonProxy
 
-class PersonMapper {
+class PersonMapper extends DocumentMapper<Person> {
 
+    @Override
     def toDocument(Person person) {
         [
-                type: 'person',
+                _id: person.id,
+                type: getMongoType(),
                 username: person.username,
                 fullname: person.fullName,
                 email: person.email,
@@ -32,25 +34,14 @@ class PersonMapper {
         ]
     }
 
-    def fromDocument(def document) {
+    @Override
+    Person fromDocument(def document) {
         new PersonProxy(
+                id: document._id,
                 username: document.username,
                 fullName: document.fullName,
                 email:  document.email,
                 lastLogin: fromBsonDate(document.lastLogin),
                 prevLogin: fromBsonDate(document.prevLogin))
-    }
-
-    def toBsonDate(Calendar cal) {
-        if (cal)
-            cal.getTime()
-    }
-
-    def fromBsonDate(def date) {
-        if (date) {
-            Calendar cal = Calendar.instance
-            cal.setTime(date)
-            return cal
-        }
     }
 }

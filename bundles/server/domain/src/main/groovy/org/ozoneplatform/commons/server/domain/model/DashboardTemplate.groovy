@@ -16,14 +16,10 @@
 
 package org.ozoneplatform.commons.server.domain.model
 
-import groovy.transform.ToString
-
 /**
  * A DashboardTemplate can belong to either a stack or any number of groups (never both).
  * It is never used directly and is only copied into DashboardInstances which are used.
  */
-@javax.persistence.Entity
-@ToString(includeSuper=true, includeNames=true, ignoreNulls=true)
 class DashboardTemplate extends Dashboard {
 
     protected DashboardTemplate() { }

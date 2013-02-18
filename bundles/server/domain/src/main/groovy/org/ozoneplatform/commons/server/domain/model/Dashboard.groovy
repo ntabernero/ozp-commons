@@ -18,11 +18,8 @@ package org.ozoneplatform.commons.server.domain.model
 
 import groovy.json.JsonOutput
 import groovy.json.JsonSlurper
-import groovy.transform.ToString
 import org.ozoneplatform.commons.server.domain.validation.*
 
-@javax.persistence.Entity
-@ToString(includeNames=true, ignoreNulls=true)
 abstract class Dashboard extends Entity {
 
     @NotBlank
