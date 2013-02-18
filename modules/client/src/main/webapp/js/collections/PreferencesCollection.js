@@ -25,7 +25,7 @@ function(PreferenceModel, Collection) {
         
         model: PreferenceModel,
 
-        url: '/ozp/rest/owf/preferences',
+        url: 'preferences',
         
         comparator: function(preference) {
             return preference.get('namespace') + '.' + preference.get('name');

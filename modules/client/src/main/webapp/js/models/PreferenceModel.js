@@ -21,17 +21,71 @@ define([
 function(Model) {
 
     var PreferenceModel = Model.extend({
-        urlRoot: '/ozp/rest/owf/preferences',
-        
         defaults: {
-            "name": "",
-            "namespace": "",
-            "value": ""
-//            "person": null
-        }
+            "name": null,
+            "namespace": null,
+            "value": null,
+            "scope": null, 
+            "scopeGuid": null
+        },
 
+        initialize: function() {
+            Model.prototype.initialize.apply(this, arguments);
+        },
+
+        /**
+         * create a URL for preferences with the specified owner scope, owner guid,
+         * namespace, and name.
+         *
+         * Preference URLs work as follows.  
+         *
+         * groups/<group-guid>/preferences/<namespace>/<name>
+         *  A specific preference attached to a specific group
+         *
+         * persons/<person-guid>/preferences/<namespace>/<name>
+         *  A specific preference attached to a specific user
+         *
+         * persons/preferences/<namespace>/<name>
+         *  A specific preference attached to the current user
+         *
+         * groups/preferences/<namespace>/<name>
+         *  A specific preference attached to any group of which the current user is a member.
+         *  Read-only
+         *
+         * preferences/<namespace>/<name>
+         *  A hierarchical lookup of the specified preference.  The preference is first
+         *  searched for on the current user, then in groups that user is a member of (excluding
+         *  "OWF Users") and finally in the "OWF Users" group.
+         */
+        url: function() {
+            var urlSegments = [],
+                scope = this.get('scope'),
+                guid = this.get('scopeGuid'),
+                namespace = this.get('namespace'),
+                name = this.get('name');
+
+            if (scope) {
+                urlSegments.push(scope);
+
+                if (scope !== 'system' && guid) {
+                    urlSegments.push(guid);
+                }
+            }
+
+            urlSegments.push('preferences');
+
+            if (namespace) {
+                urlSegments.push(namespace);
+                if (name) {
+                    urlSegments.push(name);
+                }
+            }
+
+            return _.map(urlSegments, function(seg) { 
+                return encodeURIComponent(seg); 
+            }).join('/');
+        }   
     });
 
     return PreferenceModel;
-
 });
