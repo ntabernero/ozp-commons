@@ -73,69 +73,72 @@ function( $, _, Backbone ) {
         ZBASE += INCREMENT_BY;
     }
 
-    //adjust the view's css z-index based on its logicalIndex
-    ZIndexManager.prototype.refreshZIndex = function(model) {
-        model.get('view').$el.css('z-index', this.zBase + model.get('logicalIndex') * INDEX_GAP);
-    };
+    _.extend(ZIndexManager.prototype, Backbone.Events, {
 
-    //set each model's logicalIndex to its index in the collection.
-    //Since the collection is sorted on logicalIndex, this should not
-    //change relative ordering
-    ZIndexManager.prototype.compactIndicies = function() {
-        this.views.each(function(model, index) {
-            model.set('logicalIndex', index, {silent: true});
-        });
-    };
+        //adjust the view's css z-index based on its logicalIndex
+        refreshZIndex: function(model) {
+            model.get('view').$el.css('z-index', this.zBase + model.get('logicalIndex') * 
+                INDEX_GAP);
+        },
 
-    /**
-     * @param view the view to register
-     * @param logicalIndex a logical, initial z-index for this view, relative
-     * to the logicalIndexes of the other views.  This value is retrievable
-     * using getLogicalIndex, and is subject to change whenever bringToFront
-     * is called.  Default value: 0.  
-     */
-    ZIndexManager.prototype.register = function(view, logicalIndex) {
-        var me = this,
-            model = new ZIndexModel({view: view, logicalIndex: logicalIndex}, {parse: true});
+        //set each model's logicalIndex to its index in the collection.
+        //Since the collection is sorted on logicalIndex, this should not
+        //change relative ordering
+        compactIndicies: function() {
+            this.views.each(function(model, index) {
+                model.set('logicalIndex', index, {silent: true});
+            });
+        },
 
-        view.on('destroy.' + this._className, _.bind(this.unregister, this));
+        /**
+         * @param view the view to register
+         * @param logicalIndex a logical, initial z-index for this view, relative
+         * to the logicalIndexes of the other views.  This value is retrievable
+         * using getLogicalIndex, and is subject to change whenever bringToFront
+         * is called.  Default value: 0.  
+         */
+        register: function(view, logicalIndex) {
+            var me = this,
+                model = new ZIndexModel({view: view, logicalIndex: logicalIndex}, {parse: true});
 
-        this.views.add(model);
+            this.listenTo(view, 'remove', _.bind(this.unregister, this));
 
-        this.refreshZIndex(model);
-    };
+            this.views.add(model);
 
-    ZIndexManager.prototype.unregister = function(view, options) {
-        this.views.remove(view.cid);
-        view.off('destroy.' + this._className);
-    };
+            this.refreshZIndex(model);
+        },
 
-    ZIndexManager.prototype.getLogicalIndex = function (view) {
-        return this.views.get(view.cid).get('logicalIndex');
-    };
+        unregister: function(view, options) {
+            this.views.remove(view.cid);
+            this.stopListening(view);
+        },
 
-    ZIndexManager.prototype.bringToFront = function(view) {
-        var logicalIndex;
+        getLogicalIndex: function (view) {
+            return this.views.get(view.cid).get('logicalIndex');
+        },
 
-        //determine highest existing logicalIndex and give this view one higher
-        logicalIndex = this.views.max(function(model) {
-            return model.get('logicalIndex');
-        }).get('logicalIndex') + 1;
+        bringToFront: function(view) {
+            var logicalIndex;
 
-        this.views.get(view.cid).set('logicalIndex', logicalIndex);
-    };
+            //determine highest existing logicalIndex and give this view one higher
+            logicalIndex = this.views.max(function(model) {
+                return model.get('logicalIndex');
+            }).get('logicalIndex') + 1;
 
-    ZIndexManager.prototype.destroy = function() {
-        var me = this;
+            this.views.get(view.cid).set('logicalIndex', logicalIndex);
+        },
 
-        //do not change z-indexes as we unregister
-        this.views.off();
+        destroy: function() {
+            var me = this;
 
-        _.each(this.views.toJSON(), function(model) {
-           me.unregister(model.view); 
-        });
-    };
+            //do not change z-indexes as we unregister
+            this.views.off();
+
+            _.each(this.views.toJSON(), function(model) {
+               me.unregister(model.view); 
+            });
+        }
+    });
 
     return ZIndexManager;
-
 });
