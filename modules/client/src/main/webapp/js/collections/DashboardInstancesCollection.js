@@ -26,15 +26,6 @@ function(DashboardInstanceModel, Collection) {
         
         model: DashboardInstanceModel,
 
-        initialize: function(options) {
-            options || (options = {});
-            this.person = options.person;
-        },
-        
-        setPerson: function(person) {
-            this.person = person;
-        },
-
         url: '/ozp/rest/owf/dashboard-instances'
     });
     

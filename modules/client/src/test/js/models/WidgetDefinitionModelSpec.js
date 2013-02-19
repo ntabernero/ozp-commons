@@ -48,7 +48,7 @@ define(['models/WidgetDefinitionModel'], function(WidgetDefinitionModel) {
             done();
         });
     
-        it('should generate a base url with id', function() {
+        it('generates a base url', function() {
             this.widget.set("id", 1);
             expect(this.widget.url()).to.eql("/ozp/rest/owf/widget-defs/1");
         });
@@ -60,7 +60,7 @@ define(['models/WidgetDefinitionModel'], function(WidgetDefinitionModel) {
             expect(this.widget.get('universalName')).to.eql('org.widgets.widgetone');
         });
     
-        it('Test WidgetDefinitionModel test create url.', function() {
+        it('creates a POST request to the correct url for a save', function() {
             this.widget.save();
             expect(this.server.requests.length).to.eql(1);
             expect(this.server.requests[0].method).to.eql("POST");
@@ -68,7 +68,7 @@ define(['models/WidgetDefinitionModel'], function(WidgetDefinitionModel) {
             expect(this.widget.url()).to.eql("/ozp/rest/owf/widget-defs");
         });
         
-        it('Test WidgetDefinitionModel test fetch url', function() {
+        it('creates a GET request to the correct url for a fetch', function() {
             this.widget.set('id', '1');
             this.widget.fetch();
             expect(this.server.requests.length).to.eql(1);
@@ -77,7 +77,7 @@ define(['models/WidgetDefinitionModel'], function(WidgetDefinitionModel) {
             expect(this.widget.url()).to.eql("/ozp/rest/owf/widget-defs/1");
         });
         
-        it('Test WidgetDefinitionModel test update url', function() {
+        it('creates a PUT request to the correct URL for a model update.', function() {
             this.widget.set('id', '1');
             this.widget.save();
             expect(this.server.requests.length).to.eql(1);
@@ -86,7 +86,7 @@ define(['models/WidgetDefinitionModel'], function(WidgetDefinitionModel) {
             expect(this.widget.url()).to.eql("/ozp/rest/owf/widget-defs/1");
         });
         
-        it('Test WidgetDefinitionModel test delete url', function() {
+        it('creates a DELETE request to the correct URL for a model update.', function() {
             this.widget.set('id', 1);
             this.widget.destroy();
             expect(this.server.requests.length).to.eql(1);
