@@ -62,6 +62,7 @@ class MongoSession {
             if (!entity) {
                 def mapper = mapperRegistry.getMapperForMongoType(it.type)
                 entity = mapper.fromDocument(it)
+                identityMap.register(entity)
             }
             entity
         }

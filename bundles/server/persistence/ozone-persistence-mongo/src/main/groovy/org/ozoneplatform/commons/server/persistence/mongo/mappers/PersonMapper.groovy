@@ -19,14 +19,14 @@ package org.ozoneplatform.commons.server.persistence.mongo.mappers
 import org.ozoneplatform.commons.server.domain.model.Person
 import org.ozoneplatform.commons.server.persistence.mongo.proxy.PersonProxy
 
-class PersonMapper extends DocumentMapper<Person> {
+class PersonMapper extends DocumentMapper<Person, PersonProxy> {
 
     PersonMapper() {
-        super(Person.class)
+        super(Person.class, PersonProxy.class)
     }
 
     @Override
-    def toDocument(Person person) {
+    def toInsertDocument(Person person) {
         [
                 _id: person.id,
                 type: getMongoType(),
@@ -39,7 +39,7 @@ class PersonMapper extends DocumentMapper<Person> {
     }
 
     @Override
-    Person fromDocument(def document) {
+    PersonProxy fromDocument(def document) {
         new PersonProxy(
                 id: document._id,
                 username: document.username,

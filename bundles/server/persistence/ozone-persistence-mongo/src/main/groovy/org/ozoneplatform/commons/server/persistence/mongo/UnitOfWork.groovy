@@ -16,14 +16,91 @@
 
 package org.ozoneplatform.commons.server.persistence.mongo
 
+import com.mongodb.DBCollection
+import org.ozoneplatform.commons.server.domain.model.Entity
+import org.ozoneplatform.commons.server.persistence.mongo.mappers.DocumentMapperRegistry
+
+/**
+ * Pattern: http://martinfowler.com/eaaCatalog/unitOfWork.html
+ * Tracks changes to persistent data in a 'unit of work'. The Unit of work
+ * batches changes in memory and then commits all inserts, removes, and updates
+ * to the database
+ */
 interface UnitOfWork {
 
-    void registerNew(def entity);
+    void registerNew(Entity entity);
 
-    void registerDirty(def entity);
+    void registerDirty(Entity entity);
 
-    void registerRemoved(def entity);
+    void registerRemoved(Entity entity);
 
     void commit();
 }
 
+class UnitOfWorkImpl implements UnitOfWork {
+
+    DBCollection dbCollection
+    DocumentMapperRegistry documentMapperRegistry
+
+    public UnitOfWorkImpl(DBCollection dbCollection, DocumentMapperRegistry documentMapperRegistry) {
+        this.dbCollection = dbCollection
+        this.documentMapperRegistry = documentMapperRegistry
+    }
+
+    def newEnitites = new HashSet()
+    def dirtyEntities = new HashSet()
+    def removedEntities = new HashSet()
+
+    @Override
+    void registerNew(Entity entity) {
+        assert !removedEntities.contains(entity)
+        assert !dirtyEntities.contains(entity)
+        newEnitites.add(entity)
+    }
+
+    @Override
+    void registerDirty(Entity entity) {
+        assert entity.id
+        assert !removedEntities.contains(entity)
+        if (!dirtyEntities.contains(entity) && !newEnitites.contains(entity))
+            dirtyEntities.add(entity)
+    }
+
+    @Override
+    void registerRemoved(Entity entity) {
+        assert entity.id
+        if (newEnitites.remove(entity)) return
+        dirtyEntities.remove(entity)
+        if (!removedEntities.contains(entity))
+            removedEntities.add(entity)
+    }
+
+    @Override
+    void commit() {
+        insertNew()
+        updateDirty()
+        deleteRemoved()
+    }
+
+    private void insertNew() {
+        def documents = newEnitites.collect {
+            def mapper = documentMapperRegistry.getMapperForEntityType(it.class)
+            mapper.toInsertDocument(it)
+        }
+        dbCollection << documents
+    }
+
+    private void updateDirty() {
+        dirtyEntities.each {
+            def mapper = documentMapperRegistry.getMapperForEntityType(it.class)
+            def document = mapper.toUpdateDocument(it)
+            dbCollection.update([_id: it.id], document)
+        }
+    }
+
+    private void deleteRemoved() {
+        removedEntities.each {
+            dbCollection.remove([_id: it.id])
+        }
+    }
+}

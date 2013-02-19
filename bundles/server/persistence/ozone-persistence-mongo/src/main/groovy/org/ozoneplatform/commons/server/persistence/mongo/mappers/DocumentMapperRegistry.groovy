@@ -40,6 +40,7 @@ class DocumentMapperRegistryImpl implements DocumentMapperRegistry {
         mappers.each {
             mongoTypeMap.put(it.mongoType, it)
             entityTypeMap.put(it.entityType, it)
+            entityTypeMap.put(it.proxyType, it)
         }
     }
 

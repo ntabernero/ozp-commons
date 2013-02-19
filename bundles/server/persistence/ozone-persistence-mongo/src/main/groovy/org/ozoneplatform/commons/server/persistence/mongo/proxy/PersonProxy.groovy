@@ -20,12 +20,4 @@ import org.ozoneplatform.commons.server.domain.model.Person
 
 class PersonProxy extends Person {
 
-    boolean dirty
-
-    @Override
-    void setUsername(String username) {
-        super.setUsername(username)
-        dirty = true
-    }
-
 }
