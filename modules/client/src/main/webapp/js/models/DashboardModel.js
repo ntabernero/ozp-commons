@@ -37,7 +37,8 @@ function(Model) {
             "dashboardTemplate": null,
             "layoutConfig": null,
             "isDefault": false,
-            "isLocked": false
+            "isLocked": false,
+            "floatingWidgets": null // a JSON array representing a WidgetStatesCollection
         }
 
     });
