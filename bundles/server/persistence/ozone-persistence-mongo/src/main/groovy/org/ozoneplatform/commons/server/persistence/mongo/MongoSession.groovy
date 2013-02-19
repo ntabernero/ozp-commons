@@ -40,12 +40,12 @@ class MongoSession {
 
     def find() {
         def documents = db.find()
-        processDocuments(documents)
+        mapQueriedDocumentsToEntities(documents)
     }
 
     def find(def query) {
         def documents = db.find(query)
-        processDocuments(documents)
+        mapQueriedDocumentsToEntities(documents)
     }
 
     def add(def entity) {
@@ -56,7 +56,7 @@ class MongoSession {
         unitOfWork.registerRemoved(entity)
     }
 
-    private def processDocuments(def documents) {
+    private def mapQueriedDocumentsToEntities(def documents) {
         def entities = documents.collect {
             def entity = identityMap.retrieve(it._id)
             if (!entity) {

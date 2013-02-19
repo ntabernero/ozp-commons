@@ -21,6 +21,10 @@ import org.ozoneplatform.commons.server.persistence.mongo.proxy.PersonProxy
 
 class PersonMapper extends DocumentMapper<Person> {
 
+    PersonMapper() {
+        super(Person.class)
+    }
+
     @Override
     def toDocument(Person person) {
         [

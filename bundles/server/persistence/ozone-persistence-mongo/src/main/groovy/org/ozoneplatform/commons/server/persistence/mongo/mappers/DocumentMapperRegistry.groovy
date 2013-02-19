@@ -16,9 +16,40 @@
 
 package org.ozoneplatform.commons.server.persistence.mongo.mappers
 
+import org.ozoneplatform.commons.server.domain.model.Person
+
 interface DocumentMapperRegistry {
 
     DocumentMapper getMapperForEntityType(Class entityType);
 
     DocumentMapper getMapperForMongoType(String mongoType);
+}
+
+class DocumentMapperRegistryImpl implements DocumentMapperRegistry {
+
+    static def mappers = [
+            new PersonMapper()
+    ]
+
+    static def mongoTypeMap
+    static def entityTypeMap
+
+    static {
+        mongoTypeMap = new LinkedHashMap<String, DocumentMapper>()
+        entityTypeMap = new LinkedHashMap<Class, DocumentMapper>()
+        mappers.each {
+            mongoTypeMap.put(it.mongoType, it)
+            entityTypeMap.put(it.entityType, it)
+        }
+    }
+
+    @Override
+    DocumentMapper getMapperForEntityType(Class entityType) {
+        entityTypeMap[entityType]
+    }
+
+    @Override
+    DocumentMapper getMapperForMongoType(String mongoType) {
+        mongoTypeMap[mongoType]
+    }
 }
