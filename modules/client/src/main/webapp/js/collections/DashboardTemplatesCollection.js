@@ -15,21 +15,21 @@
  */
 
 define([
-    'models/DashboardModel',
+    'models/DashboardTemplateModel',
     'collections/Collection'
 ],
 
-function(DashboardModel, Collection) {
+function(DashboardTemplateModel, Collection) {
     'use strict';
     
-    var GroupDashboardsCollection = Collection.extend({
+    var DashboardTemplatesCollection = Collection.extend({
         
-        model: DashboardModel,
+        model: DashboardTemplateModel,
 
         url: '/ozp/rest/owf/dashboard-templates'
 
     });
     
-    return GroupDashboardsCollection;
+    return DashboardTemplatesCollection;
 
 });

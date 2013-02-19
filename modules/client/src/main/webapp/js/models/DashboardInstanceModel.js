@@ -28,7 +28,7 @@ function(Backbone, DashboardModel, _) {
         
         defaults: function() {
             return _.extend({},DashboardModel.prototype.defaults, {
-                // person: null
+                lastAccessed: null
             });
         },
         

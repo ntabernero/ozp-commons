@@ -22,7 +22,6 @@ function(Model) {
     'use strict';
     
     var PreferenceModel = Model.extend({
-        urlRoot: '/ozp/rest/owf/preferences',
         
         defaults: {
             "name": "",
