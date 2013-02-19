@@ -33,10 +33,7 @@ function(Model) {
             "lastModified": null,
             "createdBy": null,
             "lastModifiedBy": null,
-            "lastAccessed": null,
-            "dashboardTemplate": null,
             "layoutConfig": null,
-            "isDefault": false,
             "isLocked": false
         }
 

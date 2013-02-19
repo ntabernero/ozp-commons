@@ -25,24 +25,14 @@ define(['models/DashboardInstanceModel'], function(DashboardInstanceModel) {
             });
             this.server = sinon.fakeServer.create();
             
-            // Stub test initialization method;  And any custom pre-test elements here.
             done();
         });
     
-        it('Test DashboardInstanceModel base url', function() {
+        it('generates a base url.', function() {
             expect(this.dashboard.url()).to.eql("/ozp/rest/owf/dashboard-instances");
         });
-        
-        it('Test DashboardInstanceModel creation.', function () {
-            var p1 =  new DashboardInstanceModel({person: 'bob', id: 'xxx-xxx-xxx'});
-            
-            expect(p1).to.be.an('object');
-            expect(p1.get('person')).to.eql('bob');
-            expect(p1.get('id')).to.eql('xxx-xxx-xxx');
-            expect(p1.get('name')).to.eql(null);
-        });
     
-        it('Test DashboardInstanceModel test create url.', function() {
+        it('creates a POST request to the correct url for a save', function() {
             this.dashboard.save();
             expect(this.server.requests.length).to.eql(1);
             expect(this.server.requests[0].method).to.eql("POST");
@@ -50,7 +40,7 @@ define(['models/DashboardInstanceModel'], function(DashboardInstanceModel) {
             expect(this.dashboard.url()).to.eql("/ozp/rest/owf/dashboard-instances");
         });
         
-        it('Test DashboardInstanceModel test fetch url', function() {
+        it('creates a GET request to the correct url for a fetch', function() {
             this.dashboard.set('id', '12345');
             this.dashboard.fetch();
             expect(this.server.requests.length).to.eql(1);
@@ -59,7 +49,7 @@ define(['models/DashboardInstanceModel'], function(DashboardInstanceModel) {
             expect(this.dashboard.url()).to.eql("/ozp/rest/owf/dashboard-instances/12345");
         });
         
-        it('Test DashboardInstanceModel test update url', function() {
+        it('creates a PUT request to the correct URL for a model update.', function() {
             this.dashboard.set('id', '12345');
             this.dashboard.save();
             expect(this.server.requests.length).to.eql(1);
@@ -68,7 +58,7 @@ define(['models/DashboardInstanceModel'], function(DashboardInstanceModel) {
             expect(this.dashboard.url()).to.eql("/ozp/rest/owf/dashboard-instances/12345");
         });
         
-        it('Test DashboardInstanceModel test delete url', function() {
+        it('creates a DELETE request to the correct URL for a model update.', function() {
             this.dashboard.set('id', '12345');
             this.dashboard.destroy();
             expect(this.server.requests.length).to.eql(1);
