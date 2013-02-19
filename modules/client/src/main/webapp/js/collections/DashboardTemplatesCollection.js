@@ -15,24 +15,21 @@
  */
 
 define([
-    'models/WidgetDefinitionModel',
+    'models/DashboardModel',
     'collections/Collection'
 ],
 
-function(WidgetDefinitionModel, Collection) {
+function(DashboardModel, Collection) {
     'use strict';
     
-    var WidgetDefinitionsCollection = Collection.extend({
+    var GroupDashboardsCollection = Collection.extend({
         
-        model: WidgetDefinitionModel,
+        model: DashboardModel,
 
-        url: '/ozp/rest/owf/widget-defs',
-        
-        comparator: function(widget) {
-            return widget.get('displayName');
-        }
+        url: '/ozp/rest/owf/dashboard-templates'
 
     });
+    
+    return GroupDashboardsCollection;
 
-    return WidgetDefinitionsCollection;
 });

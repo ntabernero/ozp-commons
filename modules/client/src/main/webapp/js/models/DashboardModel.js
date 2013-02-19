@@ -19,26 +19,25 @@ define([
 ],
 
 function(Model) {
-
+    'use strict';
+    
     var DashboardModel = Model.extend({
 
-        idAttribute: "guid",
-
+        idAttribute: "id",
+        
         defaults: {
             "name": null,
             "description": null,
+            "position": 0,
+            "created": null,
+            "lastModified": null,
+            "createdBy": null,
+            "lastModifiedBy": null,
+            "lastAccessed": null,
+            "dashboardTemplate": null,
             "layoutConfig": null,
-            "alteredByAdmin": false,
-            "defaultDashboard": false,
-            "dashboardPosition": 0,
-            //"removed": false,
-            //"groups": [],
-            //"isGroupDashboard": false,
-            //"createdDate": null,
-            //"createdBy": null,
-            //"editedDate": null,
-            //"stack": null,
-            "locked": false
+            "isDefault": false,
+            "isLocked": false
         }
 
     });

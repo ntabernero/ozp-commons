@@ -19,14 +19,15 @@ define([
 ],
 
 function(Model) {
-
+    'use strict';
+    
     var PersonModel = Model.extend({
         
         urlRoot: '/ozp/rest/owf/persons',
         
         defaults: {
             "username": "",
-            "fullname": "",
+            "fullName": "",
             "email": "",
             "lastLogin": "",
             "prevLogin": ""

@@ -19,7 +19,8 @@ define([
 ],
 
 function(Model) {
-
+    'use strict';
+    
     var StackModel = Model.extend({
         urlRoot: '/ozp/rest/owf/stacks',
         

@@ -48,12 +48,12 @@ define(['models/WidgetDefinitionModel'], function(WidgetDefinitionModel) {
             done();
         });
     
-        it('Test WidgetDefinitionModel base url', function() {
+        it('should generate a base url with id', function() {
             this.widget.set("id", 1);
-            expect(this.widget.url()).to.eql("/widget-defs/1");
+            expect(this.widget.url()).to.eql("/ozp/rest/owf/widget-defs/1");
         });
         
-        it('Test WidgetDefinitionModel creation.', function () {
+        it('should create a basic model', function () {
             expect(this.widget).to.be.an('object');
             expect(this.widget.get('guid')).to.eql('11111');
             expect(this.widget.get('displayName')).to.eql('Widget One');
@@ -64,8 +64,8 @@ define(['models/WidgetDefinitionModel'], function(WidgetDefinitionModel) {
             this.widget.save();
             expect(this.server.requests.length).to.eql(1);
             expect(this.server.requests[0].method).to.eql("POST");
-            expect(this.server.requests[0].url).to.eql("/widget-defs");
-            expect(this.widget.url()).to.eql("/widget-defs");
+            expect(this.server.requests[0].url).to.eql("/ozp/rest/owf/widget-defs");
+            expect(this.widget.url()).to.eql("/ozp/rest/owf/widget-defs");
         });
         
         it('Test WidgetDefinitionModel test fetch url', function() {
@@ -73,8 +73,8 @@ define(['models/WidgetDefinitionModel'], function(WidgetDefinitionModel) {
             this.widget.fetch();
             expect(this.server.requests.length).to.eql(1);
             expect(this.server.requests[0].method).to.eql("GET");
-            expect(this.server.requests[0].url).to.eql("/widget-defs/1");
-            expect(this.widget.url()).to.eql("/widget-defs/1");
+            expect(this.server.requests[0].url).to.eql("/ozp/rest/owf/widget-defs/1");
+            expect(this.widget.url()).to.eql("/ozp/rest/owf/widget-defs/1");
         });
         
         it('Test WidgetDefinitionModel test update url', function() {
@@ -82,8 +82,8 @@ define(['models/WidgetDefinitionModel'], function(WidgetDefinitionModel) {
             this.widget.save();
             expect(this.server.requests.length).to.eql(1);
             expect(this.server.requests[0].method).to.eql("PUT");
-            expect(this.server.requests[0].url).to.eql("/widget-defs/1");
-            expect(this.widget.url()).to.eql("/widget-defs/1");
+            expect(this.server.requests[0].url).to.eql("/ozp/rest/owf/widget-defs/1");
+            expect(this.widget.url()).to.eql("/ozp/rest/owf/widget-defs/1");
         });
         
         it('Test WidgetDefinitionModel test delete url', function() {
@@ -91,8 +91,8 @@ define(['models/WidgetDefinitionModel'], function(WidgetDefinitionModel) {
             this.widget.destroy();
             expect(this.server.requests.length).to.eql(1);
             expect(this.server.requests[0].method).to.eql("DELETE");
-            expect(this.server.requests[0].url).to.eql("/widget-defs/1");
-            expect(this.widget.url()).to.eql("/widget-defs/1");
+            expect(this.server.requests[0].url).to.eql("/ozp/rest/owf/widget-defs/1");
+            expect(this.widget.url()).to.eql("/ozp/rest/owf/widget-defs/1");
         });
     });
 });

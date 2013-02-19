@@ -19,20 +19,19 @@ define([
 ],
 
 function(Model) {
-
+    'use strict';
+    
     var PersonalWidgetDefinitionModel = Model.extend({
 
-        urlRoot: '/ozp/rest/owf/person-widget-definitions',
+        urlRoot: '/ozp/rest/owf/personal-widget-defs',
 
         defaults: {
             "displayName": null,
             "position": 0,
-            "assignedByGroup": false,
-            "assignedToPerson": false,
-            "disabled": false,
-            "favorite": false,
-            "visibleForLaunch": true,
-            "person": null,
+            "isAssignedToPerson": false,
+            "isLaunchDisabled": false,
+            "isFavorite": false,
+            "isVisibleForLaunch": true,
             "widgetDefinition": null,
             "tags": []
         }

@@ -20,7 +20,8 @@ define([
 ],
 
 function(Model, $) {
-
+    'use strict';
+    
     var WidgetStateModel = Model.extend({
 
         defaults: {
