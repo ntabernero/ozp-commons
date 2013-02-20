@@ -20,7 +20,8 @@ define([
 ],
 
 function(IntentModel, Collection) {
-
+    'use strict';
+    
     var IntentsCollection = Collection.extend({
         
         model: IntentModel,

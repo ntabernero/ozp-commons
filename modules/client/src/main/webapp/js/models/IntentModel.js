@@ -19,7 +19,8 @@ define([
 ],
 
 function(Model) {
-
+    'use strict';
+    
     var IntentModel = Model.extend({
         urlRoot: '/intents',
         

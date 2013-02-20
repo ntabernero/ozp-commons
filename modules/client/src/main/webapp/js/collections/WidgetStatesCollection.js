@@ -20,7 +20,8 @@ define([
 ],
 
 function(WidgetStateModel, Collection) {
-
+    'use strict';
+    
     var WidgetStatesCollection = Collection.extend({
         model: WidgetStateModel
     });

@@ -37,7 +37,7 @@ class Group extends Principal {
      * Has many Persons
      * @return
      */
-    Iterable<Person> getPersons() { getMutablePersons() }
+    Set<Person> getPersons() { Collections.unmodifiableSet(getMutablePersons()) }
     private Set<Person> getMutablePersons() {
         if (!mutablePersons)
             mutablePersons = new HashSet<Person>()
@@ -57,7 +57,7 @@ class Group extends Principal {
      * Has many WidgetDefinitions
      * @return
      */
-    Iterable<WidgetDefinition> getWidgetDefinitions() { getMutableWidgetDefinitions() }
+    Set<WidgetDefinition> getWidgetDefinitions() { Collections.unmodifiableSet(getMutableWidgetDefinitions()) }
     private Set<WidgetDefinition> getMutableWidgetDefinitions() {
         if (!mutableWidgetDefinitions)
             mutableWidgetDefinitions = new HashSet<WidgetDefinition>()
@@ -75,7 +75,7 @@ class Group extends Principal {
         widgetDefinition.mutableGroups.remove(this)
     }
 
-    Iterable<DashboardTemplate> getDashboardTemplates() { getMutableDashboardTemplates() }
+    Set<DashboardTemplate> getDashboardTemplates() { Collections.unmodifiableSet(getMutableDashboardTemplates()) }
     private Set<DashboardTemplate> getMutableDashboardTemplates() {
         if (!mutableDashboardTemplates)
             mutableDashboardTemplates = new HashSet<DashboardTemplate>()

@@ -17,12 +17,27 @@
 define(['models/PersonalWidgetDefinitionModel', 'collections/PersonalWidgetDefinitionsCollection'], function(PersonalWidgetDefinitionModel, PersonalWidgetDefinitionsCollection) {
     describe('PersonalWidgetDefinitionsCollectionSpec', function() {
     
-        it('Test PersonalWidgetDefinitionsCollection creation.', function () {
+        beforeEach(function(done) {
+            this.collection = new PersonalWidgetDefinitionsCollection();
+            this.widget1 = new PersonalWidgetDefinitionModel({id: '1', displayName: 'Apple'});
+            this.widget2 = new PersonalWidgetDefinitionModel({id: '2', displayName: 'Chestnut'});
+            
+            this.server = sinon.fakeServer.create();
+            done();
+        });
+        
+        afterEach(function(done) {
+            this.server.restore();
+            
+            done();
+        });
+        
+        it('creates a collection', function () {
             var wc = new PersonalWidgetDefinitionsCollection();
             expect(wc).to.be.an('object');
         });
     
-        it('Test PersonalWidgetDefinitionsCollection sorting.', function () {
+        it('can sort by displayName', function () {
             
             var w1 = new PersonalWidgetDefinitionModel({displayName: 'Apple'});
             var w2 = new PersonalWidgetDefinitionModel({displayName: 'Chestnut'});
@@ -39,6 +54,48 @@ define(['models/PersonalWidgetDefinitionModel', 'collections/PersonalWidgetDefin
             expect(wc.at(0).get('displayName')).to.eql('Apple');
             expect(wc.at(1).get('displayName')).to.eql('Banana');
             expect(wc.at(2).get('displayName')).to.eql('Chestnut');
+        });
+        
+        it('generates a base url for an empty collection.', function () {
+            expect(this.collection.url).to.eql('/ozp/rest/owf/personal-widget-defs');
+        });
+        
+        it('generates a url for model in collection with an id.', function () {
+            this.collection.add(this.widget1)
+            expect(this.collection.at(0).get('displayName')).to.eql('Apple');
+            expect(this.collection.at(0).url()).to.eql('/ozp/rest/owf/personal-widget-defs/1');
+        });
+        
+        it("creates a POST request to the correct url for a save", function() {
+            this.collection.create({displayName: 'test widget'});
+            expect(this.server.requests.length).to.eql(1);
+            expect(this.server.requests[0].method).to.eql("POST");
+            expect(this.server.requests[0].url).to.eql("/ozp/rest/owf/personal-widget-defs");
+        });
+        
+        it("creates a GET request to the correct url for a fetch", function() {
+            this.collection.fetch();
+            expect(this.server.requests.length).to.eql(1);
+            expect(this.server.requests[0].method).to.eql("GET");
+            expect(this.server.requests[0].url).to.eql("/ozp/rest/owf/personal-widget-defs");
+        });
+        
+        it("creates a PUT request to the correct url for bulk updates", function() {
+            this.collection.add([this.widget1, this.widget2]);
+            this.collection.sync('update', this.collection);
+            expect(this.server.requests.length).to.eql(1);
+            expect(this.server.requests[0].method).to.eql("PUT");
+            expect(this.server.requests[0].url).to.eql("/ozp/rest/owf/personal-widget-defs");
+            expect(JSON.parse(this.server.requests[0].requestBody).length).to.eql(2);
+        });
+        
+        it("creates a PUT request to the correct URL for a model update.", function() {
+            this.collection.add(this.widget1);
+            this.collection.at(0).save();
+            expect(this.server.requests.length).to.eql(1);
+            expect(this.server.requests[0].method).to.eql("PUT");
+            expect(this.server.requests[0].url).to.eql("/ozp/rest/owf/personal-widget-defs/1");
+            expect(JSON.parse(this.server.requests[0].requestBody).displayName).to.eql('Apple');
         });
     });
 });

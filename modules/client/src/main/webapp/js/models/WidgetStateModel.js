@@ -20,15 +20,14 @@ define([
 ],
 
 function(Model, $) {
-
+    'use strict';
+    
     var WidgetStateModel = Model.extend({
 
         defaults: {
-            "uniqueId": null,
-            "dashboardGuid": null,
-            "paneGuid": null,
+            "id": null,
             "widgetGuid": null,
-            "statePosition": 0,
+            "universalName": null, //redundant in most cases but needed for migrating dashboards to other OWF instances
             "name": "",
             "active": false,
             "height": 200,
@@ -38,21 +37,10 @@ function(Model, $) {
             "zIndex": 0,
             "minmized": false,
             "maximized": false,
-            "pinned": false,
             "collapsed": false,
-            "columnPos": 0,
-            "columnOrder": 0,
-            "buttonId": 0,
-            "buttonOpened": true,
-            "region": "",
-            "singleton": false,
-            "floating": false,
-            "background": false,
-            "intentConfig": "",
+            "intentConfig": "", //is this needed here?
             "launchData": ""
         },
-
-        idAttribute: 'uniqueId',
 
         //widget state models are not saved to the server directly
         sync: $.noop

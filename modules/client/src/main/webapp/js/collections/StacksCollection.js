@@ -20,7 +20,8 @@ define([
 ],
 
 function(StackModel, Collection) {
-        
+    'use strict';
+    
     var StacksCollection = Collection.extend({
         
         model: StackModel,

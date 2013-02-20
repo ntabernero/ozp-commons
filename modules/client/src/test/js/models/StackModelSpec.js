@@ -30,7 +30,7 @@ define(['models/StackModel'], function(StackModel) {
             done();
         });
     
-        it('Test StackModel base url', function() {
+        it('generates a base url', function() {
             this.stack.set("id", 1);
             expect(this.stack.url()).to.eql("/ozp/rest/owf/stacks/1");
         });
@@ -41,7 +41,7 @@ define(['models/StackModel'], function(StackModel) {
             expect(this.stack.get('urlName')).to.eql('stack-one');
         });
     
-        it('Test StackModel test create url.', function() {
+        it('creates a POST request to the correct url for a save', function() {
             this.stack.save();
             expect(this.server.requests.length).to.eql(1);
             expect(this.server.requests[0].method).to.eql("POST");
@@ -49,7 +49,7 @@ define(['models/StackModel'], function(StackModel) {
             expect(this.stack.url()).to.eql("/ozp/rest/owf/stacks");
         });
         
-        it('Test StackModel test fetch url', function() {
+        it('creates a GET request to the correct url for a fetch', function() {
             this.stack.set('id', '1');
             this.stack.fetch();
             expect(this.server.requests.length).to.eql(1);
@@ -58,7 +58,7 @@ define(['models/StackModel'], function(StackModel) {
             expect(this.stack.url()).to.eql("/ozp/rest/owf/stacks/1");
         });
         
-        it('Test StackModel test update url', function() {
+        it('creates a PUT request to the correct URL for a model update.', function() {
             this.stack.set('id', '1');
             this.stack.save();
             expect(this.server.requests.length).to.eql(1);
@@ -67,7 +67,7 @@ define(['models/StackModel'], function(StackModel) {
             expect(this.stack.url()).to.eql("/ozp/rest/owf/stacks/1");
         });
         
-        it('Test StackModel test delete url', function() {
+        it('creates a DELETE request to the correct URL for a model update.', function() {
             this.stack.set('id', 1);
             this.stack.destroy();
             expect(this.server.requests.length).to.eql(1);

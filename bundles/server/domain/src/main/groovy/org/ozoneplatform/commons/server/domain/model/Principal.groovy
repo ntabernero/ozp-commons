@@ -25,7 +25,7 @@ abstract class Principal extends Entity {
      * Has many Preferences
      * @return
      */
-    Iterable<Preference> getPreferences() { getMutablePreferences() }
+    Set<Preference> getPreferences() { Collections.unmodifiableSet(getMutablePreferences()) }
     private Set<Preference> getMutablePreferences() {
         if (!mutablePreferences)
             mutablePreferences = new HashSet<Preference>()
@@ -62,7 +62,7 @@ abstract class Principal extends Entity {
      * Has many Stacks
      * @return
      */
-    Iterable<Stack> getStacks() { getMutableStacks() }
+    Set<Stack> getStacks() { Collections.unmodifiableSet(getMutableStacks()) }
     private Set<Stack> getMutableStacks() {
         if (!mutableStacks)
             mutableStacks = new HashSet<Stack>()

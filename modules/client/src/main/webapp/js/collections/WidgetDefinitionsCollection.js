@@ -20,7 +20,8 @@ define([
 ],
 
 function(WidgetDefinitionModel, Collection) {
-
+    'use strict';
+    
     var WidgetDefinitionsCollection = Collection.extend({
         
         model: WidgetDefinitionModel,

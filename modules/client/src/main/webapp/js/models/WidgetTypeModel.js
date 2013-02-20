@@ -19,9 +19,9 @@ define([
 ],
 
 function(Model) {
-
+    'use strict';
+    
     var WidgetTypeModel = Model.extend({
-        urlRoot: '/widget-types',
         
         defaults: {
             "name:": ""

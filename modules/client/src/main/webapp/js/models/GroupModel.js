@@ -19,7 +19,8 @@ define([
 ],
 
 function(Model) {
-
+    'use strict';
+    
     var GroupModel = Model.extend({
         urlRoot: '/ozp/rest/owf/groups',
         
@@ -27,13 +28,8 @@ function(Model) {
             "name": "",
             "description": "",
             "displayName": "",
-            "active": true,
-            "automatic": false
-            
-//            "dashboards": [],
-//            "people": [],
-//            "widgetDefinitions": [],
-//            "stacks":[]
+            "isPermissionsActive": true,
+            "isAutomatic": false
         }
 
     });
