@@ -49,7 +49,6 @@ define(['views/Modal', 'backbone', 'lodash'], function(Modal, Backbone, _) {
             });
 
             var spy = sinon.spy(view, 'remove');
-            debugger;
             view.show();
             view.hide();
 
