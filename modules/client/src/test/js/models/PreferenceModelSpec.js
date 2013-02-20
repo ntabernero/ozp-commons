@@ -15,65 +15,63 @@
  */
 
 define(['models/PreferenceModel'], function(PreferenceModel) {
-    describe('PreferenceModelSpec', function() {
-    
+    describe('PreferenceModel', function() {
+        var preference, GUID = '111-11111111-1111111111';
+
         beforeEach(function(done) {
-            this.preference = new PreferenceModel({
-                "name": "sample",
-                "namespace": "org.sample",
-                "value": "sampleValue"
+            preference = new PreferenceModel({
+                "name": "testName",
+                "namespace": "testNamespace",
+                "value": "testValue"
             });
-            this.server = sinon.fakeServer.create();
             
-            // Stub test initialization method;  And any custom pre-test elements here.
+            done();
+        });
+
+        afterEach(function(done) {
+            preference = null;
+
             done();
         });
     
-        it('Test PreferencesModel base url', function() {
-            this.preference.set("id", 1);
-            expect(this.preference.url()).to.eql("/ozp/rest/owf/preferences/1");
+        it('has default null values for name, namespace, value, and scope', function() {
+            var pref = new PreferenceModel();
+
+            expect(pref.get('name')).to.be(null);
+            expect(pref.get('namespace')).to.be(null);
+            expect(pref.get('scope')).to.be(null);
+            expect(pref.get('scopeGuid')).to.be(null);
+            expect(pref.get('value')).to.be(null);
         });
-        
-        it('Test PreferencesModel creation.', function () {
-            expect(this.preference).to.be.an('object');
-            expect(this.preference.get('name')).to.eql('sample');
-            expect(this.preference.get('namespace')).to.eql('org.sample');
-            expect(this.preference.get('value')).to.eql('sampleValue');
+
+        it('creates a URL like preferences/namespace/name when there is no scope or scopeGuid', function() {
+            expect(preference.url()).to.be('preferences/testNamespace/testName');
         });
-    
-        it('Test PreferencesModel test create url.', function() {
-            this.preference.save();
-            expect(this.server.requests.length).to.eql(1);
-            expect(this.server.requests[0].method).to.eql("POST");
-            expect(this.server.requests[0].url).to.eql("/ozp/rest/owf/preferences");
-            expect(this.preference.url()).to.eql("/ozp/rest/owf/preferences");
+
+        it('creates a URL like groups/preferences/namespace/name when scope = group', function() {
+            preference.set('scope', 'group');
+            expect(preference.url()).to.be('groups/preferences/testNamespace/testName');
         });
-        
-        it('Test PreferencesModel test fetch url', function() {
-            this.preference.set('id', '1');
-            this.preference.fetch();
-            expect(this.server.requests.length).to.eql(1);
-            expect(this.server.requests[0].method).to.eql("GET");
-            expect(this.server.requests[0].url).to.eql("/ozp/rest/owf/preferences/1");
-            expect(this.preference.url()).to.eql("/ozp/rest/owf/preferences/1");
+
+        it('creates a URL like groups/guid/preferences/namespace/name when scope = group' + 
+                'and scopeGuid is set', function() {
+            preference.set('scope', 'group');
+            preference.set('scopeGuid', GUID);
+            expect(preference.url()).to.be('groups/' + GUID + 
+                '/preferences/testNamespace/testName');
         });
-        
-        it('Test PreferencesModel test update url', function() {
-            this.preference.set('id', '1');
-            this.preference.save();
-            expect(this.server.requests.length).to.eql(1);
-            expect(this.server.requests[0].method).to.eql("PUT");
-            expect(this.server.requests[0].url).to.eql("/ozp/rest/owf/preferences/1");
-            expect(this.preference.url()).to.eql("/ozp/rest/owf/preferences/1");
+
+        it('creates a URL like persons/preferences/namespace/name when scope = person', function() {
+            preference.set('scope', 'person');
+            expect(preference.url()).to.be('persons/preferences/testNamespace/testName');
         });
-        
-        it('Test PreferencesModel test delete url', function() {
-            this.preference.set('id', 1);
-            this.preference.destroy();
-            expect(this.server.requests.length).to.eql(1);
-            expect(this.server.requests[0].method).to.eql("DELETE");
-            expect(this.server.requests[0].url).to.eql("/ozp/rest/owf/preferences/1");
-            expect(this.preference.url()).to.eql("/ozp/rest/owf/preferences/1");
+
+        it('creates a URL like persons/guid/preferences/namespace/name when scope = group' + 
+                'and scopeGuid is set', function() {
+            preference.set('scope', 'person');
+            preference.set('scopeGuid', GUID);
+            expect(preference.url()).to.be('persons/' + GUID + 
+                '/preferences/testNamespace/testName');
         });
     });
 });

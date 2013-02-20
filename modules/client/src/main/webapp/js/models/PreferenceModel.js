@@ -29,10 +29,6 @@ function(Model) {
             "scopeGuid": null
         },
 
-        initialize: function() {
-            Model.prototype.initialize.apply(this, arguments);
-        },
-
         /**
          * create a URL for preferences with the specified owner scope, owner guid,
          * namespace, and name.
@@ -65,7 +61,7 @@ function(Model) {
                 name = this.get('name');
 
             if (scope) {
-                urlSegments.push(scope);
+                urlSegments.push(scope + 's');
 
                 if (scope !== 'system' && guid) {
                     urlSegments.push(guid);
