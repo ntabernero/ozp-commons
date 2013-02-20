@@ -92,6 +92,11 @@ function(Backbone, $, _) {
             }
 
             this.modelEvents = modelEvents;
+        },
+
+        remove: function() {
+            this.trigger('remove', this);
+            return Backbone.View.prototype.remove.apply(this, arguments);
         }
 
     });
