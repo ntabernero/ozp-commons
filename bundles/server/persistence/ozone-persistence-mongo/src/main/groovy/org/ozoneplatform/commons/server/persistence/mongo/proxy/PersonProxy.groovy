@@ -13,11 +13,45 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
-
 package org.ozoneplatform.commons.server.persistence.mongo.proxy
 
 import org.ozoneplatform.commons.server.domain.model.Person
+import org.ozoneplatform.commons.server.persistence.mongo.UnitOfWork
 
-class PersonProxy extends Person {
+class PersonProxy extends Person implements GroovyInterceptable{
 
+    def triggerProperties = ['username', 'fullName', 'email', 'prevLogin', 'lastLogin']
+    def triggerMethods = [
+            'createDashboardInstance',
+            'createDashboardInstanceFromTemplate',
+            'removeDashboardInstance',
+            'createPersonalWidgetDefinition',
+            'removePersonalWidgetDefinition',
+            'setPreference',
+            'removePreference',
+            'addStack',
+            'removeStack'
+    ]
+
+    def invokeMethod(String name, args) {
+        if (triggerMethods.contains(name))
+            markDirty()
+        super.invokeMethod(name, args)
+    }
+
+    void setProperty(String name, value) {
+        if (triggerProperties.contains(name))
+            markDirty()
+        super.setProperty(name, value)
+    }
+
+    // *************************************************
+
+    UnitOfWork unitOfWork
+
+    private void markDirty() {
+        if (unitOfWork)
+            unitOfWork.registerDirty(this)
+    }
 }
+

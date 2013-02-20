@@ -12,13 +12,19 @@
     <version>8.0.0-ALPHA-SPRINT4-SNAPSHOT</version>
     <packaging>bundle</packaging>
 
-    <name>ozone-persistence-mongo</name>
+    <name>Ozone :: Commons :: Ozone MongoDB</name>
+    <description>MongoDB implementation of the Ozone persistence API</description>
 
     <properties>
         <mongodb.version>2.2.3</mongodb.version>
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>org.codehaus.groovy</groupId>
+            <artifactId>groovy-all</artifactId>
+            <version>2.1.0</version>
+        </dependency>
         <dependency>
             <groupId>org.codehaus.gmaven.runtime</groupId>
             <artifactId>gmaven-runtime-2.0</artifactId>

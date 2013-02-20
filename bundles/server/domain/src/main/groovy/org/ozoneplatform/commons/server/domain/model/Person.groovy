@@ -91,7 +91,7 @@ class Person extends Principal {
 
     // Keep login setters protected since updates should be made through recordLogin
     protected void setLastLogin(Calendar cal) { this.lastLogin = cal }
-    protected void setpreviousLogin(Calendar cal) { this.prevLogin = cal }
+    protected void setPrevLogin(Calendar cal) { this.prevLogin = cal }
 
     /**
      * Update both login tracking properties

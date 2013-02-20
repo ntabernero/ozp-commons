@@ -16,66 +16,58 @@
 
 package org.ozoneplatform.commons.server.persistence.mongo.repositories
 
-import com.mongodb.DBCollection
 import org.ozoneplatform.commons.server.domain.model.Person
+import org.ozoneplatform.commons.server.domain.model.Stack
+import org.ozoneplatform.commons.server.domain.model.WidgetDefinition
 import org.ozoneplatform.commons.server.persistence.api.PersonRepository
-import org.ozoneplatform.commons.server.persistence.mongo.mappers.PersonMapper
+import org.ozoneplatform.commons.server.persistence.mongo.MongoSession
 
 class PersonRepositoryImpl implements PersonRepository {
 
-    DBCollection collection
-    PersonMapper mapper
+    MongoSession session
 
-    PersonRepositoryImpl(DBCollection collection, PersonMapper mapper) {
-        this.collection = collection
-        this.mapper = mapper
+    PersonRepositoryImpl(MongoSession session) {
+        this.session = session
     }
 
 
     @Override
     Person getByUsername(String username) {
-        return null  //To change body of implemented methods use File | Settings | File Templates.
+        session.findOne([type: 'Person', username: username])
     }
 
     @Override
-    Iterable<Person> findPersonsWhoHaveStack(org.ozoneplatform.commons.server.domain.model.Stack stack) {
-        return null  //To change body of implemented methods use File | Settings | File Templates.
+    Iterable<Person> findPersonsWhoHaveStack(Stack stack) {
+        throw new RuntimeException('Not implemented yet')
     }
 
     @Override
-    Iterable<Person> findPersonsWhoHaveWidget(org.ozoneplatform.commons.server.domain.model.WidgetDefinition widgetDefinition) {
-        return null  //To change body of implemented methods use File | Settings | File Templates.
+    Iterable<Person> findPersonsWhoHaveWidget(WidgetDefinition widgetDefinition) {
+        throw new RuntimeException('Not implemented yet')
     }
 
     @Override
     Person getById(String id) {
-        def document = collection.findOne(_id: id)
-        mapper.fromDocument(document)
+        session.findOne(_id: id)
     }
 
     @Override
     Iterable<Person> findAll() {
-        def documents = collection.find(type: 'person')
-        documents.collect {
-            mapper.fromDocument(it)
-        }
+        session.find([type: 'Person'])
     }
 
     @Override
     Iterable<Person> findAll(int page, int pageSize) {
-        return null  //To change body of implemented methods use File | Settings | File Templates.
+        session.find([type: 'Person'], page, pageSize)
     }
 
     @Override
     void remove(Person entity) {
-        //To change body of implemented methods use File | Settings | File Templates.
+        session.remove(entity)
     }
 
     @Override
     void add(Person entity) {
-        entity.id = UUID.randomUUID().toString()
-        def document = mapper.toDocument(entity)
-
-        collection << document
+        session.add(entity)
     }
 }

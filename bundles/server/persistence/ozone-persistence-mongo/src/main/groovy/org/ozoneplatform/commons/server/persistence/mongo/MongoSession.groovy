@@ -38,14 +38,19 @@ class MongoSession {
         this.mapperRegistry = mapperRegistry
     }
 
-    def find() {
-        def documents = db.find()
-        mapQueriedDocumentsToEntities(documents)
-    }
-
     def find(def query) {
         def documents = db.find(query)
         mapQueriedDocumentsToEntities(documents)
+    }
+
+    def find(def query, int page, int pageSize) {
+        def documents = find(query).limit(pageSize).skip(page * pageSize)
+        mapQueriedDocumentsToEntities(documents)
+    }
+
+    def findOne(def query) {
+        def document = db.findOne(query)
+        mapQueriedDocumentsToEntities([document])[0]
     }
 
     def add(def entity) {

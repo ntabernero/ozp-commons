@@ -24,6 +24,7 @@
         <module>ozone-persistence-api</module>
         <module>ozone-persistence-jpa</module>
         <module>ozone-datasource</module>
+        <module>mongo-proxy-transforms</module>
 		<module>ozone-persistence-mongo</module>
-	</modules>
+    </modules>
 </project>
