@@ -49,6 +49,10 @@
                 <column name="LAYOUT_CONFIG"/>
                 <lob/>
             </basic>
+            <basic name="floatingWidgets">
+                <column name="FLOATING_WIDGETS"/>
+                <lob/>
+            </basic>
             <basic name="position">
                 <column name="POSITION"/>
             </basic>
@@ -67,7 +71,6 @@
             <many-to-one name="dashboardTemplate" target-entity="DashboardTemplate" fetch="LAZY">
                 <join-column name="DASHBOARD_TEMPLATE_ID" referenced-column-name="ID" column-definition="VARCHAR(256)"/>
             </many-to-one>
-            <transient name="$print$names"/>
         </attributes>
     </entity>
 
@@ -84,7 +87,6 @@
                 </join-table>
             </many-to-many>
             <many-to-many name="mutableGroups" target-entity="Group" fetch="LAZY" mapped-by="mutableDashboardTemplates"/>
-            <transient name="$print$names"/>
         </attributes>
     </entity>
 
