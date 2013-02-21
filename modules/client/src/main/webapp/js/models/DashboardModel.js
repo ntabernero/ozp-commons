@@ -18,7 +18,8 @@ define([
     'models/Model',
     'lodash'
 ],
-function(Model, _) {
+
+function(Model) {
     'use strict';
     
     var DashboardModel = Model.extend({
@@ -38,8 +39,8 @@ function(Model, _) {
                     vtype: 'tabbedpane',
                     paneType: 'tabbedpane'
                 },
-                floatingWidgets: [],
-                backgroundWidgets: [],
+                floatingWidgets: [], // a JSON array representing a WidgetStatesCollection
+                backgroundWidgets: [], // a JSON array representing a WidgetStatesCollection
                 isLocked: false
             };
         },

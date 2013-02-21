@@ -95,7 +95,10 @@ function(Backbone, $, _) {
         },
 
         remove: function() {
-            this.trigger('remove', this);
+            if (this.isRendered) {
+                this.trigger('remove', this);
+            }
+
             return Backbone.View.prototype.remove.apply(this, arguments);
         }
 

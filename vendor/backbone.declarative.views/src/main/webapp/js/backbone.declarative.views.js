@@ -143,6 +143,8 @@
         },
 
         remove: function () {
+            this.isRendered = false;
+
             if(this.views && this.views.length > 0) {
                 _.invoke(this.views, 'remove');
             }
