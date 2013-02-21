@@ -27,7 +27,7 @@ function(Backbone, DashboardModel, _) {
     var DashboardInstanceModel = DashboardModel.extend({
         
         defaults: function() {
-            return _.extend({},DashboardModel.prototype.defaults, {
+            return _.extend({}, DashboardModel.prototype.defaults.call(this), {
                 lastAccessed: null
             });
         },

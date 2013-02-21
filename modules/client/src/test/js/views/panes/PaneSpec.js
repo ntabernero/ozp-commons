@@ -53,7 +53,6 @@ define(['views/panes/Pane'], function(Pane) {
             expect(view.options.width).to.be(undefined);
             expect(view.options.height).to.be(undefined);
             expect(view.options.flex).to.be(1);
-            expect(view.options.htmlText).to.be('Variable');
         });
     
     });

@@ -38,14 +38,12 @@ define([
 
             if(options.width || options.height) {
                 this.options[ options.width ? 'width' : 'height' ] = size;
-                this.options.htmlText = size;
                 delete this.options.flex;
             }
             else {
                 delete this.options.width;
                 delete this.options.height;
                 this.options.flex = 1;
-                this.options.htmlText = 'Variable';
             }
         }
 

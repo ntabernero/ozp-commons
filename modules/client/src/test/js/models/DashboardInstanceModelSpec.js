@@ -17,15 +17,13 @@
 define(['models/DashboardInstanceModel'], function(DashboardInstanceModel) {
     describe('DashboardInstanceModelSpec', function() {
     
-        beforeEach(function(done) {
+        beforeEach(function() {
             this.dashboard = new DashboardInstanceModel({
                 name: "Test Dashboard",
                 description: "This is a test Dashboard",
                 person: 1
             });
             this.server = sinon.fakeServer.create();
-            
-            done();
         });
     
         it('generates a base url.', function() {
