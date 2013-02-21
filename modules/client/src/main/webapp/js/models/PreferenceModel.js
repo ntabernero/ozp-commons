@@ -70,11 +70,11 @@ function(Model) {
 
             urlSegments.push('preferences');
 
-            if (namespace) {
-                urlSegments.push(namespace);
-                if (name) {
-                    urlSegments.push(name);
-                }
+            if (namespace && name) {
+                urlSegments = urlSegments.concat([namespace, name]);
+            }
+            else {
+                throw "PreferenceModel does not have necessary attributes to create URL";
             }
 
             return _.map(urlSegments, function(seg) { 

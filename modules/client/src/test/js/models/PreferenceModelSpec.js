@@ -73,5 +73,15 @@ define(['models/PreferenceModel'], function(PreferenceModel) {
             expect(preference.url()).to.be('persons/' + GUID + 
                 '/preferences/testNamespace/testName');
         });
+
+        it('throws an exception if URL creation is attempted without specifying the name', function() {
+            preference.unset('name');
+            expect(preference.url).to.throwException();
+        });
+
+        it('throws an exception if URL creation is attempted without specifying the namespace', function() {
+            preference.unset('namespace');
+            expect(preference.url).to.throwException();
+        });
     });
 });
