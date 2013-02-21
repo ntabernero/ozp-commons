@@ -43,7 +43,9 @@ define([
 
                 if (view) {
                     view.remove();
+                    delete viewMap[widget.cid];
                 }
+
             }
 
             //when a model is added to the collection,
