@@ -21,7 +21,7 @@
     <dependencies>
         <dependency>
             <groupId>org.ozoneplatform.commons.bundles</groupId>
-            <artifactId>domain</artifactId>
+            <artifactId>domain-jpa</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
@@ -64,6 +64,12 @@
             <version>10.9.1.0</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.18</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -83,6 +89,12 @@
                             *
                         </Import-Package>
                         <Meta-Persistence>META-INF/persistence.xml</Meta-Persistence>
+                        <Include-Resource>
+                            {maven-resources},
+                            META-INF/persistence.xml=target/classes/META-INF/persistence.xml,
+                            META-INF/orm.xml=target/classes/META-INF/orm.xml
+                        </Include-Resource>
+                        <Import-Package>*, org.ozoneplatform.commons.server.domain.listener;version=${project.version}</Import-Package>
                     </instructions>
                 </configuration>
             </plugin>
@@ -105,6 +117,42 @@
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>2.6</version>
+                <executions>
+                    <execution>
+                        <id>test</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>unpack</goal>
+                        </goals>
+                        <configuration>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>org.ozoneplatform.commons.bundles</groupId>
+                                    <artifactId>orm-jpa</artifactId>
+                                    <version>${project.version}</version>
+                                    <type>jar</type>
+                                    <overWrite>false</overWrite>
+                                    <outputDirectory>${project.build.directory}/classes</outputDirectory>
+                                    <includes>**/META-INF/*.xml</includes>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>org.ozoneplatform.commons.bundles</groupId>
+                                    <artifactId>orm-jpa</artifactId>
+                                    <version>${project.version}</version>
+                                    <type>jar</type>
+                                    <overWrite>false</overWrite>
+                                    <outputDirectory>${project.build.directory}/test-classes</outputDirectory>
+                                    <includes>**/META-INF/*.xml</includes>
+                                </artifactItem>
+                            </artifactItems>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.13</version>
                 <configuration>
@@ -112,20 +160,6 @@
                         <include>**/Describe*</include>
                     </includes>
                 </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>openjpa-maven-plugin</artifactId>
-                <version>1.2</version>
-                <executions>
-                    <execution>
-                        <id>enhancer</id>
-                        <phase>process-classes</phase>
-                        <goals>
-                            <goal>enhance</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>

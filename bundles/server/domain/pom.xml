@@ -32,7 +32,6 @@
             <artifactId>gmaven-runtime-2.0</artifactId>
             <version>1.5</version>
         </dependency>
-
         <dependency>
             <groupId>org.apache.geronimo.specs</groupId>
             <artifactId>geronimo-jpa_2.0_spec</artifactId>
@@ -76,7 +75,8 @@
                     <instructions>
                         <Export-Package>
                             org.ozoneplatform.commons.server.domain.model;version=${project.version},
-                            org.ozoneplatform.commons.server.domain.validation;version=${project.version}
+                            org.ozoneplatform.commons.server.domain.validation;version=${project.version},
+                            org.ozoneplatform.commons.server.domain.listener;version=${project.version}
                         </Export-Package>
                         <Import-Package>
                             org.codehaus.groovy.util,

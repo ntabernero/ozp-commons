@@ -17,7 +17,7 @@
 package org.ozoneplatform.commons.server.persistence.jpa.test
 
 import org.ozoneplatform.commons.server.domain.model.Group
-import org.ozoneplatform.commons.server.domain.validation.ValidationException
+//import org.ozoneplatform.commons.server.domain.validation.ValidationException
 
 class DescribeEntityLifecycleBehavior extends OzoneJpaTest {
 
@@ -29,6 +29,6 @@ class DescribeEntityLifecycleBehavior extends OzoneJpaTest {
         em.persist(group)
 
         then: "Exception thrown"
-        thrown(ValidationException)
+        thrown(RuntimeException)
     }
 }

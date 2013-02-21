@@ -14,14 +14,15 @@
    limitations under the License.
 */
 
-package org.ozoneplatform.commons.server.persistence.jpa;
+package org.ozoneplatform.commons.server.domain.listener;
 
 import org.ozoneplatform.commons.server.domain.model.Entity;
 import org.ozoneplatform.commons.server.domain.model.ValidationError;
-import org.ozoneplatform.commons.server.domain.validation.ValidationException;
 
 import java.util.List;
 import java.util.UUID;
+
+//import org.ozoneplatform.commons.server.domain.validation.ValidationException;
 
 /**
  * EntityListener performs validation and before saving and updating entities
@@ -57,7 +58,7 @@ public class EntityListener {
             for(ValidationError error : validationErrors) {
                 message += String.format("\nProperty: %s, Error: %s", error.getProperty(), error.getValidationMessage());
             }
-            throw new ValidationException(message, validationErrors);
+            throw new RuntimeException(message);
         }
     }
 }

@@ -24,5 +24,7 @@
         <module>ozone-persistence-api</module>
         <module>ozone-persistence-jpa</module>
         <module>ozone-datasource</module>
+        <module>domain-jpa</module>
+        <module>orm-jpa</module>
     </modules>
 </project>

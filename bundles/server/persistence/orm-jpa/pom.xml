@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>persistence</artifactId>
+        <groupId>org.ozoneplatform.commons.bundles</groupId>
+        <version>8.0.0-ALPHA-SPRINT4-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.ozoneplatform.commons.bundles</groupId>
+    <artifactId>orm-jpa</artifactId>
+    <version>8.0.0-ALPHA-SPRINT4-SNAPSHOT</version>
+
+    <name>Ozone :: Commons :: Ozone JPA ORM</name>
+    <description>JPA Object Relation Map for the Ozone Domain</description>
+
+</project>

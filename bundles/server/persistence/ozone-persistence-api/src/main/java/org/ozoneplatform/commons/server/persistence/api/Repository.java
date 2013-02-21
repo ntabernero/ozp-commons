@@ -31,7 +31,7 @@ package org.ozoneplatform.commons.server.persistence.api;
  *
  * @param < T > Type of the entity being persisted
  */
-interface Repository<T> {
+public interface Repository<T> {
 
     /**
      * Retrieve a single entity by is ID

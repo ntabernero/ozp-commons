@@ -12,7 +12,7 @@
     <entity name="Entity" class="Entity" access="FIELD">
         <inheritance strategy="TABLE_PER_CLASS"/>
         <entity-listeners>
-            <entity-listener class="org.ozoneplatform.commons.server.persistence.jpa.EntityListener">
+            <entity-listener class="org.ozoneplatform.commons.server.domain.listener.EntityListener">
                 <pre-persist method-name="prePersist"/>
                 <pre-update method-name="preUpdate"/>
             </entity-listener>
