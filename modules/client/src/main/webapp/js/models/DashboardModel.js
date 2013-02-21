@@ -33,8 +33,12 @@ function(Model) {
             "lastModified": null,
             "createdBy": null,
             "lastModifiedBy": null,
+            "lastAccessed": null,
+            "dashboardTemplate": null,
             "layoutConfig": null,
-            "isLocked": false
+            "isDefault": false,
+            "isLocked": false,
+            "floatingWidgets": null // a JSON array representing a WidgetStatesCollection
         }
 
     });
