@@ -109,6 +109,20 @@ function(Model) {
             }
             
             return config;
+        },
+
+        getPaneWidgetsFromLayoutConfig: function (config) {
+            var widgets = [];
+            config = config || this.get('layoutConfig');
+
+            if(config.box) {
+                widgets = widgets.concat( this.getPaneWidgetsFromLayoutConfig(config.box.panes[0]) || []);
+                widgets = widgets.concat( this.getPaneWidgetsFromLayoutConfig(config.box.panes[1]) || []);
+            }
+            else if(config.widgets){
+                widgets = widgets.concat( config.widgets );
+            }
+            return widgets;
         }
 
     });
