@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.ozoneplatform.commons.vendor</groupId>
+        <artifactId>vendor</artifactId>
+        <version>8.0.0-ALPHA-SPRINT4-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <artifactId>select2</artifactId>
+    <version>3.3.1</version>
+
+    <name>Select2</name>
+    <description>Select2 is a jQuery based replacement for select boxes. It supports searching, remote data sets, and infinite scrolling of results. Look and feel of Select2 is based on the excellent Chosen library.</description>
+
+    <properties>
+        <projectVersion>${project.version}</projectVersion>
+    </properties>
+
+    <packaging>pom</packaging>
+
+    <!-- We can't use the plugin extension for this project as it relies upon 
+        the artifact produced here to work - chicken and egg. -->
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+</project>

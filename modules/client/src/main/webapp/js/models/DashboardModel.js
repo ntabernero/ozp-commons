@@ -45,6 +45,14 @@ function(Model) {
             };
         },
 
+        name: function () {
+            return this.get('name');
+        },
+
+        description: function () {
+            return this.get('description');
+        },
+
         initialize: function () {
             Model.prototype.initialize.apply(this, arguments);
 
