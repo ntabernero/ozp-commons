@@ -21,8 +21,8 @@
     </properties>
 
     <scm>
-        <connection>scm:git:https://www.owfgoss.org/git/repos/ozp-commons.git</connection>
-        <developerConnection>scm:git:https://www.owfgoss.org/git/repos/ozp-commons.git</developerConnection>
+        <connection>scm:git:https://github.com/ozoneplatform/ozp-commons.git</connection>
+        <developerConnection>scm:git:https://github.com/ozoneplatform/ozp-commons.git</developerConnection>
         <url>https://www.owfgoss.org/crucible/browse/ozp-commons/</url>
     </scm>
 
