@@ -19,6 +19,8 @@ define([
 ],
 
 function(Model) {
+    //cache current user information
+    var currentUser;
 
     var PersonModel = Model.extend({
         
@@ -32,6 +34,21 @@ function(Model) {
             "prevLogin": ""
         }
 
+    }, {
+        //static function
+        //retrieves currently logged-in user
+        getCurrentPerson: function() {
+            var deferred;
+
+            if (currentUser) {
+                return $.Deferred().resolve(currentUser).promise();
+            }
+            else {
+                return (new PersonModel({id: 'me'})).fetch().done(function(model) {
+                    currentUser = model;
+                });
+            }
+        }   
     });
 
     return PersonModel;
