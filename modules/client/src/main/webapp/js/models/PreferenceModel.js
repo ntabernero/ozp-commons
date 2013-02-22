@@ -16,20 +16,27 @@
 
 define([
     'models/Model',
+    'backbone',
     'lodash'
 ],
 
-function(Model, _) {
+function(Model, Backbone, _) {
     'use strict';
     
     var PreferenceModel = Model.extend({
         defaults: {
             "name": null,
             "namespace": null,
-            "value": null,
-            "scope": null, 
-            "scopeGuid": null
+            "value": null
         },
+
+        //the scope and scopeGuid on which to
+        //save or look for this preference.  I am
+        //making these traditional properties and not model
+        //attrs because the server does not return their value
+        //in its response.
+        scope: null,
+        scopeGuid: null,
 
         /**
          * create a URL for preferences with the specified owner scope, owner guid,
@@ -54,35 +61,65 @@ function(Model, _) {
          *  A hierarchical lookup of the specified preference.  The preference is first
          *  searched for on the current user, then in groups that user is a member of (excluding
          *  "OWF Users") and finally in the "OWF Users" group.
+         *
+         *  Preferences may be created by POSTing to persons/<person-guid>/preferences
+         *  or groups/<group-guid>/preferences
          */
         url: function() {
             var urlSegments = [],
-                scope = this.get('scope'),
-                guid = this.get('scopeGuid'),
+                scope = this.scope,
+                guid = this.scopeGuid,
                 namespace = this.get('namespace'),
                 name = this.get('name');
 
             if (scope) {
                 urlSegments.push(scope + 's');
 
-                if (scope !== 'system' && guid) {
+                if (guid) {
                     urlSegments.push(guid);
                 }
             }
 
             urlSegments.push('preferences');
 
-            if (namespace && name) {
-                urlSegments = urlSegments.concat([namespace, name]);
-            }
-            else {
-                throw "PreferenceModel does not have necessary attributes to create URL";
-            }
-
             return _.map(urlSegments, function(seg) { 
                 return encodeURIComponent(seg); 
             }).join('/');
-        }   
+        },
+
+        /**
+         * Custom sync method that handles the way that
+         * preferences URLs are created
+         */
+        sync: function(method, model, options) {
+            var namespace = model.get('namespace'),
+                name = model.get('name');
+
+            options = options || {};
+
+            if (!(namespace && name)) {
+                throw "PreferenceModel does not have necessary attributes to communicate with server";
+            }
+
+            //save preferences to person by default
+            if (!model.scope && method === 'create' || method === 'update') {
+                model.scope = 'person';
+            }
+
+            //default to current user if saving preference
+            if (model.scope === 'person' && !model.guid) {
+                model.scopeGuid = 'me';
+            }
+
+            //namespace and name are part of the URL for referencing existing
+            //prefs.  But for create/update, the URL ends at 'preferences' and
+            //the namespace and name are passed in the JSON
+            if (!(method === 'create' || method === 'update')) {
+                options.url = model.url() + '/' + namespace + '/' + name;
+            }
+
+            Backbone.sync(method, model, options);
+        }
     });
 
     return PreferenceModel;

@@ -14,9 +14,13 @@
  * limitations under the License.
  */
 
-define(['models/PreferenceModel'], function(PreferenceModel) {
+define([
+    'models/PreferenceModel'
+], function(PreferenceModel) {
     describe('PreferenceModel', function() {
-        var preference, GUID = '111-11111111-1111111111';
+        var preference, 
+            GUID = '111-11111111-1111111111',
+            fakeAJAX;
 
         beforeEach(function(done) {
             preference = new PreferenceModel({
@@ -24,12 +28,16 @@ define(['models/PreferenceModel'], function(PreferenceModel) {
                 "namespace": "testNamespace",
                 "value": "testValue"
             });
+
+            fakeAJAX = sinon.useFakeXMLHttpRequest();
             
             done();
         });
 
         afterEach(function(done) {
             preference = null;
+
+            fakeAJAX.restore();
 
             done();
         });
@@ -39,49 +47,104 @@ define(['models/PreferenceModel'], function(PreferenceModel) {
 
             expect(pref.get('name')).to.be(null);
             expect(pref.get('namespace')).to.be(null);
-            expect(pref.get('scope')).to.be(null);
-            expect(pref.get('scopeGuid')).to.be(null);
+            expect(pref.scope).to.be(null);
+            expect(pref.scopeGuid).to.be(null);
             expect(pref.get('value')).to.be(null);
         });
 
-        it('creates a URL like preferences/namespace/name when there is no scope or scopeGuid', function() {
-            expect(preference.url()).to.be('preferences/testNamespace/testName');
+        it('saves preferences to persons/me/preferences when there is no scope or scopeGuid', function() {
+            fakeAJAX.onCreate = function (xhr) {
+                expect(xhr.url).to.be('persons/me/preferences');
+            };
+
+            preference.save();
+
+        });
+        it('retrieves preferences from preferences/namespace/name whe there is no scope or scopeGuid', function() {
+            fakeAJAX.onCreate = function(xhr) {
+                expect(xhr.url).to.be('preferences/testNamespace/testName');
+            };
+
+            preference.fetch();
         });
 
-        it('creates a URL like groups/preferences/namespace/name when scope = group', function() {
-            preference.set('scope', 'group');
-            expect(preference.url()).to.be('groups/preferences/testNamespace/testName');
+        it('saves preferences to persons/guid/preferences when ' +
+                'scope = person and scopeGuid is set', function() {
+            fakeAJAX.onCreate = function (xhr) {
+                expect(xhr.url).to.be('persons/' + GUID + '/preferences');
+            };
+
+            preference.scope = 'person';
+            preference.scopeGuid = GUID;
+
+            preference.save();
+
+        });
+        it('retrieves preferences from person/guid/preferences/namespace/name when ' +
+                'scope = person and scopeGuid is set', function() {
+            fakeAJAX.onCreate = function (xhr) {
+                expect(xhr.url).to.be('persons/' + GUID + 
+                    '/preferences/testNamespace/testName');
+            };
+
+            preference.scope = 'person';
+            preference.scopeGuid = GUID;
+
+            preference.fetch();
+
         });
 
-        it('creates a URL like groups/guid/preferences/namespace/name when scope = group' + 
-                'and scopeGuid is set', function() {
-            preference.set('scope', 'group');
-            preference.set('scopeGuid', GUID);
-            expect(preference.url()).to.be('groups/' + GUID + 
-                '/preferences/testNamespace/testName');
+        it('saves preferences to persons/guid/preferences when ' +
+                'scope = person and scopeGuid is set', function() {
+            fakeAJAX.onCreate = function (xhr) {
+                expect(xhr.url).to.be('persons/' + GUID + '/preferences');
+            };
+
+            preference.scope = 'person';
+            preference.scopeGuid = GUID;
+
+            preference.save();
+
+        });
+        it('retrieves preferences from person/guid/preferences/namespace/name when ' +
+                'scope = person and scopeGuid is set', function() {
+            fakeAJAX.onCreate = function (xhr) {
+                expect(xhr.url).to.be('persons/' + GUID + 
+                    '/preferences/testNamespace/testName');
+            };
+
+            preference.scope = 'person';
+            preference.scopeGuid = GUID;
+
+            preference.fetch();
         });
 
-        it('creates a URL like persons/preferences/namespace/name when scope = person', function() {
-            preference.set('scope', 'person');
-            expect(preference.url()).to.be('persons/preferences/testNamespace/testName');
-        });
-
-        it('creates a URL like persons/guid/preferences/namespace/name when scope = group' + 
-                'and scopeGuid is set', function() {
-            preference.set('scope', 'person');
-            preference.set('scopeGuid', GUID);
-            expect(preference.url()).to.be('persons/' + GUID + 
-                '/preferences/testNamespace/testName');
-        });
-
-        it('throws an exception if URL creation is attempted without specifying the name', function() {
+        it('throws an exception if save is attempted without specifying the name', function() {
             preference.unset('name');
-            expect(preference.url).to.throwException();
+            expect(preference.save).to.throwException();
+        });
+        it('throws an exception if save is attempted without specifying the namespace', function() {
+            preference.unset('namespace');
+            expect(preference.save).to.throwException();
         });
 
-        it('throws an exception if URL creation is attempted without specifying the namespace', function() {
-            preference.unset('namespace');
-            expect(preference.url).to.throwException();
+        it('throws an exception if fetch is attempted without specifying the name', function() {
+            preference.unset('name');
+            expect(preference.fetch).to.throwException();
         });
+        it('throws an exception if fetch is attempted without specifying the namespace', function() {
+            preference.unset('namespace');
+            expect(preference.fetch).to.throwException();
+        });
+
+        it('throws an exception if destroy is attempted without specifying the name', function() {
+            preference.unset('name');
+            expect(preference.destroy).to.throwException();
+        });
+        it('throws an exception if destroy is attempted without specifying the namespace', function() {
+            preference.unset('namespace');
+            expect(preference.destroy).to.throwException();
+        });
+
     });
 });
