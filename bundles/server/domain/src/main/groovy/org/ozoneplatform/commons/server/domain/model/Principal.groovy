@@ -31,7 +31,9 @@ abstract class Principal extends Entity {
      * Has many Preferences
      * @return
      */
-    Set<Preference> getPreferences() { Collections.unmodifiableSet(mutablePreferences) }
+    Set<Preference> getPreferences() {
+        mutablePreferences ? Collections.unmodifiableSet(mutablePreferences) : null
+    }
     private Set<Preference> mutablePreferences
 
     /**
@@ -63,7 +65,9 @@ abstract class Principal extends Entity {
      * Has many Stacks
      * @return
      */
-    Set<Stack> getStacks() { Collections.unmodifiableSet(mutableStacks) }
+    Set<Stack> getStacks() {
+        mutableStacks ? Collections.unmodifiableSet(mutableStacks) : null
+    }
     private Set<Stack> mutableStacks
 
     void addStack(Stack stack) {

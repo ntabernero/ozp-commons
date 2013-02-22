@@ -47,7 +47,9 @@ class Stack extends Entity {
      * Has many DashboardTemplates
      * @return
      */
-    Set<DashboardTemplate> getDashboardTemplates() { Collections.unmodifiableSet(mutableDashboardTemplates) }
+    Set<DashboardTemplate> getDashboardTemplates() {
+        mutableDashboardTemplates ? Collections.unmodifiableSet(mutableDashboardTemplates) : null
+    }
     private Set<DashboardTemplate> mutableDashboardTemplates
 
     void addDashboardTemplate(DashboardTemplate dashboardTemplate) {

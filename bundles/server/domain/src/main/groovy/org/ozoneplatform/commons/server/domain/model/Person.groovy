@@ -50,7 +50,9 @@ class Person extends Principal {
      * Has many DashboardInstances
      * @return
      */
-    Set<DashboardInstance> getDashboards() { Collections.unmodifiableSet(mutableDashboards) }
+    Set<DashboardInstance> getDashboards() {
+        mutableDashboards ? Collections.unmodifiableSet(mutableDashboards) : null
+    }
     private Set<DashboardInstance> mutableDashboards
 
     DashboardInstance createDashboardInstance(String name, int position) {
@@ -75,7 +77,9 @@ class Person extends Principal {
      * Has many PersonalWidgetDefinitions
      * @return
      */
-    Set<PersonalWidgetDefinition> getPersonalWidgetDefinitions() { Collections.unmodifiableSet(mutablePersonalWidgetDefinitions) }
+    Set<PersonalWidgetDefinition> getPersonalWidgetDefinitions() {
+        mutablePersonalWidgetDefinitions ? Collections.unmodifiableSet(mutablePersonalWidgetDefinitions) : null
+    }
     private Set<PersonalWidgetDefinition> mutablePersonalWidgetDefinitions
 
 

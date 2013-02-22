@@ -39,7 +39,9 @@ class DashboardTemplate extends Dashboard {
      * Has many WidgetDefinitions
      * @return
      */
-    Set<WidgetDefinition> getWidgetDefinitions() { Collections.unmodifiableSet(mutableWidgetDefinitions) }
+    Set<WidgetDefinition> getWidgetDefinitions() {
+        mutableWidgetDefinitions ? Collections.unmodifiableSet(mutableWidgetDefinitions) : null
+    }
     private Set<WidgetDefinition> mutableWidgetDefinitions // Unique widgets in layoutConfig, when layoutConfig updated this must be synced
 
     void addWidgetDefinition(WidgetDefinition widgetDefinition) {
@@ -53,7 +55,9 @@ class DashboardTemplate extends Dashboard {
      * the switcher, may list the groups this dashboard is a part of
      * @return
      */
-    Set<Group> getGroups() { Collections.unmodifiableSet(mutableGroups) }
+    Set<Group> getGroups() {
+        mutableGroups ? Collections.unmodifiableSet(mutableGroups) : null
+    }
     private Set<Group> mutableGroups
 
     /**

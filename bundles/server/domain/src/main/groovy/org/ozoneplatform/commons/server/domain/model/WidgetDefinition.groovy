@@ -79,7 +79,9 @@ class WidgetDefinition extends Entity {
      * This back reference is provided as an optimization for the widget launcher
      * @return
      */
-    Set<Group> getGroups() { Collections.unmodifiableSet(mutableGroups) }
+    Set<Group> getGroups() {
+        mutableGroups ? Collections.unmodifiableSet(mutableGroups) : null
+    }
     private Set<Group> mutableGroups
 
     /**
@@ -93,7 +95,7 @@ class WidgetDefinition extends Entity {
      * @return
      */
     Set<String> getTags() {
-        Collections.unmodifiableSet(tags)
+        tags ? Collections.unmodifiableSet(tags) : null
     }
     /**
      * Replaces set of tags with a new set
@@ -108,7 +110,9 @@ class WidgetDefinition extends Entity {
      * Sends many Intents
      * @return
      */
-    Set<Intent> getSendableIntents() { Collections.unmodifiableSet(mutableSendableIntents) }
+    Set<Intent> getSendableIntents() {
+        mutableSendableIntents ? Collections.unmodifiableSet(mutableSendableIntents) : null
+    }
     private Set<Intent> mutableSendableIntents
 
     void addSendableIntent(Intent intent) {
@@ -123,7 +127,9 @@ class WidgetDefinition extends Entity {
      * Receives many Intents
      * @return
      */
-    Set<Intent> getReceivableIntents() { Collections.unmodifiableSet(mutableReceivableIntents) }
+    Set<Intent> getReceivableIntents() {
+        mutableReceivableIntents ? Collections.unmodifiableSet(mutableReceivableIntents) : null
+    }
     private Set<Intent> mutableReceivableIntents
 
     void addReceivableIntent(Intent intent) {

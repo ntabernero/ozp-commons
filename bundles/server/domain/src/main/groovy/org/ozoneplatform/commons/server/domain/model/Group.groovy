@@ -45,7 +45,9 @@ class Group extends Principal {
      * Has many Persons
      * @return
      */
-    Set<Person> getPersons() { Collections.unmodifiableSet(mutablePersons) }
+    Set<Person> getPersons() {
+        mutablePersons ? Collections.unmodifiableSet(mutablePersons) : null
+    }
     private Set<Person> mutablePersons
 
     void addPerson(Person person) {
@@ -60,7 +62,9 @@ class Group extends Principal {
      * Has many WidgetDefinitions
      * @return
      */
-    Set<WidgetDefinition> getWidgetDefinitions() { Collections.unmodifiableSet(mutableWidgetDefinitions) }
+    Set<WidgetDefinition> getWidgetDefinitions() {
+        mutableWidgetDefinitions ? Collections.unmodifiableSet(mutableWidgetDefinitions) : null
+    }
     private Set<WidgetDefinition> mutableWidgetDefinitions
 
     void addWidgetDefinition(WidgetDefinition widgetDefinition) {
@@ -73,7 +77,9 @@ class Group extends Principal {
         widgetDefinition.mutableGroups.remove(this)
     }
 
-    Set<DashboardTemplate> getDashboardTemplates() { Collections.unmodifiableSet(mutableDashboardTemplates) }
+    Set<DashboardTemplate> getDashboardTemplates() {
+        mutableDashboardTemplates ? Collections.unmodifiableSet(mutableDashboardTemplates) : null
+    }
     private Set<DashboardTemplate> mutableDashboardTemplates
 
     void addDashboardTemplate(DashboardTemplate dashboardTemplate) {
