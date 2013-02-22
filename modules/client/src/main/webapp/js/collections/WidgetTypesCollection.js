@@ -20,7 +20,8 @@ define([
 ],
 
 function(WidgetTypeModel, Backbone) {
-
+    'use strict';
+    
     var WidgetTypesCollection = Backbone.Collection.extend({
         
         model: WidgetTypeModel,

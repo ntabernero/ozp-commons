@@ -42,7 +42,7 @@ class Stack extends Entity {
      * Has many DashboardTemplates
      * @return
      */
-    Iterable<DashboardTemplate> getDashboardTemplates() { getMutableDashboardTemplates() }
+    Set<DashboardTemplate> getDashboardTemplates() { Collections.unmodifiableSet(getMutableDashboardTemplates()) }
     private Set<DashboardTemplate> getMutableDashboardTemplates() {
         if (!mutableDashboardTemplates)
             mutableDashboardTemplates = new HashSet<DashboardTemplate>()

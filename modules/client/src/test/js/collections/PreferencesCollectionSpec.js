@@ -17,12 +17,12 @@
 define(['models/PreferenceModel', 'collections/PreferencesCollection'], function(PreferenceModel, PreferencesCollection) {
     describe('PreferencesCollectionSpec', function() {
     
-        it('Test PreferencesCollection creation.', function () {
+        it('creates a collection', function () {
             var pc = new PreferencesCollection();
             expect(pc).to.be.an('object');
         });
     
-        it('Test PreferencesCollection sorting.', function () {
+        it('can sort by namespace and name', function () {
             
             var p1 = new PreferenceModel({namespace: 'org.test', name: 'b', value: '1'});
             var p2 = new PreferenceModel({namespace: 'org.test', name: 'c', value: '2'});

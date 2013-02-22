@@ -18,7 +18,7 @@ define(['models/Model'], function(Model) {
 
     describe('ModelSpec', function() {
     
-        it('Test Model creation.', function () {
+        it('should create a simple model', function () {
             var model = new Model();
             expect(model).to.be.an('object');
         });

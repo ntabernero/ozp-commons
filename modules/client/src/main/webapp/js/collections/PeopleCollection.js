@@ -20,7 +20,8 @@ define([
     ],
 
 function(PersonModel, Collection) {
-        
+    'use strict';
+    
     var PeopleCollection = Collection.extend({
         
         model: PersonModel,

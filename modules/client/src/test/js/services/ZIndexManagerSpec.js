@@ -14,15 +14,18 @@
  * limitations under the License.
  */
 
-define(['services/ZIndexManager', 'backbone'], function(ZIndexManager) {
+define([
+    'services/ZIndexManager', 
+    'views/View'
+], function(ZIndexManager, View) {
 
     describe('ZIndexManager', function() {
         
         var view1, view2, zIndexManager;
 
         beforeEach(function() {
-            view1 = new Backbone.View();
-            view2 = new Backbone.View();
+            view1 = new View();
+            view2 = new View();
             zIndexManager = new ZIndexManager();
 
             view1.render();
@@ -86,7 +89,7 @@ define(['services/ZIndexManager', 'backbone'], function(ZIndexManager) {
             zIndexManager.register(view1);
             view1.remove();
 
-            expect(unregSpy.calledOnce);
+            expect(unregSpy.calledOnce).to.be.ok();
         });
 
         it('does not throw an exception when unregistering a non-registered view', function() {

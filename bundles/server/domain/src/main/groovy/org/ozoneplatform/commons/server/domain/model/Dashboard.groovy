@@ -29,6 +29,7 @@ abstract class Dashboard extends Entity {
     String description = ''
 
     String layoutConfig = ''
+    String floatingWidgets = ''
     int position
     boolean isLocked = false
 
@@ -52,4 +53,11 @@ abstract class Dashboard extends Entity {
         this.layoutConfig = JsonOutput.toJson(json)
     }
 
+    Object getFloatingWidgetsJson() {
+        return jsonSlurper.parseText(floatingWidgets)
+    }
+
+    void setFloatingWidgetsJson(Object json) {
+        this.floatingWidgets = JsonOutput.toJson(json)
+    }
 }

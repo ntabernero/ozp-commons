@@ -39,12 +39,12 @@ define(['models/PersonModel'], function(PersonModel) {
             expect(this.person.get('prevLogin')).to.eql('1/1/2013 00:00:00');
         });
     
-        it('Test PersonModel base url', function() {
+        it('generates a base url', function() {
             this.person.set("id", 1);
             expect(this.person.url()).to.eql("/ozp/rest/owf/persons/1");
         });
     
-        it('Test PersonModel test create url.', function() {
+        it('creates a POST request to the correct url for a save', function() {
             this.person.save();
             expect(this.server.requests.length).to.eql(1);
             expect(this.server.requests[0].method).to.eql("POST");
@@ -52,7 +52,7 @@ define(['models/PersonModel'], function(PersonModel) {
             expect(this.person.url()).to.eql("/ozp/rest/owf/persons");
         });
         
-        it('Test PersonModel test fetch url', function() {
+        it('creates a GET request to the correct url for a fetch', function() {
             this.person.set('id', '1');
             this.person.fetch();
             expect(this.server.requests.length).to.eql(1);
@@ -61,7 +61,7 @@ define(['models/PersonModel'], function(PersonModel) {
             expect(this.person.url()).to.eql("/ozp/rest/owf/persons/1");
         });
         
-        it('Test PersonModel test update url', function() {
+        it('creates a PUT request to the correct URL for a model update.', function() {
             this.person.set('id', '1');
             this.person.save();
             expect(this.server.requests.length).to.eql(1);
@@ -70,7 +70,7 @@ define(['models/PersonModel'], function(PersonModel) {
             expect(this.person.url()).to.eql("/ozp/rest/owf/persons/1");
         });
         
-        it('Test PersonModel test delete url', function() {
+        it('creates a DELETE request to the correct URL for a model update.', function() {
             this.person.set('id', 1);
             this.person.destroy();
             expect(this.server.requests.length).to.eql(1);

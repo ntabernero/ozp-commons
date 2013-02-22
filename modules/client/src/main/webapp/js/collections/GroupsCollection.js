@@ -20,7 +20,8 @@ define([
 ],
 
 function(GroupModel, Collection) {
-        
+    'use strict';
+    
     var GroupsCollection = Collection.extend({
         
         model: GroupModel,

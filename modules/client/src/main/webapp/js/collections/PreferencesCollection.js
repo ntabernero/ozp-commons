@@ -20,12 +20,11 @@ define([
 ],
 
 function(PreferenceModel, Collection) {
-        
+    'use strict';
+    
     var PreferencesCollection = Collection.extend({
         
         model: PreferenceModel,
-
-        url: 'preferences',
         
         comparator: function(preference) {
             return preference.get('namespace') + '.' + preference.get('name');

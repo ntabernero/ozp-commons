@@ -43,7 +43,7 @@ class Person extends Principal {
      * Has many DashboardInstances
      * @return
      */
-    Iterable<DashboardInstance> getDashboards() { getMutableDashboards() }
+    Set<DashboardInstance> getDashboards() { Collections.unmodifiableSet(getMutableDashboards()) }
     private Set<DashboardInstance> getMutableDashboards() {
         if(!mutableDashboards)
             mutableDashboards = new HashSet<DashboardInstance>()
@@ -69,7 +69,7 @@ class Person extends Principal {
      * Has many PersonalWidgetDefinitions
      * @return
      */
-    Iterable<PersonalWidgetDefinition> getPersonalWidgetDefinitions() { mutablePersonalWidgetDefinitions }
+    Set<PersonalWidgetDefinition> getPersonalWidgetDefinitions() { Collections.unmodifiableSet(mutablePersonalWidgetDefinitions) }
     private Set<PersonalWidgetDefinition> getMutablePersonalWidgetDefinitions() {
         if(!mutablePersonalWidgetDefinitions)
             mutablePersonalWidgetDefinitions = new HashSet<PersonalWidgetDefinition>()

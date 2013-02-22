@@ -19,6 +19,8 @@ define([
 ],
 
 function(Model) {
+    'use strict';
+
     //cache current user information
     var currentUser;
 
@@ -28,7 +30,7 @@ function(Model) {
         
         defaults: {
             "username": "",
-            "fullname": "",
+            "fullName": "",
             "email": "",
             "lastLogin": "",
             "prevLogin": ""

@@ -37,10 +37,10 @@ class PersonalWidgetDefinition extends Entity {
      * Has many tags
      * @return
      */
-    Iterable<String> getTags() {
+    Set<String> getTags() {
         if (!tags)
             tags = new HashSet<String>()
-        tags
+        Collections.unmodifiableSet(tags)
     }
     /**
      * Replaces tags with new of tags

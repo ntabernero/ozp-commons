@@ -15,20 +15,20 @@
  */
 
 define([
+    'backbone',
     'models/DashboardModel',
-    'collections/Collection'
+
+    'lodash'
 ],
 
-function(DashboardModel, Collection) {
-
-    var DashboardsCollection = Collection.extend({
+function(Backbone, DashboardModel, _) {
+    'use strict';
+    
+    var DashboardTemplateModel = DashboardModel.extend({
         
-        model: DashboardModel,
-
-        url: '/groups/dashboards'
-
+        urlRoot: '/ozp/rest/owf/dashboard-templates'
     });
     
-    return DashboardsCollection;
+    return DashboardTemplateModel;
 
 });

@@ -15,11 +15,13 @@
  */
 
 define([
-    'models/Model'
+    'models/Model',
+    'lodash'
 ],
 
-function(Model) {
-
+function(Model, _) {
+    'use strict';
+    
     var PreferenceModel = Model.extend({
         defaults: {
             "name": null,
