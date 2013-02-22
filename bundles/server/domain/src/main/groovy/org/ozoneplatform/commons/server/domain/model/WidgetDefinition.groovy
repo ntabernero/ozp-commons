@@ -91,6 +91,7 @@ class WidgetDefinition extends Entity {
      * @return
      */
     Set<String> getTags() {
+        if (!tags) tags = new HashSet<String>()
         Collections.unmodifiableSet(tags)
     }
     /**
