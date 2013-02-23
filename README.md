@@ -1,4 +1,4 @@
-OzonePlatform Commons
+OzonePlatform Commons [![Build Status](https://travis-ci.org/ntabernero/ozp-commons.png)](https://travis-ci.org/ntabernero/ozp-commons)
 ======================
 
 This is the Commons module of the Ozone Platform.  It builds OSGI bundles that are meant to be run in the 
