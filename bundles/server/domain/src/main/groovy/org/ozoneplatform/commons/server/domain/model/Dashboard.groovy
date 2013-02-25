@@ -46,7 +46,7 @@ abstract class Dashboard extends Entity {
     }
 
     Object getLayoutConfigJson() {
-        return jsonSlurper.parseText(layoutConfig)
+        return layoutConfig ? jsonSlurper.parseText(layoutConfig) : jsonSlurper.parseText('{}')
     }
 
     void setLayoutConfigJson(Object json) {
@@ -54,7 +54,7 @@ abstract class Dashboard extends Entity {
     }
 
     Object getFloatingWidgetsJson() {
-        return jsonSlurper.parseText(floatingWidgets)
+        return floatingWidgets ? jsonSlurper.parseText(floatingWidgets) : jsonSlurper.parseText('{}')
     }
 
     void setFloatingWidgetsJson(Object json) {
